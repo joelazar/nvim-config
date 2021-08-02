@@ -1,5 +1,5 @@
 -- installs packer if needed
-if require "joelazar.first_load"() then return end
+if require "first_load"() then return end
 
 vim.g.mapleader = " "
 

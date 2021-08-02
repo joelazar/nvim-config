@@ -8,10 +8,7 @@ return require("packer").startup(function()
     use {
         "kabouzeid/nvim-lspinstall",
         event = "VimEnter",
-        config = function()
-            local lspinstall = require "lspinstall"
-            lspinstall.setup()
-        end
+        config = function() require("lspinstall").setup() end
     }
 
     use "nvim-lua/plenary.nvim"
@@ -22,10 +19,17 @@ return require("packer").startup(function()
 
     use {
         "folke/which-key.nvim",
-        -- config = function()
-        --     require("core.which-key").setup()
-        -- end,
+        config = function() require("config.which-key").setup() end,
         event = "BufWinEnter"
+    }
+
+    use {
+        "terrortylor/nvim-comment",
+        config = function()
+            local status_ok, nvim_comment = pcall(require, "nvim_comment")
+            if not status_ok then return end
+            nvim_comment.setup()
+        end
     }
 
     use {
@@ -46,9 +50,6 @@ return require("packer").startup(function()
         event = "InsertEnter"
         -- config = function()
         --   require("core.compe").setup()
-        --   if lvim.builtin.compe.on_config_done then
-        --     lvim.builtin.compe.on_config_done(require "compe")
-        --   end
         -- end,
     }
     use {"L3MON4D3/LuaSnip", event = "InsertCharPre"}
@@ -80,9 +81,6 @@ return require("packer").startup(function()
 
         -- config = function()
         --   require("core.gitsigns").setup()
-        --   if lvim.builtin.gitsigns.on_config_done then
-        --     lvim.builtin.gitsigns.on_config_done(require "gitsigns")
-        --   end
         -- end,
         event = "BufRead"
     }
@@ -116,7 +114,7 @@ return require("packer").startup(function()
 
     -- Debugging
     use {
-        "mfussenegger/nvim-dap",
+        "mfussenegger/nvim-dap"
         -- event = "BufWinEnter",
         -- config = function() require("core.dap").setup() end,
         -- disable = not lvim.builtin.dap.active
@@ -135,5 +133,4 @@ return require("packer").startup(function()
 
     -- use "phaazon/hop.nvim"
     -- use "ray-x/go.nvim"
-    -- use "f-person/git-blame.nvim"
 end)
