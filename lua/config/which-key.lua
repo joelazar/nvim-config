@@ -68,20 +68,14 @@ M.config = {
         ["b"] = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
-            ["f"] = {"<cmd>Telescope buffers<cr>", "Find buffer"},
             ["d"] = {"<cmd>BufferClose!<CR>", "Delete buffer"},
             ["<c-d>"] = {
                 "<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
                 "Close all but current buffer"
             },
-            ["l"] = {
-                "<cmd>BufferMovePrevious<cr>",
-                "Move buffer to the left"
-            },
-            ["r"] = {
-                "<cmd>BufferMoveNext<cr>",
-                "Move buffer to the right"
-            },
+            ["f"] = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Format buffer"},
+            ["l"] = {"<cmd>BufferMovePrevious<cr>", "Move buffer to the left"},
+            ["r"] = {"<cmd>BufferMoveNext<cr>", "Move buffer to the right"},
             ["L"] = {
                 "<cmd>BufferCloseBuffersLeft<cr>",
                 "Close all buffers to the left"
@@ -110,94 +104,104 @@ M.config = {
             name = "Packer",
             ["c"] = {"<cmd>PackerCompile<cr>", "Compile"},
             ["i"] = {"<cmd>PackerInstall<cr>", "Install"},
-            ["r"] = {"<cmd>lua require('utils').reload_lv_config()<cr>", "Reload"},
+            ["r"] = {
+                "<cmd>lua require('utils').reload_lv_config()<cr>", "Reload"
+            },
             ["s"] = {"<cmd>PackerSync<cr>", "Sync"},
             ["u"] = {"<cmd>PackerUpdate<cr>", "Update"}
         },
-
-        -- " Available Debug Adapters:
-        -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
-        -- " Adapter configuration and installation instructions:
-        -- "   https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-        -- " Debug Adapter protocol:
-        -- "   https://microsoft.github.io/debug-adapter-protocol/
-        -- " Debugging
-        g = {
+        ["g"] = {
             name = "Git",
-            j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
-            k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
-            l = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame"},
-            p = {
+            ["j"] = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
+            ["k"] = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
+            ["l"] = {
+                "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame Line"
+            },
+            ["p"] = {
                 "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"
             },
-            r = {"<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"},
-            R = {
+            ["r"] = {
+                "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"
+            },
+            ["R"] = {
                 "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"
             },
-            s = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
-            u = {
+            ["s"] = {
+                "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"
+            },
+            ["u"] = {
                 "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
                 "Undo Stage Hunk"
             },
-            o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
-            b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
-            c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
-            C = {
+            ["o"] = {"<cmd>Telescope git_status<cr>", "Open changed files"},
+            ["b"] = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+            ["c"] = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
+            ["C"] = {
                 "<cmd>Telescope git_bcommits<cr>",
                 "Checkout commit(for current file)"
             }
         },
-
-        l = {
-            name = "LSP",
-            a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
-            d = {
-                "<cmd>Telescope lsp_document_diagnostics<cr>",
-                "Document Diagnostics"
-            },
-            w = {
-                "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-                "Workspace Diagnostics"
-            },
-            -- f = { "<cmd>silent FormatWrite<cr>", "Format" },
-            f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Format"},
-            i = {"<cmd>LspInfo<cr>", "Info"},
-            j = {
+        ["e"] = {
+            n = {
                 "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
                 "Next Diagnostic"
             },
-            k = {
+            p = {
+                "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
+                "Prev Diagnostic"
+            }
+        },
+        ["l"] = {
+            name = "LSP",
+            ["a"] = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
+            ["d"] = {
+                "<cmd>Telescope lsp_document_diagnostics<cr>",
+                "Document Diagnostics"
+            },
+            ["w"] = {
+                "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+                "Workspace Diagnostics"
+            },
+            ["i"] = {"<cmd>LspInfo<cr>", "Info"},
+            ["j"] = {
+                "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
+                "Next Diagnostic"
+            },
+            ["k"] = {
                 "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
                 "Prev Diagnostic"
             },
-            l = {"<cmd>silent lua require('lint').try_lint()<cr>", "Lint"},
-            q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
-            r = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
-            s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
-            S = {
+            ["l"] = {"<cmd>silent lua require('lint').try_lint()<cr>", "Lint"},
+            ["q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
+            ["r"] = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
+            ["s"] = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+            ["S"] = {
                 "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
                 "Workspace Symbols"
             }
         },
-
-        s = {
+        ["s"] = {
             name = "Search",
-            b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
-            c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-            f = {"<cmd>Telescope find_files<cr>", "Find File"},
-            h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
-            M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-            r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
-            R = {"<cmd>Telescope registers<cr>", "Registers"},
-            t = {"<cmd>Telescope live_grep<cr>", "Text"},
-            k = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
-            C = {"<cmd>Telescope commands<cr>", "Commands"},
-            p = {
+            ["b"] = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+            ["B"] = {"<cmd>Telescope buffers<cr>", "Find buffer"},
+            ["c"] = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
+            ["f"] = {"<cmd>Telescope find_files<cr>", "Find File"},
+            ["h"] = {"<cmd>Telescope help_tags<cr>", "Find Help"},
+            ["m"] = {"<cmd>Telescope marks<cr>", "Marks"},
+            ["M"] = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
+            ["r"] = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
+            ["R"] = {"<cmd>Telescope registers<cr>", "Registers"},
+            ["t"] = {"<cmd>Telescope live_grep<cr>", "Text"},
+            ["T"] = {"<cmd>Telescope treesitter<cr>", "Treesitter"},
+            ["k"] = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
+            ["C"] = {"<cmd>Telescope commands<cr>", "Commands"},
+            ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
+            ["p"] = {
                 "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
                 "Colorscheme with Preview"
             }
         },
-        T = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}}
+        ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}}
     }
 }
 

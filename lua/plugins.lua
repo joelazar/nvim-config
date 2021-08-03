@@ -38,7 +38,8 @@ return require("packer").startup(function()
     }
 
     use {
-        "nvim-telescope/telescope.nvim"
+        "nvim-telescope/telescope.nvim",
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
         -- config = function()
         --     require("core.telescope").setup()
         -- end
@@ -78,7 +79,7 @@ return require("packer").startup(function()
     -- Git
     use {
         "lewis6991/gitsigns.nvim",
-
+        requires = {'nvim-lua/plenary.nvim'},
         -- config = function()
         --   require("core.gitsigns").setup()
         -- end,
