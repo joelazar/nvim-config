@@ -5,6 +5,11 @@ vim.g.mapleader = " "
 
 require "plugins"
 
+require "keymaps"
+
+-- @todo - could it be loaded automagically?
+require "config.barbar"
+
 -- I set some global variables to use as configuration throughout my config.
 -- These don't have any special meaning.
 -- vim.g.snippets = "luasnip"

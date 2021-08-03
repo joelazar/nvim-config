@@ -104,8 +104,9 @@ return require("packer").startup(function()
     use {
         "romgrk/barbar.nvim",
         -- config = function()
-        --   require "core.bufferline"
+        --     require "config.barbar"
         -- end,
+        requires = {'kyazdani42/nvim-web-devicons'},
         event = "BufWinEnter"
     }
     use "kyazdani42/nvim-web-devicons"

@@ -71,7 +71,7 @@ M.config = {
             ["f"] = {"<cmd>Telescope buffers<cr>", "Find buffer"},
             ["d"] = {"<cmd>BufferClose!<CR>", "Delete buffer"},
             ["<c-d>"] = {
-                "<cmd>BufferCloseAllButCurrent<cr>",
+                "<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
                 "Close all but current buffer"
             },
             ["l"] = {
