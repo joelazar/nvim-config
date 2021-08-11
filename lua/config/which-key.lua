@@ -63,8 +63,6 @@ M.config = {
         ["w"] = {"<cmd>w!<CR>", "Save"},
         ["q"] = {"<cmd>q!<CR>", "Quit"},
         [";"] = {"<cmd>CommentToggle<CR>", "Comment Operator"},
-        -- ["f"] = {"<cmd>Telescope find_files<CR>", "Find File"},
-        ["h"] = {'<cmd>let @/=""<CR>', "No Highlight"},
         ["b"] = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
@@ -142,12 +140,13 @@ M.config = {
             }
         },
         ["e"] = {
+            name = "Errors",
             n = {
-                "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
+                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>",
                 "Next Diagnostic"
             },
             p = {
-                "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
+                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
                 "Prev Diagnostic"
             }
         },

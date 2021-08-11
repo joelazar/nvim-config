@@ -15,14 +15,16 @@ return require("packer").startup(function()
 
     use "nvim-lua/popup.nvim"
 
-    use "tjdevries/astronauta.nvim"
+    -- use "tjdevries/astronauta.nvim"
 
+    -- Display popup with possible keybindings
     use {
         "folke/which-key.nvim",
         config = function() require("config.which-key").setup() end,
         event = "BufWinEnter"
     }
 
+    -- Comment toggler
     use {
         "terrortylor/nvim-comment",
         config = function()
@@ -32,6 +34,7 @@ return require("packer").startup(function()
         end
     }
 
+    -- Changes Vim working directory automagically
     use {
         "airblade/vim-rooter",
         config = function() vim.g.rooter_silent_chdir = 1 end
