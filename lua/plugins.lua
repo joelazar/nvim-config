@@ -20,8 +20,8 @@ return require("packer").startup(function()
     -- Display popup with possible keybindings
     use {
         "folke/which-key.nvim",
-        config = function() require("config.which-key").setup() end,
-        event = "BufWinEnter"
+        event = "BufWinEnter",
+        config = function() require("config.which-key").setup() end
     }
 
     -- Comment toggler
@@ -40,6 +40,7 @@ return require("packer").startup(function()
         config = function() vim.g.rooter_silent_chdir = 1 end
     }
 
+    -- Fuzzy filtering
     use {
         "nvim-telescope/telescope.nvim",
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
@@ -62,7 +63,7 @@ return require("packer").startup(function()
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
-        -- event = "InsertEnter",
+        event = "InsertEnter",
         after = "nvim-compe"
         -- config = function()
         --     require "core.autopairs"
@@ -72,8 +73,8 @@ return require("packer").startup(function()
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
-        branch = "0.5-compat"
-        -- run = ":TSUpdate",
+        branch = "0.5-compat",
+        run = ":TSUpdate",
         -- config = function()
         --     require("core.treesitter").setup()
         -- end
@@ -89,11 +90,12 @@ return require("packer").startup(function()
         event = "BufRead"
     }
 
+    -- File manager
     use "mcchrish/nnn.vim"
 
     use {
-        "folke/todo-comments.nvim"
-        -- requires = "nvim-lua/plenary.nvim",
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim"
         -- config = function()
         --   require("todo-comments").setup {
         --     -- your configuration comes here
