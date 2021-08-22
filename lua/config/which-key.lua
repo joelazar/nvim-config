@@ -56,9 +56,40 @@ M.config = {
         noremap = true, -- use `noremap` when creating keymaps
         nowait = true -- use `nowait` when creating keymaps
     },
+    secopts = {
+        mode = "n", -- NORMAL mode
+        prefix = "\\",
+        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = true -- use `nowait` when creating keymaps
+    },
+    secvopts = {
+        mode = "v", -- VISUAL mode
+        prefix = "\\",
+        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = true -- use `nowait` when creating keymaps
+    },
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
-    vmappings = {[";"] = {":CommentToggle<CR>", "Comment Operator"}},
+    secmappings = {["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"}},
+    secvmappings = {},
+    vmappings = {
+        [";"] = {":CommentToggle<CR>", "Comment Operator"},
+        ["g"] = {
+            name = "Git",
+            ["s"] = {
+                "<cmd>lua require\"gitsigns\".stage_hunk({vim.fn.line(\".\"), vim.fn.line(\"v\")})<cr>",
+                "Stage Hunk"
+            },
+            ["r"] = {
+                "<cmd>lua require\"gitsigns\".reset_hunk({vim.fn.line(\".\"), vim.fn.line(\"v\")})<cr>",
+                "Undo Stage Hunk"
+            }
+        }
+    },
     mappings = {
         ["'"] = {
             "<cmd>1ToggleTerm size=15 direction=horizontal<CR>", "Open shell"
@@ -114,25 +145,31 @@ M.config = {
         },
         ["g"] = {
             name = "Git",
-            ["j"] = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
-            ["k"] = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
+            ["j"] = {
+                "<cmd>lua require\"gitsigns\".next_hunk()<cr>", "Next Hunk"
+            },
+            ["k"] = {
+                "<cmd>lua require\"gitsigns\".prev_hunk()<cr>", "Prev Hunk"
+            },
             ["l"] = {
-                "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame Line"
+                "<cmd>lua require\"gitsigns\".blame_line()<cr>", "Blame Line"
             },
             ["p"] = {
-                "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"
+                "<cmd>lua require\"gitsigns\".preview_hunk()<cr>",
+                "Preview Hunk"
             },
             ["r"] = {
-                "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"
+                "<cmd>lua require\"gitsigns\".reset_hunk()<cr>", "Reset Hunk"
             },
             ["R"] = {
-                "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"
+                "<cmd>lua require\"gitsigns\".reset_buffer()<cr>",
+                "Reset Buffer"
             },
             ["s"] = {
-                "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"
+                "<cmd>lua require\"gitsigns\".stage_hunk()<cr>", "Stage Hunk"
             },
             ["u"] = {
-                "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+                "<cmd>lua require\"gitsigns\".undo_stage_hunk()<cr>",
                 "Undo Stage Hunk"
             },
             ["o"] = {"<cmd>Telescope git_status<cr>", "Open changed files"},
@@ -220,6 +257,8 @@ M.setup = function()
     which_key.setup(M.config.setup)
     which_key.register(M.config.mappings, M.config.opts)
     which_key.register(M.config.vmappings, M.config.vopts)
+    which_key.register(M.config.secmappings, M.config.secopts)
+    which_key.register(M.config.secvmappings, M.config.secvopts)
 end
 
 return M

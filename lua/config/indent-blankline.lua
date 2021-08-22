@@ -52,7 +52,7 @@ end
 M.setup = function()
     local status_ok, indent_blankline = pcall(require, "indent_blankline")
     if not status_ok then return end
-    indent_blankline.config(M.config)
+    indent_blankline.setup(M.config)
     M.config_function()
 end
 
