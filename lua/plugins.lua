@@ -4,18 +4,15 @@ return require("packer").startup(function()
 
     -- LSP
     use "neovim/nvim-lspconfig"
-
     use {
         "kabouzeid/nvim-lspinstall",
         event = "VimEnter",
         config = function() require("lspinstall").setup() end
     }
 
+    -- Misc
     use "nvim-lua/plenary.nvim"
-
     use "nvim-lua/popup.nvim"
-
-    -- use "tjdevries/astronauta.nvim"
 
     -- Display popup with possible keybindings
     use {
@@ -27,6 +24,7 @@ return require("packer").startup(function()
     -- Comment toggler
     use {
         "terrortylor/nvim-comment",
+        event = "BufRead",
         config = function()
             local status_ok, nvim_comment = pcall(require, "nvim_comment")
             if not status_ok then return end
@@ -43,11 +41,12 @@ return require("packer").startup(function()
     -- Fuzzy filtering
     use {
         "nvim-telescope/telescope.nvim",
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-        -- config = function()
-        --     require("core.telescope").setup()
-        -- end
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        config = function() require("config.telescope").setup() end
     }
+
+    -- Colorschema
+    use "romgrk/doom-one.vim"
 
     -- Completion & Snippets
     use {
@@ -74,10 +73,17 @@ return require("packer").startup(function()
     use {
         "nvim-treesitter/nvim-treesitter",
         branch = "0.5-compat",
-        run = ":TSUpdate",
+        run = ":TSUpdate"
         -- config = function()
         --     require("core.treesitter").setup()
         -- end
+    }
+
+    -- Adds indentation guides to all lines
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufRead",
+        config = function() require("config.indent-blankline").setup() end
     }
 
     -- Git
@@ -91,7 +97,11 @@ return require("packer").startup(function()
     }
 
     -- File manager
-    use "mcchrish/nnn.vim"
+    use {
+        "mcchrish/nnn.vim",
+        event = "BufWinEnter",
+        config = function() require("config.nnn").setup() end
+    }
 
     use {
         "folke/todo-comments.nvim",
@@ -105,16 +115,20 @@ return require("packer").startup(function()
         -- end
     }
 
-    use "akinsho/nvim-toggleterm.lua"
+    -- Terminal
+    use {
+        "akinsho/nvim-toggleterm.lua",
+        event = "BufWinEnter",
+        config = function() require("config.terminal").setup() end
+    }
 
     use {
         "romgrk/barbar.nvim",
-        -- config = function()
-        --     require "config.barbar"
-        -- end,
+        config = function() require("config.barbar").setup() end,
         requires = {'kyazdani42/nvim-web-devicons'},
         event = "BufWinEnter"
     }
+
     use "kyazdani42/nvim-web-devicons"
     use "hoob3rt/lualine.nvim"
     use "kdheepak/lazygit.nvim"

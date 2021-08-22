@@ -60,6 +60,10 @@ M.config = {
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {[";"] = {":CommentToggle<CR>", "Comment Operator"}},
     mappings = {
+        ["'"] = {
+            "<cmd>1ToggleTerm size=15 direction=horizontal<CR>", "Open shell"
+        },
+        -- ["\""] = {"<cmd>2ToggleTerm size=15 direction=horizontal<CR>", "Open shell in buffer dir"},
         ["w"] = {"<cmd>w!<CR>", "Save"},
         ["q"] = {"<cmd>q!<CR>", "Quit"},
         [";"] = {"<cmd>CommentToggle<CR>", "Comment Operator"},
@@ -142,12 +146,10 @@ M.config = {
         ["e"] = {
             name = "Errors",
             n = {
-                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>",
-                "Next Diagnostic"
+                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic"
             },
             p = {
-                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-                "Prev Diagnostic"
+                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic"
             }
         },
         ["l"] = {
@@ -173,7 +175,9 @@ M.config = {
             ["l"] = {"<cmd>silent lua require('lint').try_lint()<cr>", "Lint"},
             ["q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             ["r"] = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
-            ["s"] = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+            ["s"] = {
+                "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"
+            },
             ["S"] = {
                 "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
                 "Workspace Symbols"
@@ -201,7 +205,11 @@ M.config = {
                 "Colorscheme with Preview"
             }
         },
-        ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}}
+        ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}},
+        ["x"] = {
+            name = "Misc",
+            ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"}
+        }
     }
 }
 
@@ -210,10 +218,8 @@ M.setup = function()
     if not status_ok then return end
 
     which_key.setup(M.config.setup)
-    local wk = require "which-key"
-
-    wk.register(M.config.mappings, M.config.opts)
-    wk.register(M.config.vmappings, M.config.vopts)
+    which_key.register(M.config.mappings, M.config.opts)
+    which_key.register(M.config.vmappings, M.config.vopts)
 end
 
 return M
