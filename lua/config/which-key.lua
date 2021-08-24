@@ -74,8 +74,12 @@ M.config = {
     },
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
-    secmappings = {["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"}},
-    secvmappings = {},
+    secmappings = {
+        ["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"}
+    },
+    secvmappings = {
+        ["y"] = {"<cmd>\"+y<CR><ESC>", "Copy to system clipboard"} -- @todo - test this
+    },
     vmappings = {
         [";"] = {":CommentToggle<CR>", "Comment Operator"},
         ["g"] = {
