@@ -57,17 +57,27 @@ vim.o.smartindent = true
 -- GUI: Name(s) of font(s) to be used
 vim.o.guifont = "Hack Nerd Font:h20"
 
+-- Neovide config
+vim.g.neovide_cursor_animation_length = 0.0
+vim.g.neovide_cursor_trail_length = 0.0
+
 -- Number of command-lines that are remembered
 vim.o.history = 10000
 
 -- Use menu for command line completion
 vim.o.wildmenu = true
 
+-- Enable wrap
+vim.o.wrap = true
+
 -- Wrap long lines at a blank
 vim.o.linebreak = true
 
 -- Autom. read file when changed outside of Vim
 vim.o.autoread = true
+
+-- Autom. save file before some action
+vim.o.autowrite = true
 
 -- Keep backup file after overwriting a file
 vim.o.backup = true
@@ -100,7 +110,7 @@ vim.o.wildignorecase = true
 
 -- Timeout on leaderkey
 vim.o.ttimeout = true
-vim.o.ttimeoutlen = 50
+vim.o.ttimeoutlen = 5
 
 -- Show (partial) command in status line
 vim.o.showcmd = false

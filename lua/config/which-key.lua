@@ -75,7 +75,26 @@ M.config = {
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     secmappings = {
-        ["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"}
+        ["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"},
+        ["q"] = {
+            name = "Quickfix list",
+            ["l"] = {
+                "<cmd>copen<cr>",
+                "Open quickfix list window"
+            },
+            ["c"] = {
+                "<cmd>call setqflist([])<cr>",
+                "Clear quickfix list"
+            },
+            ["n"] = {
+                "<cmd>cnext<cr>",
+                "Select next item in quickfix list"
+            },
+            ["p"] = {
+                "<cmd>cprev<cr>",
+                "Select previous item in quickfix list"
+            }
+        }
     },
     secvmappings = {
         ["y"] = {"<cmd>\"+y<CR><ESC>", "Copy to system clipboard"} -- @todo - test this

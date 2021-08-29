@@ -70,4 +70,16 @@ map('v', 'p', 'pgvy', opts)
 map('x', '<A-j>', ":m '>+1<CR>gv-gv", opts)
 map('x', '<A-k>', ":m '<-2<CR>gv-gv", opts)
 
-map('c', 'W', "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true })
+-- Select blocks after indenting
+map('x', '<', "<gv", opts)
+map('x', '>', ">gv|", opts)
+
+-- Use tab for indenting in visual mode
+map('x', '<Tab>', ">gv|", opts)
+map('x', '<S-Tab>', "<gv", opts)
+
+-- Single </> should be enough for indenting
+-- map('n', '>', ">>_", opts)
+-- map('n', '<', "<<_", opts)
+
+map('c', 'W', "<esc>:lua require'utils'.sudo_write()<CR>", {silent = true})
