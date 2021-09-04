@@ -78,22 +78,10 @@ M.config = {
         ["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"},
         ["q"] = {
             name = "Quickfix list",
-            ["l"] = {
-                "<cmd>copen<cr>",
-                "Open quickfix list window"
-            },
-            ["c"] = {
-                "<cmd>call setqflist([])<cr>",
-                "Clear quickfix list"
-            },
-            ["n"] = {
-                "<cmd>cnext<cr>",
-                "Select next item in quickfix list"
-            },
-            ["p"] = {
-                "<cmd>cprev<cr>",
-                "Select previous item in quickfix list"
-            }
+            ["l"] = {"<cmd>copen<cr>", "Open quickfix list window"},
+            ["c"] = {"<cmd>call setqflist([])<cr>", "Clear quickfix list"},
+            ["n"] = {"<cmd>cnext<cr>", "Select next item in quickfix list"},
+            ["p"] = {"<cmd>cprev<cr>", "Select previous item in quickfix list"}
         }
     },
     secvmappings = {
@@ -245,25 +233,25 @@ M.config = {
         },
         ["s"] = {
             name = "Search",
-            ["b"] = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+            ["b"] = {"<cmd>Telescope vim_bookmarks all<cr>", "Find bookmarks"},
             ["B"] = {"<cmd>Telescope buffers<cr>", "Find buffer"},
-            ["c"] = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
+            ["c"] = {"<cmd>Telescope commands<cr>", "Commands"},
+            ["C"] = {
+                "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+                "Colorscheme"
+            },
             ["f"] = {"<cmd>Telescope find_files<cr>", "Find File"},
+            ["g"] = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
             ["h"] = {"<cmd>Telescope help_tags<cr>", "Find Help"},
             ["L"] = {"<cmd>Telescope treesitter<cr>", "Treesitter"},
+            ["k"] = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
             ["m"] = {"<cmd>Telescope marks<cr>", "Marks"},
             ["M"] = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
             ["r"] = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
             ["R"] = {"<cmd>Telescope registers<cr>", "Registers"},
             ["t"] = {"<cmd>Telescope live_grep<cr>", "Text"},
             ["T"] = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
-            ["k"] = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
-            ["C"] = {"<cmd>Telescope commands<cr>", "Commands"},
-            ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
-            ["p"] = {
-                "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-                "Colorscheme with Preview"
-            }
+            ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"}
         },
         ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}},
         ["x"] = {

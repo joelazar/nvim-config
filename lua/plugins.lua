@@ -120,6 +120,19 @@ return require("packer").startup(function()
         config = function() require("config.terminal").setup() end
     }
 
+    -- Bookmarks
+    use {"MattesGroeger/vim-bookmarks", event = "BufWinEnter"}
+
+    use {
+        "tom-anders/telescope-vim-bookmarks.nvim",
+        requires = {
+            {'nvim-telescope/telescope.nvim'}, {'MattesGroeger/vim-bookmarks'}
+        },
+        config = function()
+            require('telescope').load_extension('vim_bookmarks')
+        end
+    }
+
     use {
         "romgrk/barbar.nvim",
         config = function() require("config.barbar").setup() end,
