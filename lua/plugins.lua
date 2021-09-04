@@ -50,23 +50,18 @@ return require("packer").startup(function()
 
     -- Completion & Snippets
     use {
-        "hrsh7th/nvim-compe",
-        event = "InsertEnter"
-        -- config = function()
-        --   require("core.compe").setup()
-        -- end,
+        'ms-jpq/coq_nvim',
+        branch = 'coq',
+        config = function() vim.g.coq_settings = {auto_start = true} end
     }
-    use {"L3MON4D3/LuaSnip", event = "InsertCharPre"}
-    use {"rafamadriz/friendly-snippets", event = "InsertCharPre"}
+    use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
 
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        after = "nvim-compe"
-        -- config = function()
-        --     require "core.autopairs"
-        -- end
+        after = "coq_nvim",
+        config = function() require("config.autopairs").setup() end
     }
 
     -- Treesitter
@@ -141,28 +136,29 @@ return require("packer").startup(function()
     }
 
     use "kyazdani42/nvim-web-devicons"
+
     use "hoob3rt/lualine.nvim"
+
     use "kdheepak/lazygit.nvim"
 
     -- Debugging
-    use {
-        "mfussenegger/nvim-dap"
-        -- event = "BufWinEnter",
-        -- config = function() require("core.dap").setup() end,
-        -- disable = not lvim.builtin.dap.active
-    }
+    -- use {
+    --     "mfussenegger/nvim-dap"
+    --     -- event = "BufWinEnter",
+    --     -- config = function() require("core.dap").setup() end,
+    --     -- disable = not lvim.builtin.dap.active
+    -- }
 
-    -- Debugger management
-    use {
-        "Pocco81/DAPInstall.nvim"
-        -- event = "BufWinEnter",
-        -- event = "BufRead",
-    }
+    -- -- Debugger management
+    -- use {
+    --     "Pocco81/DAPInstall.nvim"
+    --     -- event = "BufWinEnter",
+    --     -- event = "BufRead",
+    -- }
 
-    use "rcarriga/nvim-dap-ui"
-
-    use "karb94/neoscroll.nvim"
+    -- use "rcarriga/nvim-dap-ui"
 
     -- use "phaazon/hop.nvim"
+    
     -- use "ray-x/go.nvim"
 end)
