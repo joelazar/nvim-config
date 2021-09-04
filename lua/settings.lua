@@ -35,7 +35,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[colorscheme doom-one]]
+vim.cmd [[colorscheme github]]
 
 -- Highlight on yank
 vim.api.nvim_exec([[

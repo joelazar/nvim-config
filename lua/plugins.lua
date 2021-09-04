@@ -45,14 +45,26 @@ return require("packer").startup(function()
         config = function() require("config.telescope").setup() end
     }
 
+    -- Status bar
+    use {
+        "hoob3rt/lualine.nvim",
+        event = "VimEnter",
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = function() require("config.lualine").setup() end
+    }
+
     -- Colorschema
-    use "romgrk/doom-one.vim"
+    use {
+        'projekt0n/github-nvim-theme',
+        event = "VimEnter",
+        config = function() require('github-theme').setup() end
+    }
 
     -- Completion & Snippets
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        config = function() vim.g.coq_settings = {auto_start = true} end
+        config = function() vim.g.coq_settings = {auto_start = 'shut-up'} end
     }
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
 
@@ -133,8 +145,6 @@ return require("packer").startup(function()
     }
 
     use "kyazdani42/nvim-web-devicons"
-
-    use "hoob3rt/lualine.nvim"
 
     use "kdheepak/lazygit.nvim"
 
