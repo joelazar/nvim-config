@@ -68,11 +68,11 @@ return require("packer").startup(function()
     use {
         "nvim-treesitter/nvim-treesitter",
         branch = "0.5-compat",
-        run = ":TSUpdate"
-        -- config = function()
-        --     require("core.treesitter").setup()
-        -- end
+        run = ":TSUpdate",
+        config = function() require("config.treesitter").setup() end
     }
+
+    use {"p00f/nvim-ts-rainbow"}
 
     -- Adds indentation guides to all lines
     use {
@@ -159,6 +159,6 @@ return require("packer").startup(function()
     -- use "rcarriga/nvim-dap-ui"
 
     -- use "phaazon/hop.nvim"
-    
+
     -- use "ray-x/go.nvim"
 end)

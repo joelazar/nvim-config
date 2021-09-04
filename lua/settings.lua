@@ -115,6 +115,11 @@ vim.o.ttimeoutlen = 5
 -- Show (partial) command in status line
 vim.o.showcmd = false
 
+-- Folding
+vim.o.foldenable = false
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require "plenary.path"
 
