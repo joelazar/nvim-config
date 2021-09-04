@@ -72,6 +72,7 @@ return require("packer").startup(function()
         config = function() require("config.treesitter").setup() end
     }
 
+    -- Rainbow parentheses by using tree-sitter
     use {"p00f/nvim-ts-rainbow"}
 
     -- Adds indentation guides to all lines
@@ -96,16 +97,12 @@ return require("packer").startup(function()
         config = function() require("config.nnn").setup() end
     }
 
+    -- Highlight todo comments
     use {
         "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim"
-        -- config = function()
-        --   require("todo-comments").setup {
-        --     -- your configuration comes here
-        --     -- or leave it empty to use the default settings
-        --     -- refer to the configuration section below
-        --   }
-        -- end
+        requires = "nvim-lua/plenary.nvim",
+        event = "BufReadPost",
+        config = function() require("config.todo").setup() end
     }
 
     -- Terminal
