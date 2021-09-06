@@ -203,6 +203,7 @@ M.config = {
         ["l"] = {
             name = "LSP",
             ["a"] = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
+            ["A"] = {"<cmd>lua vim.lsp.buf.range_code_action()", "Code Action Range"},
             ["d"] = {
                 "<cmd>Telescope lsp_document_diagnostics<cr>",
                 "Document Diagnostics"

@@ -3,11 +3,16 @@ return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
     -- LSP
-    use "neovim/nvim-lspconfig"
     use {
         "kabouzeid/nvim-lspinstall",
         event = "VimEnter",
         config = function() require("lspinstall").setup() end
+    }
+    use {
+        "neovim/nvim-lspconfig",
+        event = "VimEnter",
+        after = {'nvim-lspinstall', 'coq'},
+        config = function() require("config.lspconfig").setup() end
     }
 
     -- Misc

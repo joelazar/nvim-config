@@ -37,6 +37,10 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme github]]
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+vim.o.whichwrap:append "<>hl"
+
 -- Highlight on yank
 vim.api.nvim_exec([[
   augroup YankHighlight
@@ -134,3 +138,29 @@ vim.o.backupdir = tostring(backupdir)
 local undodir = Path:new(Path.path.home .. '/.cache/nvim/undo/')
 if not undodir:exists() then undodir:mkdir() end
 vim.o.undodir = tostring(undodir)
+
+-- disable some builtin vim plugins
+local disabled_built_ins = {
+   "2html_plugin",
+   "getscript",
+   "getscriptPlugin",
+   "gzip",
+   "logipat",
+   "netrw",
+   "netrwPlugin",
+   "netrwSettings",
+   "netrwFileHandlers",
+   "matchit",
+   "tar",
+   "tarPlugin",
+   "rrhelper",
+   "spellfile_plugin",
+   "vimball",
+   "vimballPlugin",
+   "zip",
+   "zipPlugin",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+   vim.g["loaded_" .. plugin] = 1
+end
