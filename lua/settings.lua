@@ -39,7 +39,8 @@ vim.cmd [[colorscheme github]]
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-vim.o.whichwrap:append "<>hl"
+-- vim.o.whichwrap:append "<>hl"
+-- @todo - fix this
 
 -- Highlight on yank
 vim.api.nvim_exec([[

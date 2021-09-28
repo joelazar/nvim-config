@@ -1,8 +1,7 @@
 local present1, lspconfig = pcall(require, "lspconfig")
-local present2, lspinstall = pcall(require, "lspinstall")
-local present3, coq = pcall(require, "coq")
+local present2, coq = pcall(require, "coq")
 
-if not (present1 or present2 or present3) then return end
+if not (present1 or present2) then return end
 
 local function on_attach(_, bufnr)
     local function buf_set_keymap(...)
@@ -13,7 +12,7 @@ local function on_attach(_, bufnr)
     end
 
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
     local opts = {noremap = true, silent = true}
@@ -34,6 +33,7 @@ local function on_attach(_, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 capabilities.textDocument.completion.completionItem.documentationFormat = {
     "markdown", "plaintext"
 }
@@ -51,54 +51,40 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {"documentation", "detail", "additionalTextEdits"}
 }
 
--- lspInstall + lspconfig stuff
+local servers = {
+    gopls = {settings = {gopls = {gofumpt = true}}},
+    pyright = true,
+    tsserver = true,
+    html = true,
+    cssls = true,
+    texlab = true,
+    bashls = true,
+    yamlls = true,
+    sumneko_lua = {cmd = {"lua-language-server"}},
+    jsonls = {cmd = {"vscode-json-languageserver", "--stdio"}}
+}
 
-local function setup_servers()
-    lspinstall.setup()
-    local servers = lspinstall.installed_servers()
+local setup_server = function(server, config)
+    if not config then return end
 
-    for _, lang in pairs(servers) do
-        if lang ~= "lua" then
-            lspconfig[lang].setup(coq.lsp_ensure_capabilities({
-                capabilities = capabilities,
-                flags = {debounce_text_changes = 500}
-                -- root_dir = vim.loop.cwd,
-            }))
-        elseif lang == "lua" then
-            lspconfig[lang].setup(coq.lsp_ensure_capabilities({
-                capabilities = capabilities,
-                flags = {debounce_text_changes = 500},
-                settings = {
-                    Lua = {
-                        diagnostics = {globals = {"vim"}},
-                        workspace = {
-                            library = {
-                                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000
-                        },
-                        telemetry = {enable = false}
-                    }
-                }
-            }))
-        end
-    end
+    if type(config) ~= "table" then config = {} end
+
+    config = vim.tbl_deep_extend("force", {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = {debounce_text_changes = 150}
+    }, config)
+
+    lspconfig[server].setup(config)
+    lspconfig[server].setup(coq.lsp_ensure_capabilities(config))
 end
 
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd "bufdo e"
-end
+for server, config in pairs(servers) do setup_server(server, config) end
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
     vim.fn.sign_define("LspDiagnosticsSign" .. name,
-                       {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+                       {text = icon, numhl = "LspDiagnosticsDefault" .. name})
 end
 
 lspSymbol("Error", "")
