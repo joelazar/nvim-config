@@ -103,7 +103,10 @@ return require("packer").startup(function()
     }
 
     -- Rainbow parentheses by using tree-sitter
-    use {"p00f/nvim-ts-rainbow", event = "BufWinEnter"}
+    use {"p00f/nvim-ts-rainbow", event = "BufWinEnter", after = "nvim-treesitter"}
+
+    -- Autocreate/update html tags
+    use {'windwp/nvim-ts-autotag', event = "BufWinEnter", after = "nvim-treesitter"}
 
     -- Adds indentation guides to all lines
     use {
