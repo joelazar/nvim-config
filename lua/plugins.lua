@@ -66,7 +66,6 @@ return require("packer").startup(function()
     -- Colorschema
     use {
         'projekt0n/github-nvim-theme',
-        event = "VimEnter",
         config = function() require('github-theme').setup() end
     }
 
@@ -94,6 +93,12 @@ return require("packer").startup(function()
         run = ':lua require("go.install").install_all()'
     }
 
+    use {
+        "phaazon/hop.nvim",
+        as = "hop",
+        config = function() require("hop").setup() end
+    }
+
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
@@ -103,15 +108,18 @@ return require("packer").startup(function()
     }
 
     -- Rainbow parentheses by using tree-sitter
-    use {"p00f/nvim-ts-rainbow", event = "BufWinEnter", after = "nvim-treesitter"}
+    use {"p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
     -- Autocreate/update html tags
-    use {'windwp/nvim-ts-autotag', event = "BufWinEnter", after = "nvim-treesitter"}
+    use {
+        'windwp/nvim-ts-autotag',
+        event = "BufWinEnter",
+        after = "nvim-treesitter"
+    }
 
     -- Adds indentation guides to all lines
     use {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
         config = function() require("config.indent-blankline").setup() end
     }
 
