@@ -107,6 +107,7 @@ M.config = {
         ["w"] = {"<cmd>w!<cr>", "Save"},
         ["q"] = {"<cmd>q!<cr>", "Quit"},
         [";"] = {"<cmd>CommentToggle<cr>", "Comment Operator"},
+        ["n"] = {"<cmd>NnnPicker<cr>", "nnn"},
         ["b"] = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
