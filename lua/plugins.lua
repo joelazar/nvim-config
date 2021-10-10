@@ -90,7 +90,8 @@ return require("packer").startup(function()
     use {
         "ray-x/go.nvim",
         ft = {"go"},
-        config = function() require("config.go").setup() end
+        config = function() require("config.go").setup() end,
+        run = ':lua require("go.install").install_all()'
     }
 
     -- Treesitter
