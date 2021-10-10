@@ -144,13 +144,13 @@ local servers = {
                 scss = {prettier},
                 css = {prettier},
                 markdown = {prettier},
-                sh = {shellcheck, shfmt},
-                makefile = {{lintCommand = "checkmake", lintStdin = true}}
+                sh = {shellcheck, shfmt}
+                -- make = {{lintCommand = "checkmake", lintStdin = true}}
             }
         },
         filetypes = {
             'go', 'python', 'ts', 'javascript', 'yaml', 'json', 'html', 'css',
-            'scss', 'md', 'sh', 'lua', 'Makefile'
+            'scss', 'md', 'sh', 'lua' -- 'make'
         }
     }
 }
