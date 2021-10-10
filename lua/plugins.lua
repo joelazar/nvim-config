@@ -21,6 +21,10 @@ return require("packer").startup(function()
         config = function() require("config.which-key").setup() end
     }
 
+    -- Asynctasks
+    use {"skywind3000/asyncrun.vim", event = "BufWinEnter"}
+    use {"skywind3000/asynctasks.vim", event = "BufWinEnter"}
+
     -- Comment toggler
     use {
         "terrortylor/nvim-comment",

@@ -35,7 +35,7 @@ M.config = {
             spacing = 3 -- spacing between columns
         },
         hidden = {
-            "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "
+            "<silent>", "<cmd>", "<Cmd>", "<cr>", "call", "lua", "^:", "^ "
         }, -- hide mapping boilerplate
         show_help = true -- show help message on the command line when the popup is visible
     },
@@ -75,7 +75,7 @@ M.config = {
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     secmappings = {
-        ["lg"] = {"<cmd>LazyGit<CR>", "Lazygit"},
+        ["g"] = {"<cmd>LazyGit<cr>", "Lazygit"},
         ["q"] = {
             name = "Quickfix list",
             ["l"] = {"<cmd>copen<cr>", "Open quickfix list window"},
@@ -85,10 +85,10 @@ M.config = {
         }
     },
     secvmappings = {
-        ["y"] = {"<cmd>\"+y<CR><ESC>", "Copy to system clipboard"} -- @todo - test this
+        ["y"] = {"<cmd>\"+y<cr><ESC>", "Copy to system clipboard"} -- @todo - test this
     },
     vmappings = {
-        [";"] = {":CommentToggle<CR>", "Comment Operator"},
+        [";"] = {":CommentToggle<cr>", "Comment Operator"},
         ["g"] = {
             name = "Git",
             ["s"] = {
@@ -103,16 +103,16 @@ M.config = {
     },
     mappings = {
         ["'"] = {
-            "<cmd>1ToggleTerm size=15 direction=horizontal<CR>", "Open shell"
+            "<cmd>1ToggleTerm size=15 direction=horizontal<cr>", "Open shell"
         },
-        -- ["\""] = {"<cmd>2ToggleTerm size=15 direction=horizontal<CR>", "Open shell in buffer dir"},
-        ["w"] = {"<cmd>w!<CR>", "Save"},
-        ["q"] = {"<cmd>q!<CR>", "Quit"},
-        [";"] = {"<cmd>CommentToggle<CR>", "Comment Operator"},
+        -- ["\""] = {"<cmd>2ToggleTerm size=15 direction=horizontal<cr>", "Open shell in buffer dir"},
+        ["w"] = {"<cmd>w!<cr>", "Save"},
+        ["q"] = {"<cmd>q!<cr>", "Quit"},
+        [";"] = {"<cmd>CommentToggle<cr>", "Comment Operator"},
         ["b"] = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
-            ["d"] = {"<cmd>BufferClose!<CR>", "Delete buffer"},
+            ["d"] = {"<cmd>BufferClose!<cr>", "Delete buffer"},
             ["<c-d>"] = {
                 "<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
                 "Close all but current buffer"
@@ -231,6 +231,14 @@ M.config = {
                 "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
                 "Workspace Symbols"
             }
+        },
+        ["m"] = {
+            name = "Makefile tasks",
+            ["m"] = {"<cmd>AsyncRun make<cr>", "Run default task"},
+            ["t"] = {"<cmd>AsyncRun make test<cr>", "Run test"},
+            ["l"] = {"<cmd>AsyncRun make lint<cr>", "Run lint"},
+            ["d"] = {"<cmd>AsyncRun make docker<cr>", "Run docker"},
+            ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"},
         },
         ["s"] = {
             name = "Search",
