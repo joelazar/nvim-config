@@ -101,9 +101,12 @@ M.config = {
     },
     mappings = {
         ["'"] = {
-            "<cmd>1ToggleTerm size=15 direction=horizontal<cr>", "Open shell"
+            "<cmd>1ToggleTerm size=15 direction=horizontal<cr>", "Open primary shell"
         },
-        -- ["\""] = {"<cmd>2ToggleTerm size=15 direction=horizontal<cr>", "Open shell in buffer dir"},
+        ["\""] = {
+            "<cmd>2ToggleTerm size=15 direction=horizontal<cr>",
+            "Open secondary shell"
+        },
         ["w"] = {"<cmd>w!<cr>", "Save"},
         ["q"] = {"<cmd>q!<cr>", "Quit"},
         [";"] = {"<cmd>CommentToggle<cr>", "Comment Operator"},

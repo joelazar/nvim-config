@@ -69,6 +69,13 @@ return require("packer").startup(function()
         config = function() require('github-theme').setup() end
     }
 
+    -- Color highlighter
+    use {
+        'norcalli/nvim-colorizer.lua',
+        ft = {'html', 'css'},
+        config = function() require('colorizer').setup() end
+    }
+
     -- Completion & Snippets
     use {
         'ms-jpq/coq_nvim',
