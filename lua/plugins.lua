@@ -123,6 +123,8 @@ return require("packer").startup(function()
         event = "BufRead"
     }
 
+    use {"sindrets/diffview.nvim", event = "BufWinEnter"}
+
     -- File manager
     use {
         "mcchrish/nnn.vim",
