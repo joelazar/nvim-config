@@ -39,6 +39,7 @@ return require("packer").startup(function()
     -- Project management
     use {
         "ahmedkhalf/project.nvim",
+        event = "VimEnter",
         requires = {{'nvim-telescope/telescope.nvim'}},
         config = function()
             require("project_nvim").setup {
@@ -101,7 +102,7 @@ return require("packer").startup(function()
     }
 
     -- Rainbow parentheses by using tree-sitter
-    use {"p00f/nvim-ts-rainbow"}
+    use {"p00f/nvim-ts-rainbow", event = "BufWinEnter"}
 
     -- Adds indentation guides to all lines
     use {
@@ -164,24 +165,4 @@ return require("packer").startup(function()
 
     use "kdheepak/lazygit.nvim"
 
-    -- Debugging
-    -- use {
-    --     "mfussenegger/nvim-dap"
-    --     -- event = "BufWinEnter",
-    --     -- config = function() require("core.dap").setup() end,
-    --     -- disable = not lvim.builtin.dap.active
-    -- }
-
-    -- -- Debugger management
-    -- use {
-    --     "Pocco81/DAPInstall.nvim"
-    --     -- event = "BufWinEnter",
-    --     -- event = "BufRead",
-    -- }
-
-    -- use "rcarriga/nvim-dap-ui"
-
-    -- use "phaazon/hop.nvim"
-
-    -- use "ray-x/go.nvim"
 end)
