@@ -81,6 +81,9 @@ map('x', '>', ">gv|", opts)
 map('x', '<Tab>', ">gv|", opts)
 map('x', '<S-Tab>', "<gv", opts)
 
+-- Copy to system clipboard
+map('x', '\\y', "\"+y", opts)
+
 -- Single </> should be enough for indenting
 -- map('n', '>', ">>_", opts)
 -- map('n', '<', "<<_", opts)

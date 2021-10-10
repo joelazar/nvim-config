@@ -84,9 +84,7 @@ M.config = {
             ["p"] = {"<cmd>cprev<cr>", "Select previous item in quickfix list"}
         }
     },
-    secvmappings = {
-        ["y"] = {"<cmd>\"+y<cr><ESC>", "Copy to system clipboard"} -- @todo - test this
-    },
+    secvmappings = {},
     vmappings = {
         [";"] = {":CommentToggle<cr>", "Comment Operator"},
         ["g"] = {
@@ -203,7 +201,9 @@ M.config = {
         ["l"] = {
             name = "LSP",
             ["a"] = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
-            ["A"] = {"<cmd>lua vim.lsp.buf.range_code_action()", "Code Action Range"},
+            ["A"] = {
+                "<cmd>lua vim.lsp.buf.range_code_action()", "Code Action Range"
+            },
             ["d"] = {
                 "<cmd>Telescope lsp_document_diagnostics<cr>",
                 "Document Diagnostics"
@@ -238,7 +238,7 @@ M.config = {
             ["t"] = {"<cmd>AsyncRun make test<cr>", "Run test"},
             ["l"] = {"<cmd>AsyncRun make lint<cr>", "Run lint"},
             ["d"] = {"<cmd>AsyncRun make docker<cr>", "Run docker"},
-            ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"},
+            ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"}
         },
         ["s"] = {
             name = "Search",
