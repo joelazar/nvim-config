@@ -51,17 +51,108 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {"documentation", "detail", "additionalTextEdits"}
 }
 
+local prettier = require "config/efm/prettier"
+local eslint = require "config/efm/eslint"
+local shellcheck = require "config/efm/shellcheck"
+local shfmt = require "config/efm/shfmt"
+
+local function get_lua_runtime()
+    local result = {}
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. "/lua/"
+        if vim.fn.isdirectory(lua_path) then result[lua_path] = true end
+    end
+    result[vim.fn.expand "$VIMRUNTIME/lua"] = true
+    result[vim.fn.expand "~/dev/neovim/src/nvim/lua"] = true
+
+    return result
+end
+
 local servers = {
     gopls = {settings = {gopls = {gofumpt = true}}},
     pyright = true,
-    tsserver = true,
+    tsserver = {cmd = {"typescript-language-server"}},
     html = true,
     cssls = true,
     texlab = true,
     bashls = true,
     yamlls = true,
-    sumneko_lua = {cmd = {"lua-language-server"}},
-    jsonls = {cmd = {"vscode-json-languageserver", "--stdio"}}
+    sumneko_lua = {
+        cmd = {"lua-language-server"},
+        settings = {
+            Lua = {
+                runtime = {
+                    version = "LuaJIT",
+                    path = {"lua/?.lua", "lua/?/init.lua"}
+                },
+                completion = {keywordSnippet = "Disable"},
+                diagnostics = {
+                    enable = true,
+                    globals = {
+                        "vim", "describe", "it", "before_each", "after_each",
+                        "teardown", "pending", "use"
+                    },
+                    workspace = {
+                        library = get_lua_runtime(),
+                        maxPreload = 1000,
+                        preloadFileSize = 1000
+                    }
+                }
+            }
+        }
+    },
+    jsonls = {init_options = {provideFormatter = false}},
+    clangd = true,
+    rust_analyzer = true,
+    dockerls = true,
+    efm = {
+        init_options = {documentFormatting = true},
+        root_dir = vim.loop.cwd,
+        settings = {
+            rootMarkers = {".git/"},
+            languages = {
+                go = {
+                    {
+                        lintCommand = "golangci-lint",
+                        lintIgnoreExitCode = true,
+                        lintFormats = {"%f:%l:%c: %m"},
+                        lintSource = "golangci-lint"
+                    } -- {formatCommand = "goimports", formatStdin = true}
+                },
+                lua = {{formatCommand = "lua-format -i", formatStdin = true}},
+                python = {
+                    {formatCommand = "black --fast -", formatStdin = true},
+                    {
+                        formatCommand = "isort --stdout --profile black -",
+                        formatStdin = true
+                    }
+                    -- {
+                    --     lintCommand = "flake8 --max-line-length 160 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
+                    --     lintStdin = true,
+                    --     lintIgnoreExitCode = true,
+                    --     lintFormats = {"%f:%l:%c: %t%n%n%n %m"},
+                    --     lintSource = "flake8"
+                    -- }
+                },
+                typescript = {prettier, eslint},
+                javascript = {prettier, eslint},
+                typescriptreact = {prettier, eslint},
+                javascriptreact = {prettier, eslint},
+                yaml = {prettier},
+                json = {prettier},
+                html = {prettier},
+                scss = {prettier},
+                css = {prettier},
+                markdown = {prettier},
+                sh = {shellcheck, shfmt},
+                makefile = {{lintCommand = "checkmake", lintStdin = true}}
+            }
+        },
+        filetypes = {
+            'go', 'python', 'ts', 'javascript', 'yaml', 'json', 'html', 'css',
+            'scss', 'md', 'sh', 'lua', 'Makefile'
+        }
+    }
 }
 
 local setup_server = function(server, config)
