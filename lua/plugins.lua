@@ -131,6 +131,12 @@ return require("packer").startup(function()
         event = "BufRead"
     }
 
+    use {
+        'pwntester/octo.nvim',
+        config = function() require"octo".setup() end,
+        event = "BufReadPost"
+    }
+
     use {"sindrets/diffview.nvim", event = "BufWinEnter"}
 
     -- File manager
