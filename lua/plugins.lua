@@ -32,10 +32,15 @@ return require("packer").startup(function()
         end
     }
 
-    -- Changes Vim working directory automagically
+    -- Project management
     use {
-        "airblade/vim-rooter",
-        config = function() vim.g.rooter_silent_chdir = 1 end
+        "ahmedkhalf/project.nvim",
+        requires = {{'nvim-telescope/telescope.nvim'}},
+        config = function()
+            require("project_nvim").setup {
+                require('telescope').load_extension('projects')
+            }
+        end
     }
 
     -- Fuzzy filtering

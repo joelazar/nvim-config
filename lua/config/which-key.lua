@@ -250,6 +250,7 @@ M.config = {
             ["M"] = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
             ["r"] = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
             ["p"] = {"<cmd>TodoTelescope<cr>", "Open TODO comments"},
+            ["P"] = {"<cmd>Telescope projects<cr>", "Open projects"},
             ["R"] = {"<cmd>Telescope registers<cr>", "Registers"},
             ["t"] = {"<cmd>Telescope live_grep<cr>", "Text"},
             ["T"] = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
