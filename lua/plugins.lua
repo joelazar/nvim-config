@@ -76,6 +76,13 @@ return require("packer").startup(function()
         config = function() require("config.autopairs").setup() end
     }
 
+    -- Go development
+    use {
+        "ray-x/go.nvim",
+        ft = {"go"},
+        config = function() require("config.go").setup() end
+    }
+
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
