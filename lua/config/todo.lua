@@ -32,7 +32,7 @@ M.config = {
         pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlightng (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
-        exclude = {} -- list of file types to exclude highlighting
+        exclude = {"text"} -- list of file types to exclude highlighting
     },
     search = {
         command = "rg",
