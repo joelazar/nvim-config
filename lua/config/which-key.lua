@@ -121,7 +121,10 @@ M.config = {
                 "<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
                 "Close all but current buffer"
             },
-            ["f"] = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Format buffer"},
+            ["f"] = {
+                "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
+                "Format buffer"
+            },
             ["l"] = {"<cmd>BufferMovePrevious<cr>", "Move buffer to the left"},
             ["r"] = {"<cmd>BufferMoveNext<cr>", "Move buffer to the right"},
             ["L"] = {
@@ -215,6 +218,11 @@ M.config = {
             ["A"] = {
                 "<cmd>lua vim.lsp.buf.range_code_action()", "Code Action Range"
             },
+            ["c"] = {
+                name = "Codelens",
+                ["c"] = {"<cmd>lua vim.lsp.codelens.run()<cr>", "Run"},
+                ["r"] = {"<cmd>lua vim.lsp.codelens.refresh()<cr>", "Refresh"}
+            },
             ["d"] = {
                 "<cmd>Telescope lsp_document_diagnostics<cr>",
                 "Document Diagnostics"
@@ -222,6 +230,9 @@ M.config = {
             ["w"] = {
                 "<cmd>Telescope lsp_workspace_diagnostics<cr>",
                 "Workspace Diagnostics"
+            },
+            ["h"] = {
+                "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help"
             },
             ["i"] = {"<cmd>LspInfo<cr>", "Info"},
             ["j"] = {
@@ -277,7 +288,8 @@ M.config = {
         ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}},
         ["x"] = {
             name = "Misc",
-            ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"}
+            ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"},
+            ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"}
         }
     }
 }

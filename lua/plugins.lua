@@ -100,6 +100,9 @@ return require("packer").startup(function()
             require("surround").setup({mappings_style = "surround"})
         end
     }
+
+    use {"kevinhwang91/nvim-hlslens"}
+
     -- Clipboard management
     use {
         "AckslD/nvim-neoclip.lua",
