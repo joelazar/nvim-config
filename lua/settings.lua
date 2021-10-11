@@ -133,10 +133,10 @@ vim.g.asyncrun_open = 6
 
 -- go.nvim - format on save
 vim.api.nvim_exec(
-    [[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]],
+    [[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()<CR>2<CR> ]],
     false)
 vim.api.nvim_exec(
-    [[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]],
+    [[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport()<CR>2<CR> ]],
     false)
 
 -- Set directories for backup/swap/undo files and create them if necessary

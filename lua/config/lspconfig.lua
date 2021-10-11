@@ -135,7 +135,8 @@ local servers = {
             languages = {
                 go = {
                     {
-                        lintCommand = "golangci-lint",
+                        lintCommand = "golangci-lint run ./...",
+                        lintStdin = true,
                         lintIgnoreExitCode = true,
                         lintFormats = {"%f:%l:%c: %m"},
                         lintSource = "golangci-lint"

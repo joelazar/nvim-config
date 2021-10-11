@@ -10,7 +10,8 @@ M.config = {
     lsp_cfg = false, -- false: use your own lspconfig
     lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
     lsp_on_attach = false, -- use on_attach from go.nvim
-    dap_debug = true
+    dap_debug = true,
+    lsp_codelens = true,
 }
 
 M.setup = function()
