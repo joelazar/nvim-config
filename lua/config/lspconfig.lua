@@ -69,7 +69,29 @@ local function get_lua_runtime()
 end
 
 local servers = {
-    gopls = {settings = {gopls = {gofumpt = true}}},
+    gopls = {
+        flags = {allow_incremental_sync = true, debounce_text_changes = 500},
+        settings = {
+            gopls = {
+                analyses = {unusedparams = true, unreachable = true},
+                codelenses = {
+                    generate = true,
+                    gc_details = true,
+                    test = true,
+                    tidy = true
+                },
+                usePlaceholders = true,
+                completeUnimported = true,
+                staticcheck = true,
+                matcher = "Fuzzy",
+                diagnosticsDelay = "500ms",
+                experimentalWatchedFileDelay = "100ms",
+                symbolMatcher = "fuzzy",
+                -- ['local'] = "",
+                gofumpt = true
+            }
+        }
+    },
     pyright = true,
     tsserver = {cmd = {"typescript-language-server"}},
     html = true,
@@ -117,7 +139,7 @@ local servers = {
                         lintIgnoreExitCode = true,
                         lintFormats = {"%f:%l:%c: %m"},
                         lintSource = "golangci-lint"
-                    } -- {formatCommand = "goimports", formatStdin = true}
+                    }
                 },
                 lua = {{formatCommand = "lua-format -i", formatStdin = true}},
                 python = {

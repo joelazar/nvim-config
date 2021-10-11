@@ -131,6 +131,14 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
 
+-- go.nvim - format on save
+vim.api.nvim_exec(
+    [[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]],
+    false)
+vim.api.nvim_exec(
+    [[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]],
+    false)
+
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require "plenary.path"
 
