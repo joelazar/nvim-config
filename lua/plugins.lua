@@ -57,7 +57,7 @@ return require("packer").startup(function()
 
     -- Status bar
     use {
-        "hoob3rt/lualine.nvim",
+        "shadmansaleh/lualine.nvim",
         event = "VimEnter",
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function() require("config.lualine").setup() end
@@ -65,8 +65,17 @@ return require("packer").startup(function()
 
     -- Colorschema
     use {
-        'projekt0n/github-nvim-theme',
-        config = function() require('github-theme').setup() end
+        'projekt0n/github-nvim-theme'
+        -- config = function() require('github-theme').setup() end
+    }
+
+    use {"EdenEast/nightfox.nvim"}
+
+    -- Automagically resizing splits
+    use {
+        "beauwilliams/focus.nvim",
+        event = "BufWinEnter",
+        config = function() require("focus").setup() end
     }
 
     -- Color highlighter
@@ -101,7 +110,8 @@ return require("packer").startup(function()
         end
     }
 
-    use {"kevinhwang91/nvim-hlslens"}
+    -- Nicer search highlighter
+    use {"kevinhwang91/nvim-hlslens", event = "BufReadPost"}
 
     -- Clipboard management
     use {
@@ -213,11 +223,11 @@ return require("packer").startup(function()
     }
 
     -- Debugging
-    use({"mfussenegger/nvim-dap", event = "ColorScheme"})
+    use({"mfussenegger/nvim-dap", ft = {"go"}, event = "ColorScheme"})
 
-    use({"rcarriga/nvim-dap-ui", after = "nvim-dap"})
+    use({"rcarriga/nvim-dap-ui", ft = {"go"}, after = "nvim-dap"})
 
-    use({"theHamsta/nvim-dap-virtual-text", after = "nvim-dap"})
+    use({"theHamsta/nvim-dap-virtual-text", ft = {"go"}, after = "nvim-dap"})
 
     use "kyazdani42/nvim-web-devicons"
 

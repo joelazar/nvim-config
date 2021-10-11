@@ -35,7 +35,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[colorscheme github]]
+vim.cmd [[ colorscheme nightfox ]]
 
 -- Disable intro message
 vim.o.shortmess = 'I'

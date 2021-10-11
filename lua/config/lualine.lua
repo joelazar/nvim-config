@@ -19,7 +19,7 @@ vim.cmd([[autocmd User LspProgressUpdate let &ro = &ro]])
 
 M.config = {
     options = {
-        theme = 'github',
+        theme = 'nightfox',
         section_separators = {"", ""},
         component_separators = {"", ""},
         -- section_separators = { "", "" },
