@@ -188,6 +188,13 @@ return require("packer").startup(function()
         event = "BufWinEnter"
     }
 
+    -- Debugging
+    use({"mfussenegger/nvim-dap", event = "ColorScheme"})
+
+    use({"rcarriga/nvim-dap-ui", after = "nvim-dap"})
+
+    use({"theHamsta/nvim-dap-virtual-text", after = "nvim-dap"})
+
     use "kyazdani42/nvim-web-devicons"
 
     use "kdheepak/lazygit.nvim"

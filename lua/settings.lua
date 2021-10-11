@@ -37,6 +37,9 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme github]]
 
+-- Disable intro message
+vim.o.shortmess = 'I'
+
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 -- vim.o.whichwrap:append "<>hl"
