@@ -92,6 +92,14 @@ return require("packer").startup(function()
         config = function() require("config.autopairs").setup() end
     }
 
+    -- Surround text object plugin
+    use {
+        "blackCauldron7/surround.nvim",
+        event = "InsertEnter",
+        config = function()
+            require("surround").setup({mappings_style = "surround"})
+        end
+    }
     -- Clipboard management
     use {
         "AckslD/nvim-neoclip.lua",
