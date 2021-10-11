@@ -285,6 +285,14 @@ M.config = {
             ["T"] = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
             ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"}
         },
+        ["r"] = {
+            name = "Rest",
+            ["r"] = {"<Plug>RestNvim", "Run request under the cursor"},
+            ["p"] = {
+                "<Plug>RestNvimPreview", "Preview request under the cursor"
+            },
+            ["l"] = {"<Plug>RestNvimLast", "Run last request"}
+        },
         ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}},
         ["x"] = {
             name = "Misc",
