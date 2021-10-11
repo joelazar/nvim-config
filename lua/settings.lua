@@ -139,6 +139,9 @@ vim.api.nvim_exec(
     [[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport()<CR>2<CR> ]],
     false)
 
+-- Open file at same location where it was opened last time
+vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
+
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require "plenary.path"
 
