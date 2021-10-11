@@ -92,6 +92,19 @@ return require("packer").startup(function()
         config = function() require("config.autopairs").setup() end
     }
 
+    -- Clipboard management
+    use {
+        "AckslD/nvim-neoclip.lua",
+        requires = {
+            {'nvim-telescope/telescope.nvim'},
+            {'tami5/sqlite.lua', module = 'sqlite'}
+        },
+        config = function()
+            require('neoclip').setup({enable_persistant_history = true})
+            require('telescope').load_extension('neoclip')
+        end
+    }
+
     -- Go development
     use {
         "ray-x/go.nvim",

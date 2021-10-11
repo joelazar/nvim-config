@@ -111,6 +111,7 @@ M.config = {
         ["q"] = {"<cmd>q!<cr>", "Quit"},
         [";"] = {"<cmd>CommentToggle<cr>", "Comment Operator"},
         ["n"] = {"<cmd>NnnPicker<cr>", "nnn"},
+        ["c"] = {"<cmd>Telescope neoclip<cr>", "Clipboard manager"},
         ["b"] = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
