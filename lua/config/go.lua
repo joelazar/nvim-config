@@ -1,5 +1,16 @@
 local M = {}
 
+M.org_imports = function(wait_ms)
+    local codeaction = require('go.lsp').codeaction
+    codeaction('', 'source.organizeImports', wait_ms)
+    vim.lsp.buf.formatting_seq_sync(nil, wait_ms)
+end
+
+M.goimport = function()
+    M.org_imports(1000)
+    return
+end
+
 M.config = {
     goimport = 'gopls', -- if set to 'gopls' will use golsp format
     gofmt = 'gopls', -- if set to gopls will use golsp format
@@ -11,7 +22,7 @@ M.config = {
     lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
     lsp_on_attach = false, -- use on_attach from go.nvim
     dap_debug = true,
-    lsp_codelens = true,
+    lsp_codelens = true
 }
 
 M.setup = function()

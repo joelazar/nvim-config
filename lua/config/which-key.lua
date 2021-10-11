@@ -101,7 +101,8 @@ M.config = {
     },
     mappings = {
         ["'"] = {
-            "<cmd>1ToggleTerm size=15 direction=horizontal<cr>", "Open primary shell"
+            "<cmd>1ToggleTerm size=15 direction=horizontal<cr>",
+            "Open primary shell"
         },
         ["\""] = {
             "<cmd>2ToggleTerm size=15 direction=horizontal<cr>",
@@ -150,9 +151,6 @@ M.config = {
             name = "Packer",
             ["c"] = {"<cmd>PackerCompile<cr>", "Compile"},
             ["i"] = {"<cmd>PackerInstall<cr>", "Install"},
-            ["r"] = {
-                "<cmd>lua require('utils').reload_lv_config()<cr>", "Reload"
-            },
             ["s"] = {"<cmd>PackerSync<cr>", "Sync"},
             ["u"] = {"<cmd>PackerUpdate<cr>", "Update"}
         },
@@ -234,7 +232,6 @@ M.config = {
                 "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
                 "Prev Diagnostic"
             },
-            ["l"] = {"<cmd>silent lua require('lint').try_lint()<cr>", "Lint"},
             ["q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             ["r"] = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
             ["s"] = {
