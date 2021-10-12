@@ -192,6 +192,13 @@ M.config = {
             ["C"] = {
                 "<cmd>Telescope git_bcommits<cr>",
                 "Checkout commit(for current file)"
+            },
+            ["d"] = {
+                name = "Diffview",
+                ["o"] = {"<cmd>DiffviewOpen<cr>", "Open"},
+                ["c"] = {"<cmd>DiffviewClose<cr>", "Close"},
+                ["r"] = {"<cmd>DiffviewRefresh<cr>", "Refresh"},
+                ["f"] = {"<cmd>DiffviewToggleFiles<cr>", "Toggle files"}
             }
         },
         ["e"] = {
