@@ -55,6 +55,13 @@ return require("packer").startup(function()
         config = function() require("config.telescope").setup() end
     }
 
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        requires = {{'nvim-telescope/telescope.nvim'}},
+        run = 'make',
+        config = function() require('telescope').load_extension('fzf') end
+    }
+
     -- Status bar
     use {
         "shadmansaleh/lualine.nvim",
