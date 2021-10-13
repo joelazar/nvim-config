@@ -58,8 +58,8 @@ return require("packer").startup(function()
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
         requires = {{'nvim-telescope/telescope.nvim'}},
-        run = 'make',
-        config = function() require('telescope').load_extension('fzf') end
+        config = function() require('telescope').load_extension('fzf') end,
+        run = 'make'
     }
 
     -- Status bar
@@ -114,7 +114,8 @@ return require("packer").startup(function()
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        config = function() vim.g.coq_settings = {auto_start = 'shut-up'} end
+        config = function() vim.g.coq_settings = {auto_start = 'shut-up'} end,
+        run = ":COQdeps"
     }
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
 
@@ -169,8 +170,8 @@ return require("packer").startup(function()
     use {
         "nvim-treesitter/nvim-treesitter",
         branch = "0.5-compat",
-        run = ":TSUpdate",
-        config = function() require("config.treesitter").setup() end
+        config = function() require("config.treesitter").setup() end,
+        run = ":TSUpdate"
     }
 
     -- Rainbow parentheses by using tree-sitter
