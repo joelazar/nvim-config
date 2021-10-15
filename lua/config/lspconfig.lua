@@ -3,13 +3,23 @@ local present2, coq = pcall(require, "coq")
 
 if not (present1 or present2) then return end
 
-local function on_attach(_, bufnr)
+local no_lsp_formatting = {
+    ["javascript"] = true,
+    ["javascriptreact"] = true,
+    ["javascript.jsx"] = true,
+    ["typescript"] = true,
+    ["typescriptreact"] = true,
+    ["typescript.tsx"] = true
+}
+
+local function on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
+    local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -25,11 +35,17 @@ local function on_attach(_, bufnr)
                    opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', 'gT', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+
     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",
                    opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
                    opts)
+
+    if no_lsp_formatting[filetype] then
+        client.resolved_capabilities.document_formatting = false
+    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -52,7 +68,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 local prettier = require "config/efm/prettier"
-local eslint = require "config/efm/eslint"
 local shellcheck = require "config/efm/shellcheck"
 local shfmt = require "config/efm/shfmt"
 
@@ -93,7 +108,8 @@ local servers = {
         }
     },
     pyright = true,
-    tsserver = {cmd = {"typescript-language-server"}},
+    tsserver = true,
+    eslint = true,
     html = true,
     cssls = true,
     texlab = true,
@@ -157,10 +173,10 @@ local servers = {
                     --     lintSource = "flake8"
                     -- }
                 },
-                typescript = {prettier, eslint},
-                javascript = {prettier, eslint},
-                typescriptreact = {prettier, eslint},
-                javascriptreact = {prettier, eslint},
+                typescript = {prettier},
+                javascript = {prettier},
+                typescriptreact = {prettier},
+                javascriptreact = {prettier},
                 yaml = {prettier},
                 json = {prettier},
                 html = {prettier},

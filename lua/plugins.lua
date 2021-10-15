@@ -137,7 +137,7 @@ return require("packer").startup(function()
     }
 
     -- Nicer search highlighter
-    use {"kevinhwang91/nvim-hlslens", event = "BufReadPost"}
+    -- use {"kevinhwang91/nvim-hlslens", event = "BufReadPost"}
 
     -- Clipboard management
     use {
