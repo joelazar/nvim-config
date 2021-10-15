@@ -3,23 +3,15 @@ local present2, coq = pcall(require, "coq")
 
 if not (present1 or present2) then return end
 
-local no_lsp_formatting = {
-    ["javascript"] = true,
-    ["javascriptreact"] = true,
-    ["javascript.jsx"] = true,
-    ["typescript"] = true,
-    ["typescriptreact"] = true,
-    ["typescript.tsx"] = true
-}
+local no_lsp_formatting = {["tsserver"] = true}
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
-    local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -42,10 +34,6 @@ local function on_attach(client, bufnr)
                    opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
                    opts)
-
-    if no_lsp_formatting[filetype] then
-        client.resolved_capabilities.document_formatting = false
-    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -199,8 +187,16 @@ local setup_server = function(server, config)
 
     if type(config) ~= "table" then config = {} end
 
+    local custom_attach = on_attach
+    if no_lsp_formatting[server] then
+        custom_attach = function(client)
+            client.resolved_capabilities.document_formatting = false
+            on_attach(client)
+        end
+    end
+
     config = vim.tbl_deep_extend("force", {
-        on_attach = on_attach,
+        on_attach = custom_attach,
         capabilities = capabilities,
         flags = {debounce_text_changes = 150}
     }, config)
