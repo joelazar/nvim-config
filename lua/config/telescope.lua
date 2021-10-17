@@ -2,7 +2,13 @@ local M = {}
 
 M.config = {
     defaults = {
-        mappings = {i = {["<esc>"] = require("telescope.actions").close}},
+        mappings = {
+            i = {
+                ["<esc>"] = require("telescope.actions").close,
+                ["<S-Up>"] = require'telescope.actions'.preview_scrolling_up,
+                ["<S-Down>"] = require'telescope.actions'.preview_scrolling_down
+            }
+        },
         vimgrep_arguments = {
             'rg', '--color=never', '--no-heading', '--with-filename',
             '--line-number', '--column', '--smart-case'
@@ -51,7 +57,7 @@ M.config = {
             override_generic_sorter = false, -- override the generic sorter
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case" -- or "ignore_case" or "respect_case"
-        },
+        }
     }
 }
 
