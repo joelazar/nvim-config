@@ -22,10 +22,6 @@ map('n', '<A-9>', ':BufferGoto 9<cr>', opts)
 map('n', '<A-0>', ':BufferLast<cr>', opts)
 -- Close buffer
 map('n', '<A-c>', ':BufferClose<cr>', opts)
--- Add new line below
-map('n', 'oo', 'o<Esc>k', opts)
--- Add new line above
-map('n', 'OO', 'O<Esc>j', opts)
 -- Start new line for RETURN
 map('n', '<cr>', 'o<Esc>', opts)
 
@@ -55,11 +51,6 @@ map('i', 'kj', '<ESC>', opts)
 -- 'jj' for quitting insert mode
 map('i', 'jj', '<ESC>', opts)
 
--- Move current line / block with Alt-j/k ala vscode.
-map('i', '<A-j>', '<Esc>:m .+1<cr>==gi', opts)
--- Move current line / block with Alt-j/k ala vscode.
-map('i', '<A-k>', '<Esc>:m .-2<cr>==gi', opts)
-
 -- Visual mode
 
 -- Search for visually selected text
@@ -83,9 +74,5 @@ map('x', '<S-Tab>', "<gv", opts)
 
 -- Copy to system clipboard
 map('x', '\\y', "\"+y", opts)
-
--- Single </> should be enough for indenting
--- map('n', '>', ">>_", opts)
--- map('n', '<', "<<_", opts)
 
 map('c', 'W', "<esc>:lua require'utils'.sudo_write()<cr>", {silent = true})
