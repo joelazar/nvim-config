@@ -114,7 +114,12 @@ return require("packer").startup(function()
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        config = function() vim.g.coq_settings = {auto_start = 'shut-up'} end,
+        config = function()
+            vim.g.coq_settings = {
+                auto_start = 'shut-up',
+                clients = {lsp = {resolve_timeout = 0.15, weight_adjust = 0.4}}
+            }
+        end,
         run = ":COQdeps"
     }
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
