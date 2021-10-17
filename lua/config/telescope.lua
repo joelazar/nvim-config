@@ -15,15 +15,21 @@ M.config = {
         sorting_strategy = "descending",
         layout_strategy = "horizontal",
         layout_config = {
-            width = 0.9,
             prompt_position = "bottom",
+            -- preview_cutoff = 120,
+            horizontal = {
+                mirror = false,
+                preview_width = 0.6,
+                results_width = 0.8
+            },
+            width = 0.9,
+            height = 0.9,
             preview_cutoff = 120,
-            horizontal = {mirror = false},
             vertical = {mirror = false}
         },
         -- file_sorter = require'telescope.sorters'.get_fuzzy_file,
         file_sorter = require("telescope.sorters").get_fzy_sorter,
-        file_ignore_patterns = {},
+        file_ignore_patterns = {"node_modules"},
         generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
         winblend = 0,
         border = {},
@@ -38,6 +44,14 @@ M.config = {
 
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+        },
     }
 }
 
