@@ -160,7 +160,7 @@ return require("packer").startup(function()
     -- Go development
     use {
         "ray-x/go.nvim",
-        ft = {"go"},
+        ft = {"go", "gomod"},
         config = function() require("config.go").setup() end,
         run = ':lua require("go.install").install_all()'
     }

@@ -201,15 +201,6 @@ M.config = {
                 ["f"] = {"<cmd>DiffviewToggleFiles<cr>", "Toggle files"}
             }
         },
-        ["e"] = {
-            name = "Errors",
-            n = {
-                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic"
-            },
-            p = {
-                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic"
-            }
-        },
         ["h"] = {
             name = "Hop",
             ["c"] = {"<cmd>HopChar1<cr>", "Hop to single char"},
@@ -223,32 +214,36 @@ M.config = {
             name = "LSP",
             ["a"] = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
             ["A"] = {
-                "<cmd>lua vim.lsp.buf.range_code_action()", "Code Action Range"
+                "<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+                "Code Action Range"
             },
             ["c"] = {
                 name = "Codelens",
-                ["c"] = {"<cmd>lua vim.lsp.codelens.run()<cr>", "Run"},
-                ["r"] = {"<cmd>lua vim.lsp.codelens.refresh()<cr>", "Refresh"}
+                ["r"] = {"<cmd>lua vim.lsp.codelens.run()<cr>", "Run"},
+                ["d"] = {"<cmd>lua vim.lsp.codelens.display()<cr>", "Display"},
+                ["u"] = {"<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update"}
             },
             ["d"] = {
-                "<cmd>Telescope lsp_document_diagnostics<cr>",
-                "Document Diagnostics"
-            },
-            ["w"] = {
                 "<cmd>Telescope lsp_workspace_diagnostics<cr>",
                 "Workspace Diagnostics"
             },
             ["h"] = {
                 "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help"
             },
-            ["i"] = {"<cmd>LspInfo<cr>", "Info"},
-            ["j"] = {
-                "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
-                "Next Diagnostic"
-            },
             ["k"] = {
-                "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
-                "Prev Diagnostic"
+                "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
+                "Show line diagnostic"
+            },
+            ["i"] = {"<cmd>LspInfo<cr>", "Info"},
+            ["l"] = {
+                "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
+                "Set location list"
+            },
+            ["n"] = {
+                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic"
+            },
+            ["p"] = {
+                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic"
             },
             ["q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             ["r"] = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},

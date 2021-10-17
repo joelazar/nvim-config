@@ -90,10 +90,10 @@ local servers = {
                 diagnosticsDelay = "500ms",
                 experimentalWatchedFileDelay = "100ms",
                 symbolMatcher = "fuzzy",
-                -- ['local'] = "",
                 gofumpt = true
             }
-        }
+        },
+        filetypes = {'go', 'gomod'}
     },
     pyright = true,
     tsserver = true,
@@ -137,15 +137,15 @@ local servers = {
         settings = {
             rootMarkers = {".git/"},
             languages = {
-                go = {
-                    {
-                        lintCommand = "golangci-lint run ./...",
-                        lintStdin = true,
-                        lintIgnoreExitCode = true,
-                        lintFormats = {"%f:%l:%c: %m"},
-                        lintSource = "golangci-lint"
-                    }
-                },
+                -- go = {
+                --     {
+                --         lintCommand = "golangci-lint run ./...",
+                --         lintStdin = true,
+                --         lintIgnoreExitCode = true,
+                --         lintFormats = {"%f:%l:%c: %m"},
+                --         lintSource = "golangci-lint"
+                --     }
+                -- },
                 lua = {{formatCommand = "lua-format -i", formatStdin = true}},
                 python = {
                     {formatCommand = "black --fast -", formatStdin = true},
@@ -176,8 +176,8 @@ local servers = {
             }
         },
         filetypes = {
-            'go', 'python', 'ts', 'javascript', 'yaml', 'json', 'html', 'css',
-            'scss', 'md', 'sh', 'lua' -- 'make'
+            'python', 'ts', 'javascript', 'yaml', 'json', 'html', 'css', 'scss',
+            'md', 'sh', 'lua' -- 'make'
         }
     }
 }
@@ -231,7 +231,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] =
     vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single"})
 
 -- suppress error messages from lang servers
-vim.notify = function(msg, log_level, _opts)
+vim.notify = function(msg, log_level, _)
     if msg:match "exit code" then return end
     if log_level == vim.log.levels.ERROR then
         vim.api.nvim_err_writeln(msg)
