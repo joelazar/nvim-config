@@ -35,7 +35,7 @@ M.config = {
         },
         -- file_sorter = require'telescope.sorters'.get_fuzzy_file,
         file_sorter = require("telescope.sorters").get_fzy_sorter,
-        file_ignore_patterns = {"node_modules"},
+        file_ignore_patterns = {"node_modules", ".git"},
         generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
         winblend = 0,
         border = {},
@@ -51,6 +51,7 @@ M.config = {
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
     },
+    pickers = {find_files = {hidden = true}},
     extensions = {
         fzf = {
             fuzzy = true, -- false will only do exact matching
