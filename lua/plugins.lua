@@ -213,7 +213,7 @@ return require("packer").startup(function()
 
     -- File manager
     use {
-        "mcchrish/nnn.vim",
+        "luukvbaal/nnn.nvim",
         event = "BufWinEnter",
         config = function() require("config.nnn").setup() end
     }
