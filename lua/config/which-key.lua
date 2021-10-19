@@ -256,9 +256,10 @@ M.config = {
             }
         },
         ["m"] = {
-            name = "Makefile tasks",
+            name = "Tasks",
             ["m"] = {"<cmd>AsyncRun make<cr>", "Run default task"},
             ["t"] = {"<cmd>AsyncRun make test<cr>", "Run test"},
+            ["f"] = {"<cmd>GoTestFunc<cr>", "Run test go function"},
             ["l"] = {"<cmd>AsyncRun make lint<cr>", "Run lint"},
             ["d"] = {"<cmd>AsyncRun make docker<cr>", "Run docker"},
             ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"}
