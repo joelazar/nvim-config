@@ -15,6 +15,37 @@ return require("packer").startup(function()
     use "nvim-lua/popup.nvim"
     use "kyazdani42/nvim-web-devicons"
 
+    -- Formatter
+    use {
+        "lukas-reineke/format.nvim",
+        config = function()
+            require('format').setup({
+                ["*"] = {
+                    {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
+                },
+                json = {{cmd = {"prettier -w"}}},
+                yaml = {{cmd = {"prettier -w"}}},
+                markdown = {{cmd = {"prettier -w"}}},
+                javascript = {
+                    {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+                },
+                go = {{cmd = {"gofumpt -w", "goimports -w"}}},
+                lua = {
+                    {
+                        cmd = {
+                            function(file)
+                                return string.format(
+                                           "luafmt -l %s -w replace %s",
+                                           vim.bo.textwidth, file)
+                            end
+                        }
+                    }
+                }
+            })
+        end,
+        event = "BufRead"
+    }
+
     -- Display popup with possible keybindings
     use {
         "folke/which-key.nvim",

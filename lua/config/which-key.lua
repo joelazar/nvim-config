@@ -123,7 +123,11 @@ M.config = {
             },
             ["f"] = {
                 "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
-                "Format buffer"
+                "Format buffer (LSP)"
+            },
+            ["F"] = {
+                ":Format<cr>",
+                "Format buffer (format.nvim)"
             },
             ["l"] = {"<cmd>BufferMovePrevious<cr>", "Move buffer to the left"},
             ["r"] = {"<cmd>BufferMoveNext<cr>", "Move buffer to the right"},
@@ -296,7 +300,18 @@ M.config = {
             },
             ["l"] = {"<Plug>RestNvimLast", "Run last request"}
         },
-        ["T"] = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}},
+        ["T"] = {
+            name = "Treesitter",
+            ["i"] = {"<cmd>TSConfigInfo<cr>", "Info"},
+            ["d"] = {
+                "<cmd>TSDisableAll rainbow<cr><cmd>TSDisableAll incremental_selection<cr><cmd>TSDisableAll highlight<cr><cmd>TSDisableAll autotag<cr><cmd>TSDisableAll indent<cr>",
+                "Disable"
+            },
+            ["e"] = {
+                "<cmd>TSEnableAll rainbow<cr><cmd>TSEnableAll incremental_selection<cr><cmd>TSEnableAll highlight<cr><cmd>TSEnableAll autotag<cr><cmd>TSEnableAll indent<cr>",
+                "Enable"
+            }
+        },
         ["x"] = {
             name = "Misc",
             ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"},
