@@ -206,7 +206,7 @@ return require("packer").startup(function()
     use {
         'pwntester/octo.nvim',
         config = function() require"octo".setup() end,
-        event = "BufReadPost"
+        event = "BufWinEnter"
     }
 
     use {"sindrets/diffview.nvim", event = "BufWinEnter"}
