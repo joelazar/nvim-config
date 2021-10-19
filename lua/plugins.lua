@@ -13,6 +13,7 @@ return require("packer").startup(function()
     -- Misc
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
+    use "kyazdani42/nvim-web-devicons"
 
     -- Display popup with possible keybindings
     use {
@@ -29,21 +30,17 @@ return require("packer").startup(function()
     use {
         "terrortylor/nvim-comment",
         event = "BufRead",
-        config = function()
-            local status_ok, nvim_comment = pcall(require, "nvim_comment")
-            if not status_ok then return end
-            nvim_comment.setup()
-        end
+        config = function() require("nvim_comment").setup() end
     }
 
     -- Project management
     use {
         "ahmedkhalf/project.nvim",
         event = "VimEnter",
-        requires = {{'nvim-telescope/telescope.nvim'}},
+        requires = {{"nvim-telescope/telescope.nvim"}},
         config = function()
             require("project_nvim").setup {
-                require('telescope').load_extension('projects')
+                require("telescope").load_extension('projects')
             }
         end
     }
@@ -85,6 +82,7 @@ return require("packer").startup(function()
         config = function() require("focus").setup() end
     }
 
+    -- HTTP client in Neovim
     use {
         "NTBBloodbath/rest.nvim",
         requires = {"nvim-lua/plenary.nvim"},
@@ -165,6 +163,7 @@ return require("packer").startup(function()
         run = ':lua require("go.install").install_all()'
     }
 
+    -- Enhanced movement plugin
     use {
         "phaazon/hop.nvim",
         as = "hop",
@@ -203,12 +202,17 @@ return require("packer").startup(function()
         event = "BufRead"
     }
 
+    -- Github
     use {
         'pwntester/octo.nvim',
         config = function() require"octo".setup() end,
         event = "BufWinEnter"
     }
 
+    -- Lazygit in Neovim
+    use "kdheepak/lazygit.nvim"
+
+    -- Check git history
     use {"sindrets/diffview.nvim", event = "BufWinEnter"}
 
     -- File manager
@@ -246,6 +250,7 @@ return require("packer").startup(function()
         end
     }
 
+    -- Tabline plugin
     use {
         "romgrk/barbar.nvim",
         config = function() require("config.barbar").setup() end,
@@ -259,9 +264,5 @@ return require("packer").startup(function()
     use({"rcarriga/nvim-dap-ui", ft = {"go"}, after = "nvim-dap"})
 
     use({"theHamsta/nvim-dap-virtual-text", ft = {"go"}, after = "nvim-dap"})
-
-    use "kyazdani42/nvim-web-devicons"
-
-    use "kdheepak/lazygit.nvim"
 
 end)
