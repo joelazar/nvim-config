@@ -92,7 +92,7 @@ return require("packer").startup(function()
 
     -- Status bar
     use {
-        "shadmansaleh/lualine.nvim",
+        "nvim-lualine/lualine.nvim",
         event = "VimEnter",
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function() require("config.lualine").setup() end

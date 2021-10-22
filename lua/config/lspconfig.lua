@@ -177,7 +177,8 @@ local servers = {
         },
         filetypes = {
             'python', 'ts', 'javascript', 'yaml', 'json', 'html', 'css', 'scss',
-            'md', 'sh', 'lua' -- 'make'
+            'sh', 'lua', 'markdown', 'typescript', 'typescriptreact',
+            'javascriptreact' -- 'make'
         }
     }
 }
