@@ -5,9 +5,9 @@ return require("packer").startup(function()
     -- LSP
     use {
         "neovim/nvim-lspconfig",
-        event = "VimEnter",
+        config = function() require("config.lspconfig") end,
         after = {'coq_nvim'},
-        config = function() require("config.lspconfig") end
+        event = "VimEnter"
     }
 
     -- Misc
@@ -18,39 +18,15 @@ return require("packer").startup(function()
     -- Formatter
     use {
         "lukas-reineke/format.nvim",
-        config = function()
-            require('format').setup({
-                ["*"] = {
-                    {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
-                },
-                json = {{cmd = {"prettier -w"}}},
-                yaml = {{cmd = {"prettier -w"}}},
-                markdown = {{cmd = {"prettier -w"}}},
-                javascript = {
-                    {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
-                },
-                go = {{cmd = {"gofumpt -w", "goimports -w"}}},
-                lua = {
-                    {
-                        cmd = {
-                            function(file)
-                                return string.format(
-                                           "luafmt -l %s -w replace %s",
-                                           vim.bo.textwidth, file)
-                            end
-                        }
-                    }
-                }
-            })
-        end,
+        config = function() require("config.format").setup() end,
         event = "BufRead"
     }
 
     -- Display popup with possible keybindings
     use {
         "folke/which-key.nvim",
-        event = "BufWinEnter",
-        config = function() require("config.which-key").setup() end
+        config = function() require("config.which-key").setup() end,
+        event = "BufWinEnter"
     }
 
     -- Asynctasks
@@ -60,42 +36,42 @@ return require("packer").startup(function()
     -- Comment toggler
     use {
         "terrortylor/nvim-comment",
-        event = "BufRead",
-        config = function() require("nvim_comment").setup() end
+        config = function() require("nvim_comment").setup() end,
+        event = "BufRead"
     }
 
     -- Project management
     use {
         "ahmedkhalf/project.nvim",
-        event = "VimEnter",
-        requires = {{"nvim-telescope/telescope.nvim"}},
         config = function()
             require("project_nvim").setup {
                 require("telescope").load_extension('projects')
             }
-        end
+        end,
+        requires = {{"nvim-telescope/telescope.nvim"}},
+        event = "VimEnter"
     }
 
     -- Fuzzy filtering
     use {
         "nvim-telescope/telescope.nvim",
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-        config = function() require("config.telescope").setup() end
+        config = function() require("config.telescope").setup() end,
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
 
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
-        requires = {{'nvim-telescope/telescope.nvim'}},
         config = function() require('telescope').load_extension('fzf') end,
+        requires = {{'nvim-telescope/telescope.nvim'}},
         run = 'make'
     }
 
     -- Status bar
     use {
         "nvim-lualine/lualine.nvim",
-        event = "VimEnter",
+        config = function() require("config.lualine").setup() end,
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        config = function() require("config.lualine").setup() end
+        event = "VimEnter"
     }
 
     -- Colorschema
@@ -109,34 +85,23 @@ return require("packer").startup(function()
     -- Automagically resizing splits
     use {
         "beauwilliams/focus.nvim",
-        event = "BufWinEnter",
-        config = function() require("focus").setup() end
+        config = function() require("focus").setup() end,
+        event = "BufWinEnter"
     }
 
     -- HTTP client in Neovim
     use {
         "NTBBloodbath/rest.nvim",
+        config = function() require("config.rest").setup() end,
         requires = {"nvim-lua/plenary.nvim"},
-        ft = {'http'},
-        config = function()
-            require("rest-nvim").setup({
-                -- Open request results in a horizontal split
-                result_split_horizontal = false,
-                -- Skip SSL verification, useful for unknown certificates
-                skip_ssl_verification = false,
-                -- Highlight request on run
-                highlight = {enabled = true, timeout = 1000},
-                -- Jump to request line on run
-                jump_to_request = false
-            })
-        end
+        ft = {'http'}
     }
 
     -- Color highlighter
     use {
         'norcalli/nvim-colorizer.lua',
-        ft = {'html', 'css'},
-        config = function() require('colorizer').setup() end
+        config = function() require('colorizer').setup() end,
+        ft = {'html', 'css'}
     }
 
     -- Completion & Snippets
@@ -156,49 +121,43 @@ return require("packer").startup(function()
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
+        config = function() require("config.autopairs").setup() end,
         event = "InsertEnter",
-        after = "coq_nvim",
-        config = function() require("config.autopairs").setup() end
+        after = "coq_nvim"
     }
 
     -- Surround text object plugin
     use {
         "blackCauldron7/surround.nvim",
-        event = "InsertEnter",
         config = function()
             require("surround").setup({mappings_style = "surround"})
-        end
+        end,
+        event = "InsertEnter"
     }
-
-    -- Nicer search highlighter
-    -- use {"kevinhwang91/nvim-hlslens", event = "BufReadPost"}
 
     -- Clipboard management
     use {
         "AckslD/nvim-neoclip.lua",
-        requires = {
-            {'nvim-telescope/telescope.nvim'},
-            {'tami5/sqlite.lua', module = 'sqlite'}
-        },
         config = function()
-            require('neoclip').setup({enable_persistant_history = true})
+            require('neoclip').setup({})
             require('telescope').load_extension('neoclip')
-        end
+        end,
+        requires = {{'nvim-telescope/telescope.nvim'}}
     }
 
     -- Go development
     use {
         "ray-x/go.nvim",
-        ft = {"go", "gomod"},
         config = function() require("config.go").setup() end,
-        run = ':lua require("go.install").install_all()'
+        run = ':lua require("go.install").install_all()',
+        ft = {"go", "gomod"}
     }
 
     -- Enhanced movement plugin
     use {
         "phaazon/hop.nvim",
-        as = "hop",
-        config = function() require("hop").setup() end
+        config = function() require("hop").setup() end,
+        as = "hop"
     }
 
     -- Treesitter
@@ -228,8 +187,8 @@ return require("packer").startup(function()
     -- Git
     use {
         "lewis6991/gitsigns.nvim",
-        requires = {'nvim-lua/plenary.nvim'},
         config = function() require("config.gitsigns").setup() end,
+        requires = {'nvim-lua/plenary.nvim'},
         event = "BufRead"
     }
 
@@ -249,23 +208,23 @@ return require("packer").startup(function()
     -- File manager
     use {
         "luukvbaal/nnn.nvim",
-        event = "BufWinEnter",
-        config = function() require("config.nnn").setup() end
+        config = function() require("config.nnn").setup() end,
+        event = "BufWinEnter"
     }
 
     -- Highlight todo comments
     use {
         "folke/todo-comments.nvim",
+        config = function() require("config.todo").setup() end,
         requires = "nvim-lua/plenary.nvim",
-        event = "BufReadPost",
-        config = function() require("config.todo").setup() end
+        event = "BufReadPost"
     }
 
     -- Terminal
     use {
         "akinsho/nvim-toggleterm.lua",
-        event = "BufWinEnter",
-        config = function() require("config.terminal").setup() end
+        config = function() require("config.terminal").setup() end,
+        event = "BufWinEnter"
     }
 
     -- Bookmarks
@@ -273,12 +232,12 @@ return require("packer").startup(function()
 
     use {
         "tom-anders/telescope-vim-bookmarks.nvim",
-        requires = {
-            {'nvim-telescope/telescope.nvim'}, {'MattesGroeger/vim-bookmarks'}
-        },
         config = function()
             require('telescope').load_extension('vim_bookmarks')
-        end
+        end,
+        requires = {
+            {'nvim-telescope/telescope.nvim'}, {'MattesGroeger/vim-bookmarks'}
+        }
     }
 
     -- Tabline plugin
@@ -290,7 +249,7 @@ return require("packer").startup(function()
     }
 
     -- Debugging
-    use({"mfussenegger/nvim-dap", ft = {"go"}, event = "ColorScheme"})
+    use({"mfussenegger/nvim-dap", ft = {"go"}})
 
     use({"rcarriga/nvim-dap-ui", ft = {"go"}, after = "nvim-dap"})
 
