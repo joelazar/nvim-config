@@ -4,13 +4,16 @@ M.config = {
     options = {
         theme = 'nightfox',
         section_separators = {"", ""},
-        component_separators = {"", ""},
+        component_separators = '|',
         icons_enabled = true
     },
     sections = {
         lualine_a = {"mode"},
         lualine_b = {"branch"},
-        lualine_c = {"filename", {"diagnostics", sources = {"nvim_lsp"}}, "diff"},
+        lualine_c = {
+            {"filename", path = 1}, {"diagnostics", sources = {"nvim_lsp"}},
+            "diff"
+        },
         lualine_x = {"filetype", "encoding"},
         lualine_y = {"progress"},
         lualine_z = {"location"}
