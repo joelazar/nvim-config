@@ -63,7 +63,7 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 
 -- GUI: Name(s) of font(s) to be used
-vim.o.guifont = "Hack Nerd Font:h20"
+vim.o.guifont = "Hack Nerd Font:h27"
 
 -- Neovide config
 vim.g.neovide_cursor_animation_length = 0.0
