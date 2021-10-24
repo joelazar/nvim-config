@@ -125,10 +125,7 @@ M.config = {
                 "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
                 "Format buffer (LSP)"
             },
-            ["F"] = {
-                ":Format<cr>",
-                "Format buffer (format.nvim)"
-            },
+            ["F"] = {":Format<cr>", "Format buffer (format.nvim)"},
             ["l"] = {"<cmd>BufferMovePrevious<cr>", "Move buffer to the left"},
             ["r"] = {"<cmd>BufferMoveNext<cr>", "Move buffer to the right"},
             ["L"] = {
@@ -227,9 +224,10 @@ M.config = {
                 ["d"] = {"<cmd>lua vim.lsp.codelens.display()<cr>", "Display"},
                 ["u"] = {"<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update"}
             },
-            ["d"] = {
+            ["d"] = {"<cmd>Trouble<cr>", "Workspace Diagnostics (Trouble)"},
+            ["D"] = {
                 "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-                "Workspace Diagnostics"
+                "Workspace Diagnostics (Telescope)"
             },
             ["h"] = {
                 "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help"
@@ -289,10 +287,24 @@ M.config = {
             ["P"] = {"<cmd>Telescope projects<cr>", "Open projects"},
             ["R"] = {"<cmd>Telescope registers<cr>", "Registers"},
             ["t"] = {"<cmd>Telescope live_grep<cr>", "Text"},
-            ["T"] = {"<cmd>Telescope grep_string<cr>", "Text under cursor"},
-            ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"}
+            ["Q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
+            ["w"] = {"<cmd>Telescope grep_string<cr>", "Word under cursor"}
         },
         ["r"] = {
+            name = "Replace",
+            ["m"] = {
+                "<cmd>lua require('spectre').open()<CR>", "Open menu"
+            },
+            ["f"] = {
+                "<cmd>lua require('spectre').open_file_search()<CR>",
+                "Open file menu"
+            },
+            ["w"] = {
+                "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
+                "Replace word under cursor"
+            }
+        },
+        ["R"] = {
             name = "Rest",
             ["r"] = {"<Plug>RestNvim", "Run request under the cursor"},
             ["p"] = {

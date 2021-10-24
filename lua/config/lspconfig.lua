@@ -1,7 +1,7 @@
 local present1, lspconfig = pcall(require, "lspconfig")
-local present2, coq = pcall(require, "coq")
+local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
-if not (present1 or present2) then return end
+-- if not (present1 and present2) then return end
 
 local no_lsp_formatting = {["tsserver"] = true}
 
@@ -36,24 +36,30 @@ local function on_attach(_, bufnr)
                    opts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem.documentationFormat = {
+custom_capabilities.textDocument.completion.completionItem.documentationFormat = {
     "markdown", "plaintext"
 }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport =
+custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
+custom_capabilities.textDocument.completion.completionItem.preselectSupport = true
+custom_capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+custom_capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+custom_capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+custom_capabilities.textDocument.completion.completionItem.commitCharactersSupport =
     true
-capabilities.textDocument.completion.completionItem.tagSupport = {
+custom_capabilities.textDocument.completion.completionItem.tagSupport = {
     valueSet = {1}
 }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
+custom_capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {"documentation", "detail", "additionalTextEdits"}
 }
+custom_capabilities = cmp_lsp.update_capabilities(custom_capabilities)
+
+local custom_init = function(client)
+    client.config.flags = client.config.flags or {}
+    client.config.flags.allow_incremental_sync = true
+end
 
 local prettier = require "config/efm/prettier"
 local shellcheck = require "config/efm/shellcheck"
@@ -182,7 +188,6 @@ local servers = {
         }
     }
 }
-
 local setup_server = function(server, config)
     if not config then return end
 
@@ -197,13 +202,13 @@ local setup_server = function(server, config)
     end
 
     config = vim.tbl_deep_extend("force", {
+        on_init = custom_init,
         on_attach = custom_attach,
-        capabilities = capabilities,
+        capabilities = custom_capabilities,
         flags = {debounce_text_changes = 150}
     }, config)
 
     lspconfig[server].setup(config)
-    lspconfig[server].setup(coq.lsp_ensure_capabilities(config))
 end
 
 for server, config in pairs(servers) do setup_server(server, config) end

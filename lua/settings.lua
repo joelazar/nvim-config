@@ -75,6 +75,9 @@ vim.o.history = 10000
 -- Use menu for command line completion
 vim.o.wildmenu = true
 
+-- Options for Insert mode completion
+vim.o.completeopt = "menu,menuone,noselect"
+
 -- Enable wrap
 vim.o.wrap = true
 

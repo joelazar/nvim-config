@@ -2,12 +2,22 @@ return require("packer").startup(function()
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
+    -- Improve startup time
+    use "lewis6991/impatient.nvim"
+
     -- LSP
     use {
         "neovim/nvim-lspconfig",
         config = function() require("config.lspconfig") end,
-        after = {'coq_nvim'},
-        event = "VimEnter"
+        after = {'nvim-cmp'}
+    }
+
+    -- Nicer diagnostics
+    use {
+        "folke/lsp-trouble.nvim",
+        config = function()
+            require("trouble").setup {auto_preview = false, auto_fold = true}
+        end
     }
 
     -- Misc
@@ -104,26 +114,39 @@ return require("packer").startup(function()
         ft = {'html', 'css'}
     }
 
+    -- Snippets
+    use {
+        "L3MON4D3/LuaSnip",
+        requires = {"rafamadriz/friendly-snippets"},
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+    }
+
+    -- VSCode-like pictograms for neovim lsp completion items
+    use "onsails/lspkind-nvim"
+
     -- Completion & Snippets
     use {
-        'ms-jpq/coq_nvim',
-        branch = 'coq',
-        config = function()
-            vim.g.coq_settings = {
-                auto_start = 'shut-up',
-                clients = {lsp = {resolve_timeout = 0.15, weight_adjust = 0.4}}
-            }
-        end,
-        run = ":COQdeps"
+        "hrsh7th/nvim-cmp",
+        after = {"lspkind-nvim", "LuaSnip"},
+        config = function() require("config.cmp").setup() end
     }
-    use {'ms-jpq/coq.artifacts', branch = 'artifacts'} -- 9000+ Snippets
+
+    use "saadparwaiz1/cmp_luasnip"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+
+    -- Enhanced search and replace
+    use "windwp/nvim-spectre"
 
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
         config = function() require("config.autopairs").setup() end,
-        event = "InsertEnter",
-        after = "coq_nvim"
+        event = "InsertEnter"
     }
 
     -- Surround text object plugin
