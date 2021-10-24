@@ -38,7 +38,10 @@ vim.o.termguicolors = true
 vim.cmd [[ colorscheme nightfox ]]
 
 -- Disable intro message
-vim.o.shortmess = 'I'
+vim.opt.shortmess:append "I"
+
+-- Disable ins-completion-menu messages
+vim.opt.shortmess:append "c"
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
