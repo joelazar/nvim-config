@@ -5,7 +5,7 @@ end
 -- installs packer if needed
 if require "first_load"() then return end
 
--- require "impatient"
+require "impatient"
 
 vim.g.mapleader = " "
 

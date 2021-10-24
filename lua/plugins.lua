@@ -28,26 +28,23 @@ return require("packer").startup(function()
     -- Formatter
     use {
         "lukas-reineke/format.nvim",
-        config = function() require("config.format").setup() end,
-        event = "BufRead"
+        config = function() require("config.format").setup() end
     }
 
     -- Display popup with possible keybindings
     use {
         "folke/which-key.nvim",
-        config = function() require("config.which-key").setup() end,
-        event = "BufWinEnter"
+        config = function() require("config.which-key").setup() end
     }
 
     -- Asynctasks
-    use {"skywind3000/asyncrun.vim", event = "BufWinEnter"}
-    use {"skywind3000/asynctasks.vim", event = "BufWinEnter"}
+    use "skywind3000/asyncrun.vim"
+    use "skywind3000/asynctasks.vim"
 
     -- Comment toggler
     use {
         "terrortylor/nvim-comment",
-        config = function() require("nvim_comment").setup() end,
-        event = "BufRead"
+        config = function() require("nvim_comment").setup() end
     }
 
     -- Project management
@@ -58,8 +55,7 @@ return require("packer").startup(function()
                 require("telescope").load_extension('projects')
             }
         end,
-        requires = {{"nvim-telescope/telescope.nvim"}},
-        event = "VimEnter"
+        requires = {{"nvim-telescope/telescope.nvim"}}
     }
 
     -- Fuzzy filtering
@@ -80,8 +76,7 @@ return require("packer").startup(function()
     use {
         "nvim-lualine/lualine.nvim",
         config = function() require("config.lualine").setup() end,
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
-        event = "VimEnter"
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
     -- Colorschema
@@ -95,8 +90,7 @@ return require("packer").startup(function()
     -- Automagically resizing splits
     use {
         "beauwilliams/focus.nvim",
-        config = function() require("focus").setup() end,
-        event = "BufWinEnter"
+        config = function() require("focus").setup() end
     }
 
     -- HTTP client in Neovim
@@ -154,8 +148,7 @@ return require("packer").startup(function()
         "blackCauldron7/surround.nvim",
         config = function()
             require("surround").setup({mappings_style = "surround"})
-        end,
-        event = "InsertEnter"
+        end
     }
 
     -- Clipboard management
@@ -195,11 +188,7 @@ return require("packer").startup(function()
     use {"p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
     -- Autocreate/update html tags
-    use {
-        'windwp/nvim-ts-autotag',
-        event = "BufWinEnter",
-        after = "nvim-treesitter"
-    }
+    use {'windwp/nvim-ts-autotag', after = "nvim-treesitter"}
 
     -- Adds indentation guides to all lines
     use {
@@ -211,22 +200,17 @@ return require("packer").startup(function()
     use {
         "lewis6991/gitsigns.nvim",
         config = function() require("config.gitsigns").setup() end,
-        requires = {'nvim-lua/plenary.nvim'},
-        event = "BufRead"
+        requires = {'nvim-lua/plenary.nvim'}
     }
 
     -- Github
-    use {
-        'pwntester/octo.nvim',
-        config = function() require"octo".setup() end,
-        event = "BufWinEnter"
-    }
+    use {'pwntester/octo.nvim', config = function() require"octo".setup() end}
 
     -- Lazygit in Neovim
     use "kdheepak/lazygit.nvim"
 
     -- Check git history
-    use {"sindrets/diffview.nvim", event = "BufWinEnter"}
+    use "sindrets/diffview.nvim"
 
     -- File manager
     use {
@@ -239,19 +223,17 @@ return require("packer").startup(function()
     use {
         "folke/todo-comments.nvim",
         config = function() require("config.todo").setup() end,
-        requires = "nvim-lua/plenary.nvim",
-        event = "BufReadPost"
+        requires = "nvim-lua/plenary.nvim"
     }
 
     -- Terminal
     use {
         "akinsho/nvim-toggleterm.lua",
-        config = function() require("config.terminal").setup() end,
-        event = "BufWinEnter"
+        config = function() require("config.terminal").setup() end
     }
 
     -- Bookmarks
-    use {"MattesGroeger/vim-bookmarks", event = "BufWinEnter"}
+    use "MattesGroeger/vim-bookmarks"
 
     use {
         "tom-anders/telescope-vim-bookmarks.nvim",
@@ -267,8 +249,7 @@ return require("packer").startup(function()
     use {
         "romgrk/barbar.nvim",
         config = function() require("config.barbar").setup() end,
-        requires = {'kyazdani42/nvim-web-devicons'},
-        event = "BufWinEnter"
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     -- Debugging
