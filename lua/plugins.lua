@@ -105,7 +105,7 @@ return require("packer").startup(function()
     use {
         'norcalli/nvim-colorizer.lua',
         config = function() require('colorizer').setup() end,
-        ft = {'html', 'css'}
+        ft = {'html', 'css', 'json', 'yaml', 'conf'}
     }
 
     -- Snippets
