@@ -104,6 +104,7 @@ return require("packer").startup(function()
     -- Color highlighter
     use {
         'norcalli/nvim-colorizer.lua',
+        cmd = {"ColorizerToggle"},
         config = function() require('colorizer').setup() end,
         ft = {'html', 'css', 'json', 'yaml', 'conf'}
     }

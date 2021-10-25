@@ -326,6 +326,7 @@ M.config = {
         },
         ["x"] = {
             name = "Misc",
+            ["c"] = {"<cmd>ColorizerToggle<cr>", "Toggle colorizer"},
             ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"},
             ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"}
         }
