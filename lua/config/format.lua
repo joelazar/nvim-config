@@ -9,7 +9,9 @@ M.config = {
     markdown = {{cmd = {"prettier -w"}}},
     javascript = {{cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}},
     go = {{cmd = {"gofumpt -w", "goimports -w"}}},
-    lua = {{cmd = {"lua-format -i"}}}
+    lua = {{cmd = {"lua-format -i"}}},
+    sh = {{cmd = {"shfmt -w"}}},
+    fish = {{cmd = {"fish_indent -w"}}}
 }
 
 M.setup = function()

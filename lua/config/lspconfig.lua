@@ -38,16 +38,19 @@ end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 
-custom_capabilities.textDocument.completion.completionItem.documentationFormat = {
-    "markdown", "plaintext"
-}
+custom_capabilities.textDocument.completion.completionItem.documentationFormat =
+    {"markdown", "plaintext"}
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
-custom_capabilities.textDocument.completion.completionItem.preselectSupport = true
-custom_capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-custom_capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-custom_capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-custom_capabilities.textDocument.completion.completionItem.commitCharactersSupport =
+custom_capabilities.textDocument.completion.completionItem.preselectSupport =
     true
+custom_capabilities.textDocument.completion.completionItem.insertReplaceSupport =
+    true
+custom_capabilities.textDocument.completion.completionItem.labelDetailsSupport =
+    true
+custom_capabilities.textDocument.completion.completionItem.deprecatedSupport =
+    true
+custom_capabilities.textDocument.completion.completionItem
+    .commitCharactersSupport = true
 custom_capabilities.textDocument.completion.completionItem.tagSupport = {
     valueSet = {1}
 }
