@@ -28,6 +28,14 @@ M.setup = function()
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = true
             },
+            ["<C-y>"] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Insert,
+                select = true
+            },
+            ["<C-q>"] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true
+            },
             ["<C-Space>"] = cmp.mapping.complete(),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
