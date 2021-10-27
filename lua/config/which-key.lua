@@ -109,6 +109,7 @@ M.config = {
             "Open secondary shell"
         },
         ["w"] = {"<cmd>w!<cr>", "Save"},
+        ["W"] = {"<cmd>:lua require'utils'.sudo_write()<cr>", "Sudo Save"},
         ["q"] = {"<cmd>q!<cr>", "Quit"},
         [";"] = {"<cmd>CommentToggle<cr>", "Comment Operator"},
         ["n"] = {"<cmd>NnnPicker<cr>", "nnn"},
@@ -292,9 +293,7 @@ M.config = {
         },
         ["r"] = {
             name = "Replace",
-            ["m"] = {
-                "<cmd>lua require('spectre').open()<CR>", "Open menu"
-            },
+            ["m"] = {"<cmd>lua require('spectre').open()<CR>", "Open menu"},
             ["f"] = {
                 "<cmd>lua require('spectre').open_file_search()<CR>",
                 "Open file menu"

@@ -74,5 +74,3 @@ map('x', '<S-Tab>', "<gv", opts)
 
 -- Copy to system clipboard
 map('x', '\\y', "\"+y", opts)
-
-map('c', 'W', "<esc>:lua require'utils'.sudo_write()<cr>", {silent = true})
