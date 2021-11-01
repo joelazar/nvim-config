@@ -326,8 +326,9 @@ M.config = {
         ["x"] = {
             name = "Misc",
             ["c"] = {"<cmd>ColorizerToggle<cr>", "Toggle colorizer"},
+            ["C"] = {"<cmd>lua vim.opt.list=not vim.opt.list._value<cr>", "Toggle hidden characters"},
             ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"},
-            ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"}
+            ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"},
         }
     }
 }
