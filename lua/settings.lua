@@ -111,6 +111,9 @@ vim.o.showmode = true
 -- Show relative line number in front of each line
 vim.o.relativenumber = true
 
+-- Disable python2 provider
+vim.g.loaded_python_provider = 0
+
 --  Maximum height of the popup menu
 vim.o.pumheight = 15
 

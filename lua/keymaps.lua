@@ -26,7 +26,7 @@ map('n', '<A-c>', ':BufferClose<cr>', opts)
 map('n', '<cr>', 'o<Esc>', opts)
 
 -- Close windows
-map('n', 'q', ':close<cr>', opts)
+map('n', 'Q', ':close<cr>', opts)
 
 -- Telescope select files
 map('n', '<C-p>', '<cmd>Telescope find_files<cr>', opts)
