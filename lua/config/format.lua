@@ -11,7 +11,8 @@ M.config = {
     go = {{cmd = {"gofumpt -w", "goimports -w"}}},
     lua = {{cmd = {"lua-format -i"}}},
     sh = {{cmd = {"shfmt -w"}}},
-    fish = {{cmd = {"fish_indent -w"}}}
+    fish = {{cmd = {"fish_indent -w"}}},
+    sql = {{cmd = {"pg_format -i"}}}
 }
 
 M.setup = function()
