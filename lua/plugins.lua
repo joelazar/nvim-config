@@ -24,6 +24,7 @@ return require("packer").startup(function()
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
     use "kyazdani42/nvim-web-devicons"
+    use "nathom/filetype.nvim"
 
     -- Formatter
     use {
