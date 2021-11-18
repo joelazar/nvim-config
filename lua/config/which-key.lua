@@ -168,7 +168,7 @@ M.config = {
                 "<cmd>lua require\"gitsigns\".prev_hunk()<cr>", "Prev Hunk"
             },
             ["l"] = {
-                "<cmd>lua require\"gitsigns\".blame_line()<cr>", "Blame Line"
+                "<cmd>lua require\"gitsigns\".blame_line{full=true}<cr>", "Blame Line"
             },
             ["p"] = {
                 "<cmd>lua require\"gitsigns\".preview_hunk()<cr>",
