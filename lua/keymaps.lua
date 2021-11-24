@@ -69,8 +69,8 @@ map('x', '<', "<gv", opts)
 map('x', '>', ">gv|", opts)
 
 -- Use tab for indenting in visual mode
-map('x', '<Tab>', ">gv|", opts)
-map('x', '<S-Tab>', "<gv", opts)
+-- map('x', '<Tab>', ">gv|", opts)
+-- map('x', '<S-Tab>', "<gv", opts)
 
 -- Copy to system clipboard
 map('x', '\\y', "\"+y", opts)
