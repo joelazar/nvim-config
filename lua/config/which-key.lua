@@ -265,7 +265,8 @@ M.config = {
             ["f"] = {"<cmd>GoTestFunc<cr>", "Run test go function"},
             ["l"] = {"<cmd>AsyncRun make lint<cr>", "Run lint"},
             ["d"] = {"<cmd>AsyncRun make docker<cr>", "Run docker"},
-            ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"}
+            ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"},
+            ["u"] = {"<cmd>AsyncRun make deps-u<cr>", "Run update deps"},
         },
         ["s"] = {
             name = "Search",
