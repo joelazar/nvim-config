@@ -122,18 +122,21 @@ return require("packer").startup(function()
     -- VSCode-like pictograms for neovim lsp completion items
     use "onsails/lspkind-nvim"
 
-    -- Completion & Snippets
-    use {
-        "hrsh7th/nvim-cmp",
-        after = {"lspkind-nvim", "LuaSnip"},
-        config = function() require("config.cmp").setup() end
-    }
-
     use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
+
+    -- Completion & Snippets
+    use {
+        "hrsh7th/nvim-cmp",
+        after = {
+            "lspkind-nvim", "LuaSnip", "cmp_luasnip", "cmp-nvim-lua",
+            "cmp-nvim-lsp", "cmp-buffer", "cmp-path"
+        },
+        config = function() require("config.cmp").setup() end
+    }
 
     -- Enhanced search and replace
     use "windwp/nvim-spectre"
@@ -181,7 +184,6 @@ return require("packer").startup(function()
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
-        branch = "0.5-compat",
         config = function() require("config.treesitter").setup() end,
         run = ":TSUpdate"
     }

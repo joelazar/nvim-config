@@ -5,7 +5,7 @@ M.config = {
         FIX = {
             icon = " ", -- icon used for the sign, and in search results
             color = "error", -- can be a hex color, or a named color (see below)
-            alt = {"FIXME", "BUG", "FIXIT", "ISSUE", "fix"} -- a set of other keywords that all map to this FIX keywords
+            alt = {"fix", "bug", "BUG"} -- a set of other keywords that all map to this FIX keywords
             -- signs = false, -- configure signs for some keywords individually
         },
         TODO = {icon = " ", color = "info", alt = {"todo"}},
@@ -13,13 +13,10 @@ M.config = {
         WARN = {
             icon = " ",
             color = "warning",
-            alt = {"WARNING", "XXX", "warning"}
+            alt = {"warn", "WARNING", "XXX"}
         },
-        PERF = {
-            icon = " ",
-            alt = {"OPTIM", "PERFORMANCE", "OPTIMIZE", "perf"}
-        },
-        NOTE = {icon = " ", color = "hint", alt = {"INFO", "note"}}
+        PERF = {icon = " ", alt = {"perf"}},
+        NOTE = {icon = " ", color = "hint", alt = {"note", "info", "INFO"}}
     },
     -- highlighting of the line containing the todo comment
     -- * before: highlights before the keyword (typically comment characters)
@@ -29,16 +26,23 @@ M.config = {
         before = "", -- "fg" or "bg" or empty
         keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
         after = "fg", -- "fg" or "bg" or empty
-        pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlightng (vim regex)
+        pattern = [[.*<(\iKEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
-        exclude = {"text"} -- list of file types to exclude highlighting
+        exclude = {"txt"} -- list of file types to exclude highlighting
+    },
+    colors = {
+        error = {"LspDiagnosticsDefaultError", "ErrorMsg", "#DC2626"},
+        warning = {"LspDiagnosticsDefaultWarning", "WarningMsg", "#FBBF24"},
+        info = {"LspDiagnosticsDefaultInformation", "#2563EB"},
+        hint = {"LspDiagnosticsDefaultHint", "#10B981"},
+        default = {"Identifier", "#7C3AED"}
     },
     search = {
         command = "rg",
         args = {
             "--color=never", "--no-heading", "--with-filename", "--line-number",
-            "--column"
+            "--column", "--ignore-case"
         },
         -- regex that will be used to match keywords.
         -- don't replace the (KEYWORDS) placeholder

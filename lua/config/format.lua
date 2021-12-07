@@ -6,6 +6,7 @@ M.config = {
     },
     json = {{cmd = {"prettier -w"}}},
     yaml = {{cmd = {"prettier -w"}}},
+    html = {{cmd = {"prettier -w"}}},
     markdown = {{cmd = {"prettier -w"}}},
     javascript = {{cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}},
     go = {{cmd = {"gofumpt -w", "goimports -w"}}},

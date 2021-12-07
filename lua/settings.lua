@@ -2,7 +2,7 @@
 vim.o.inccommand = 'nosplit'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menu,menuone,noselect"
 
 -- Enable highlight on search
 vim.o.hlsearch = true
@@ -80,9 +80,6 @@ vim.o.history = 10000
 
 -- Use menu for command line completion
 vim.o.wildmenu = true
-
--- Options for Insert mode completion
-vim.o.completeopt = "menu,menuone,noselect"
 
 -- Enable wrap
 vim.o.wrap = true

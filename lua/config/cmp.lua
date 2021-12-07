@@ -19,24 +19,15 @@ M.setup = function()
 
     cmp.setup({
         mapping = {
-            ["<C-p>"] = cmp.mapping.select_prev_item(),
-            ["<C-n>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<CR>"] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true
-            },
-            ["<C-y>"] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true
-            },
-            ["<C-q>"] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true
-            },
-            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+            ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+            ["<C-e>"] = cmp.mapping({
+                i = cmp.mapping.abort(),
+                c = cmp.mapping.close()
+            }),
+            ["<CR>"] = cmp.mapping.confirm {select = true},
+            ["<C-y>"] = cmp.config.disable,
+            ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -62,7 +53,7 @@ M.setup = function()
 
         sources = {
             {name = "nvim_lua"}, {name = "nvim_lsp"}, {name = "path"},
-            {name = "luasnip"}, {name = "buffer", keyword_length = 5}
+            {name = "luasnip"}, {name = "buffer", keyword_length = 3}
         },
 
         snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
@@ -73,7 +64,7 @@ M.setup = function()
                 menu = {
                     buffer = "[buf]",
                     nvim_lsp = "[LSP]",
-                    nvim_lua = "[api]",
+                    nvim_lua = "[lua]",
                     path = "[path]",
                     luasnip = "[snip]"
                 }
@@ -82,6 +73,7 @@ M.setup = function()
 
         experimental = {native_menu = false, ghost_text = true}
     })
+
 end
 
 return M
