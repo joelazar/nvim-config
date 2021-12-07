@@ -5,8 +5,8 @@ M.config = {
     ignore_install = {},
     highlight = {
         enable = true, -- false will disable the whole extension
-        additional_vim_regex_highlighting = true,
-        disable = {}
+        use_languagetree = true,
+        additional_vim_regex_highlighting = true
     },
     incremental_selection = {
         enable = true,
@@ -17,8 +17,8 @@ M.config = {
             node_decremental = '<S-TAB>'
         }
     },
-    indent = {enable = true, disable = {}}, -- EXPERIMENTAL feature
-    --  textobjects = { enable = false }, @todo - maybe later
+    -- indent = {enable = true, disable = {}}, -- EXPERIMENTAL feature
+    -- textobjects = { enable = false }, todo: maybe later
     rainbow = {
         enable = true,
         extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
