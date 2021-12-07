@@ -168,7 +168,8 @@ M.config = {
                 "<cmd>lua require\"gitsigns\".prev_hunk()<cr>", "Prev Hunk"
             },
             ["l"] = {
-                "<cmd>lua require\"gitsigns\".blame_line{full=true}<cr>", "Blame Line"
+                "<cmd>lua require\"gitsigns\".blame_line{full=true}<cr>",
+                "Blame Line"
             },
             ["p"] = {
                 "<cmd>lua require\"gitsigns\".preview_hunk()<cr>",
@@ -234,7 +235,7 @@ M.config = {
                 "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help"
             },
             ["k"] = {
-                "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
+                "<cmd>lua vim.diagnostic.open_float(nil, {source = 'always'})<cr>",
                 "Show line diagnostic"
             },
             ["i"] = {"<cmd>LspInfo<cr>", "Info"},
@@ -243,10 +244,10 @@ M.config = {
                 "Set location list"
             },
             ["n"] = {
-                "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic"
+                "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic"
             },
             ["p"] = {
-                "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic"
+                "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic"
             },
             ["q"] = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             ["r"] = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
@@ -266,7 +267,7 @@ M.config = {
             ["l"] = {"<cmd>AsyncRun make lint<cr>", "Run lint"},
             ["d"] = {"<cmd>AsyncRun make docker<cr>", "Run docker"},
             ["r"] = {"<cmd>AsyncRun make run-compose<cr>", "Run compose"},
-            ["u"] = {"<cmd>AsyncRun make deps-u<cr>", "Run update deps"},
+            ["u"] = {"<cmd>AsyncRun make deps-u<cr>", "Run update deps"}
         },
         ["s"] = {
             name = "Search",
@@ -327,9 +328,12 @@ M.config = {
         ["x"] = {
             name = "Misc",
             ["c"] = {"<cmd>ColorizerToggle<cr>", "Toggle colorizer"},
-            ["C"] = {"<cmd>lua vim.opt.list=not vim.opt.list._value<cr>", "Toggle hidden characters"},
+            ["C"] = {
+                "<cmd>lua vim.opt.list=not vim.opt.list._value<cr>",
+                "Toggle hidden characters"
+            },
             ["d"] = {"<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces"},
-            ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"},
+            ["h"] = {":nohlsearch<cr>", "Remove highlighting of search results"}
         }
     }
 }

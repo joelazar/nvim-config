@@ -32,10 +32,10 @@ M.config = {
         exclude = {"txt"} -- list of file types to exclude highlighting
     },
     colors = {
-        error = {"LspDiagnosticsDefaultError", "ErrorMsg", "#DC2626"},
-        warning = {"LspDiagnosticsDefaultWarning", "WarningMsg", "#FBBF24"},
-        info = {"LspDiagnosticsDefaultInformation", "#2563EB"},
-        hint = {"LspDiagnosticsDefaultHint", "#10B981"},
+        error = {"DiagnosticSignError", "ErrorMsg", "#DC2626"},
+        warning = {"DiagnosticSignWarn", "WarningMsg", "#FBBF24"},
+        info = {"DiagnosticSignInfo", "#2563EB"},
+        hint = {"DiagnosticSignHint", "#10B981"},
         default = {"Identifier", "#7C3AED"}
     },
     search = {
