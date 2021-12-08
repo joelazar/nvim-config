@@ -34,7 +34,7 @@ M.setup = function()
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif luasnip.jumpable(-1) then
-                    luasnip.jump_prev()
+                    luasnip.jump(-1)
                 else
                     fallback()
                 end

@@ -1,7 +1,7 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
--- if not (present1 and present2) then return end
+if not (present1 and present2) then return end
 
 local no_lsp_formatting = {["tsserver"] = true}
 
