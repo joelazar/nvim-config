@@ -11,7 +11,7 @@ M.config = {
         lualine_a = {"mode"},
         lualine_b = {"branch"},
         lualine_c = {
-            {"filename", path = 1}, {"diagnostics", sources = {"nvim_lsp"}},
+            {"filename", path = 1}, {"diagnostics", sources = {"nvim_diagnostic"}},
             "diff"
         },
         lualine_x = {"filetype", "encoding"},
