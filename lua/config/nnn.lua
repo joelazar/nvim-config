@@ -19,12 +19,12 @@ end
 
 M.config = {
     explorer = {
-        cmd = "nnn -oCd", -- command overrride (-p and -F1 flags are implied, -a flag is invalid!)
-        width = 24, -- width of the vertical split
+        cmd = "nnn -od", -- command overrride (-p and -F1 flags are implied, -a flag is invalid!)
+        width = 32, -- width of the vertical split
         session = "" -- or global/local/shared
     },
     picker = {
-        cmd = "nnn -oCd", -- command override (-p flag is implied)
+        cmd = "nnn -od", -- command override (-p flag is implied)
         style = {
             width = 0.9, -- width in percentage of the viewport
             height = 0.8, -- height in percentage of the viewport
@@ -34,7 +34,15 @@ M.config = {
         },
         session = "" -- or global/local/shared
     },
-    replace_netrw = 1,
+    auto_open = {
+        setup = nil, -- or "explorer" / "picker", auto open on setup function
+        tabpage = nil, -- or "explorer" / "picker", auto open when opening new tabpage
+        empty = false, -- only auto open on empty buffer
+        ft_ignore = { -- dont auto open for these filetypes
+            "gitcommit"
+        }
+    },
+    replace_netrw = 'picker',
     mappings = {
         {"<C-t>", "tabedit"}, -- open file in tab
         {"<C-s>", "split"}, -- open file in split
@@ -42,7 +50,7 @@ M.config = {
         {"<C-w>", cd_to_path}, -- cd to file directory
         {"<C-y>", {copy_to_clipboard, quit = false}}, -- copy file to clipboard
         {"<S-y>", {copy_to_clipboard, quit = true}} -- copy files to clipboard
-    },
+    }
 }
 
 M.setup = function()

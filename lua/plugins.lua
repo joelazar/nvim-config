@@ -89,10 +89,10 @@ return require("packer").startup(function()
     use {"EdenEast/nightfox.nvim"}
 
     -- Automagically resizing splits
-    use {
-        "beauwilliams/focus.nvim",
-        config = function() require("focus").setup() end
-    }
+    -- use {
+    --     "beauwilliams/focus.nvim",
+    --     config = function() require("focus").setup() end
+    -- }
 
     -- HTTP client in Neovim
     use {
@@ -144,8 +144,7 @@ return require("packer").startup(function()
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
-        config = function() require("config.autopairs").setup() end,
-        event = "InsertEnter"
+        config = function() require("config.autopairs").setup() end
     }
 
     -- Surround text object plugin
@@ -219,8 +218,7 @@ return require("packer").startup(function()
     -- File manager
     use {
         "luukvbaal/nnn.nvim",
-        config = function() require("config.nnn").setup() end,
-        event = "BufWinEnter"
+        config = function() require("config.nnn").setup() end
     }
 
     -- Highlight todo comments
