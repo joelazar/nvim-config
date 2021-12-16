@@ -96,7 +96,8 @@ M.config = {
             ["r"] = {
                 "<cmd>lua require\"gitsigns\".reset_hunk({vim.fn.line(\".\"), vim.fn.line(\"v\")})<cr>",
                 "Undo Stage Hunk"
-            }
+            },
+            ["y"] = {'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>', "Copy link to clipboard"},
         }
     },
     mappings = {
@@ -202,7 +203,8 @@ M.config = {
                 ["c"] = {"<cmd>DiffviewClose<cr>", "Close"},
                 ["r"] = {"<cmd>DiffviewRefresh<cr>", "Refresh"},
                 ["f"] = {"<cmd>DiffviewToggleFiles<cr>", "Toggle files"}
-            }
+            },
+            ["y"] = {'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>', "Copy link to clipboard"},
         },
         ["h"] = {
             name = "Hop",

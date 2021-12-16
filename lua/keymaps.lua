@@ -32,10 +32,10 @@ map('n', 'Q', ':close<cr>', opts)
 map('n', '<C-p>', '<cmd>Telescope find_files<cr>', opts)
 
 -- Resize with arrows
-map('n', '<C-Up>', ':resize -2<cr>', opts)
-map('n', '<C-Down>', ':resize +2<cr>', opts)
-map('n', '<C-Left>', ':vertical resize -2<cr>', opts)
-map('n', '<C-Right>', ':vertical resize +2<cr>', opts)
+map('n', '<C-Up>', ':resize +2<cr>', opts)
+map('n', '<C-Down>', ':resize -2<cr>', opts)
+map('n', '<C-Left>', ':vertical resize +2<cr>', opts)
+map('n', '<C-Right>', ':vertical resize -2<cr>', opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map('n', '<A-j>', ':m .+1<cr>==', opts)

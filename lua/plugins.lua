@@ -209,6 +209,11 @@ return require("packer").startup(function()
     -- Github
     use {'pwntester/octo.nvim', config = function() require"octo".setup() end}
 
+    use "ruifm/gitlinker.nvim"
+
+    -- Markdown
+    use { "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && yarn install" }
+
     -- Lazygit in Neovim
     use "kdheepak/lazygit.nvim"
 
