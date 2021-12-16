@@ -59,6 +59,9 @@ vim.api.nvim_exec([[
   augroup end
 ]], false)
 
+-- Don't show any numbers inside terminals
+vim.cmd [[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]]
+
 -- Y yank until the end of line  (note: this is now a default on master)
 vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true})
 

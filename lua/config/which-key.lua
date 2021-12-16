@@ -103,11 +103,11 @@ M.config = {
     mappings = {
         ["'"] = {
             "<cmd>1ToggleTerm size=15 direction=horizontal<cr>",
-            "Open primary shell"
+            "Open toggle terminal"
         },
         ["\""] = {
-            "<cmd>2ToggleTerm size=15 direction=horizontal<cr>",
-            "Open secondary shell"
+            "<cmd>execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
+            "Open terminal"
         },
         ["w"] = {"<cmd>w!<cr>", "Save"},
         ["W"] = {"<cmd>:lua require'utils'.sudo_write()<cr>", "Sudo Save"},
