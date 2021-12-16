@@ -44,8 +44,8 @@ return require("packer").startup(function()
 
     -- Comment toggler
     use {
-        "terrortylor/nvim-comment",
-        config = function() require("nvim_comment").setup() end
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
     }
 
     -- Project management
@@ -212,7 +212,11 @@ return require("packer").startup(function()
     use "ruifm/gitlinker.nvim"
 
     -- Markdown
-    use { "iamcco/markdown-preview.nvim", ft = "markdown", run = "cd app && yarn install" }
+    use {
+        "iamcco/markdown-preview.nvim",
+        ft = "markdown",
+        run = "cd app && yarn install"
+    }
 
     -- Lazygit in Neovim
     use "kdheepak/lazygit.nvim"
