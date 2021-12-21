@@ -17,7 +17,7 @@ M.setup = function()
                 i = cmp.mapping.abort(),
                 c = cmp.mapping.close()
             }),
-            ["<CR>"] = cmp.mapping.confirm {select = false},
+            ["<CR>"] = cmp.mapping.confirm {select = true},
             ["<C-y>"] = cmp.config.disable,
             ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
             ["<Tab>"] = cmp.mapping(function(fallback)
@@ -43,7 +43,18 @@ M.setup = function()
 
         sources = {
             {name = "nvim_lua"}, {name = "nvim_lsp"}, {name = "path"},
-            {name = "luasnip"}, {name = "buffer", keyword_length = 3}
+            {name = "luasnip"}, {name = "buffer", keyword_length = 3}, {
+                name = "tmux",
+                max_item_count = 5,
+                option = {all_panes = true},
+                keyword_length = 3
+            }, {
+                name = "look",
+                keyword_length = 5,
+                max_item_count = 5,
+                option = {convert_case = true, loud = true}
+            }
+
         },
 
         snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
@@ -53,15 +64,28 @@ M.setup = function()
                 with_text = true,
                 menu = {
                     buffer = "[buf]",
+                    look = "[look]",
+                    luasnip = "[snip]",
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[lua]",
                     path = "[path]",
-                    luasnip = "[snip]"
+                    tmux = "[tmux]"
                 }
             }
         },
 
         experimental = {native_menu = false, ghost_text = true}
+    })
+
+    cmp.setup.cmdline("/", {
+        sources = cmp.config.sources({{name = "buffer", keyword_length = 3}})
+    })
+
+    cmp.setup.cmdline(":", {
+        sources = cmp.config.sources({
+            {name = "path"},
+            {name = "cmdline", max_item_count = 20, keyword_length = 3}
+        })
     })
 
 end
