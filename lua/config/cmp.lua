@@ -17,7 +17,7 @@ M.setup = function()
                 i = cmp.mapping.abort(),
                 c = cmp.mapping.close()
             }),
-            ["<CR>"] = cmp.mapping.confirm {select = true},
+            ["<CR>"] = cmp.mapping.confirm {select = false},
             ["<C-y>"] = cmp.config.disable,
             ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
             ["<Tab>"] = cmp.mapping(function(fallback)
@@ -47,7 +47,7 @@ M.setup = function()
                 name = "tmux",
                 max_item_count = 5,
                 option = {all_panes = true},
-                keyword_length = 3
+                keyword_length = 5
             }, {
                 name = "look",
                 keyword_length = 5,
