@@ -119,7 +119,7 @@ M.config = {
             name = "Buffers",
             ["j"] = {"<cmd>BufferPick<cr>", "Jump to buffer"},
             ["d"] = {"<cmd>BufferClose!<cr>", "Delete buffer"},
-            ["<c-d>"] = {
+            ["D"] = {
                 "<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
                 "Close all but current buffer"
             },
