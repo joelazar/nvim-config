@@ -1,14 +1,16 @@
 if vim.g.vscode then
-    return
+	return
 end
 
 -- installs packer if needed
-if require "first_load"() then return end
+if require("first_load")() then
+	return
+end
 
-require "impatient"
+require("impatient")
 
 vim.g.mapleader = " "
 
-require "plugins"
-require "keymaps"
-require "settings"
+require("plugins")
+require("keymaps")
+require("settings")

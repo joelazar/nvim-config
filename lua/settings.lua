@@ -1,5 +1,5 @@
 -- Incremental live completion (note: this is now a default on master)
-vim.o.inccommand = 'nosplit'
+vim.o.inccommand = "nosplit"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
@@ -31,17 +31,17 @@ vim.o.smartcase = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[ colorscheme nightfox ]]
+vim.cmd([[ colorscheme nightfox ]])
 
 -- Disable intro message
-vim.opt.shortmess:append "I"
+vim.opt.shortmess:append("I")
 
 -- Disable ins-completion-menu messages
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append("c")
 
 -- Do not source the default filetype.vim
 vim.g.did_load_filetypes = 1
@@ -52,18 +52,21 @@ vim.g.did_load_filetypes = 1
 -- @todo - fix this
 
 -- Highlight on yank
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]], false)
+]],
+	false
+)
 
 -- Don't show any numbers inside terminals
-vim.cmd [[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]]
+vim.cmd([[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]])
 
 -- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true})
+vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
 -- From SpaceVim
 
@@ -137,44 +140,62 @@ vim.o.showcmd = false
 
 -- Folding
 vim.o.foldenable = false
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
 
 -- go - format on save
-vim.api.nvim_exec(
-    [[ autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
-    false)
-vim.api.nvim_exec(
-    [[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]],
-    false)
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting_seq_sync() ]], false)
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]], false)
 
 -- Open file at same location where it was opened last time
-vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
+vim.cmd([[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
 
 -- Set directories for backup/swap/undo files and create them if necessary
-local Path = require "plenary.path"
+local Path = require("plenary.path")
 
-local swapdir = Path:new(Path.path.home .. '/.cache/nvim/swap/')
-if not swapdir:exists() then swapdir:mkdir() end
+local swapdir = Path:new(Path.path.home .. "/.cache/nvim/swap/")
+if not swapdir:exists() then
+	swapdir:mkdir()
+end
 vim.o.directory = tostring(swapdir)
 
-local backupdir = Path:new(Path.path.home .. '/.cache/nvim/backup/')
-if not backupdir:exists() then backupdir:mkdir() end
+local backupdir = Path:new(Path.path.home .. "/.cache/nvim/backup/")
+if not backupdir:exists() then
+	backupdir:mkdir()
+end
 vim.o.backupdir = tostring(backupdir)
 
-local undodir = Path:new(Path.path.home .. '/.cache/nvim/undo/')
-if not undodir:exists() then undodir:mkdir() end
+local undodir = Path:new(Path.path.home .. "/.cache/nvim/undo/")
+if not undodir:exists() then
+	undodir:mkdir()
+end
 vim.o.undodir = tostring(undodir)
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
-    "2html_plugin", "getscript", "getscriptPlugin", "gzip", "logipat", "netrw",
-    "netrwPlugin", "netrwSettings", "netrwFileHandlers", "matchit", "tar",
-    "tarPlugin", "rrhelper", "spellfile_plugin", "vimball", "vimballPlugin",
-    "zip", "zipPlugin"
+	"2html_plugin",
+	"getscript",
+	"getscriptPlugin",
+	"gzip",
+	"logipat",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"matchit",
+	"tar",
+	"tarPlugin",
+	"rrhelper",
+	"spellfile_plugin",
+	"vimball",
+	"vimballPlugin",
+	"zip",
+	"zipPlugin",
 }
 
-for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
+for _, plugin in pairs(disabled_built_ins) do
+	vim.g["loaded_" .. plugin] = 1
+end
