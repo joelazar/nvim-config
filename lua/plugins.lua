@@ -128,6 +128,7 @@ return require("packer").startup(function()
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-calc"
     use "andersevenrud/cmp-tmux"
     use "octaltree/cmp-look"
 
@@ -137,7 +138,7 @@ return require("packer").startup(function()
         after = {
             "lspkind-nvim", "LuaSnip", "cmp_luasnip", "cmp-nvim-lua",
             "cmp-nvim-lsp", "cmp-buffer", "cmp-path", "cmp-cmdline", "cmp-tmux",
-            "cmp-look"
+            "cmp-look", "cmp-calc"
         },
         config = function() require("config.cmp").setup() end
     }

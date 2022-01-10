@@ -53,8 +53,7 @@ M.setup = function()
                 keyword_length = 5,
                 max_item_count = 5,
                 option = {convert_case = true, loud = true}
-            }
-
+            }, {name = "calc"}
         },
 
         snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
@@ -69,7 +68,8 @@ M.setup = function()
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[lua]",
                     path = "[path]",
-                    tmux = "[tmux]"
+                    tmux = "[tmux]",
+                    calc = "[calc]"
                 }
             }
         },
