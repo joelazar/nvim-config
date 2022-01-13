@@ -105,14 +105,14 @@ vim.o.backup = true
 -- Make a backup before overwriting a file
 vim.o.writebackup = false
 
--- show cursor line and column in the status line
+-- Show cursor line and column in the status line
 vim.o.ruler = true
 
 -- Briefly jump to matching bracket if insert one
 vim.o.showmatch = true
 
--- Message on status line to show current mode
-vim.o.showmode = true
+-- Hide show current mode on status line
+vim.o.showmode = false
 
 -- Show relative line number in front of each line
 vim.o.relativenumber = true
@@ -151,7 +151,9 @@ vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formattin
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]], false)
 
 -- Open file at same location where it was opened last time
-vim.cmd([[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
+vim.cmd(
+	[[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
+)
 
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")
