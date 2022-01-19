@@ -76,6 +76,82 @@ local function get_lua_runtime()
 end
 
 local servers = {
+	bashls = true,
+	cssls = true,
+	clangd = true,
+	dockerls = true,
+	efm = {
+		init_options = { documentFormatting = true },
+		root_dir = vim.loop.cwd,
+		settings = {
+			rootMarkers = { ".git/" },
+			languages = {
+				lua = { { formatCommand = "stylua -s --stdin-filepath ${INPUT} -", formatStdin = true } },
+				python = {
+					{ formatCommand = "black --fast -", formatStdin = true },
+					{
+						formatCommand = "isort --stdout --profile black -",
+						formatStdin = true,
+					},
+					-- {
+					--     lintCommand = "flake8 --max-line-length 160 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
+					--     lintStdin = true,
+					--     lintIgnoreExitCode = true,
+					--     lintFormats = {"%f:%l:%c: %t%n%n%n %m"},
+					--     lintSource = "flake8"
+					-- }
+				},
+				typescript = { prettier },
+				javascript = { prettier },
+				typescriptreact = { prettier },
+				javascriptreact = { prettier },
+				yaml = { prettier },
+				json = { prettier },
+				html = { prettier },
+				scss = { prettier },
+				css = { prettier },
+				markdown = { prettier },
+				sh = { shellcheck, shfmt },
+				-- sql = {
+				-- 	{
+				-- 		lintCommand = "sqlfluff lint",
+				-- 		lintStdin = true,
+				-- 		lintIgnoreExitCode = true,
+				-- 		lintSource = "sqlfluff",
+				-- 	},
+				-- },
+				-- make = {
+				-- 	{
+				-- 		lintCommand = 'checkmake --format="{{.LineNumber}}:{{.Rule}}:{{.Violation}}"',
+				-- 		lintStdin = true,
+				-- 		-- lintIgnoreExitCode = true,
+				-- 		-- lintSource = "checkmake",
+				-- 		-- lintFormats = { "%l:%n:%m" },
+				-- 	},
+				-- },
+			},
+		},
+		filetypes = {
+			"css",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"json",
+			"lua",
+			-- "make",
+			"markdown",
+			"python",
+			"scss",
+			"sh",
+			-- "sql",
+			"ts",
+			"typescript",
+			"typescriptreact",
+			"yaml",
+		},
+	},
+	eslint = true,
+	golangci_lint_ls = true,
 	gopls = {
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
@@ -99,15 +175,15 @@ local servers = {
 		},
 		filetypes = { "go", "gomod" },
 	},
-	pyright = true,
-	tsserver = true,
-	eslint = true,
 	html = true,
-	cssls = true,
-	texlab = true,
+	jsonls = { init_options = { provideFormatter = false } },
 	ltex = true,
-	bashls = true,
-	yamlls = true,
+	quick_lint_js = true,
+	pyright = true,
+	rust_analyzer = true,
+	stylelint_lsp = { cmd = {
+		"stylelint --stdio",
+	} },
 	sumneko_lua = {
 		cmd = { "lua-language-server" },
 		settings = {
@@ -138,71 +214,9 @@ local servers = {
 			},
 		},
 	},
-	jsonls = { init_options = { provideFormatter = false } },
-	clangd = true,
-	rust_analyzer = true,
-	dockerls = true,
-	efm = {
-		init_options = { documentFormatting = true },
-		root_dir = vim.loop.cwd,
-		settings = {
-			rootMarkers = { ".git/" },
-			languages = {
-				-- go = {
-				--     {
-				--         lintCommand = "golangci-lint run ./...",
-				--         lintStdin = true,
-				--         lintIgnoreExitCode = true,
-				--         lintFormats = {"%f:%l:%c: %m"},
-				--         lintSource = "golangci-lint"
-				--     }
-				-- },
-				lua = { { formatCommand = "lua-format -i", formatStdin = true } },
-				python = {
-					{ formatCommand = "black --fast -", formatStdin = true },
-					{
-						formatCommand = "isort --stdout --profile black -",
-						formatStdin = true,
-					},
-					-- {
-					--     lintCommand = "flake8 --max-line-length 160 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
-					--     lintStdin = true,
-					--     lintIgnoreExitCode = true,
-					--     lintFormats = {"%f:%l:%c: %t%n%n%n %m"},
-					--     lintSource = "flake8"
-					-- }
-				},
-				typescript = { prettier },
-				javascript = { prettier },
-				typescriptreact = { prettier },
-				javascriptreact = { prettier },
-				yaml = { prettier },
-				json = { prettier },
-				html = { prettier },
-				scss = { prettier },
-				css = { prettier },
-				markdown = { prettier },
-				sh = { shellcheck, shfmt },
-				-- make = {{lintCommand = "checkmake", lintStdin = true}}
-			},
-		},
-		filetypes = {
-			"python",
-			"ts",
-			"javascript",
-			"yaml",
-			"json",
-			"html",
-			"css",
-			"scss",
-			"sh",
-			"lua",
-			"markdown",
-			"typescript",
-			"typescriptreact",
-			"javascriptreact", -- 'make'
-		},
-	},
+	texlab = true,
+	tsserver = true,
+	yamlls = true,
 }
 local setup_server = function(server, config)
 	if not config then
