@@ -225,6 +225,8 @@ return require("packer").startup(function()
 		config = function()
 			require("config.treesitter").setup()
 		end,
+		-- use this commit until https://github.com/nvim-treesitter/nvim-treesitter/issues/2295 gets fixed
+		commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
 		run = ":TSUpdate",
 	})
 
