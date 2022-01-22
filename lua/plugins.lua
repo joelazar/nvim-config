@@ -63,8 +63,16 @@ return require("packer").startup(function()
 		"ahmedkhalf/project.nvim",
 		config = function()
 			require("project_nvim").setup({
-				require("telescope").load_extension("projects"),
+				manual_mode = false,
+				detection_methods = { "pattern" },
+				patterns = { ".git" },
+				ignore_lsp = {},
+				exclude_dirs = {},
+				show_hidden = false,
+				silent_chdir = true,
+				datapath = vim.fn.stdpath("data"),
 			})
+			require("telescope").load_extension("projects")
 		end,
 		requires = { { "nvim-telescope/telescope.nvim" } },
 	})
@@ -151,7 +159,6 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-calc")
 	use("andersevenrud/cmp-tmux")
 	use("octaltree/cmp-look")
-
 	-- Completion & Snippets
 	use({
 		"hrsh7th/nvim-cmp",
@@ -227,8 +234,6 @@ return require("packer").startup(function()
 		config = function()
 			require("config.treesitter").setup()
 		end,
-		-- use this commit until https://github.com/nvim-treesitter/nvim-treesitter/issues/2295 gets fixed
-		commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
 		run = ":TSUpdate",
 	})
 
@@ -245,6 +250,8 @@ return require("packer").startup(function()
 			require("config.indent-blankline").setup()
 		end,
 	})
+
+	use({ "kevinhwang91/nvim-bqf" })
 
 	-- Git
 	use({
@@ -263,6 +270,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Generate shareable file permalinks
 	use("ruifm/gitlinker.nvim")
 
 	-- Markdown
