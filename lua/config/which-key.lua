@@ -250,7 +250,7 @@ M.config = {
 			},
 			["d"] = { "<cmd>Trouble<cr>", "Workspace Diagnostics (Trouble)" },
 			["D"] = {
-				"<cmd>Telescope lsp_workspace_diagnostics<cr>",
+				"<cmd>Telescope diagnostics<cr>",
 				"Workspace Diagnostics (Telescope)",
 			},
 			["h"] = {
