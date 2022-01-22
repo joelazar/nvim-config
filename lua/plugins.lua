@@ -5,13 +5,15 @@ return require("packer").startup(function()
 	-- Improve startup time
 	use("lewis6991/impatient.nvim")
 
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("config.lspconfig")
 		end,
-		after = { "nvim-cmp" },
+		after = { "nvim-cmp", "nvim-lsp-ts-utils" },
 	})
 
 	-- Nicer diagnostics
