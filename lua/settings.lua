@@ -48,8 +48,7 @@ vim.g.did_load_filetypes = 1
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
--- vim.o.whichwrap:append "<>hl"
--- @todo - fix this
+vim.opt.whichwrap:append("<>hl")
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -64,11 +63,6 @@ vim.api.nvim_exec(
 
 -- Don't show any numbers inside terminals
 vim.cmd([[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]])
-
--- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
-
--- From SpaceVim
 
 -- Take indent for new line from previous line
 vim.o.autoindent = true
@@ -134,6 +128,10 @@ vim.o.wildignorecase = true
 -- Timeout on leaderkey
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 5
+
+-- Timeout on mapped sequences
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- Show (partial) command in status line
 vim.o.showcmd = false
