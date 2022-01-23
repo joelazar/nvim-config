@@ -17,7 +17,7 @@ M.config = {
 			node_decremental = "<S-TAB>",
 		},
 	},
-	indent = { enable = true, disable = {} }, -- EXPERIMENTAL feature
+	-- indent = { enable = true, disable = {} }, -- EXPERIMENTAL feature
 	rainbow = {
 		enable = true,
 		extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
