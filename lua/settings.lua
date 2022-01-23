@@ -61,6 +61,9 @@ vim.api.nvim_exec(
 	false
 )
 
+-- Don't auto commenting new lines
+vim.cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
+
 -- Don't show any numbers inside terminals
 vim.cmd([[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]])
 
