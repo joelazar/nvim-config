@@ -5,6 +5,7 @@ return require("packer").startup(function()
 	-- Improve startup time
 	use("lewis6991/impatient.nvim")
 
+	-- Improved Typescript lsp config
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- LSP
@@ -74,7 +75,18 @@ return require("packer").startup(function()
 		end,
 	})
 
-	use("David-Kunz/jester")
+	-- Run jest tests
+	use({
+		"David-Kunz/jester",
+		ft = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+	})
 
 	-- Project management
 	use({
@@ -177,6 +189,7 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-calc")
 	use("andersevenrud/cmp-tmux")
 	use("octaltree/cmp-look")
+
 	-- Completion & Snippets
 	use({
 		"hrsh7th/nvim-cmp",
@@ -255,8 +268,10 @@ return require("packer").startup(function()
 		run = ":TSUpdate",
 	})
 
+	-- Improved incremental/decremental function
 	use("monaqa/dial.nvim")
 
+	-- Setting the commentstring based on the cursor location in a file
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Rainbow parentheses by using tree-sitter
@@ -273,6 +288,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Better quickfix
 	use({ "kevinhwang91/nvim-bqf" })
 
 	-- Git
@@ -357,9 +373,44 @@ return require("packer").startup(function()
 	})
 
 	-- Debugging
-	use({ "mfussenegger/nvim-dap", ft = { "go" } })
+	use({
+		"mfussenegger/nvim-dap",
+		ft = {
+			"go",
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+	})
 
-	use({ "rcarriga/nvim-dap-ui", ft = { "go" }, after = "nvim-dap" })
+	use({
+		"rcarriga/nvim-dap-ui",
+		ft = {
+			"go",
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+		after = "nvim-dap",
+	})
 
-	use({ "theHamsta/nvim-dap-virtual-text", ft = { "go" }, after = "nvim-dap" })
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		ft = {
+			"go",
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+		after = "nvim-dap",
+	})
 end)

@@ -102,6 +102,10 @@ vim.o.backup = true
 -- Make a backup before overwriting a file
 vim.o.writebackup = false
 
+-- For opening splits on right or bottom.
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- Show cursor line and column in the status line
 vim.o.ruler = true
 
