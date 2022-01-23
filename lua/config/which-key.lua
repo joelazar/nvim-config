@@ -28,11 +28,13 @@ M.config = {
 			position = "bottom", -- bottom, top
 			margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
 			padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+			-- winblend = 0,
 		},
 		layout = {
 			height = { min = 4, max = 25 }, -- min and max height of the columns
 			width = { min = 20, max = 50 }, -- min and max width of the columns
 			spacing = 3, -- spacing between columns
+			-- align = "center",
 		},
 		hidden = {
 			"<silent>",
@@ -287,13 +289,24 @@ M.config = {
 		},
 		["m"] = {
 			name = "Tasks",
-			["m"] = { "<cmd>AsyncRun make<cr>", "Run default task" },
-			["t"] = { "<cmd>AsyncRun make test<cr>", "Run test" },
-			["f"] = { "<cmd>GoTestFunc<cr>", "Run test go function" },
-			["l"] = { "<cmd>AsyncRun make lint<cr>", "Run lint" },
-			["d"] = { "<cmd>AsyncRun make docker<cr>", "Run docker" },
-			["r"] = { "<cmd>AsyncRun make run-compose<cr>", "Run compose" },
-			["u"] = { "<cmd>AsyncRun make deps-u<cr>", "Run update deps" },
+			["g"] = {
+				name = "Go",
+				["m"] = { "<cmd>AsyncRun make<cr>", "Run default task" },
+				["t"] = { "<cmd>AsyncRun make test<cr>", "Run test" },
+				["f"] = { "<cmd>GoTestFunc<cr>", "Run test function" },
+				["l"] = { "<cmd>AsyncRun make lint<cr>", "Run lint" },
+				["d"] = { "<cmd>AsyncRun make docker<cr>", "Run docker" },
+				["r"] = { "<cmd>AsyncRun make run-compose<cr>", "Run compose" },
+				["u"] = { "<cmd>AsyncRun make deps-u<cr>", "Run update deps" },
+			},
+			["j"] = {
+				name = "JS",
+				["t"] = { ":lua require'jester'.run()<cr>", "Run test function" },
+				["l"] = { ":lua require'jester'.run_last()<cr>", "Run last test" },
+				["f"] = { ":lua require'jester'.run_file()<cr>", "Run test file" },
+				["d"] = { ":lua require'jester'.debug()<cr>", "Run debug test function" },
+				["D"] = { ":lua require'jester'.debug_file()<cr>", "Run debug test file" },
+			},
 		},
 		["s"] = {
 			name = "Search",

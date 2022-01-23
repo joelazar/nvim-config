@@ -74,6 +74,8 @@ return require("packer").startup(function()
 		end,
 	})
 
+	use("David-Kunz/jester")
+
 	-- Project management
 	use({
 		"ahmedkhalf/project.nvim",
