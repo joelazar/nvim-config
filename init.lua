@@ -1,3 +1,5 @@
+pcall(require, "impatient")
+
 if vim.g.vscode then
 	return
 end
@@ -6,8 +8,6 @@ end
 if require("first_load")() then
 	return
 end
-
-require("impatient")
 
 vim.g.mapleader = " "
 

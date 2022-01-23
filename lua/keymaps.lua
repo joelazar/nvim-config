@@ -42,6 +42,10 @@ map("n", "<A-j>", ":m .+1<cr>==", opts)
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-k>", ":m .-2<cr>==", opts)
 
+-- Enhanced increment/decrement
+map("n", "<C-a>", "<Plug>(dial-increment)", { noremap = false, silent = true })
+map("n", "<C-x>", "<Plug>(dial-decrement)", { noremap = false, silent = true })
+
 -- Insert mode
 
 -- 'jk' for quitting insert mode

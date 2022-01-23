@@ -237,6 +237,7 @@ return require("packer").startup(function()
 		run = ":TSUpdate",
 	})
 
+	use("monaqa/dial.nvim")
 	-- Rainbow parentheses by using tree-sitter
 	use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
 
