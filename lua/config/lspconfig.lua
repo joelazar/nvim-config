@@ -177,7 +177,7 @@ local servers = {
 	},
 	html = true,
 	jsonls = { init_options = { provideFormatter = false } },
-	ltex = true,
+	-- ltex = true,
 	-- quick_lint_js = true,
 	pyright = true,
 	rust_analyzer = true,
