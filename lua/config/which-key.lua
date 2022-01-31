@@ -139,6 +139,7 @@ M.config = {
 				"Close all but current buffer",
 			},
 			["f"] = {
+				-- "<cmd>lua vim.lsp.buf.formatting_seq_sync({}, 2000)<cr>",
 				"<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
 				"Format buffer (LSP)",
 			},

@@ -57,7 +57,8 @@ local custom_init = function(client)
 	client.config.flags.allow_incremental_sync = true
 end
 
-local prettier = require("config/efm/prettier")
+-- local prettier = require("config/efm/prettier")
+local prettierd = require("config/efm/prettierd")
 local shellcheck = require("config/efm/shellcheck")
 local shfmt = require("config/efm/shfmt")
 
@@ -101,16 +102,16 @@ local servers = {
 					--     lintSource = "flake8"
 					-- }
 				},
-				typescript = { prettier },
-				javascript = { prettier },
-				typescriptreact = { prettier },
-				javascriptreact = { prettier },
-				yaml = { prettier },
-				json = { prettier },
-				html = { prettier },
-				scss = { prettier },
-				css = { prettier },
-				markdown = { prettier },
+				typescript = { prettierd },
+				javascript = { prettierd },
+				typescriptreact = { prettierd },
+				javascriptreact = { prettierd },
+				yaml = { prettierd },
+				json = { prettierd },
+				html = { prettierd },
+				scss = { prettierd },
+				css = { prettierd },
+				markdown = { prettierd },
 				sh = { shellcheck, shfmt },
 				-- sql = {
 				-- 	{
