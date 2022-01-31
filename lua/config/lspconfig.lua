@@ -179,6 +179,7 @@ local servers = {
 	jsonls = { init_options = { provideFormatter = false } },
 	-- ltex = true,
 	-- quick_lint_js = true,
+	prismals = true,
 	pyright = true,
 	rust_analyzer = true,
 	tailwindcss = true,
