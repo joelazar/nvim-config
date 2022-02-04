@@ -9,8 +9,6 @@ M.setup = function()
 		return
 	end
 
-	lspkind.init()
-
 	cmp.setup({
 		mapping = {
 			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -72,7 +70,8 @@ M.setup = function()
 
 		formatting = {
 			format = lspkind.cmp_format({
-				with_text = true,
+				mode = "symbol_text",
+				maxwidth = 50,
 				menu = {
 					buffer = "[buf]",
 					look = "[look]",
