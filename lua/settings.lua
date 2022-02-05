@@ -150,8 +150,8 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
 
--- go - format on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting_seq_sync() ]], false)
+-- format on save
+vim.api.nvim_exec([[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua :silent! lua vim.lsp.buf.formatting_seq_sync() ]], false)
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]], false)
 
 -- Open file at same location where it was opened last time
