@@ -140,7 +140,12 @@ return require("packer").startup(function()
 		-- config = function() require('github-theme').setup() end
 	})
 
-	use({ "EdenEast/nightfox.nvim" })
+	use({
+		"EdenEast/nightfox.nvim",
+		config = function()
+			require("config.nightfox").setup()
+		end,
+	})
 
 	-- Automagically resizing splits
 	-- use {

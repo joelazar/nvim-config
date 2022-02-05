@@ -33,9 +33,8 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
--- Set colorscheme (order is important here)
+-- Set true colors
 vim.o.termguicolors = true
-vim.cmd([[ colorscheme nightfox ]])
 
 -- Disable intro message
 vim.opt.shortmess:append("I")
