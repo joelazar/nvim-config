@@ -206,9 +206,17 @@ M.config = {
 				'<cmd>lua require"gitsigns".stage_hunk()<cr>',
 				"Stage Hunk",
 			},
+			["S"] = {
+				'<cmd>lua require"gitsigns".stage_buffer()<cr>',
+				"Stage Buffer",
+			},
 			["u"] = {
 				'<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
 				"Undo Stage Hunk",
+			},
+			["D"] = {
+				'<cmd>lua require"gitsigns".diffthis()<cr>',
+				"Diff this file",
 			},
 			["o"] = { "<cmd>Telescope git_status<cr>", "Open changed files" },
 			["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -223,6 +231,12 @@ M.config = {
 				["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
 				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
 				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files" },
+			},
+			["t"] = {
+				name = "Toggle",
+				["b"] = { '<cmd>lua require"gitsigns".toggle_current_line_blame()<cr>', "Blame line" },
+				["d"] = { '<cmd>lua require"gitsigns".toggle_deleted()<cr>', "Deleted" },
+				["h"] = { '<cmd>lua require"gitsigns".toggle_linehl()<cr>', "Line highlight" },
 			},
 			["y"] = {
 				'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
