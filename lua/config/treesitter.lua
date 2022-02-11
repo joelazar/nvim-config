@@ -3,6 +3,7 @@ local M = {}
 M.config = {
 	ensure_installed = "maintained",
 	ignore_install = {},
+	sync_install = true,
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		use_languagetree = true,
