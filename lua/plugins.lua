@@ -225,6 +225,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.autopairs").setup()
 		end,
+		after = { "nvim-cmp" },
 	})
 
 	-- Surround text object plugin
