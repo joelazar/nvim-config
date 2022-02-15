@@ -228,11 +228,52 @@ return require("packer").startup(function()
 		after = { "nvim-cmp" },
 	})
 
-	-- Surround text object plugin
+	-- Using mini.nvim for surround text object plugin, cursorword,
+	-- smarter jump and trailing space detection
 	use({
-		"blackCauldron7/surround.nvim",
+		"echasnovski/mini.nvim",
 		config = function()
-			require("surround").setup({ mappings_style = "surround" })
+			require("mini.surround").setup({
+				-- Number of lines within which surrounding is searched
+				n_lines = 20,
+
+				-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+				highlight_duration = 2000,
+
+				-- Pattern to match function name in 'function call' surrounding
+				-- By default it is a string of letters, '_' or '.'
+				funname_pattern = "[%w_%.]+",
+
+				-- Module mappings. Use `''` (empty string) to disable one.
+				mappings = {
+					add = "sa", -- Add surrounding
+					delete = "sd", -- Delete surrounding
+					find = "sf", -- Find surrounding (to the right)
+					find_left = "sF", -- Find surrounding (to the left)
+					highlight = "sh", -- Highlight surrounding
+					replace = "sr", -- Replace surrounding
+					update_n_lines = "sn", -- Update `n_lines`
+				},
+			})
+			require("mini.cursorword").setup({ delay = 100 })
+			require("mini.jump").setup({
+				-- Module mappings. Use `''` (empty string) to disable one.
+				mappings = {
+					forward = "f",
+					backward = "F",
+					forward_till = "t",
+					backward_till = "T",
+					repeat_jump = ";",
+				},
+				-- Delay (in ms) between jump and highlighting all possible jumps. Set to
+				-- a very big number (like 10^7) to virtually disable highlighting.
+				highlight_delay = 250,
+			})
+			require("mini.trailspace").setup({
+				-- Highlight only in normal buffers (ones with empty 'buftype'). This is
+				-- useful to not show trailing whitespace where it usually doesn't matter.
+				only_in_normal_buffers = true,
+			})
 		end,
 	})
 
