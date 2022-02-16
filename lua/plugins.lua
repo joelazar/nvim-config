@@ -255,7 +255,7 @@ return require("packer").startup(function()
 					update_n_lines = "sn", -- Update `n_lines`
 				},
 			})
-			require("mini.cursorword").setup({ delay = 100 })
+			-- require("mini.cursorword").setup({ delay = 100 })
 			require("mini.jump").setup({
 				-- Module mappings. Use `''` (empty string) to disable one.
 				mappings = {
