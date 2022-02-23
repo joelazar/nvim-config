@@ -114,6 +114,13 @@ M.config = {
 				"Copy link to clipboard",
 			},
 		},
+		["l"] = {
+			name = "LSP",
+			["A"] = {
+				"<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+				"Code Action Range",
+			},
+		},
 	},
 	mappings = {
 		["'"] = {
@@ -255,10 +262,6 @@ M.config = {
 		["l"] = {
 			name = "LSP",
 			["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			["A"] = {
-				"<cmd>lua vim.lsp.buf.range_code_action()<cr>",
-				"Code Action Range",
-			},
 			["c"] = {
 				name = "Codelens",
 				["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
