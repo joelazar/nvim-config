@@ -322,7 +322,12 @@ return require("packer").startup(function()
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Rainbow parentheses by using tree-sitter
-	use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
+	use({
+		"p00f/nvim-ts-rainbow",
+		after = "nvim-treesitter",
+		-- fix commit until maintainer does not start to support latest stable version
+		commit = "c6c26c4def0e9cd82f371ba677d6fc9baa0038af",
+	})
 
 	-- Autocreate/update html tags
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
