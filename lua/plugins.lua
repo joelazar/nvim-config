@@ -25,6 +25,13 @@ return require("packer").startup(function()
 		end,
 	})
 
+	use({
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+	})
+
+	use("kosayoda/nvim-lightbulb")
+
 	-- Misc
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")

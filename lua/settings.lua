@@ -1,4 +1,4 @@
--- Incremental live completion (note: this is now a default on master)
+-- Incremental live completion
 vim.o.inccommand = "nosplit"
 
 -- Set completeopt to have a better completion experience
@@ -12,7 +12,7 @@ vim.o.incsearch = true
 -- Make line numbers default
 vim.wo.number = true
 
--- Do not save when switching buffers (note: this is now a default on master)
+-- Do not save when switching buffers
 vim.o.hidden = true
 
 -- Enable break indent
@@ -24,6 +24,9 @@ vim.o.swapfile = true
 -- Save undo history
 vim.o.undofile = true
 vim.o.undolevels = 1000
+
+-- Faster scrolling
+vim.o.lazyredraw = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -59,6 +62,8 @@ vim.api.nvim_exec(
 ]],
 	false
 )
+
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 
 -- Don't auto commenting new lines
 vim.cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
@@ -114,8 +119,8 @@ vim.o.showmatch = true
 -- Hide show current mode on status line
 vim.o.showmode = false
 
--- Show relative line number in front of each line
-vim.o.relativenumber = true
+-- Show absolute line number in front of each line
+vim.o.relativenumber = false
 
 -- Disable python2 provider
 vim.g.loaded_python_provider = 0
@@ -151,7 +156,10 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.asyncrun_open = 6
 
 -- format on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua :silent! lua vim.lsp.buf.formatting_seq_sync() ]], false)
+vim.api.nvim_exec(
+	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
+	false
+)
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]], false)
 
 -- Open file at same location where it was opened last time

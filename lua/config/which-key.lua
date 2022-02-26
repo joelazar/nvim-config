@@ -261,7 +261,7 @@ M.config = {
 		},
 		["l"] = {
 			name = "LSP",
-			["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+			["a"] = { "<cmd>CodeActionMenu<cr>", "Code Action" },
 			["c"] = {
 				name = "Codelens",
 				["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
