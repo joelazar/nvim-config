@@ -25,12 +25,17 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Better code action menu
 	use({
 		"weilbith/nvim-code-action-menu",
 		cmd = "CodeActionMenu",
 	})
 
+	-- Nicer code action signs
 	use("kosayoda/nvim-lightbulb")
+
+	-- Swap parameters easier
+	use("mizlan/iswap.nvim")
 
 	-- Misc
 	use("nvim-lua/plenary.nvim")
@@ -199,8 +204,10 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-calc")
+	use("hrsh7th/cmp-emoji")
 	use("andersevenrud/cmp-tmux")
 	use("octaltree/cmp-look")
+	use("mtoohey31/cmp-fish")
 
 	-- Completion & Snippets
 	use({
@@ -217,6 +224,8 @@ return require("packer").startup(function()
 			"cmp-tmux",
 			"cmp-look",
 			"cmp-calc",
+			"cmp-fish",
+			"cmp-emoji",
 		},
 		config = function()
 			require("config.cmp").setup()
@@ -263,19 +272,6 @@ return require("packer").startup(function()
 				},
 			})
 			-- require("mini.cursorword").setup({ delay = 100 })
-			require("mini.jump").setup({
-				-- Module mappings. Use `''` (empty string) to disable one.
-				mappings = {
-					forward = "f",
-					backward = "F",
-					forward_till = "t",
-					backward_till = "T",
-					repeat_jump = ";",
-				},
-				-- Delay (in ms) between jump and highlighting all possible jumps. Set to
-				-- a very big number (like 10^7) to virtually disable highlighting.
-				highlight_delay = 250,
-			})
 			require("mini.trailspace").setup({
 				-- Highlight only in normal buffers (ones with empty 'buftype'). This is
 				-- useful to not show trailing whitespace where it usually doesn't matter.

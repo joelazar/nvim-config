@@ -60,6 +60,8 @@ M.setup = function()
 				option = { convert_case = true, loud = true },
 			},
 			{ name = "calc" },
+			{ name = "fish" },
+			{ name = "emoji" },
 		},
 
 		snippet = {
@@ -74,13 +76,15 @@ M.setup = function()
 				maxwidth = 50,
 				menu = {
 					buffer = "[buf]",
+					calc = "[calc]",
+					emoji = "[emoji]",
+					fish = "[fish]",
 					look = "[look]",
 					luasnip = "[snip]",
 					nvim_lsp = "[LSP]",
 					nvim_lua = "[lua]",
 					path = "[path]",
 					tmux = "[tmux]",
-					calc = "[calc]",
 				},
 			}),
 		},

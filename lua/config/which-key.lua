@@ -392,6 +392,7 @@ M.config = {
 			},
 			["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
 			["h"] = { ":nohlsearch<cr>", "Remove highlighting of search results" },
+			["s"] = { ":ISwap<cr>", "Swap parameters interactively" },
 		},
 	},
 }
