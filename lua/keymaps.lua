@@ -122,3 +122,10 @@ map(
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
 	{}
 )
+
+-- DAP
+
+map("n", "<F5>", "<cmd>require'dap'.continue<cr>", opts)
+map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", opts)
+map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", opts)
+map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)

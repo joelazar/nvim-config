@@ -6,6 +6,10 @@ M.setup = function()
 		return
 	end
 
+	vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+	vim.fn.sign_define("DapBreakpointRejected", { text = "🟦", texthl = "", linehl = "", numhl = "" })
+	vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
+
 	dap.adapters.node2 = {
 		type = "executable",
 		command = "node",
