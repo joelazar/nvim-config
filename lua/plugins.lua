@@ -67,54 +67,15 @@ return require("packer").startup(function()
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
-			require("Comment").setup({
-				pre_hook = function(ctx)
-					local U = require("Comment.utils")
-
-					local location = nil
-					if ctx.ctype == U.ctype.block then
-						location = require("ts_context_commentstring.utils").get_cursor_location()
-					elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-						location = require("ts_context_commentstring.utils").get_visual_start_location()
-					end
-
-					return require("ts_context_commentstring.internal").calculate_commentstring({
-						key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
-						location = location,
-					})
-				end,
-			})
+			require("config.comment").setup()
 		end,
-	})
-
-	-- Run jest tests
-	use({
-		"David-Kunz/jester",
-		ft = {
-			"javascript",
-			"javascriptreact",
-			"javascript.jsx",
-			"typescript",
-			"typescriptreact",
-			"typescript.tsx",
-		},
 	})
 
 	-- Project management
 	use({
 		"ahmedkhalf/project.nvim",
 		config = function()
-			require("project_nvim").setup({
-				manual_mode = false,
-				detection_methods = { "pattern" },
-				patterns = { ".git" },
-				ignore_lsp = {},
-				exclude_dirs = {},
-				show_hidden = false,
-				silent_chdir = true,
-				datapath = vim.fn.stdpath("data"),
-			})
-			require("telescope").load_extension("projects")
+			require("config.project").setup()
 		end,
 		requires = { { "nvim-telescope/telescope.nvim" } },
 	})
@@ -148,22 +109,11 @@ return require("packer").startup(function()
 
 	-- Colorschema
 	use({
-		"projekt0n/github-nvim-theme",
-		-- config = function() require('github-theme').setup() end
-	})
-
-	use({
 		"EdenEast/nightfox.nvim",
 		config = function()
 			require("config.nightfox").setup()
 		end,
 	})
-
-	-- Automagically resizing splits
-	-- use {
-	--     "beauwilliams/focus.nvim",
-	--     config = function() require("focus").setup() end
-	-- }
 
 	-- HTTP client in Neovim
 	use({
@@ -197,6 +147,7 @@ return require("packer").startup(function()
 	-- VSCode-like pictograms for neovim lsp completion items
 	use("onsails/lspkind-nvim")
 
+	-- Completion & Snippets
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp")
@@ -208,8 +159,6 @@ return require("packer").startup(function()
 	use("andersevenrud/cmp-tmux")
 	use("octaltree/cmp-look")
 	use("mtoohey31/cmp-fish")
-
-	-- Completion & Snippets
 	use({
 		"hrsh7th/nvim-cmp",
 		after = {
@@ -244,39 +193,11 @@ return require("packer").startup(function()
 		after = { "nvim-cmp" },
 	})
 
-	-- Using mini.nvim for surround text object plugin, cursorword,
-	-- smarter jump and trailing space detection
+	-- Using mini.nvim for surround text object plugin and trailing space detection
 	use({
 		"echasnovski/mini.nvim",
 		config = function()
-			require("mini.surround").setup({
-				-- Number of lines within which surrounding is searched
-				n_lines = 20,
-
-				-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-				highlight_duration = 2000,
-
-				-- Pattern to match function name in 'function call' surrounding
-				-- By default it is a string of letters, '_' or '.'
-				funname_pattern = "[%w_%.]+",
-
-				-- Module mappings. Use `''` (empty string) to disable one.
-				mappings = {
-					add = "sa", -- Add surrounding
-					delete = "sd", -- Delete surrounding
-					find = "sf", -- Find surrounding (to the right)
-					find_left = "sF", -- Find surrounding (to the left)
-					highlight = "sh", -- Highlight surrounding
-					replace = "sr", -- Replace surrounding
-					update_n_lines = "sn", -- Update `n_lines`
-				},
-			})
-			-- require("mini.cursorword").setup({ delay = 100 })
-			require("mini.trailspace").setup({
-				-- Highlight only in normal buffers (ones with empty 'buftype'). This is
-				-- useful to not show trailing whitespace where it usually doesn't matter.
-				only_in_normal_buffers = true,
-			})
+			require("config.mini").setup()
 		end,
 	})
 
@@ -433,12 +354,16 @@ return require("packer").startup(function()
 		ft = {
 			"go",
 			"javascript",
-			"javascriptreact",
 			"javascript.jsx",
+			"javascriptreact",
+			"python",
 			"typescript",
-			"typescriptreact",
 			"typescript.tsx",
+			"typescriptreact",
 		},
+		config = function()
+			require("config.dap").setup()
+		end,
 	})
 
 	use({
@@ -446,12 +371,16 @@ return require("packer").startup(function()
 		ft = {
 			"go",
 			"javascript",
-			"javascriptreact",
 			"javascript.jsx",
+			"javascriptreact",
+			"python",
 			"typescript",
-			"typescriptreact",
 			"typescript.tsx",
+			"typescriptreact",
 		},
+		config = function()
+			require("dapui").setup()
+		end,
 		after = "nvim-dap",
 	})
 
@@ -460,12 +389,27 @@ return require("packer").startup(function()
 		ft = {
 			"go",
 			"javascript",
-			"javascriptreact",
 			"javascript.jsx",
+			"javascriptreact",
+			"python",
 			"typescript",
-			"typescriptreact",
 			"typescript.tsx",
+			"typescriptreact",
 		},
+		config = function()
+			require("nvim-dap-virtual-text").setup()
+		end,
 		after = "nvim-dap",
+	})
+
+	use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+
+	use({
+		"michaelb/sniprun",
+		-- NOTE: installed manually for now with --> cargo build --release
+		-- run = "bash ./install.sh",
+		config = function()
+			require("config.sniprun").setup()
+		end,
 	})
 end)

@@ -99,6 +99,7 @@ M.config = {
 			'<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
 			"Comment Operator",
 		},
+		["e"] = { "<ESC><CMD>'<,'>SnipRun<cr>", "Execute (sniprun)" },
 		["g"] = {
 			name = "Git",
 			["s"] = {
@@ -131,6 +132,7 @@ M.config = {
 			"<cmd>execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
 			"Open terminal",
 		},
+		["e"] = { "<cmd>SnipRun<cr>", "Execute (sniprun)" },
 		["w"] = { "<cmd>w!<cr>", "Save" },
 		["W"] = { "<cmd>:lua require'utils'.sudo_write()<cr>", "Sudo Save" },
 		["q"] = { "<cmd>q!<cr>", "Quit" },
@@ -175,6 +177,44 @@ M.config = {
 					"Sort buffers automatically by language",
 				},
 			},
+		},
+		["d"] = {
+			name = "Debug",
+			s = {
+				name = "Step",
+				c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
+				v = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
+				i = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
+				o = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
+			},
+			h = {
+				name = "Hover",
+				h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
+				v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual Hover" },
+			},
+			u = {
+				name = "UI",
+				h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
+				f = { "local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", "Float" },
+			},
+			r = {
+				name = "Repl",
+				o = { "<cmd>lua require('dap').repl.open()<CR>", "Open" },
+				l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run Last" },
+			},
+			b = {
+				name = "Breakpoints",
+				c = {
+					"<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+					"Breakpoint Condition",
+				},
+				m = {
+					"<cmd>lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>",
+					"Log Point Message",
+				},
+				t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Create" },
+			},
+			i = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
 		},
 		["p"] = {
 			name = "Packer",
@@ -317,14 +357,6 @@ M.config = {
 				["r"] = { "<cmd>AsyncRun make run-compose<cr>", "Run compose" },
 				["u"] = { "<cmd>AsyncRun make deps-u<cr>", "Run update deps" },
 			},
-			["j"] = {
-				name = "JS",
-				["t"] = { ":lua require'jester'.run()<cr>", "Run test function" },
-				["l"] = { ":lua require'jester'.run_last()<cr>", "Run last test" },
-				["f"] = { ":lua require'jester'.run_file()<cr>", "Run test file" },
-				["d"] = { ":lua require'jester'.debug()<cr>", "Run debug test function" },
-				["D"] = { ":lua require'jester'.debug_file()<cr>", "Run debug test file" },
-			},
 		},
 		["s"] = {
 			name = "Search",
@@ -370,6 +402,13 @@ M.config = {
 				"Preview request under the cursor",
 			},
 			["l"] = { "<Plug>RestNvimLast", "Run last request" },
+		},
+		["t"] = {
+			name = "Test",
+			["r"] = { "<cmd>Ultest<CR>", "Run tests" },
+			["l"] = { "<cmd>UltestLast<CR>", "Run last test" },
+			["n"] = { "<cmd>UltestNearest<CR>", "Run nearest test" },
+			["s"] = { "<cmd>UltestSummary<CR>", "Toggle summary" },
 		},
 		["T"] = {
 			name = "Treesitter",
