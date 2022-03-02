@@ -164,8 +164,8 @@ M.config = {
 				"Close all buffers to the right",
 			},
 			["p"] = { "<cmd>BufferPrevious<cr>", "Previous buffer" },
+			["P"] = { "<cmd>BufferPin<cr>", "Pin/Unpin buffer" },
 			["n"] = { "<cmd>BufferNext<cr>", "Next buffer" },
-
 			["s"] = {
 				name = "Sort buffers",
 				["d"] = {
@@ -177,6 +177,7 @@ M.config = {
 					"Sort buffers automatically by language",
 				},
 			},
+			["W"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffer(s)" },
 		},
 		["d"] = {
 			name = "Debug",
@@ -322,9 +323,9 @@ M.config = {
 				"Show line diagnostic",
 			},
 			["i"] = { "<cmd>LspInfo<cr>", "Info" },
-			["l"] = {
-				"<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
-				"Set location list",
+			["q"] = {
+				"<cmd>lua vim.diagnostic.setqflist()<cr>",
+				"Set quickfix list",
 			},
 			["n"] = {
 				"<cmd>lua vim.diagnostic.goto_next()<cr>",
@@ -334,7 +335,6 @@ M.config = {
 				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 				"Prev Diagnostic",
 			},
-			["q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 			["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 			["s"] = {
 				"<cmd>Telescope lsp_document_symbols<cr>",

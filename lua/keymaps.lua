@@ -129,3 +129,13 @@ map("n", "<F5>", "<cmd>require'dap'.continue<cr>", opts)
 map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", opts)
 map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", opts)
 map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)
+
+-- Make the dot command work as expected in visual mode
+-- https://www.reddit.com/r/vim/comments/3y2mgt/
+map("v", ".", ":norm .<cr>", opts)
+
+-- quickfix mappings
+map("n", "[q", ":cprevious<CR>", opts)
+map("n", "]q", ":cnext<CR>", opts)
+map("n", "]Q", ":clast<CR>", opts)
+map("n", "[Q", ":cfirst<CR>", opts)

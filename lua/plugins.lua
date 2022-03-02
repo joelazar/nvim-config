@@ -21,7 +21,7 @@ return require("packer").startup(function()
 	use({
 		"folke/lsp-trouble.nvim",
 		config = function()
-			require("trouble").setup({ auto_preview = false, auto_fold = true })
+			require("trouble").setup({ auto_preview = false, auto_fold = true, auto_close = true })
 		end,
 	})
 
