@@ -1,13 +1,14 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+local present3, lspformat = pcall(require, "lsp-format")
 
-if not (present1 and present2) then
+if not (present1 and present2 and present3) then
 	return
 end
 
 local extend_attach_function = { ["tsserver"] = true }
 
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -33,6 +34,8 @@ local function on_attach(_, bufnr)
 
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+	lspformat.on_attach(client)
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -57,7 +60,6 @@ local custom_init = function(client)
 	client.config.flags.allow_incremental_sync = true
 end
 
--- local prettier = require("config/efm/prettier")
 local prettierd = require("config/efm/prettierd")
 local shellcheck = require("config/efm/shellcheck")
 local shfmt = require("config/efm/shfmt")
@@ -94,13 +96,6 @@ local servers = {
 						formatCommand = "isort --stdout --profile black -",
 						formatStdin = true,
 					},
-					-- {
-					--     lintCommand = "flake8 --max-line-length 160 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
-					--     lintStdin = true,
-					--     lintIgnoreExitCode = true,
-					--     lintFormats = {"%f:%l:%c: %t%n%n%n %m"},
-					--     lintSource = "flake8"
-					-- }
 				},
 				typescript = { prettierd },
 				javascript = { prettierd },
@@ -113,14 +108,21 @@ local servers = {
 				css = { prettierd },
 				markdown = { prettierd },
 				sh = { shellcheck, shfmt },
-				-- sql = {
-				-- 	{
-				-- 		lintCommand = "sqlfluff lint",
-				-- 		lintStdin = true,
-				-- 		lintIgnoreExitCode = true,
-				-- 		lintSource = "sqlfluff",
-				-- 	},
-				-- },
+				sql = {
+					{ formatCommand = "pg_format -u 1 -i", formatStdin = true },
+					-- {
+					-- 	lintCommand = "sqlfluff lint",
+					-- 	lintStdin = true,
+					-- 	lintIgnoreExitCode = true,
+					-- 	lintSource = "sqlfluff",
+					-- },
+				},
+				fish = {
+					{ formatCommand = "fish_indent" },
+				},
+				go = {
+					{ formatCommand = "goimports" },
+				},
 				-- make = {
 				-- 	{
 				-- 		lintCommand = 'checkmake --format="{{.LineNumber}}:{{.Rule}}:{{.Violation}}"',
@@ -134,21 +136,23 @@ local servers = {
 		},
 		filetypes = {
 			"css",
+			"fish",
+			"go",
 			"html",
 			"javascript",
 			"javascriptreact",
 			"json",
 			"lua",
-			-- "make",
 			"markdown",
 			"python",
 			"scss",
 			"sh",
-			-- "sql",
+			"sql",
 			"ts",
 			"typescript",
 			"typescriptreact",
 			"yaml",
+			-- "make",
 		},
 	},
 	eslint = true,
@@ -157,7 +161,13 @@ local servers = {
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
 			gopls = {
-				analyses = { unusedparams = true, unreachable = true },
+				analyses = {
+					nilness = true,
+					shadow = true,
+					unusewrites = true,
+					unusedparams = true,
+					unreachable = true,
+				},
 				codelenses = {
 					generate = true,
 					gc_details = true,

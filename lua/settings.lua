@@ -155,17 +155,14 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
 
--- format on save
-vim.api.nvim_exec(
-	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
-	false
-)
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('config.go').goimport() ]], false)
-
 -- Open file at same location where it was opened last time
 vim.cmd(
 	[[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 )
+
+-- Format files with lsp before quit
+vim.cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
+vim.cmd([[cabbrev wqa execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wqa]])
 
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")

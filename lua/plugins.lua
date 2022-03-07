@@ -14,7 +14,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.lspconfig")
 		end,
-		after = { "nvim-cmp", "nvim-lsp-ts-utils" },
+		after = { "nvim-cmp", "nvim-lsp-ts-utils", "lsp-format.nvim" },
 	})
 
 	-- Nicer diagnostics
@@ -45,9 +45,9 @@ return require("packer").startup(function()
 
 	-- Formatter
 	use({
-		"lukas-reineke/format.nvim",
+		"lukas-reineke/lsp-format.nvim",
 		config = function()
-			require("config.format").setup()
+			require("lsp-format").setup()
 		end,
 	})
 
