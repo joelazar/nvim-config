@@ -43,8 +43,8 @@ map("n", "<A-j>", ":m .+1<cr>==", opts)
 map("n", "<A-k>", ":m .-2<cr>==", opts)
 
 -- Enhanced increment/decrement
-map("n", "<C-a>", "<Plug>(dial-increment)", { noremap = false, silent = true })
-map("n", "<C-x>", "<Plug>(dial-decrement)", { noremap = false, silent = true })
+map("n", "<C-a>", require("dial.map").inc_normal(), opts)
+map("n", "<C-x>", require("dial.map").dec_normal(), opts)
 
 -- Insert mode
 
@@ -80,42 +80,36 @@ map("x", ">", ">gv|", opts)
 map("x", "\\y", '"+y', opts)
 
 -- Hop keybindings
-
 map(
 	"n",
 	"f",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
 	{}
 )
-
 map(
 	"n",
 	"F",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
 	{}
 )
-
 map(
 	"o",
 	"f",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
 	{}
 )
-
 map(
 	"o",
 	"F",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
 	{}
 )
-
 map(
 	"",
 	"t",
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
 	{}
 )
-
 map(
 	"",
 	"T",
@@ -124,7 +118,6 @@ map(
 )
 
 -- DAP
-
 map("n", "<F5>", "<cmd>require'dap'.continue<cr>", opts)
 map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", opts)
 map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", opts)

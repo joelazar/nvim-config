@@ -240,7 +240,12 @@ return require("packer").startup(function()
 	})
 
 	-- Improved incremental/decremental function
-	use("monaqa/dial.nvim")
+	use({
+		"monaqa/dial.nvim",
+		config = function()
+			require("config.dial").setup()
+		end,
+	})
 
 	-- Setting the commentstring based on the cursor location in a file
 	use("JoosepAlviste/nvim-ts-context-commentstring")

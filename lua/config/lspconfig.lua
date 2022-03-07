@@ -34,8 +34,6 @@ local function on_attach(client, bufnr)
 
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-
-	lspformat.on_attach(client)
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -304,6 +302,11 @@ local setup_server = function(server, config)
 			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
 			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
 			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+			on_attach(client)
+		end
+	else
+		custom_attach = function(client)
+			lspformat.on_attach(client)
 			on_attach(client)
 		end
 	end
