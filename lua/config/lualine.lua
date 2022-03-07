@@ -1,5 +1,10 @@
 local M = {}
 
+local status_ok, gps = pcall(require, "nvim-gps")
+if not status_ok then
+	return
+end
+
 M.config = {
 	options = {
 		theme = "nightfox",
@@ -14,6 +19,7 @@ M.config = {
 			{ "filename", path = 1 },
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 			"diff",
+			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = { "filetype", "encoding" },
 		lualine_y = { "progress" },

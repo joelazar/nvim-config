@@ -105,6 +105,16 @@ return require("packer").startup(function()
 			require("config.lualine").setup()
 		end,
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		after = { "nvim-gps" },
+	})
+
+	-- Show scope in status bar
+	use({
+		"SmiteshP/nvim-gps",
+		config = function()
+			require("nvim-gps").setup()
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
 	})
 
 	-- Colorschema
