@@ -1,8 +1,8 @@
-pcall(require, "impatient")
-
 if vim.g.vscode then
 	return
 end
+
+pcall(require, "impatient")
 
 -- installs packer if needed
 if require("first_load")() then
