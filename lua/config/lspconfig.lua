@@ -1,8 +1,10 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-local present3, lspformat = pcall(require, "lsp-format")
+-- local present3, lspformat = pcall(require, "lsp-format")
 
-if not (present1 and present2 and present3) then
+if
+	not (present1 and present2 --[[ and present3 ]])
+then
 	return
 end
 
@@ -306,7 +308,7 @@ local setup_server = function(server, config)
 		end
 	else
 		custom_attach = function(client)
-			lspformat.on_attach(client)
+			-- lspformat.on_attach(client)
 			on_attach(client)
 		end
 	end
