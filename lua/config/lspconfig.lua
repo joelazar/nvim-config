@@ -3,7 +3,9 @@ local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 -- local present3, lspformat = pcall(require, "lsp-format")
 
 if
-	not (present1 and present2 --[[ and present3 ]])
+	not (
+		present1 and present2 --[[ and present3 ]]
+	)
 then
 	return
 end
@@ -36,6 +38,10 @@ local function on_attach(client, bufnr)
 
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+	if client.server_capabilities.colorProvider then
+		require("config.tailwind_colors.lsp-documentcolors").buf_attach(bufnr, { single_column = true })
+	end
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -53,6 +59,7 @@ custom_capabilities.textDocument.completion.completionItem.tagSupport = {
 custom_capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
+
 custom_capabilities = cmp_lsp.update_capabilities(custom_capabilities)
 
 local custom_init = function(client)
