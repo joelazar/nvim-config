@@ -195,7 +195,7 @@ local servers = {
 	},
 	html = true,
 	jsonls = { init_options = { provideFormatter = false } },
-	ltex = true,
+	ltex = { autostart = false },
 	prismals = true,
 	pyright = true,
 	rust_analyzer = true,
@@ -239,6 +239,7 @@ local servers = {
 	},
 	yamlls = true,
 }
+
 local setup_server = function(server, config)
 	if not config then
 		return
