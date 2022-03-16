@@ -123,6 +123,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.nightfox").setup()
 		end,
+		run = ':lua require("nightfox").compile()',
 	})
 
 	-- HTTP client in Neovim
@@ -227,7 +228,6 @@ return require("packer").startup(function()
 		config = function()
 			require("config.go").setup()
 		end,
-		run = ':lua require("go.install").install_all()',
 		ft = { "go", "gomod" },
 	})
 

@@ -1,17 +1,25 @@
 local M = {}
 
 M.config = {
-	fox = "nightfox",
-	styles = {
-		comments = "italic",
-		keywords = "bold",
-		functions = "bold",
-		strings = "italic",
-		variables = "NONE",
+	options = {
+		transparent = false, -- Disable setting background
+		terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*)
+		dim_inactive = true, -- Non focused panes set to alternative background
+		styles = { -- Style to be applied to different syntax groups
+			comments = "italic",
+			functions = "bold",
+			keywords = "bold",
+			numbers = "NONE",
+			strings = "italic",
+			types = "NONE",
+			variables = "NONE",
+		},
+		inverse = { -- Inverse highlight for different types
+			match_paren = false,
+			visual = false,
+			search = false,
+		},
 	},
-	-- inverse = {
-	-- 	match_paren = true, -- inverse the highlighting of match_parens
-	-- },
 }
 
 M.setup = function()
@@ -20,7 +28,7 @@ M.setup = function()
 		return
 	end
 	nightfox.setup(M.config)
-	nightfox.load()
+	vim.cmd("colorscheme nightfox")
 end
 
 return M
