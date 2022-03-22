@@ -28,8 +28,9 @@ M.config = {
 	},
 	buftype_exclude = { "terminal", "nofile" },
 	show_trailing_blankline_indent = true,
-	show_current_context = true,
-	indent_blankline_show_end_of_line = true,
+	-- show_current_context = true,
+	-- show_current_context_start = true,
+	show_end_of_line = true,
 	context_patterns = {
 		"class",
 		"function",
