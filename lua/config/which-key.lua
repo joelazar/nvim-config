@@ -122,6 +122,10 @@ M.config = {
 				"Code Action Range",
 			},
 		},
+		["s"] = {
+			name = "Search",
+			["v"] = { '<cmd>lua require"config.telescope".grep_string_visual()<CR>', "Visual selection" },
+		},
 	},
 	mappings = {
 		["'"] = {

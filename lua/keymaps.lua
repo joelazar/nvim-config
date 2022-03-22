@@ -46,6 +46,13 @@ map("n", "<A-k>", ":m .-2<cr>==", opts)
 map("n", "<C-a>", require("dial.map").inc_normal(), opts)
 map("n", "<C-x>", require("dial.map").dec_normal(), opts)
 
+-- Stay centered jumping between search results
+map("n", "n", "nzzzv", opts)
+map("n", "N", "nzzzv", opts)
+
+-- Fix cursor position after joining lines
+map("n", "J", "mzJ`z", opts)
+
 -- Insert mode
 
 -- 'jk' for quitting insert mode
