@@ -281,6 +281,7 @@ M.config = {
 				name = "Diffview",
 				["o"] = { "<cmd>DiffviewOpen<cr>", "Open" },
 				["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
+				["h"] = { "<cmd>DiffviewHistory<cr>", "History" },
 				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
 				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files" },
 			},
