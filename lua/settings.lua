@@ -36,6 +36,9 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
+-- Decrease redraw time
+vim.o.redrawtime = 100
+
 -- Set true colors
 vim.o.termguicolors = true
 
