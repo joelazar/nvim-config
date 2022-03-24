@@ -7,7 +7,6 @@ end
 
 M.config = {
 	options = {
-		theme = "nightfox",
 		section_separators = { "", "" },
 		component_separators = "|",
 		icons_enabled = true,

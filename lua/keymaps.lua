@@ -53,6 +53,9 @@ map("n", "N", "nzzzv", opts)
 -- Fix cursor position after joining lines
 map("n", "J", "mzJ`z", opts)
 
+-- clear any highlights when <esc> is pressed
+map("n", "<Esc>", ":noh<CR>", opts)
+
 -- Insert mode
 
 -- 'jk' for quitting insert mode

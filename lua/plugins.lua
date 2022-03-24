@@ -105,7 +105,7 @@ return require("packer").startup(function()
 			require("config.lualine").setup()
 		end,
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		after = { "nvim-gps" },
+		after = { "nvim-gps", "nightfox.nvim" },
 	})
 
 	-- Show scope in status bar
@@ -117,7 +117,7 @@ return require("packer").startup(function()
 		requires = "nvim-treesitter/nvim-treesitter",
 	})
 
-	-- Colorschema
+	-- Colorscheme
 	use({
 		"EdenEast/nightfox.nvim",
 		config = function()
@@ -361,6 +361,7 @@ return require("packer").startup(function()
 			require("config.barbar").setup()
 		end,
 		requires = { "kyazdani42/nvim-web-devicons" },
+		after = { "nightfox.nvim" },
 	})
 
 	-- Debugging
