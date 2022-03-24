@@ -48,7 +48,7 @@ map("n", "<C-x>", require("dial.map").dec_normal(), opts)
 
 -- Stay centered jumping between search results
 map("n", "n", "nzzzv", opts)
-map("n", "N", "nzzzv", opts)
+map("n", "N", "Nzzzv", opts)
 
 -- Fix cursor position after joining lines
 map("n", "J", "mzJ`z", opts)
