@@ -164,15 +164,15 @@ vim.cmd(
 )
 
 -- Format files with lsp before quit
--- vim.cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
--- vim.cmd([[cabbrev wqa execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wqa]])
+vim.cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
+vim.cmd([[cabbrev wqa execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wqa]])
 
 -- Format on save
 -- TODO - until lsp-format gets stable
-vim.api.nvim_exec(
-	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua,*.yml,*.json :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
-	false
-)
+-- vim.api.nvim_exec(
+-- 	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua,*.yml,*.json :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
+-- 	false
+-- )
 
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")

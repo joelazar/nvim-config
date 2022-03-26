@@ -6,9 +6,11 @@ local opts = { noremap = true, silent = true }
 -- Move to previous/next
 map("n", "<A-Left>", ":BufferPrevious<cr>", opts)
 map("n", "<A-Right>", ":BufferNext<cr>", opts)
+
 -- Re-order to previous/next
 map("n", "<A-,>", ":BufferMovePrevious<cr>", opts)
 map("n", "<A-.>", " :BufferMoveNext<cr>", opts)
+
 -- Goto buffer in position...
 map("n", "<A-1>", ":BufferGoto 1<cr>", opts)
 map("n", "<A-2>", ":BufferGoto 2<cr>", opts)
@@ -20,10 +22,9 @@ map("n", "<A-7>", ":BufferGoto 7<cr>", opts)
 map("n", "<A-8>", ":BufferGoto 8<cr>", opts)
 map("n", "<A-9>", ":BufferGoto 9<cr>", opts)
 map("n", "<A-0>", ":BufferLast<cr>", opts)
+
 -- Close buffer
 map("n", "<A-c>", ":BufferClose<cr>", opts)
--- Start new line for RETURN
-map("n", "<cr>", "o<Esc>", opts)
 
 -- Close windows
 map("n", "Q", ":close<cr>", opts)
@@ -39,6 +40,7 @@ map("n", "<C-Right>", ":vertical resize -2<cr>", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", ":m .+1<cr>==", opts)
+
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-k>", ":m .-2<cr>==", opts)
 
@@ -60,8 +62,10 @@ map("n", "<Esc>", ":noh<CR>", opts)
 
 -- 'jk' for quitting insert mode
 map("i", "jk", "<ESC>", opts)
+
 -- 'kj' for quitting insert mode
 map("i", "kj", "<ESC>", opts)
+
 -- 'jj' for quitting insert mode
 map("i", "jj", "<ESC>", opts)
 
@@ -69,6 +73,7 @@ map("i", "jj", "<ESC>", opts)
 
 -- Search for visually selected text
 map("v", "//", 'y/<C-R>"<cr>', opts)
+
 -- Have the same buffer on clipboard for multiple pastes
 map("v", "p", "pgvy", opts)
 
@@ -78,16 +83,15 @@ map("v", "p", "pgvy", opts)
 map("x", "<A-j>", ":m '>+1<cr>gv-gv", opts)
 map("x", "<A-k>", ":m '<-2<cr>gv-gv", opts)
 
--- Select blocks after indenting
-map("x", "<", "<gv", opts)
-map("x", ">", ">gv|", opts)
-
 -- Use tab for indenting in visual mode
--- map('x', '<Tab>', ">gv|", opts)
--- map('x', '<S-Tab>', "<gv", opts)
+map("x", "<Tab>", ">gv|", opts)
+map("x", "<S-Tab>", "<gv", opts)
 
 -- Copy to system clipboard
 map("x", "\\y", '"+y', opts)
+
+-- Cut to system clipboard
+map("x", "\\d", '"+d', opts)
 
 -- Hop keybindings
 map(
