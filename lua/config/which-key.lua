@@ -96,10 +96,10 @@ M.config = {
 	secvmappings = {},
 	vmappings = {
 		[";"] = {
-			'<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
+			'<ESC><cmd>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
 			"Comment Operator",
 		},
-		["e"] = { "<ESC><CMD>'<,'>SnipRun<cr>", "Execute (sniprun)" },
+		["e"] = { "<ESC><cmd>'<,'>SnipRun<cr>", "Execute (sniprun)" },
 		["g"] = {
 			name = "Git",
 			["s"] = {
@@ -140,7 +140,7 @@ M.config = {
 		["w"] = { "<cmd>w!<cr>", "Save" },
 		["W"] = { "<cmd>:lua require'utils'.sudo_write()<cr>", "Sudo Save" },
 		["q"] = { "<cmd>q!<cr>", "Quit" },
-		[";"] = { '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment Operator" },
+		[";"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment Operator" },
 		["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
 		["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 		["b"] = {

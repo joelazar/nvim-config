@@ -6,9 +6,7 @@ if not (present1 and present2 and present3) then
 	return
 end
 
-local extend_attach_function = { ["tsserver"] = true }
-
-local function on_attach(client, bufnr)
+local function custom_on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -22,21 +20,74 @@ local function on_attach(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 	if client.server_capabilities.colorProvider then
 		require("config.tailwind_colors.lsp-documentcolors").buf_attach(bufnr, { single_column = true })
+	end
+
+	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
+		local ts_utils = require("nvim-lsp-ts-utils")
+
+		ts_utils.setup({
+			debug = false,
+			disable_commands = false,
+			enable_import_on_completion = true,
+
+			-- import all
+			import_all_timeout = 5000, -- ms
+			-- lower numbers = higher priority
+			import_all_priorities = {
+				same_file = 1, -- add to existing import statement
+				local_files = 2, -- git files or files with relative path markers
+				buffer_content = 3, -- loaded buffer content
+				buffers = 4, -- loaded buffer names
+			},
+			import_all_scan_buffers = 100,
+			import_all_select_source = false,
+			-- if false will avoid organizing imports
+			always_organize_imports = true,
+
+			-- filter diagnostics
+			filter_out_diagnostics_by_severity = {},
+			filter_out_diagnostics_by_code = {},
+
+			-- inlay hints
+			auto_inlay_hints = true,
+			inlay_hints_highlight = "Comment",
+			inlay_hints_priority = 200, -- priority of the hint extmarks
+			inlay_hints_throttle = 150, -- throttle the inlay hint request
+			inlay_hints_format = { -- format options for individual hint kind
+				Type = {},
+				Parameter = {},
+				Enum = {},
+			},
+
+			-- update imports on file move
+			update_imports_on_move = false,
+			require_confirmation_on_move = false,
+			watch_dir = nil,
+		})
+
+		-- required to fix code action ranges and filter diagnostics
+		ts_utils.setup_client(client)
+
+		-- no default maps, so you may want to define some here
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+	else
+		lspformat.on_attach(client)
 	end
 end
 
@@ -75,9 +126,6 @@ local function get_lua_runtime()
 			result[lua_path] = true
 		end
 	end
-	result[vim.fn.expand("$VIMRUNTIME/lua")] = true
-	result[vim.fn.expand("~/dev/neovim/src/nvim/lua")] = true
-
 	return result
 end
 
@@ -113,12 +161,6 @@ local servers = {
 				sh = { shellcheck, shfmt },
 				sql = {
 					{ formatCommand = "pg_format -u 1 -i", formatStdin = true },
-					-- {
-					-- 	lintCommand = "sqlfluff lint",
-					-- 	lintStdin = true,
-					-- 	lintIgnoreExitCode = true,
-					-- 	lintSource = "sqlfluff",
-					-- },
 				},
 				fish = {
 					{ formatCommand = "fish_indent" },
@@ -126,15 +168,6 @@ local servers = {
 				go = {
 					{ formatCommand = "goimports" },
 				},
-				-- make = {
-				-- 	{
-				-- 		lintCommand = 'checkmake --format="{{.LineNumber}}:{{.Rule}}:{{.Violation}}"',
-				-- 		lintStdin = true,
-				-- 		-- lintIgnoreExitCode = true,
-				-- 		-- lintSource = "checkmake",
-				-- 		-- lintFormats = { "%l:%n:%m" },
-				-- 	},
-				-- },
 			},
 		},
 		filetypes = {
@@ -155,7 +188,6 @@ local servers = {
 			"typescript",
 			"typescriptreact",
 			"yaml",
-			-- "make",
 		},
 	},
 	eslint = true,
@@ -245,81 +277,9 @@ local setup_server = function(server, config)
 		config = {}
 	end
 
-	local custom_attach = on_attach
-	-- TODO: ugly hack for extending custom_attach function, don't forget to refactor this later
-	if extend_attach_function[server] then
-		custom_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
-			local ts_utils = require("nvim-lsp-ts-utils")
-
-			-- defaults
-			ts_utils.setup({
-				debug = false,
-				disable_commands = false,
-				enable_import_on_completion = true,
-
-				-- import all
-				import_all_timeout = 5000, -- ms
-				-- lower numbers = higher priority
-				import_all_priorities = {
-					same_file = 1, -- add to existing import statement
-					local_files = 2, -- git files or files with relative path markers
-					buffer_content = 3, -- loaded buffer content
-					buffers = 4, -- loaded buffer names
-				},
-				import_all_scan_buffers = 100,
-				import_all_select_source = false,
-				-- if false will avoid organizing imports
-				always_organize_imports = true,
-
-				-- filter diagnostics
-				filter_out_diagnostics_by_severity = {},
-				filter_out_diagnostics_by_code = {},
-
-				-- inlay hints
-				auto_inlay_hints = true,
-				inlay_hints_highlight = "Comment",
-				inlay_hints_priority = 200, -- priority of the hint extmarks
-				inlay_hints_throttle = 150, -- throttle the inlay hint request
-				inlay_hints_format = { -- format options for individual hint kind
-					Type = {},
-					Parameter = {},
-					Enum = {},
-					-- Example format customization for `Type` kind:
-					-- Type = {
-					--     highlight = "Comment",
-					--     text = function(text)
-					--         return "->" .. text:sub(2)
-					--     end,
-					-- },
-				},
-
-				-- update imports on file move
-				update_imports_on_move = false,
-				require_confirmation_on_move = false,
-				watch_dir = nil,
-			})
-
-			-- required to fix code action ranges and filter diagnostics
-			ts_utils.setup_client(client)
-
-			-- -- no default maps, so you may want to define some here
-			-- local opts = { silent = true }
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
-			on_attach(client)
-		end
-	else
-		custom_attach = function(client)
-			lspformat.on_attach(client)
-			on_attach(client)
-		end
-	end
-
 	config = vim.tbl_deep_extend("force", {
 		on_init = custom_init,
-		on_attach = custom_attach,
+		on_attach = custom_on_attach,
 		capabilities = custom_capabilities,
 		flags = { debounce_text_changes = 150 },
 	}, config)

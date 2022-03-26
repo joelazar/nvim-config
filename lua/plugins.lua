@@ -37,6 +37,9 @@ return require("packer").startup(function()
 	-- Swap parameters easier
 	use("mizlan/iswap.nvim")
 
+	-- Better % navigation
+	use("andymass/vim-matchup")
+
 	-- Misc
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")

@@ -29,6 +29,9 @@ M.config = {
 		enable = true,
 		enable_autocmd = false,
 	},
+	matchup = {
+		enable = true,
+	},
 }
 
 M.setup = function()

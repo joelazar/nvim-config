@@ -66,10 +66,10 @@ vim.api.nvim_exec(
 	false
 )
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
+vim.cmd([[ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb() ]])
 
 -- Don't auto commenting new lines
-vim.cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
+vim.cmd([[ au BufEnter * set fo-=c fo-=r fo-=o ]])
 
 -- Don't show any numbers inside terminals
 vim.cmd([[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]])
