@@ -83,12 +83,11 @@ local function custom_on_attach(client, bufnr)
 		ts_utils.setup_client(client)
 
 		-- no default maps, so you may want to define some here
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
-	else
-		lspformat.on_attach(client)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gO", ":TSLspOrganize<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gR", ":TSLspRenameFile<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspImportAll<CR>", opts)
 	end
+	-- lspformat.on_attach(client)
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
