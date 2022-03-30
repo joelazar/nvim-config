@@ -58,6 +58,10 @@ map("n", "J", "mzJ`z", opts)
 -- clear any highlights when <esc> is pressed
 map("n", "<Esc>", ":noh<CR>", opts)
 
+-- move one up/down display line instead of physicial line
+map("n", "j", "gj", opts)
+map("n", "k", "gk", opts)
+
 -- Insert mode
 
 -- 'jk' for quitting insert mode
