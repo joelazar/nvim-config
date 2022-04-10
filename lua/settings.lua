@@ -171,9 +171,8 @@ vim.cmd(
 -- vim.cmd([[cabbrev wqa execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wqa]])
 
 -- Format on save
--- TODO - until lsp-format gets stable
 vim.api.nvim_exec(
-	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua,*.yml,*.json :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
+	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua,*.yml,*.json,*.prisma :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
 	false
 )
 

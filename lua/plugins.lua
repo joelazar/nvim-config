@@ -14,7 +14,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.lspconfig")
 		end,
-		after = { "nvim-cmp", "nvim-lsp-ts-utils", "lsp-format.nvim" },
+		after = { "nvim-cmp", "nvim-lsp-ts-utils" },
 	})
 
 	-- Nicer diagnostics
@@ -45,14 +45,6 @@ return require("packer").startup(function()
 	use("nvim-lua/popup.nvim")
 	use("kyazdani42/nvim-web-devicons")
 	use("nathom/filetype.nvim")
-
-	-- Formatter
-	use({
-		"lukas-reineke/lsp-format.nvim",
-		config = function()
-			require("lsp-format").setup()
-		end,
-	})
 
 	-- Display popup with possible keybindings
 	use({

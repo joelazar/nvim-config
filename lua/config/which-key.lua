@@ -156,7 +156,6 @@ M.config = {
 				"<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
 				"Format buffer (LSP)",
 			},
-			["F"] = { ":Format<cr>", "Format buffer (format.nvim)" },
 			["l"] = { "<cmd>BufferMovePrevious<cr>", "Move buffer to the left" },
 			["r"] = { "<cmd>BufferMoveNext<cr>", "Move buffer to the right" },
 			["L"] = {
@@ -352,16 +351,10 @@ M.config = {
 		},
 		["m"] = {
 			name = "Tasks",
-			["g"] = {
-				name = "Go",
-				["m"] = { "<cmd>AsyncRun make<cr>", "Run default task" },
-				["t"] = { "<cmd>AsyncRun make test<cr>", "Run test" },
-				["f"] = { "<cmd>GoTestFunc<cr>", "Run test function" },
-				["l"] = { "<cmd>AsyncRun make lint<cr>", "Run lint" },
-				["d"] = { "<cmd>AsyncRun make docker<cr>", "Run docker" },
-				["r"] = { "<cmd>AsyncRun make run-compose<cr>", "Run compose" },
-				["u"] = { "<cmd>AsyncRun make deps-u<cr>", "Run update deps" },
-			},
+			["g"] = { "<cmd>GoTestFunc<cr>", "Run go test function" },
+			["m"] = { "<cmd>AsyncRun make<cr>", "Run default make task" },
+			["l"] = { "<cmd>AsyncRun npm run lint<cr>", "Run js lint" },
+			["t"] = { "<cmd>AsyncRun npm run test<cr>", "Run js test" },
 		},
 		["s"] = {
 			name = "Search",

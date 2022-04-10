@@ -1,8 +1,7 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-local present3, lspformat = pcall(require, "lsp-format")
 
-if not (present1 and present2 and present3) then
+if not (present1 and present2) then
 	return
 end
 
@@ -87,7 +86,6 @@ local function custom_on_attach(client, bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gR", ":TSLspRenameFile<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", ":TSLspImportAll<CR>", opts)
 	end
-	-- lspformat.on_attach(client)
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
