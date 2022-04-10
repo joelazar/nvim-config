@@ -97,6 +97,9 @@ vim.o.wrap = true
 -- Wrap long lines at a blank
 vim.o.linebreak = true
 
+-- Highlight the current line
+vim.o.cursorline = true
+
 -- Autom. read file when changed outside of Vim
 vim.o.autoread = true
 
