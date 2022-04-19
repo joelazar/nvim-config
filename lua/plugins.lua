@@ -259,8 +259,6 @@ return require("packer").startup(function()
 	use({
 		"p00f/nvim-ts-rainbow",
 		after = "nvim-treesitter",
-		-- fix commit until maintainer does not start to support latest stable version
-		commit = "c6c26c4def0e9cd82f371ba677d6fc9baa0038af",
 	})
 
 	-- Autocreate/update html tags
