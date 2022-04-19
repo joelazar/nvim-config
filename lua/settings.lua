@@ -113,8 +113,8 @@ vim.o.backup = true
 vim.o.writebackup = false
 
 -- For opening splits on right or bottom.
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Show cursor line and column in the status line
 vim.o.ruler = true
