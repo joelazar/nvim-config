@@ -122,6 +122,10 @@ vim.o.ruler = true
 -- Briefly jump to matching bracket if insert one
 vim.o.showmatch = true
 
+-- Use filetype.lua instead
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
 -- Hide show current mode on status line
 vim.o.showmode = false
 
