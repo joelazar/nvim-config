@@ -9,6 +9,7 @@ local function custom_on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -220,7 +221,20 @@ local servers = {
 	},
 	html = true,
 	jsonls = { init_options = { provideFormatter = false } },
-	ltex = { autostart = false },
+	ltex = {
+		autostart = false,
+		filetypes = {
+			"typescript",
+			"typescriptreact",
+			"javascript",
+			"javascriptreact",
+			"go",
+			"lua",
+			"markdown",
+			"plaintex",
+			"tex",
+		},
+	},
 	prismals = true,
 	pyright = true,
 	rust_analyzer = true,
