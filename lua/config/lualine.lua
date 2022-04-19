@@ -7,30 +7,32 @@ end
 
 M.config = {
 	options = {
-		section_separators = { "", "" },
-		component_separators = "|",
+		theme = "nightfox",
+		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
 		icons_enabled = true,
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
 		lualine_c = {
 			{ "filename", path = 1 },
-			{ "diagnostics", sources = { "nvim_diagnostic" } },
-			"diff",
 			{ gps.get_location, cond = gps.is_available },
+			"diff",
+			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
-		lualine_x = { "filetype", "encoding" },
+		lualine_x = { "filetype", "fileformat", "encoding" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = {},
+		lualine_c = { "filename" },
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = {},
+		lualine_z = { "location" },
 	},
 	extensions = { "quickfix", "toggleterm" },
 }
