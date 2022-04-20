@@ -55,21 +55,6 @@ vim.g.did_load_filetypes = 1
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append("<>hl")
 
--- Highlight on yank
-vim.api.nvim_create_augroup("Highlight", { clear = true })
-vim.api.nvim_create_autocmd(
-	"TextYankPost",
-	{ command = "silent! lua vim.highlight.on_yank() {higroup='IncSearch', timeout=400}", group = "Highlight" }
-)
-
-vim.cmd([[ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb() ]])
-
--- Don't auto commenting new lines
-vim.cmd([[ au BufEnter * set fo-=c fo-=r fo-=o ]])
-
--- Don't show any numbers inside terminals
-vim.cmd([[ au TermOpen term://* setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal ]])
-
 -- Take indent for new line from previous line
 vim.o.autoindent = true
 vim.o.smartindent = true
@@ -160,17 +145,6 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
-
--- Open file at same location where it was opened last time
--- vim.cmd(
--- 	[[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
--- )
-
--- Format on save
-vim.api.nvim_exec(
-	[[ autocmd BufWritePre *.go,*.js,*.ts,*.tsx,*.lua,*.yml,*.json,*.prisma :silent! lua vim.lsp.buf.formatting_seq_sync() ]],
-	false
-)
 
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")
