@@ -1,27 +1,14 @@
 local M = {}
 
--- todod- not working yet
-local function copy_to_clipboard(files)
-	files = table.concat(files, "\n")
-	vim.fn.setreg("+", files)
-	print(files:gsub("\n", ", ") .. " copied to register")
-end
-
-local function cd_to_path(files)
-	local dir = files[1]:match(".*/")
-	local read = io.open(dir, "r")
-	if read ~= nil then
-		io.close(read)
-		vim.fn.execute("cd ", dir)
-		print("working directory changed to: " .. dir)
-	end
-end
+local builtin = require("nnn").builtin
 
 M.config = {
 	explorer = {
 		cmd = "nnn -od", -- command overrride (-p and -F1 flags are implied, -a flag is invalid!)
 		width = 32, -- width of the vertical split
 		session = "", -- or global/local/shared
+		side = "topleft", -- or "botright", location of the explorer window
+		tabs = true, -- seperate nnn instance per tab
 	},
 	picker = {
 		cmd = "nnn -od", -- command override (-p flag is implied)
@@ -44,12 +31,17 @@ M.config = {
 	},
 	replace_netrw = "picker",
 	mappings = {
-		{ "<C-t>", "tabedit" }, -- open file in tab
-		{ "<C-s>", "split" }, -- open file in split
-		{ "<C-v>", "vsplit" }, -- open file in vertical split
-		{ "<C-w>", cd_to_path }, -- cd to file directory
-		{ "<C-y>", { copy_to_clipboard, quit = false } }, -- copy file to clipboard
-		{ "<S-y>", { copy_to_clipboard, quit = true } }, -- copy files to clipboard
+		{ "<C-t>", builtin.open_in_tab }, -- open file(s) in tab
+		{ "<C-s>", builtin.open_in_split }, -- open file(s) in split
+		{ "<C-v>", builtin.open_in_vsplit }, -- open file(s) in vertical split
+		{ "<C-p>", builtin.open_in_preview }, -- open file in preview split keeping nnn focused
+		{ "<C-y>", builtin.copy_to_clipboard }, -- copy file(s) to clipboard
+		{ "<C-w>", builtin.cd_to_path }, -- cd to file directory
+		{ "<C-e>", builtin.populate_cmdline }, -- populate cmdline (:) with file(s)
+	},
+	windownav = { -- window movement mappings to navigate out of nnn
+		left = "<C-w>h",
+		right = "<C-w>l",
 	},
 }
 

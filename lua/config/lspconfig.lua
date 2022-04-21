@@ -163,15 +163,11 @@ local servers = {
 				fish = {
 					{ formatCommand = "fish_indent" },
 				},
-				go = {
-					{ formatCommand = "goimports" },
-				},
 			},
 		},
 		filetypes = {
 			"css",
 			"fish",
-			"go",
 			"html",
 			"javascript",
 			"javascriptreact",
