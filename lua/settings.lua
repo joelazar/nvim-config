@@ -167,7 +167,14 @@ if not undodir:exists() then
 end
 vim.o.undodir = tostring(undodir)
 
--- disable some builtin vim plugins
+-- Disable some builtin providers
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
+-- Disable some builtin vim plugins
 local disabled_built_ins = {
 	"2html_plugin",
 	"getscript",

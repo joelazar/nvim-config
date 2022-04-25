@@ -93,9 +93,19 @@ map("x", "<S-Tab>", "<gv", opts)
 
 -- Copy to system clipboard
 map("x", "\\y", '"+y', opts)
+map("x", "\\Y", '"*y', opts)
 
 -- Cut to system clipboard
 map("x", "\\d", '"+d', opts)
+map("x", "\\D", '"*d', opts)
+
+-- Paste from system clipboard
+map("n", "\\p", '<ESC>"+p', opts)
+map("n", "\\P", '<ESC>"*p', opts)
+
+-- Search and Replace
+map("n", "c.", ":%s//g<Left><Left>", opts)
+map("n", "\\c.", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", opts)
 
 -- Hop keybindings
 map(
