@@ -210,10 +210,12 @@ return require("packer").startup(function()
 	use({
 		"AckslD/nvim-neoclip.lua",
 		config = function()
-			require("neoclip").setup({})
-			require("telescope").load_extension("neoclip")
+			require("config.neoclip").setup()
 		end,
-		requires = { { "nvim-telescope/telescope.nvim" } },
+		requires = {
+			{ "nvim-telescope/telescope.nvim" },
+			{ "tami5/sqlite.lua" },
+		},
 	})
 
 	-- Go development
