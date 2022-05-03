@@ -113,9 +113,6 @@ vim.o.showmode = false
 -- Show absolute line number in front of each line
 vim.o.relativenumber = false
 
--- Disable python2 provider
-vim.g.loaded_python_provider = 0
-
 --  Maximum height of the popup menu
 vim.o.pumheight = 15
 
@@ -168,7 +165,6 @@ end
 vim.o.undodir = tostring(undodir)
 
 -- Disable some builtin providers
-vim.g.loaded_python3_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
