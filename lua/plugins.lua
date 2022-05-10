@@ -303,6 +303,13 @@ return require("packer").startup(function()
 		run = "cd app && yarn install",
 	})
 
+	-- HTML/JS
+	use({
+		"turbio/bracey.vim",
+		ft = { "html", "javascript", "typescript" },
+		run = 'sh -c "npm install --prefix server"',
+	})
+
 	-- Lazygit in Neovim
 	use("kdheepak/lazygit.nvim")
 
