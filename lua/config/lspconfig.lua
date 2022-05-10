@@ -215,7 +215,7 @@ local servers = {
 		},
 		filetypes = { "go", "gomod" },
 	},
-	html = true,
+	html = { init_options = { provideFormatter = false } },
 	jsonls = { init_options = { provideFormatter = false } },
 	ltex = {
 		autostart = false,
