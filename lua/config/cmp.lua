@@ -62,6 +62,7 @@ M.setup = function()
 			{ name = "calc" },
 			{ name = "fish" },
 			{ name = "emoji" },
+			{ name = "nvim_lsp_signature_help" },
 		},
 
 		snippet = {

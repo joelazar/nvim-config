@@ -153,17 +153,18 @@ return require("packer").startup(function()
 	use("onsails/lspkind-nvim")
 
 	-- Completion & Snippets
-	use("saadparwaiz1/cmp_luasnip")
-	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-calc")
-	use("hrsh7th/cmp-emoji")
 	use("andersevenrud/cmp-tmux")
-	use("octaltree/cmp-look")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-calc")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-emoji")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
+	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-path")
 	use("mtoohey31/cmp-fish")
+	use("octaltree/cmp-look")
+	use("saadparwaiz1/cmp_luasnip")
 	use({
 		"hrsh7th/nvim-cmp",
 		after = {
@@ -180,6 +181,7 @@ return require("packer").startup(function()
 			"cmp-calc",
 			"cmp-fish",
 			"cmp-emoji",
+			"cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			require("config.cmp").setup()
