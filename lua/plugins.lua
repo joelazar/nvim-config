@@ -431,8 +431,7 @@ return require("packer").startup(function()
 
 	use({
 		"michaelb/sniprun",
-		-- NOTE: installed manually for now with --> cargo build --release
-		-- run = "bash ./install.sh",
+		run = "bash ./install.sh",
 		config = function()
 			require("config.sniprun").setup()
 		end,
