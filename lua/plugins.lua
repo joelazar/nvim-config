@@ -446,6 +446,7 @@ return require("packer").startup(function()
 
 			vim.g.copilot_filetypes = {
 				["*"] = false,
+				["go"] = true,
 				["javascript"] = true,
 				["javascriptreact"] = true,
 				["typescript"] = true,
