@@ -159,7 +159,6 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 	use("mtoohey31/cmp-fish")
@@ -181,11 +180,18 @@ return require("packer").startup(function()
 			"cmp-calc",
 			"cmp-fish",
 			"cmp-emoji",
-			"cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			require("config.cmp").setup()
 		end,
+	})
+
+	use({
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("config.signature").setup()
+		end,
+		after = { "nvim-cmp" },
 	})
 
 	-- Enhanced search and replace
