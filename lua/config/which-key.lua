@@ -1,4 +1,5 @@
 local M = {}
+
 M.config = {
 	active = false,
 	setup = {
@@ -347,6 +348,13 @@ M.config = {
 			["S"] = {
 				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 				"Workspace Symbols",
+			},
+			["t"] = {
+				name = "Toggle diagnostic",
+				["s"] = { "<cmd>vim.diagnostic.show(nil, 0)<cr>", "Show diagnostic for buffer" },
+				["h"] = { "<cmd>vim.diagnostic.show(nil, 0)<cr>", "Hide diagnostic for buffer" },
+				["S"] = { "<cmd>vim.diagnostic.show()<cr>", "Show diagnostic for all buffers" },
+				["H"] = { "<cmd>vim.diagnostic.hide()<cr>", "Hide diagnostic for all buffers" },
 			},
 		},
 		["m"] = {
