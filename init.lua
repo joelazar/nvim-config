@@ -2,7 +2,11 @@ if vim.g.vscode then
 	return
 end
 
-pcall(require, "impatient")
+local present, impatient = pcall(require, "impatient")
+
+if present then
+	impatient.enable_profile()
+end
 
 -- installs packer if needed
 if require("first_load")() then
