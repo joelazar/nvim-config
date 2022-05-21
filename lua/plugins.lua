@@ -156,7 +156,6 @@ return require("packer").startup(function()
 	use("andersevenrud/cmp-tmux")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-calc")
-	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
@@ -174,7 +173,6 @@ return require("packer").startup(function()
 			"cmp-nvim-lsp",
 			"cmp-buffer",
 			"cmp-path",
-			"cmp-cmdline",
 			"cmp-tmux",
 			"cmp-look",
 			"cmp-calc",
@@ -183,6 +181,13 @@ return require("packer").startup(function()
 		},
 		config = function()
 			require("config.cmp").setup()
+		end,
+	})
+
+	use({
+		"gelguy/wilder.nvim",
+		config = function()
+			require("config.wilder").setup()
 		end,
 	})
 

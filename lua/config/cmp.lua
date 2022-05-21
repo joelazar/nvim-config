@@ -117,17 +117,6 @@ M.setup = function()
 
 		experimental = { native_menu = false, ghost_text = true },
 	})
-
-	cmp.setup.cmdline("/", {
-		sources = cmp.config.sources({ { name = "buffer", keyword_length = 3 } }),
-	})
-
-	cmp.setup.cmdline(":", {
-		sources = cmp.config.sources({
-			{ name = "path" },
-			{ name = "cmdline", keyword_length = 3 },
-		}),
-	})
 end
 
 return M
