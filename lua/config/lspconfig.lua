@@ -246,7 +246,7 @@ local servers = {
 					version = "LuaJIT",
 					path = { "lua/?.lua", "lua/?/init.lua" },
 				},
-				completion = { keywordSnippet = "Disable" },
+				completion = { keywordSnippet = "Replace", callSnippet = "Replace" },
 				diagnostics = {
 					enable = true,
 					globals = {
