@@ -474,4 +474,12 @@ return require("packer").startup(function()
 	})
 
 	use({ "mg979/vim-visual-multi" })
+
+	use({
+		"danymat/neogen",
+		config = function()
+			require("neogen").setup({ snippet_engine = "luasnip" })
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 end)
