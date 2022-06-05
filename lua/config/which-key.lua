@@ -440,6 +440,23 @@ M.config = {
 			["h"] = { ":nohlsearch<cr>", "Remove highlighting of search results" },
 			["s"] = { ":ISwap<cr>", "Swap parameters interactively" },
 		},
+		["z"] = {
+			name = "Notes",
+			["n"] = { "<cmd>ZkNew<cr>", "Create new note" },
+			["l"] = {
+				"<cmd>ZkNotes<cr>",
+				"List all notes",
+			},
+			["r"] = {
+				'<cmd>ZkNotes { modifiedAfter = "5 days ago"}<cr>',
+				"Recent notes",
+			},
+			["w"] = {
+				'<cmd>ZkNotes { tags = { "work" }}<cr>',
+				"List work notes",
+			},
+			["W"] = { '<cmd>ZkNew { dir = "work" }<cr>', "Create new work note" },
+		},
 	},
 }
 
