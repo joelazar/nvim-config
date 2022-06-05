@@ -453,23 +453,7 @@ return require("packer").startup(function()
 	use({
 		"github/copilot.vim",
 		config = function()
-			-- vim.api.nvim_set_keymap("n", "<C-=>", [[copilot#Accept("\<CR>")]], { silent = true, script = true, expr = true })
-			-- vim.api.nvim_set_keymap("i", "<C-=>", [[copilot#Accept("\<CR>")]], { silent = true, script = true, expr = true })
-
-			vim.g.copilot_filetypes = {
-				["*"] = false,
-				["sh"] = true,
-				["bash"] = true,
-				["go"] = true,
-				["javascript"] = true,
-				["javascriptreact"] = true,
-				["typescript"] = true,
-				["typescriptreact"] = true,
-			}
-			vim.cmd([[
-      imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
-      let g:copilot_no_tab_map = v:true
-    ]])
+			require("config.copilot").setup()
 		end,
 	})
 
@@ -478,27 +462,7 @@ return require("packer").startup(function()
 	use({
 		"mickael-menu/zk-nvim",
 		config = function()
-			require("zk").setup({
-				-- can be "telescope", "fzf" or "select" (`vim.ui.select`)
-				-- it's recommended to use "telescope" or "fzf"
-				picker = "telescope",
-
-				lsp = {
-					-- `config` is passed to `vim.lsp.start_client(config)`
-					config = {
-						cmd = { "zk", "lsp" },
-						name = "zk",
-						-- on_attach = ...
-						-- etc, see `:h vim.lsp.start_client()`
-					},
-
-					-- automatically attach buffers in a zk notebook that match the given filetypes
-					auto_attach = {
-						enabled = true,
-						filetypes = { "markdown" },
-					},
-				},
-			})
+			require("config.zk").setup()
 		end,
 	})
 
