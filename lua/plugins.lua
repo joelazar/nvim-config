@@ -207,7 +207,12 @@ return require("packer").startup(function()
 	})
 
 	-- Enhanced search and replace
-	use("windwp/nvim-spectre")
+	use({
+		"windwp/nvim-spectre",
+		config = function()
+			require("config.spectre").setup()
+		end,
+	})
 
 	-- Autopairs
 	use({
