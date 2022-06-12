@@ -466,6 +466,14 @@ return require("packer").startup(function()
 	use({ "mg979/vim-visual-multi" })
 
 	use({
+		"m-demare/hlargs.nvim",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("hlargs").setup()
+		end,
+	})
+
+	use({
 		"mickael-menu/zk-nvim",
 		config = function()
 			require("config.zk").setup()
