@@ -445,7 +445,14 @@ return require("packer").startup(function()
 		after = "nvim-dap",
 	})
 
-	use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+	use({
+		"rcarriga/vim-ultest",
+		requires = { "vim-test/vim-test" },
+		run = ":UpdateRemotePlugins",
+		ft = {
+			"go",
+		},
+	})
 
 	use({
 		"michaelb/sniprun",
