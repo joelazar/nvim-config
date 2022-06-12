@@ -282,8 +282,9 @@ M.config = {
 				["o"] = { "<cmd>DiffviewOpen<cr>", "Open" },
 				["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
 				["h"] = { "<cmd>DiffviewFileHistory<cr>", "History" },
-				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh" },
-				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files" },
+				["H"] = { "<cmd>DiffviewFileHistory %<cr>", "History for current file only" },
+				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
+				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
 			},
 			["t"] = {
 				name = "Toggle",
