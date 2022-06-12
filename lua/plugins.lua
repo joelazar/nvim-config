@@ -40,9 +40,10 @@ return require("packer").startup(function()
 	-- Better % navigation
 	use("andymass/vim-matchup")
 
-	-- Misc
+	-- Useful lua function collection
 	use("nvim-lua/plenary.nvim")
-	use("nvim-lua/popup.nvim")
+
+	-- Devicons
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Display popup with possible keybindings
@@ -71,7 +72,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.project").setup()
 		end,
-		requires = { { "nvim-telescope/telescope.nvim" } },
+		requires = "nvim-telescope/telescope.nvim",
 	})
 
 	-- Fuzzy filtering
@@ -80,15 +81,16 @@ return require("packer").startup(function()
 		config = function()
 			require("config.telescope").setup()
 		end,
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+		requires = "nvim-lua/plenary.nvim",
 	})
 
+	-- FZF sorter for telescope
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		config = function()
 			require("telescope").load_extension("fzf")
 		end,
-		requires = { { "nvim-telescope/telescope.nvim" } },
+		requires = "nvim-telescope/telescope.nvim",
 		run = "make",
 	})
 
@@ -98,7 +100,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.lualine").setup()
 		end,
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = "kyazdani42/nvim-web-devicons",
 		after = { "nvim-gps", "nightfox.nvim" },
 	})
 
@@ -126,7 +128,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.rest").setup()
 		end,
-		requires = { "nvim-lua/plenary.nvim" },
+		requires = "nvim-lua/plenary.nvim",
 		ft = { "http" },
 		commit = "e5f68db73276c4d4d255f75a77bbe6eff7a476ef",
 	})
@@ -144,7 +146,7 @@ return require("packer").startup(function()
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
-		requires = { "rafamadriz/friendly-snippets" },
+		requires = "rafamadriz/friendly-snippets",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
@@ -185,6 +187,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Enhanced wildmenu
 	use({
 		"gelguy/wilder.nvim",
 		config = function()
@@ -192,6 +195,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Standalone UI for nvim-lsp progress
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
@@ -199,6 +203,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- LSP signature hints
 	use({
 		"ray-x/lsp_signature.nvim",
 		config = function()
@@ -308,10 +313,10 @@ return require("packer").startup(function()
 		config = function()
 			require("config.gitsigns").setup()
 		end,
-		requires = { "nvim-lua/plenary.nvim" },
+		requires = "nvim-lua/plenary.nvim",
 	})
 
-	-- Github
+	-- Github integration for issues and prs
 	use({
 		"pwntester/octo.nvim",
 		config = function()
@@ -370,6 +375,7 @@ return require("packer").startup(function()
 	-- Bookmarks
 	use("MattesGroeger/vim-bookmarks")
 
+	-- Bookmarks telescope integration
 	use({
 		"tom-anders/telescope-vim-bookmarks.nvim",
 		config = function()
@@ -387,7 +393,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.barbar").setup()
 		end,
-		requires = { "kyazdani42/nvim-web-devicons" },
+		requires = "kyazdani42/nvim-web-devicons",
 		after = { "nightfox.nvim" },
 	})
 
@@ -409,6 +415,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Debugger UI
 	use({
 		"rcarriga/nvim-dap-ui",
 		ft = {
@@ -427,6 +434,7 @@ return require("packer").startup(function()
 		after = "nvim-dap",
 	})
 
+	-- Virtual text support for debugging
 	use({
 		"theHamsta/nvim-dap-virtual-text",
 		ft = {
@@ -445,15 +453,17 @@ return require("packer").startup(function()
 		after = "nvim-dap",
 	})
 
+	-- Testing plugin
 	use({
 		"rcarriga/vim-ultest",
-		requires = { "vim-test/vim-test" },
+		requires = "vim-test/vim-test",
 		run = ":UpdateRemotePlugins",
 		ft = {
 			"go",
 		},
 	})
 
+	-- Run blocks of code
 	use({
 		"michaelb/sniprun",
 		run = "bash ./install.sh",
@@ -470,16 +480,19 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Multicursor plugin - under evaluation
 	use({ "mg979/vim-visual-multi" })
 
+	-- Hightlight function arguments
 	use({
 		"m-demare/hlargs.nvim",
-		requires = { "nvim-treesitter/nvim-treesitter" },
+		requires = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("hlargs").setup()
 		end,
 	})
 
+	-- Maintaining my notes/zettelkasten
 	use({
 		"mickael-menu/zk-nvim",
 		config = function()
@@ -487,6 +500,7 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Quick annotation generator
 	use({
 		"danymat/neogen",
 		config = function()
