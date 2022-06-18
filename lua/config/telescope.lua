@@ -7,6 +7,8 @@ M.config = {
 				["<esc>"] = require("telescope.actions").close,
 				["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
 				["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
+				["<PageDown>"] = require("telescope.actions").cycle_history_next,
+				["<PageUp>"] = require("telescope.actions").cycle_history_prev,
 			},
 		},
 		vimgrep_arguments = {
@@ -43,7 +45,7 @@ M.config = {
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		color_devicons = true,
 		use_less = true,
-		path_display = {},
+		path_display = { "smart" },
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,

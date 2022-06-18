@@ -7,8 +7,6 @@ M.setup = function()
 
 	if present1 and present2 and present3 then
 		autopairs.setup({
-			fast_wrap = {},
-			enable_check_bracket_line = true,
 			check_ts = true,
 		})
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
