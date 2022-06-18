@@ -455,12 +455,28 @@ return require("packer").startup(function()
 
 	-- Testing plugin
 	use({
-		"rcarriga/vim-ultest",
-		requires = "vim-test/vim-test",
-		run = ":UpdateRemotePlugins",
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/neotest-go",
+			"nvim-neotest/neotest-python",
+			"haydenmeade/neotest-jest",
+		},
 		ft = {
 			"go",
+			"javascript",
+			"javascript.jsx",
+			"javascriptreact",
+			"python",
+			"typescript",
+			"typescript.tsx",
+			"typescriptreact",
 		},
+		config = function()
+			require("config.neotest").setup()
+		end,
 	})
 
 	-- Run blocks of code

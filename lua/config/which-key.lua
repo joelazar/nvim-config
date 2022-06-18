@@ -413,10 +413,11 @@ M.config = {
 		},
 		["t"] = {
 			name = "Test",
-			["r"] = { "<cmd>Ultest<CR>", "Run tests" },
-			["l"] = { "<cmd>UltestLast<CR>", "Run last test" },
-			["n"] = { "<cmd>UltestNearest<CR>", "Run nearest test" },
-			["s"] = { "<cmd>UltestSummary<CR>", "Toggle summary" },
+			["r"] = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "Run tests" },
+			["n"] = { '<cmd>lua require("neotest").run.run()<CR>', "Run nearest test" },
+			["d"] = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', "Debug nearest test" },
+			["s"] = { '<cmd>lua require("neotest").run.stop()<CR>', "Stop test" },
+			["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
 		},
 		["T"] = {
 			name = "Treesitter",
