@@ -136,9 +136,16 @@ vim.o.timeoutlen = 300
 vim.o.showcmd = false
 
 -- Folding
-vim.o.foldenable = false
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = true
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldmethod = "expr"
+vim.wo.foldlevel = 99
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- When this PR gets merged to Neovim -->
+-- https://github.com/neovim/neovim/pull/17446
+-- https://github.com/kevinhwang91/nvim-ufo/issues/4
+-- think about enabling standalone foldcolumn
+-- vim.wo.foldcolumn = "1"
 
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6

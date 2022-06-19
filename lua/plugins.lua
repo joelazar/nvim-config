@@ -524,4 +524,13 @@ return require("packer").startup(function()
 		end,
 		requires = "nvim-treesitter/nvim-treesitter",
 	})
+
+	-- Enhanced folds
+	use({
+		"kevinhwang91/nvim-ufo",
+		config = function()
+			require("ufo").setup()
+		end,
+		requires = "kevinhwang91/promise-async",
+	})
 end)
