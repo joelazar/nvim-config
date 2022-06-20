@@ -34,7 +34,7 @@ M.config = {
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
-	extensions = { "quickfix", "toggleterm" },
+	extensions = { "quickfix", "toggleterm", "man" },
 }
 
 M.setup = function()
