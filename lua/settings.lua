@@ -150,6 +150,10 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- Asyncrun automatically open quickfix window
 vim.g.asyncrun_open = 6
 
+-- Use ripgrep as grep tool
+vim.o.grepprg = "rg --vimgrep --no-heading"
+vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")
 
