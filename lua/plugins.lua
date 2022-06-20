@@ -149,6 +149,9 @@ return require("packer").startup(function()
 		requires = "rafamadriz/friendly-snippets",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({
+				paths = { "$HOME/.vscode/extensions/amimaro.remix-run-snippets-1.0.9" },
+			})
 		end,
 	})
 
