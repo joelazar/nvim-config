@@ -101,16 +101,13 @@ return require("packer").startup(function()
 			require("config.lualine").setup()
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
-		after = { "nvim-gps", "nightfox.nvim" },
+		after = { "nvim-navic", "nightfox.nvim" },
 	})
 
 	-- Show scope in status bar
 	use({
-		"SmiteshP/nvim-gps",
-		config = function()
-			require("nvim-gps").setup()
-		end,
-		requires = "nvim-treesitter/nvim-treesitter",
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
 	})
 
 	-- Colorscheme
