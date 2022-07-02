@@ -10,59 +10,27 @@ M.setup = function()
 	vim.fn.sign_define("DapBreakpointRejected", { text = "🟦", texthl = "", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
 
-	dap.adapters.node2 = {
-		type = "executable",
-		command = "node",
-		args = {
-			vim.fn.stdpath("data") .. "/dapinstall/jsnode_dbg/" .. "/vscode-node-debug2/out/src/nodeDebug.js",
-		},
-	}
-
-	-- TODO - not tested
-	dap.configurations.javascript = {
-		{
-			type = "node2",
-			request = "launch",
-			program = "${workspaceFolder}/${file}",
-			cwd = vim.fn.getcwd(),
-			sourceMaps = true,
-			protocol = "inspector",
-			console = "integratedTerminal",
-		},
-	}
-
-	-- TODO - not working yet
-	dap.configurations.typescript = {
-		{
-			type = "node2",
-			request = "launch",
-			program = "${workspaceFolder}/${file}",
-			cwd = vim.fn.getcwd(),
-			preLaunchTask = "tsc: build - tsconfig.json",
-			sourceMaps = true,
-			protocol = "inspector",
-			console = "integratedTerminal",
-		},
-	}
-
 	dap.adapters.firefox = {
 		type = "executable",
 		command = "node",
 		args = { os.getenv("HOME") .. "/git/js/vscode-firefox-debug/dist/adapter.bundle.js" },
 	}
 
-	-- TODO - not working yet
-	dap.configurations.typescriptreact = {
+	dap.configurations.typescript = {
 		{
 			name = "Debug with Firefox",
 			type = "firefox",
 			request = "launch",
 			reAttach = true,
+			sourceMaps = true,
 			url = "http://localhost:3000",
 			webRoot = "${workspaceFolder}",
 			firefoxExecutable = "/usr/bin/firefox",
 		},
 	}
+	dap.configurations.typescriptreact = dap.configurations.typescript
+	dap.configurations.javascript = dap.configurations.typescript
+	dap.configurations.javascriptreact = dap.configurations.typescript
 
 	dap.adapters.go = function(callback, config)
 		local handle, pid_or_err, port = nil, nil, 12346
