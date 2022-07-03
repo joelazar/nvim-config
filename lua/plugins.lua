@@ -5,7 +5,7 @@ return require("packer").startup(function()
 	-- Improve startup time
 	use("lewis6991/impatient.nvim")
 
-	-- Improved Typescript lsp config
+	-- Improved Typescript LSP config
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- LSP
@@ -316,7 +316,7 @@ return require("packer").startup(function()
 		requires = "nvim-lua/plenary.nvim",
 	})
 
-	-- Github integration for issues and prs
+	-- GitHub integration for issues and prs
 	use({
 		"pwntester/octo.nvim",
 		config = function()
@@ -488,7 +488,7 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Github Copilot
+	-- GitHub Copilot
 	use({
 		"github/copilot.vim",
 		config = function()
@@ -496,10 +496,10 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Multicursor plugin - under evaluation
+	-- Multi cursor plugin - under evaluation
 	use({ "mg979/vim-visual-multi" })
 
-	-- Hightlight function arguments
+	-- Highlight function arguments
 	use({
 		"m-demare/hlargs.nvim",
 		requires = "nvim-treesitter/nvim-treesitter",
@@ -532,5 +532,13 @@ return require("packer").startup(function()
 			require("ufo").setup()
 		end,
 		requires = "kevinhwang91/promise-async",
+	})
+
+	-- Check spelling only where it makes sense
+	use({
+		"lewis6991/spellsitter.nvim",
+		config = function()
+			require("spellsitter").setup()
+		end,
 	})
 end)

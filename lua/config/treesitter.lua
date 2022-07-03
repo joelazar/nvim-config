@@ -33,7 +33,7 @@ M.config = {
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		use_languagetree = true,
-		additional_vim_regex_highlighting = true,
+		-- additional_vim_regex_highlighting = true,
 	},
 	incremental_selection = {
 		enable = true,
