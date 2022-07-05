@@ -135,6 +135,12 @@ vim.o.timeoutlen = 300
 -- Show (partial) command in status line
 vim.o.showcmd = false
 
+-- Configure the number of spaces a tab is counting for
+vim.o.tabstop = 4
+
+-- Number of spaces for a step of indent
+vim.o.shiftwidth = 4
+
 -- Folding
 vim.o.foldenable = true
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
