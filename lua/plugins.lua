@@ -522,7 +522,11 @@ return require("packer").startup(function()
 	use({
 		"kevinhwang91/nvim-ufo",
 		config = function()
-			require("ufo").setup()
+			require("ufo").setup({
+				provider_selector = function(bufnr, filetype)
+					return { "treesitter", "indent" }
+				end,
+			})
 		end,
 		requires = "kevinhwang91/promise-async",
 	})

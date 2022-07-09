@@ -109,10 +109,6 @@ custom_capabilities.textDocument.completion.completionItem.tagSupport = {
 custom_capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = { "documentation", "detail", "additionalTextEdits" },
 }
-custom_capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
 custom_capabilities = cmp_lsp.update_capabilities(custom_capabilities)
 
 local custom_init = function(client)
