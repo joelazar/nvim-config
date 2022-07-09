@@ -84,6 +84,8 @@ return require("packer").startup(function()
 		requires = "nvim-lua/plenary.nvim",
 	})
 
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
+
 	-- FZF sorter for telescope
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",

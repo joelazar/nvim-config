@@ -1,13 +1,10 @@
 local M = {}
 
 M.config = {
-	active = false,
 	setup = {
 		plugins = {
 			marks = true, -- shows a list of your marks on ' and `
 			registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-			-- the presets plugin, adds help for a bunch of default keybindings in Neovim
-			-- No actual key bindings are created
 			presets = {
 				operators = true, -- adds help for operators like d, y, ...
 				motions = true, -- adds help for motions
@@ -19,6 +16,11 @@ M.config = {
 			},
 			spelling = { enabled = true, suggestions = 20 }, -- use which-key for spelling hints
 		},
+		operators = { gc = "Comments" },
+		popup_mappings = {
+			scroll_down = "<c-d>", -- binding to scroll down inside the popup
+			scroll_up = "<c-u>", -- binding to scroll up inside the popup
+		},
 		icons = {
 			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 			separator = "➜", -- symbol used between a key and it's label
@@ -29,7 +31,7 @@ M.config = {
 			position = "bottom", -- bottom, top
 			margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
 			padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-			-- winblend = 0,
+			winblend = 0,
 		},
 		layout = {
 			height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -37,6 +39,7 @@ M.config = {
 			spacing = 3, -- spacing between columns
 			-- align = "center",
 		},
+		ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 		hidden = {
 			"<silent>",
 			"<cmd>",
@@ -143,6 +146,7 @@ M.config = {
 		["q"] = { "<cmd>q!<cr>", "Quit" },
 		[";"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment Operator" },
 		["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
+		["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 		["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 		["b"] = {
 			name = "Buffers",
