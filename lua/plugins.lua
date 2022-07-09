@@ -203,15 +203,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- LSP signature hints
-	use({
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("config.signature").setup()
-		end,
-		after = { "nvim-cmp" },
-	})
-
 	-- Enhanced search and replace
 	use({
 		"windwp/nvim-spectre",
