@@ -53,7 +53,17 @@ M.setup = function()
 		-- If `nil` (default), default items will be used (see |mini.starter|).
 		-- items = nil,
 		items = {
-			starter.sections.telescope(),
+			{ action = "Telescope file_browser", name = "Browser", section = "Telescope" },
+			{ action = "Telescope projects", name = "Projects", section = "Telescope" },
+			{ action = "Telescope oldfiles", name = "Recent files", section = "Telescope" },
+			{ action = "Telescope find_files", name = "Files", section = "Telescope" },
+			{ action = "Telescope live_grep", name = "Grep", section = "Telescope" },
+			{ action = "Telescope vim_bookmarks", name = "Bookmarks", section = "Telescope" },
+			{ action = "Telescope command_history", name = "Command history", section = "Telescope" },
+			{ action = "Telescope help_tags", name = "Help tags", section = "Telescope" },
+
+			{ action = "ZkNotes", name = "Notes", section = "Notes" },
+			{ action = "ZkNew", name = "Create new note", section = "Notes" },
 		},
 		content_hooks = {
 			starter.gen_hook.adding_bullet(),
