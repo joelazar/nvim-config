@@ -2,6 +2,7 @@ local M = {}
 
 M.config = {
 	defaults = {
+		path_display = { truncate = 3 },
 		mappings = {
 			i = {
 				["<esc>"] = require("telescope.actions").close,
