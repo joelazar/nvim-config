@@ -240,9 +240,12 @@ local servers = {
 	pyright = true,
 	rust_analyzer = true,
 	tailwindcss = true,
-	stylelint_lsp = { cmd = {
-		"stylelint",
-	} },
+	stylelint_lsp = {
+		autostart = false,
+		cmd = {
+			"stylelint",
+		},
+	},
 	sumneko_lua = {
 		cmd = { "lua-language-server" },
 		settings = {
