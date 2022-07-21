@@ -538,7 +538,4 @@ return require("packer").startup(function()
 			require("spellsitter").setup()
 		end,
 	})
-
-	-- Workaround for sticky buffers
-	use({ "stevearc/stickybuf.nvim" })
 end)
