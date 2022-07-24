@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 	command = "set nocul",
 	group = vimrc_group,
 })
+
 vim.api.nvim_create_autocmd("InsertLeave", {
 	desc = "Show cursorline when leaving insert mode",
 	pattern = "*",
@@ -14,14 +15,14 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter", "CmdlineLeave" }, {
-	desc = "show cursor line only in active window",
+	desc = "Show cursorline only in active window",
 	pattern = "*",
 	command = "set cursorline",
 	group = vimrc_group,
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave", "CmdlineEnter" }, {
-	desc = "hide cursor line only in inactive window",
+	desc = "Hide cursorline only in inactive window",
 	pattern = "*",
 	command = "set nocursorline",
 	group = vimrc_group,
@@ -38,6 +39,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "Autoformat before save",
 	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma" },
 	callback = vim.lsp.buf.formatting_seq_sync,
+	group = vimrc_group,
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	desc = "Source new nvim config file",
+	pattern = { vim.fn.stdpath("config") .. "/**/*.lua" },
+	command = "source <afile>",
 	group = vimrc_group,
 })
 
