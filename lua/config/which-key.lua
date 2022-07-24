@@ -91,8 +91,9 @@ M.config = {
 		["g"] = { "<cmd>LazyGit<cr>", "Lazygit" },
 		["q"] = {
 			name = "Quickfix list",
-			["l"] = { "<cmd>copen<cr>", "Open quickfix list window" },
-			["c"] = { "<cmd>call setqflist([])<cr>", "Clear quickfix list" },
+			["o"] = { "<cmd>copen<cr>", "Open quickfix list window" },
+			["c"] = { "<cmd>cclose<cr>", "Close quickfix list window" },
+			["C"] = { "<cmd>call setqflist([])<cr>", "Clear quickfix list" },
 			["n"] = { "<cmd>cnext<cr>", "Select next item in quickfix list" },
 			["p"] = { "<cmd>cprev<cr>", "Select previous item in quickfix list" },
 		},
