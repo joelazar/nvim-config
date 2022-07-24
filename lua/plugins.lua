@@ -538,4 +538,13 @@ return require("packer").startup(function()
 			require("spellsitter").setup()
 		end,
 	})
+
+	-- Nicer lsp diagnostics
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+		after = { "nvim-lspconfig" },
+	})
 end)
