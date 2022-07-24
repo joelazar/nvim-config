@@ -6,7 +6,7 @@ return require("packer").startup(function()
 	use("lewis6991/impatient.nvim")
 
 	-- Improved Typescript LSP config
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/typescript.nvim")
 
 	-- LSP
 	use({
@@ -14,7 +14,7 @@ return require("packer").startup(function()
 		config = function()
 			require("config.lspconfig")
 		end,
-		after = { "nvim-cmp", "nvim-lsp-ts-utils" },
+		after = { "nvim-cmp", "typescript.nvim" },
 	})
 
 	-- Nicer diagnostics
@@ -545,6 +545,6 @@ return require("packer").startup(function()
 		config = function()
 			require("lsp_lines").setup()
 		end,
-		after = { "nvim-lspconfig" },
+		requires = "neovim/nvim-lspconfig",
 	})
 end)
