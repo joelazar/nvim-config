@@ -324,7 +324,7 @@ return require("packer").startup(function()
 	-- HTML/JS
 	use({
 		"turbio/bracey.vim",
-		ft = { "html", "javascript", "typescript" },
+		ft = { "html", "javascript" },
 		run = 'sh -c "npm install --prefix server"',
 	})
 
@@ -482,9 +482,6 @@ return require("packer").startup(function()
 			require("config.copilot").setup()
 		end,
 	})
-
-	-- Multi cursor plugin - under evaluation
-	use({ "mg979/vim-visual-multi" })
 
 	-- Highlight function arguments
 	use({
