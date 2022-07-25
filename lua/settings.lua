@@ -48,9 +48,6 @@ vim.opt.shortmess:append("I")
 -- Disable ins-completion-menu messages
 vim.opt.shortmess:append("c")
 
--- Do not source the default filetype.vim
-vim.g.did_load_filetypes = 1
-
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append("<>hl")
