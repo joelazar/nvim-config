@@ -103,13 +103,7 @@ return require("packer").startup(function()
 			require("config.lualine").setup()
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
-		after = { "nvim-navic", "nightfox.nvim" },
-	})
-
-	-- Show scope in status bar
-	use({
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
+		after = { "nightfox.nvim" },
 	})
 
 	-- Colorscheme

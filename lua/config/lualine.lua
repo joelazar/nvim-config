@@ -1,10 +1,5 @@
 local M = {}
 
-local status_ok, navic = pcall(require, "nvim-navic")
-if not status_ok then
-	return
-end
-
 M.config = {
 	options = {
 		theme = "nightfox",
@@ -18,7 +13,6 @@ M.config = {
 		lualine_b = { "branch" },
 		lualine_c = {
 			-- { "filename", path = 1 },
-			{ navic.get_location, cond = navic.is_available },
 			"diff",
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
