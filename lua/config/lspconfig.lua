@@ -1,8 +1,7 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-local present3, navic = pcall(require, "nvim-navic")
 
-if not (present1 and present2 and present3) then
+if not (present1 and present2) then
 	return
 end
 
@@ -23,10 +22,6 @@ local function custom_on_attach(client, bufnr)
 	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-
-	if client.supports_method("textDocument/documentSymbol") then
-		navic.attach(client, bufnr)
-	end
 
 	if client.server_capabilities.colorProvider then
 		require("config.tailwind_colors.lsp-documentcolors").buf_attach(bufnr, { single_column = true })
