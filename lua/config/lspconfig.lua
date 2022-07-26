@@ -109,7 +109,9 @@ local servers = {
 			"yaml",
 		},
 	},
-	eslint = true,
+	eslint = {
+		root_dir = require("lspconfig").util.find_node_modules_ancestor,
+	},
 	golangci_lint_ls = true,
 	gopls = {
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
