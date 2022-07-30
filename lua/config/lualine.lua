@@ -1,5 +1,20 @@
 local M = {}
 
+-- disable search count res from the bottom right corner
+vim.o.shortmess = vim.o.shortmess .. "S"
+
+local function search_count()
+	if vim.api.nvim_get_vvar("hlsearch") == 1 then
+		local res = vim.fn.searchcount({ maxcount = 999, timeout = 500 })
+
+		if res.total > 0 then
+			return string.format("%d/%d", res.current, res.total)
+		end
+	end
+
+	return ""
+end
+
 M.config = {
 	options = {
 		theme = "nightfox",
@@ -12,11 +27,10 @@ M.config = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
 		lualine_c = {
-			-- { "filename", path = 1 },
 			"diff",
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
-		lualine_x = { "filetype", "fileformat", "encoding" },
+		lualine_x = { { search_count, type = "lua_expr" }, "filetype", "fileformat", "encoding" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
