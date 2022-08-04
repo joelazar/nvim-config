@@ -6,13 +6,21 @@ M.setup = function()
 
 	vim.g.copilot_filetypes = {
 		["*"] = false,
-		["sh"] = true,
-		["bash"] = true,
-		["go"] = true,
-		["javascript"] = true,
-		["javascriptreact"] = true,
-		["typescript"] = true,
-		["typescriptreact"] = true,
+		-- ["markdown"] = true,
+		bash = true,
+		c = true,
+		cpp = true,
+		go = true,
+		html = true,
+		javascript = true,
+		javascriptreact = true,
+		lua = true,
+		python = true,
+		rust = true,
+		sh = true,
+		terraform = true,
+		typescript = true,
+		typescriptreact = true,
 	}
 
 	vim.cmd([[
