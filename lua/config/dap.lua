@@ -141,13 +141,13 @@ M.setup = function()
 		-- Working configs 🎉
 		{
 			-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-			name = "Node - attach to process",
+			name = "Node - Attach to process",
 			type = "node2",
 			request = "attach",
 			processId = require("dap.utils").pick_process,
 		},
 		{
-			name = "Debug with Firefox",
+			name = "Firefox - Launch localhost",
 			type = "firefox",
 			request = "launch",
 			reAttach = true,
@@ -156,6 +156,15 @@ M.setup = function()
 			-- TODO - webRoot should be set directly to workspaceFolder
 			webRoot = "${workspaceFolder}/src",
 			firefoxExecutable = "/usr/bin/firefox",
+		},
+		{
+			name = "Chrome - Launch localhost",
+			type = "chrome",
+			request = "launch",
+			runtimeExecutable = "/usr/bin/chromium",
+			-- TODO - webRoot should be set directly to workspaceFolder
+			webRoot = "${workspaceFolder}/src/build",
+			url = "http://localhost:3000",
 		},
 
 		-- Not tested configs yet 🙀
