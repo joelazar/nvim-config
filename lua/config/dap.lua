@@ -112,6 +112,7 @@ M.setup = function()
 	vim.api.nvim_set_keymap("n", "<S-F11>", "<CMD>lua require('dap').step_out()<CR>", opts)
 	vim.api.nvim_set_keymap("n", "<F10>", "<CMD>lua require('dap').step_over()<CR>", opts)
 	vim.api.nvim_set_keymap("n", "<S-F5>", "<CMD>lua require('dap').terminate()<CR>", opts)
+
 	dap_vscode_js.setup({
 		node_path = "/usr/bin/node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
 		debugger_path = { os.getenv("HOME") .. "/git/js/vscode-js-debug/" }, -- Path to vscode-js-debug installation. TODO - does it work?
@@ -136,29 +137,30 @@ M.setup = function()
 		args = { os.getenv("HOME") .. "/git/js/vscode-chrome-debug/out/src/chromeDebug.js" },
 	}
 
-	-- TODO - not yet working :(
 	dap.configurations.typescript = {
+		-- Working configs 🎉
+		{
+			-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+			name = "Node - attach to process",
+			type = "node2",
+			request = "attach",
+			processId = require("dap.utils").pick_process,
+		},
 		{
 			name = "Debug with Firefox",
 			type = "firefox",
 			request = "launch",
 			reAttach = true,
 			sourceMaps = true,
-			url = "http://localhost:9229",
-			webRoot = "${workspaceFolder}",
+			url = "http://localhost:3000",
+			-- TODO - webRoot should be set directly to workspaceFolder
+			webRoot = "${workspaceFolder}/src",
 			firefoxExecutable = "/usr/bin/firefox",
 		},
+
+		-- Not tested configs yet 🙀
 		{
-			name = "Node attach",
-			type = "node2",
-			request = "attach",
-			program = "${file}",
-			cwd = vim.fn.getcwd() .. "/src",
-			-- sourceMaps = true,
-			protocol = "inspector",
-		},
-		{
-			name = "Node launch file",
+			name = "Nope - Node launch file",
 			type = "node2",
 			request = "launch",
 			runtimeExecutable = "npm",
@@ -170,38 +172,27 @@ M.setup = function()
 			skipFiles = { "<node_internals>/**", "node_modules/**" },
 		},
 		{
-			-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-			name = "Node Attach to process",
-			type = "node2",
-			request = "attach",
-			processId = require("dap.utils").pick_process,
-		},
-		{
-			name = "Debug with Chrome",
+			name = "Nope - Debug with Chrome",
 			type = "chrome",
 			request = "attach",
+			sourceMaps = true,
 			program = "${file}",
-			-- cwd = vim.fn.getcwd(),
-			-- sourceMaps = false,
-			-- protocol = "inspector",
 			port = 9222,
-			webRoot = "${workspaceFolder}",
-			-- chromeExecutable = "/usr/bin/chromium",
+			webRoot = "${workspaceFolder}/src",
 		},
 		{
-			name = "Run npm run dev",
+			name = "Nope - Run npm run dev",
 			command = "npm run dev",
 			request = "launch",
 			type = "node-terminal",
-			cwd = "${workspaceFolder}/src",
+			cwd = "${workspaceFolder}",
 		},
 		{
-			name = "Attach with pwa-node",
+			name = "Nope -Node - Attach with pwa-node",
 			type = "pwa-node",
 			skipFiles = { "<node_internals>/**" },
 			request = "attach",
 			processId = require("dap.utils").pick_process,
-			cwd = "${workspaceFolder}/src",
 		},
 	}
 
