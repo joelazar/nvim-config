@@ -390,54 +390,19 @@ return require("packer").startup(function()
 		ft = {
 			"go",
 			"javascript",
-			"javascript.jsx",
 			"javascriptreact",
 			"python",
 			"typescript",
-			"typescript.tsx",
 			"typescriptreact",
+		},
+		requires = {
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
+			"mxsdev/nvim-dap-vscode-js",
 		},
 		config = function()
 			require("config.dap").setup()
 		end,
-	})
-
-	-- Debugger UI
-	use({
-		"rcarriga/nvim-dap-ui",
-		ft = {
-			"go",
-			"javascript",
-			"javascript.jsx",
-			"javascriptreact",
-			"python",
-			"typescript",
-			"typescript.tsx",
-			"typescriptreact",
-		},
-		config = function()
-			require("dapui").setup()
-		end,
-		after = "nvim-dap",
-	})
-
-	-- Virtual text support for debugging
-	use({
-		"theHamsta/nvim-dap-virtual-text",
-		ft = {
-			"go",
-			"javascript",
-			"javascript.jsx",
-			"javascriptreact",
-			"python",
-			"typescript",
-			"typescript.tsx",
-			"typescriptreact",
-		},
-		config = function()
-			require("nvim-dap-virtual-text").setup()
-		end,
-		after = "nvim-dap",
 	})
 
 	-- Testing plugin
