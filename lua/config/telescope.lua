@@ -40,12 +40,11 @@ M.config = {
 			height = 0.95,
 			preview_cutoff = 120,
 		},
-		file_ignore_patterns = { "node_modules", "/.git/" },
+		file_ignore_patterns = { "node_modules", "^.git/" },
 		winblend = 0,
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		color_devicons = true,
-		use_less = true,
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -89,6 +88,7 @@ M.setup = function()
 	end
 	telescope.setup(M.config)
 	telescope.load_extension("file_browser")
+	telescope.load_extension("octo")
 end
 
 return M
