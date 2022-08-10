@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "Autoformat before save",
-	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma" },
+	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma", "*.py" },
 	callback = vim.lsp.buf.formatting_seq_sync,
 	group = vimrc_group,
 })
