@@ -122,8 +122,8 @@ M.config = {
 		},
 		["l"] = {
 			name = "LSP",
-			["A"] = {
-				"<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+			["a"] = {
+				"<cmd>Lspsaga range_code_action<cr>",
 				"Code Action Range",
 			},
 		},
@@ -313,7 +313,7 @@ M.config = {
 		},
 		["l"] = {
 			name = "LSP",
-			["a"] = { "<cmd>CodeActionMenu<cr>", "Code Action" },
+			["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
 			["c"] = {
 				name = "Codelens",
 				["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
@@ -326,12 +326,12 @@ M.config = {
 				"Workspace Diagnostics (Telescope)",
 			},
 			["h"] = {
-				"<cmd>lua vim.lsp.buf.signature_help()<cr>",
+				"<cmd>Lspsaga signature_help<cr>",
 				"Signature help",
 			},
 			["k"] = {
-				"<cmd>lua vim.diagnostic.open_float(nil, {source = 'always'})<cr>",
-				"Show line diagnostic",
+				"<cmd>Lspsaga hover_doc<cr>",
+				"Show hover doc",
 			},
 			["i"] = { "<cmd>LspInfo<cr>", "Info" },
 			["q"] = {
@@ -339,14 +339,18 @@ M.config = {
 				"Set quickfix list",
 			},
 			["n"] = {
-				"<cmd>lua vim.diagnostic.goto_next()<cr>",
+				"<cmd>Lspsaga diagnostic_jump_next<cr>",
 				"Next Diagnostic",
 			},
 			["p"] = {
-				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+				"<cmd>Lspsaga diagnostic_jump_prev<cr>",
 				"Prev Diagnostic",
 			},
-			["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+			["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },
+			["o"] = {
+				"<cmd>LSoutlineToggle<cr>",
+				"Outline toggle",
+			},
 			["s"] = {
 				"<cmd>Telescope lsp_document_symbols<cr>",
 				"Document Symbols",

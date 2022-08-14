@@ -25,12 +25,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Better code action menu
-	use({
-		"weilbith/nvim-code-action-menu",
-		cmd = "CodeActionMenu",
-	})
-
 	-- Nicer code action signs
 	use("kosayoda/nvim-lightbulb")
 
@@ -502,5 +496,19 @@ return require("packer").startup(function()
 			require("lsp_lines").setup()
 		end,
 		requires = "neovim/nvim-lspconfig",
+	})
+
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+
+			saga.init_lsp_saga({
+				code_action_lightbulb = {
+					enable = false,
+				},
+			})
+		end,
 	})
 end)

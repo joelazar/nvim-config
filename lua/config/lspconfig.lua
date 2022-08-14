@@ -12,16 +12,17 @@ local function custom_on_attach(client, bufnr)
 
 	local opts = { noremap = true, silent = true }
 
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opts)
+	buf_set_keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	buf_set_keymap("n", "gi", "<cmd>Lspsaga implement<CR>", opts)
+	buf_set_keymap("n", "<C-k>", "<cmd>Lspsaga signature_help<CR>", opts)
+	buf_set_keymap("n", "gk", "<cmd>Lspsaga signature_help<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 	if client.server_capabilities.colorProvider then
 		require("config.tailwind_colors.lsp-documentcolors").buf_attach(bufnr, { single_column = true })
