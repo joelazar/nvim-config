@@ -162,31 +162,7 @@ local servers = {
 	prismals = true,
 	pyright = true,
 	rust_analyzer = true,
-	tailwindcss = {
-		settings = {
-			tailwindCSS = {
-				lint = {
-					cssConflict = "warning",
-					invalidApply = "error",
-					invalidConfigPath = "error",
-					invalidScreen = "error",
-					invalidTailwindDirective = "error",
-					invalidVariant = "error",
-					recommendedVariantOrder = "warning",
-				},
-				experimental = {
-					classRegex = {
-						"tw`([^`]*)",
-						'tw="([^"]*)',
-						'tw={"([^"}]*)',
-						"tw\\.\\w+`([^`]*)",
-						"tw\\(.*?\\)`([^`]*)",
-					},
-				},
-				validate = true,
-			},
-		},
-	},
+	tailwindcss = true,
 	stylelint_lsp = {
 		autostart = false,
 		cmd = {
