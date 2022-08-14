@@ -1,10 +1,13 @@
--- Credits: contains some code snippets from https://github.com/norcalli/nvim-colorizer.lua
+-- Credits:
+-- contains some code snippets from https://github.com/norcalli/nvim-colorizer.lua
+-- yanked from https://github.com/kabouzeid dotfiles
 local bit = require("bit")
 
 local function lsp_color_to_hex(color)
 	local function to256(c)
 		return math.floor(c * color.alpha * 255)
 	end
+
 	return bit.tohex(bit.bor(bit.lshift(to256(color.red), 16), bit.lshift(to256(color.green), 8), to256(color.blue)), 6)
 end
 
@@ -44,7 +47,7 @@ local function create_highlight(rgb_hex, options)
 	-- Create the highlight
 	highlight_name = make_highlight_name(rgb_hex, mode)
 	if mode == "foreground" then
-		vim.cmd(string.format("highlight %s guifg=#%s", highlight_name, rgb_hex))
+		vim.api.nvim_command(string.format("highlight %s guifg=#%s", highlight_name, rgb_hex))
 	else
 		local r, g, b = rgb_hex:sub(1, 2), rgb_hex:sub(3, 4), rgb_hex:sub(5, 6)
 		r, g, b = tonumber(r, 16), tonumber(g, 16), tonumber(b, 16)
@@ -54,7 +57,7 @@ local function create_highlight(rgb_hex, options)
 		else
 			fg_color = "White"
 		end
-		vim.cmd(string.format("highlight %s guifg=%s guibg=#%s", highlight_name, fg_color, rgb_hex))
+		vim.api.nvim_command(string.format("highlight %s guifg=%s guibg=#%s", highlight_name, fg_color, rgb_hex))
 	end
 	HIGHLIGHT_CACHE[cache_key] = highlight_name
 
@@ -67,15 +70,17 @@ local function buf_set_highlights(bufnr, colors, options)
 	vim.api.nvim_buf_clear_namespace(bufnr, NAMESPACE, 0, -1)
 
 	for _, color_info in pairs(colors) do
-		local rgb_hex = lsp_color_to_hex(color_info.color)
-		local highlight_name = create_highlight(rgb_hex, options)
+		if color_info ~= nil or type(color_info) ~= "number" then
+			local rgb_hex = lsp_color_to_hex(color_info.color)
+			local highlight_name = create_highlight(rgb_hex, options)
 
-		local range = color_info.range
-		local line = range.start.line
-		local start_col = range.start.character
-		local end_col = options.single_column and start_col + 1 or range["end"].character
+			local range = color_info.range
+			local line = range.start.line
+			local start_col = range.start.character
+			local end_col = options.single_column and start_col + 1 or range["end"].character
 
-		vim.api.nvim_buf_add_highlight(bufnr, NAMESPACE, highlight_name, line, start_col, end_col)
+			vim.api.nvim_buf_add_highlight(bufnr, NAMESPACE, highlight_name, line, start_col, end_col)
+		end
 	end
 end
 
@@ -110,11 +115,8 @@ function M.buf_attach(bufnr, options)
 	options = options or {}
 
 	-- VSCode extension also does 200ms debouncing
-	local trigger_update_highlight, timer = require("config.tailwind_colors.defer").debounce_trailing(
-		M.update_highlight,
-		options.debounce or 200,
-		false
-	)
+	local trigger_update_highlight, timer =
+	require("config.tailwind_colors.defer").debounce_trailing(M.update_highlight, options.debounce or 200, false)
 
 	-- for the first request, the server needs some time before it's ready
 	-- sometimes 200ms is not enough for this
