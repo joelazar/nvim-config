@@ -339,11 +339,11 @@ M.config = {
 				"Set quickfix list",
 			},
 			["n"] = {
-				"<cmd>Lspsaga diagnostic_jump_next<cr>",
+				"<cmd>lua vim.diagnostic.goto_next()<cr>",
 				"Next Diagnostic",
 			},
 			["p"] = {
-				"<cmd>Lspsaga diagnostic_jump_prev<cr>",
+				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 				"Prev Diagnostic",
 			},
 			["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },

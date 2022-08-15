@@ -21,8 +21,8 @@ local function custom_on_attach(client, bufnr)
 	buf_set_keymap("n", "gk", "<cmd>Lspsaga signature_help<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 	if client.server_capabilities.colorProvider then
 		require("config.tailwind_colors.lsp-documentcolors").buf_attach(bufnr, { single_column = true })
