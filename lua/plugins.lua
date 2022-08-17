@@ -508,6 +508,7 @@ return require("packer").startup(function()
 				code_action_lightbulb = {
 					enable = false,
 				},
+				max_preview_lines = 50,
 			})
 		end,
 	})
