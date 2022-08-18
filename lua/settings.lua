@@ -104,8 +104,9 @@ vim.o.ruler = true
 vim.o.showmatch = true
 
 -- Use filetype.lua instead
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
+-- NOT needed since neovim 0.8
+-- vim.g.do_filetype_lua = 1
+-- vim.g.did_load_filetypes = 0
 
 -- Hide show current mode on status line
 vim.o.showmode = false
