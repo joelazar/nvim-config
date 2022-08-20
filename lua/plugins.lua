@@ -498,6 +498,7 @@ return require("packer").startup(function()
 		requires = "neovim/nvim-lspconfig",
 	})
 
+	-- Improved lsp ui
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
@@ -510,6 +511,14 @@ return require("packer").startup(function()
 				},
 				max_preview_lines = 50,
 			})
+		end,
+	})
+
+	-- Change strings to template string on the fly in jsx/tsx
+	use({
+		"axelvc/template-string.nvim",
+		config = function()
+			require("template-string").setup()
 		end,
 	})
 end)
