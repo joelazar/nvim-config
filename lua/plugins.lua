@@ -80,6 +80,8 @@ return require("packer").startup(function()
 
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
+	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
+
 	-- FZF sorter for telescope
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",

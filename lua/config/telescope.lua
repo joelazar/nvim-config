@@ -89,6 +89,7 @@ M.setup = function()
 	telescope.setup(M.config)
 	telescope.load_extension("file_browser")
 	telescope.load_extension("octo")
+	telescope.load_extension("live_grep_args")
 end
 
 return M

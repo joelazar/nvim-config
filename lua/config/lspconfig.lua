@@ -48,6 +48,9 @@ custom_capabilities.textDocument.completion.completionItem = {
 		},
 	},
 }
+custom_capabilities.textDocument.colorProvider = {
+	dynamicRegistration = true,
+}
 
 local prettierd = require("config/efm/prettierd")
 local shellcheck = require("config/efm/shellcheck")
