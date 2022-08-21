@@ -209,49 +209,37 @@ M.setup = function()
 	dap.configurations.javascript = dap.configurations.typescript
 	dap.configurations.javascriptreact = dap.configurations.typescript
 
-	dap.adapters.go = function(callback, config)
-		local handle, pid_or_err, port = nil, nil, 12346
+	dap.adapters.delve = {
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = "dlv",
+			args = { "dap", "-l", "127.0.0.1:${port}" },
+		},
+	}
 
-		handle, pid_or_err = vim.loop.spawn(
-			"dlv",
-			{
-				args = { "dap", "-l", "127.0.0.1:" .. port },
-				detached = true,
-				cwd = vim.loop.cwd(),
-			},
-			vim.schedule_wrap(function(code)
-				handle:close()
-				print("Delve has exited with: " .. code)
-			end)
-		)
-
-		if not handle then
-			error("FAILED:", pid_or_err)
-		end
-
-		vim.defer_fn(function()
-			callback({ type = "server", host = "127.0.0.1", port = port })
-		end, 100)
-	end
-
+	-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
 	dap.configurations.go = {
 		{
-			type = "go",
+			type = "delve",
 			name = "Debug",
 			request = "launch",
-			showLog = true,
 			program = "${file}",
-			-- console = "externalTerminal",
-			dlvToolPath = vim.fn.exepath("dlv"),
 		},
 		{
-			name = "Test Current File",
-			type = "go",
+			type = "delve",
+			name = "Debug test", -- configuration for debugging test files
 			request = "launch",
-			showLog = true,
 			mode = "test",
-			program = ".",
-			dlvToolPath = vim.fn.exepath("dlv"),
+			program = "${file}",
+		},
+		-- works with go.mod packages and sub packages
+		{
+			type = "delve",
+			name = "Debug test (go.mod)",
+			request = "launch",
+			mode = "test",
+			program = "./${relativeFileDirname}",
 		},
 	}
 
