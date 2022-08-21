@@ -395,6 +395,7 @@ return require("packer").startup(function()
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
 			"mxsdev/nvim-dap-vscode-js",
+			"mfussenegger/nvim-dap-python",
 		},
 		config = function()
 			require("config.dap").setup()
