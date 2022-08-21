@@ -101,7 +101,7 @@ M.config = {
 	secvmappings = {},
 	vmappings = {
 		[";"] = {
-			'<ESC><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
+			'<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
 			"Comment Operator",
 		},
 		["e"] = { "<ESC><cmd>'<,'>SnipRun<cr>", "Execute (sniprun)" },
@@ -145,7 +145,7 @@ M.config = {
 		["w"] = { "<cmd>w!<cr>", "Save" },
 		["W"] = { "<cmd>:lua require'utils'.sudo_write()<cr>", "Sudo Save" },
 		["q"] = { "<cmd>q!<cr>", "Quit" },
-		[";"] = { '<cmd>lua require("Comment.api").locked("toggle.linewise.current")()<CR>', "Comment Operator" },
+		[";"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment Operator" },
 		["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
 		["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 		["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
