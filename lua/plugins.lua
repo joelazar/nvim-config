@@ -492,15 +492,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Nicer lsp diagnostics
-	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = function()
-			require("lsp_lines").setup()
-		end,
-		requires = "neovim/nvim-lspconfig",
-	})
-
 	-- Improved lsp ui
 	use({
 		"glepnir/lspsaga.nvim",
