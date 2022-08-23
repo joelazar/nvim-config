@@ -4,19 +4,19 @@ It's very much a work in progress :construction: However, I've been using this s
 
 ### Start screen
 
-![Empty buffer](screenshots/empty.png)
+![Starter](screenshots/starter.png)
 
 ### [Toggle Terminal](https://github.com/akinsho/toggleterm.nvim)
 
-![Terminal](screenshots/term.png)
+![Terminal](screenshots/toggle_terminal.png)
 
 ### File manager - [nnn.nvim](https://github.com/luukvbaal/nnn.nvim)
 
 ![nnn](screenshots/nnn.png)
 
-### Completion - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+### Copilot - [copilot](https://github.com/github/copilot.vim)
 
-![cmp](screenshots/cmp.png)
+![copilot](screenshots/copilot.png)
 
 ### Motions on speed - [hop.nvim](https://github.com/phaazon/hop.nvim)
 
@@ -30,7 +30,6 @@ It's very much a work in progress :construction: However, I've been using this s
 
 ![which-key](screenshots/which-key.png)
 
-### Enhanced search and replace - [nvim-spectre](https://github.com/nvim-pack/nvim-spectre)
+### Debugging - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 
-![spectre-before](screenshots/spectre-before.png)
-![spectre-after](screenshots/spectre-after.png)
+![debug](screenshots/debug.png)
