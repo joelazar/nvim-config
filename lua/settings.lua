@@ -118,7 +118,9 @@ vim.o.relativenumber = false
 vim.o.pumheight = 15
 
 -- Don't show cmdline by default
-vim.o.cmdheight = 0
+--[[ vim.o.cmdheight = 0 ]]
+-- TODO - wait until which-key supports it properly
+vim.o.cmdheight = 1
 
 -- Minimum nr. of lines above and below cursor
 vim.o.scrolloff = 5 -- could be 1
