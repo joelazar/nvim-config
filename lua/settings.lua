@@ -114,8 +114,11 @@ vim.o.showmode = false
 -- Show absolute line number in front of each line
 vim.o.relativenumber = false
 
---  Maximum height of the popup menu
+-- Maximum height of the popup menu
 vim.o.pumheight = 15
+
+-- Don't show cmdline by default
+vim.o.cmdheight = 0
 
 -- Minimum nr. of lines above and below cursor
 vim.o.scrolloff = 5 -- could be 1
