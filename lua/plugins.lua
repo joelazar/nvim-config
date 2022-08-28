@@ -139,7 +139,7 @@ return require("packer").startup(function()
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = { "$HOME/.vscode/extensions/amimaro.remix-run-snippets-1.0.9" },
+				paths = { "$HOME/.vscode/extensions/amimaro.remix-run-snippets-1.1.0" },
 			})
 		end,
 	})
