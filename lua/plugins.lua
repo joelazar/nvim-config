@@ -119,7 +119,6 @@ return require("packer").startup(function()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 		ft = { "http" },
-		commit = "e5f68db73276c4d4d255f75a77bbe6eff7a476ef",
 	})
 
 	-- Color highlighter
