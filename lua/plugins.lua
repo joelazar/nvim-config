@@ -92,6 +92,8 @@ return require("packer").startup(function()
 		run = "make",
 	})
 
+	use({ "ptethng/telescope-makefile" })
+
 	-- Status bar
 	use({
 		"nvim-lualine/lualine.nvim",
