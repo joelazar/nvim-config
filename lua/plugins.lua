@@ -485,14 +485,6 @@ return require("packer").startup(function()
 		requires = "kevinhwang91/promise-async",
 	})
 
-	-- Check spelling only where it makes sense
-	use({
-		"lewis6991/spellsitter.nvim",
-		config = function()
-			require("spellsitter").setup()
-		end,
-	})
-
 	-- Improved lsp ui
 	use({
 		"glepnir/lspsaga.nvim",
