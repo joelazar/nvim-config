@@ -4,7 +4,7 @@ local builtin = require("nnn").builtin
 
 M.config = {
 	explorer = {
-		cmd = "nnn -od", -- command overrride (-p and -F1 flags are implied, -a flag is invalid!)
+		cmd = "nnn -od", -- command overrride (-F1 flags are implied, -a flag is invalid!)
 		width = 32, -- width of the vertical split
 		session = "", -- or global/local/shared
 		side = "topleft", -- or "botright", location of the explorer window
@@ -29,6 +29,7 @@ M.config = {
 			"gitcommit",
 		},
 	},
+	auto_close = false, -- close tabpage/nvim when nnn is last window
 	replace_netrw = "picker",
 	mappings = {
 		{ "<C-t>", builtin.open_in_tab }, -- open file(s) in tab
@@ -42,7 +43,12 @@ M.config = {
 	windownav = { -- window movement mappings to navigate out of nnn
 		left = "<C-w>h",
 		right = "<C-w>l",
+		next = "<C-w>w",
+		prev = "<C-w>W",
 	},
+	buflisted = false, -- whether or not nnn buffers show up in the bufferlist
+	quitcd = "tcd", -- or "cd" / "lcd", command to run if quitcd file is found
+	offset = false, -- whether or not to write position offset to tmpfile(for use in preview-tui)
 }
 
 M.setup = function()

@@ -127,6 +127,33 @@ M.config = {
 				"Code Action Range",
 			},
 		},
+		["r"] = {
+			name = "Refactoring",
+			["e"] = {
+				"<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+				"Extract Function",
+			},
+			["f"] = {
+				"<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+				"Extract Function to File",
+			},
+			["v"] = {
+				"<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+				"Extract Variable",
+			},
+			["i"] = {
+				"<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+				"Inline Variable",
+			},
+			["r"] = {
+				":lua require('refactoring').select_refactor()<CR>",
+				"Select refactor",
+			},
+			["p"] = {
+				":lua require('refactoring').debug.print_var({})<CR>",
+				"Print variable",
+			},
+		},
 		["s"] = {
 			name = "Search",
 			["v"] = { '<cmd>lua require"config.telescope".grep_string_visual()<CR>', "Visual selection" },
@@ -152,7 +179,7 @@ M.config = {
 		["b"] = {
 			name = "Buffers",
 			["j"] = { "<cmd>BufferPick<cr>", "Jump to buffer" },
-			["d"] = { "<cmd>BufferClose!<cr>", "Delete buffer" },
+			["d"] = { "<cmd>BufferClose<cr>", "Delete buffer" },
 			["D"] = {
 				"<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
 				"Close all but current buffer",
@@ -401,8 +428,8 @@ M.config = {
 			["Q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 			["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
 		},
-		["r"] = {
-			name = "Replace",
+		["S"] = {
+			name = "Search and replace",
 			["m"] = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
 			["f"] = {
 				"<cmd>lua require('spectre').open_file_search()<CR>",
@@ -411,6 +438,33 @@ M.config = {
 			["w"] = {
 				"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
 				"Replace word under cursor",
+			},
+		},
+		["r"] = {
+			name = "Refactoring",
+			["b"] = {
+				"<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
+				"Extract Block",
+			},
+			["f"] = {
+				"<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
+				"Extract Block to File",
+			},
+			["i"] = {
+				"<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+				"Inline Variable",
+			},
+			["l"] = {
+				":lua require('refactoring').debug.printf({below = true})<CR>",
+				"Print debug log",
+			},
+			["p"] = {
+				":lua require('refactoring').debug.print_var({ normal = true })<CR>",
+				"Print variable",
+			},
+			["c"] = {
+				":lua require('refactoring').debug.cleanup({})<CR>",
+				"Cleanup debug log",
 			},
 		},
 		["R"] = {

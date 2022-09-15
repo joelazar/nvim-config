@@ -125,7 +125,7 @@ return require("packer").startup(function()
 
 	-- Color highlighter
 	use({
-		"norcalli/nvim-colorizer.lua",
+		"NvChad/nvim-colorizer.lua",
 		cmd = { "ColorizerToggle" },
 		config = function()
 			require("colorizer").setup()
@@ -149,7 +149,6 @@ return require("packer").startup(function()
 	use("onsails/lspkind-nvim")
 
 	-- Completion & Snippets
-	use("andersevenrud/cmp-tmux")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-calc")
 	use("hrsh7th/cmp-emoji")
@@ -169,7 +168,6 @@ return require("packer").startup(function()
 			"cmp-nvim-lsp",
 			"cmp-buffer",
 			"cmp-path",
-			"cmp-tmux",
 			"cmp-look",
 			"cmp-calc",
 			"cmp-fish",
@@ -515,6 +513,18 @@ return require("packer").startup(function()
 		tag = "*",
 		config = function()
 			require("nvim-surround").setup({})
+		end,
+	})
+
+	-- Refactoring library based off the Refactoring book by Martin Fowler
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("refactoring").setup({})
 		end,
 	})
 end)
