@@ -508,4 +508,13 @@ return require("packer").startup(function()
 			require("template-string").setup()
 		end,
 	})
+
+	-- Add/change/delete surrounding delimiter pairs
+	use({
+		"kylechui/nvim-surround",
+		tag = "*",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
 end)
