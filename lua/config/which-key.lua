@@ -506,6 +506,17 @@ M.config = {
 			["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
 			["h"] = { ":nohlsearch<cr>", "Remove highlighting of search results" },
 			["s"] = { ":ISwap<cr>", "Swap parameters interactively" },
+			["g"] = {
+				name = "GitHub Copilot",
+				["e"] = {
+					"<cmd>let b:copilot_enabled=1<cr>",
+					"Force enable",
+				},
+				["d"] = {
+					"<cmd>let b:copilot_enabled=0<cr>",
+					"Force disable",
+				},
+			},
 		},
 		["z"] = {
 			name = "Notes",
