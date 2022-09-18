@@ -40,9 +40,11 @@ map("n", "<C-Right>", ":vertical resize -2<cr>", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", ":m .+1<cr>==", opts)
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-k>", ":m .-2<cr>==", opts)
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Enhanced increment/decrement
 map("n", "<C-a>", require("dial.map").inc_normal(), opts)
@@ -114,49 +116,57 @@ map("n", "\\c.", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", opts)
 map(
 	"n",
 	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+	,
 	{}
 )
 map(
 	"n",
 	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+	,
 	{}
 )
 map(
 	"o",
 	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>"
+	,
 	{}
 )
 map(
 	"o",
 	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>"
+	,
 	{}
 )
 map(
 	"n",
 	"t",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+	,
 	{}
 )
 map(
 	"n",
 	"T",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+	,
 	{}
 )
 map(
 	"o",
 	"t",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>"
+	,
 	{}
 )
 map(
 	"o",
 	"T",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>",
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>"
+	,
 	{}
 )
 map("", "s", "<cmd>lua require'hop'.hint_words()<cr>", {})
@@ -177,3 +187,25 @@ map("n", "[q", ":cprevious<CR>", opts)
 map("n", "]q", ":cnext<CR>", opts)
 map("n", "]Q", ":clast<CR>", opts)
 map("n", "[Q", ":cfirst<CR>", opts)
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
+
+local fences = {
+	"go",
+	"javascript",
+	"js=javascript",
+	"json",
+	"lua",
+	"python",
+	"sh",
+	"shell=sh",
+	"ts=typescript",
+	"typescript",
+}
+vim.g.markdown_fenced_languages = fences

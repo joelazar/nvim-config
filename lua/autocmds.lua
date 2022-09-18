@@ -81,3 +81,9 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 	callback = require("nvim-lightbulb").update_lightbulb,
 	group = highlight_group,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "Create directories when needed, when saving a file",
+	group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+	command = [[call mkdir(expand('<afile>:p:h'), 'p')]],
+})
