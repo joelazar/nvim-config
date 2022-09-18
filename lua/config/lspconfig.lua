@@ -52,9 +52,16 @@ custom_capabilities.textDocument.colorProvider = {
 	dynamicRegistration = true,
 }
 
+local black = require("config/efm/black")
+local fish = require("config/efm/fish")
+local flake8 = require("config/efm/flake8")
+local isort = require("config/efm/isort")
+local mypy = require("config/efm/mypy")
+local pgformat = require("config/efm/fish")
 local prettierd = require("config/efm/prettierd")
 local shellcheck = require("config/efm/shellcheck")
 local shfmt = require("config/efm/shfmt")
+local stylua = require("config/efm/stylua")
 
 local servers = {
 	bashls = true,
@@ -67,14 +74,8 @@ local servers = {
 		settings = {
 			rootMarkers = { ".git/" },
 			languages = {
-				lua = { { formatCommand = "stylua -s --stdin-filepath ${INPUT} -", formatStdin = true } },
-				python = {
-					{ formatCommand = "black --fast -", formatStdin = true },
-					{
-						formatCommand = "isort --stdout --profile black -",
-						formatStdin = true,
-					},
-				},
+				lua = { stylua },
+				python = { black, isort, mypy, flake8 },
 				typescript = { prettierd },
 				javascript = { prettierd },
 				typescriptreact = { prettierd },
@@ -86,12 +87,8 @@ local servers = {
 				css = { prettierd },
 				markdown = { prettierd },
 				sh = { shellcheck, shfmt },
-				sql = {
-					{ formatCommand = "pg_format -u 1 -i", formatStdin = true },
-				},
-				fish = {
-					{ formatCommand = "fish_indent" },
-				},
+				sql = { pgformat },
+				fish = { fish },
 			},
 		},
 		filetypes = {
