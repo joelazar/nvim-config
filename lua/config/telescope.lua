@@ -24,6 +24,7 @@ M.config = {
 			"--trim",
 			"--glob=!.git/",
 			"--glob=!package-lock.json",
+			"--glob=!yarn.lock",
 		},
 		prompt_prefix = "❯ ",
 		selection_caret = "❯ ",
