@@ -2,7 +2,12 @@ local M = {}
 
 -- Set barbar's options
 M.config_function = function()
-	vim.g.bufferline = {
+	local status_ok, bufferline = pcall(require, "bufferline")
+	if not status_ok then
+		return
+	end
+
+	bufferline.setup({
 		-- Enable/disable animations
 		animation = false,
 
@@ -29,7 +34,7 @@ M.config_function = function()
 		-- highlight group. By default, the Buffer*Icon group is linked to the
 		-- Buffer* group (see Highlighting below). Otherwise, it will take its
 		-- default value as defined by devicons.
-		icon_custom_colors = false,
+		icon_custom_colors = true,
 
 		-- Configure icons on the bufferline.
 		icon_separator_active = "▎",
@@ -40,6 +45,9 @@ M.config_function = function()
 
 		-- Sets the maximum padding width with which to surround each tab
 		maximum_padding = 1,
+
+		-- Sets the minimum padding width with which to surround each tab
+		minimum_padding = 1,
 
 		-- Sets the maximum buffer name length.
 		maximum_length = 30,
@@ -58,7 +66,7 @@ M.config_function = function()
 		-- Sets the name of unnamed buffers. By default format is "[Buffer X]"
 		-- where X is the buffer number. But only a static string is accepted here.
 		no_name_title = nil,
-	}
+	})
 end
 
 M.setup = function()
