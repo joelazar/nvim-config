@@ -355,21 +355,25 @@ M.config = {
 				"<cmd>Lspsaga signature_help<cr>",
 				"Signature help",
 			},
+			["i"] = { "<cmd>LspInfo<cr>", "Info" },
 			["k"] = {
 				"<cmd>Lspsaga hover_doc<cr>",
 				"Show hover doc",
 			},
-			["i"] = { "<cmd>LspInfo<cr>", "Info" },
+			["l"] = {
+				"<cmd>Lspsaga show_line_diagnostics<cr>",
+				"Show line diagnostics",
+			},
 			["q"] = {
 				"<cmd>lua vim.diagnostic.setqflist()<cr>",
 				"Set quickfix list",
 			},
 			["n"] = {
-				"<cmd>lua vim.diagnostic.goto_next()<cr>",
+				"<cmd>lua vim.diagnostic.goto_next({ float = false })<cr>",
 				"Next Diagnostic",
 			},
 			["p"] = {
-				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+				"<cmd>lua vim.diagnostic.goto_prev({ float = false })<cr>",
 				"Prev Diagnostic",
 			},
 			["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },
