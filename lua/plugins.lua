@@ -525,4 +525,12 @@ return require("packer").startup(function()
 			require("refactoring").setup({})
 		end,
 	})
+
+	-- Post to pastebins easily
+	use({
+		"rktjmp/paperplanes.nvim",
+		config = function()
+			require("config.paperplanes").setup()
+		end,
+	})
 end)
