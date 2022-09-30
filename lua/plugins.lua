@@ -184,14 +184,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Standalone UI for nvim-lsp progress
-	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({})
-		end,
-	})
-
 	-- Enhanced search and replace
 	use({
 		"windwp/nvim-spectre",
