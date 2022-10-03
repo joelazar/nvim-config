@@ -23,6 +23,7 @@ M.config = {
 			"--hidden",
 			"--trim",
 			"--glob=!.git/",
+			"--glob=!.yarn/",
 			"--glob=!package-lock.json",
 			"--glob=!yarn.lock",
 		},
