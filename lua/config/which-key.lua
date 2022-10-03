@@ -158,6 +158,10 @@ M.config = {
 			name = "Search",
 			["v"] = { '<cmd>lua require"config.telescope".grep_string_visual()<CR>', "Visual selection" },
 		},
+		["x"] = {
+			name = "Misc",
+			["u"] = { ":PP<cr>", "Upload selection to dpaste" },
+		},
 	},
 	mappings = {
 		["'"] = {
@@ -510,6 +514,7 @@ M.config = {
 			["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
 			["h"] = { ":nohlsearch<cr>", "Remove highlighting of search results" },
 			["s"] = { ":ISwap<cr>", "Swap parameters interactively" },
+			["u"] = { ":PP<cr>", "Upload file to dpaste" },
 			["g"] = {
 				name = "GitHub Copilot",
 				["e"] = {
