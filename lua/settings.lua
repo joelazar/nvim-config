@@ -118,14 +118,11 @@ vim.o.relativenumber = false
 vim.o.pumheight = 15
 
 -- Don't show cmdline by default
---[[ vim.o.cmdheight = 0 ]]
--- TODO - wait until which-key supports it properly
-vim.o.cmdheight = 1
+vim.o.cmdheight = 0
 
 -- Minimum nr. of lines above and below cursor
 vim.o.scrolloff = 5 -- could be 1
 vim.o.sidescrolloff = 5
--- vim.o.display = 'lastline'
 
 -- Ignore case when completing file names and directories.
 vim.o.wildignorecase = true
