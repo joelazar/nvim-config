@@ -484,6 +484,9 @@ return require("packer").startup(function()
 				code_action_lightbulb = {
 					enable = false,
 				},
+				symbol_in_winbar = {
+					enable = false,
+				},
 				max_preview_lines = 50,
 			})
 		end,
