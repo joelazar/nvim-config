@@ -29,6 +29,7 @@ M.setup = function()
 				})
 			end
 		end,
+		ignore = "^$", -- Ignore empty lines
 	})
 end
 
