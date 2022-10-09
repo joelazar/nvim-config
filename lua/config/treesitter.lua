@@ -30,10 +30,16 @@ M.config = {
 	},
 	ignore_install = {},
 	sync_install = true,
+
+	autotag = { enable = true },
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+	},
 	highlight = {
-		enable = true, -- false will disable the whole extension
+		enable = true,
 		use_languagetree = true,
-		-- additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
 		enable = true,
@@ -44,19 +50,14 @@ M.config = {
 			node_decremental = "<S-TAB>",
 		},
 	},
-	indent = { enable = true },
-	rainbow = {
-		enable = true,
-		extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-		max_file_lines = 2000, -- Do not enable for files with more than 2000 lines, int
-	},
-	autotag = { enable = true },
-	context_commentstring = {
-		enable = true,
-		enable_autocmd = false,
-	},
+	indent = { enable = false },
 	matchup = {
 		enable = true,
+	},
+	rainbow = {
+		enable = true,
+		extended_mode = true,
+		max_file_lines = 2000,
 	},
 }
 
