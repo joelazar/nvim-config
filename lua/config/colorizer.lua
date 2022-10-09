@@ -7,7 +7,7 @@ M.setup = function()
 	end
 
 	colorizer.setup({
-		filetypes = { "*" },
+		filetypes = { "*", "!help" },
 		user_default_options = {
 			RGB = true, -- #RGB hex codes
 			RRGGBB = true, -- #RRGGBB hex codes

@@ -5,18 +5,17 @@ M.config = {
 		FIX = {
 			icon = " ", -- icon used for the sign, and in search results
 			color = "error", -- can be a hex color, or a named color (see below)
-			alt = { "fix", "bug", "BUG" }, -- a set of other keywords that all map to this FIX keywords
-			-- signs = false, -- configure signs for some keywords individually
+			alt = { "fix", "bug" }, -- a set of other keywords that all map to this FIX keywords
 		},
-		TODO = { icon = " ", color = "info", alt = { "todo" } },
-		HACK = { icon = " ", color = "warning", alt = { "hack" } },
+		TODO = { icon = " ", color = "info" },
+		HACK = { icon = " ", color = "warning" },
 		WARN = {
 			icon = " ",
 			color = "warning",
-			alt = { "warn", "WARNING", "XXX" },
+			alt = { "warning", "xxx" },
 		},
 		PERF = { icon = " ", alt = { "perf" } },
-		NOTE = { icon = " ", color = "hint", alt = { "note", "info", "INFO" } },
+		NOTE = { icon = " ", color = "hint", alt = { "note", "info" } },
 	},
 	-- highlighting of the line containing the todo comment
 	-- * before: highlights before the keyword (typically comment characters)
@@ -29,14 +28,15 @@ M.config = {
 		pattern = [[.*<(\iKEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
 		comments_only = true, -- uses treesitter to match keywords in comments only
 		max_line_len = 400, -- ignore lines longer than this
-		exclude = { "txt" }, -- list of file types to exclude highlighting
+		exclude = { "txt", "man", "markdown" }, -- list of file types to exclude highlighting
 	},
 	colors = {
-		error = { "DiagnosticSignError", "ErrorMsg", "#DC2626" },
-		warning = { "DiagnosticSignWarn", "WarningMsg", "#FBBF24" },
-		info = { "DiagnosticSignInfo", "#2563EB" },
-		hint = { "DiagnosticSignHint", "#10B981" },
+		error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+		warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
+		info = { "DiagnosticInfo", "#2563EB" },
+		hint = { "DiagnosticHint", "#10B981" },
 		default = { "Identifier", "#7C3AED" },
+		test = { "Identifier", "#FF00FF" },
 	},
 	search = {
 		command = "rg",
