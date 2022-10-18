@@ -526,6 +526,17 @@ M.config = {
 					"Force disable",
 				},
 			},
+			["m"] = {
+				name = "Markdown preview",
+				["o"] = {
+					"<cmd>PeekOpen<cr>",
+					"Open preview",
+				},
+				["c"] = {
+					"<cmd>PeekClose<cr>",
+					"Close preview",
+				},
+			},
 		},
 		["z"] = {
 			name = "Notes",

@@ -301,9 +301,12 @@ return require("packer").startup(function()
 
 	-- Markdown
 	use({
-		"iamcco/markdown-preview.nvim",
+		"toppair/peek.nvim",
+		run = "deno task --quiet build:fast",
 		ft = "markdown",
-		run = "cd app && yarn install",
+		config = function()
+			require("config.peek").setup()
+		end,
 	})
 
 	-- HTML/JS
