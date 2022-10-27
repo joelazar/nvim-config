@@ -531,4 +531,12 @@ return require("packer").startup(function()
 			require("config.paperplanes").setup()
 		end,
 	})
+
+	-- Scrollbar for Neovim
+	use({
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("scrollbar").setup()
+		end,
+	})
 end)
