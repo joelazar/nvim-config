@@ -14,6 +14,7 @@ M.config = {
 		},
 		vimgrep_arguments = {
 			"rg",
+			"-L",
 			"--color=never",
 			"--no-heading",
 			"--with-filename",
