@@ -109,6 +109,19 @@ M.setup = function()
 
 		experimental = { ghost_text = true },
 	})
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "cmdline" },
+			{ name = "path" },
+		},
+	})
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	})
 end
 
 return M

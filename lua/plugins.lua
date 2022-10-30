@@ -155,6 +155,7 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-path")
 	use("mtoohey31/cmp-fish")
 	use("octaltree/cmp-look")
+	use("hrsh7th/cmp-cmdline")
 	use("saadparwaiz1/cmp_luasnip")
 	use({
 		"hrsh7th/nvim-cmp",
@@ -173,14 +174,6 @@ return require("packer").startup(function()
 		},
 		config = function()
 			require("config.cmp").setup()
-		end,
-	})
-
-	-- Enhanced wildmenu
-	use({
-		"gelguy/wilder.nvim",
-		config = function()
-			require("config.wilder").setup()
 		end,
 	})
 

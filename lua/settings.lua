@@ -26,7 +26,7 @@ vim.o.undofile = true
 vim.o.undolevels = 1000
 
 -- Faster scrolling
-vim.o.lazyredraw = true
+-- vim.o.lazyredraw = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -37,7 +37,7 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
 -- Decrease redraw time
-vim.o.redrawtime = 100
+-- vim.o.redrawtime = 100
 
 -- Set true colors
 vim.o.termguicolors = true
