@@ -2,6 +2,15 @@ local M = {}
 
 M.config = {
 	space_char_blankline = " ",
+	buftype_exclude = { "telescope" },
+	filetype_exclude = {
+		"starter",
+		"packer",
+		"Trouble",
+		"TelescopePrompt",
+		"Float",
+		"OverseerForm",
+	},
 }
 
 M.config_function = function()

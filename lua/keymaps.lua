@@ -201,6 +201,16 @@ end, { desc = "Previous todo comment" })
 vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
 vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 
+vim.api.nvim_create_user_command("OverseerRestartLast", function()
+	local overseer = require("overseer")
+	local tasks = overseer.list_tasks({ recent_first = true })
+	if vim.tbl_isempty(tasks) then
+		vim.notify("No tasks found", vim.log.levels.WARN)
+	else
+		overseer.run_action(tasks[1], "restart")
+	end
+end, {})
+
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
 -- Code above will check if u are deleting empty line, if so - use black hole register.

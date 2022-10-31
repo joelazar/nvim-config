@@ -17,6 +17,7 @@ M.config = {
 		lualine_c = {
 			"diff",
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
+			"overseer",
 		},
 		lualine_x = {
 			"searchcount",

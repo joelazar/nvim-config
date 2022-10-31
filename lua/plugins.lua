@@ -48,10 +48,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Asynctasks
-	use("skywind3000/asyncrun.vim")
-	use("skywind3000/asynctasks.vim")
-
 	-- Comment toggler
 	use({
 		"numToStr/Comment.nvim",
@@ -532,6 +528,15 @@ return require("packer").startup(function()
 			require("scrollbar").setup()
 		end,
 	})
+
+	-- Task runner for Neovim
+	use({
+		"stevearc/overseer.nvim",
+		config = function()
+			require("overseer").setup()
+		end,
+	})
+
 	-- Improve default vim.ui interfaces
 	use({
 		"stevearc/dressing.nvim",

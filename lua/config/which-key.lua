@@ -401,13 +401,11 @@ M.config = {
 				["H"] = { "<cmd>vim.diagnostic.hide()<cr>", "Hide diagnostic for all buffers" },
 			},
 		},
-		["m"] = {
-			name = "Tasks",
-			["g"] = { "<cmd>GoTestFunc<cr>", "Run go test function" },
-			["m"] = { "<cmd>AsyncRun make<cr>", "Run default make task" },
-			["M"] = { "<cmd>Telescope make<cr>", "Telescope make tasks" },
-			["l"] = { "<cmd>AsyncRun npm run lint<cr>", "Run js lint" },
-			["t"] = { "<cmd>AsyncRun npm run test<cr>", "Run js test" },
+		["o"] = {
+			name = "Overseer",
+			["l"] = { "<cmd>OverseerRun<cr>", "List tasks in project" },
+			["r"] = { "<cmd>OverseerRestartLast<cr>", "Restart last task" },
+			["t"] = { "<cmd>OverseerToggle<cr>", "Toggle summary window" },
 		},
 		["s"] = {
 			name = "Search",
