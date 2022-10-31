@@ -6,7 +6,8 @@ vim.o.completeopt = "menuone,noselect"
 
 -- Enable highlight on search
 vim.o.hlsearch = true
--- highlight match while typing search pattern
+
+-- Highlight match while typing search pattern
 vim.o.incsearch = true
 
 -- Make line numbers default
@@ -25,9 +26,6 @@ vim.o.swapfile = true
 vim.o.undofile = true
 vim.o.undolevels = 1000
 
--- Faster scrolling
--- vim.o.lazyredraw = true
-
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -36,8 +34,11 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
+-- Faster scrolling
+vim.o.lazyredraw = true
+
 -- Decrease redraw time
--- vim.o.redrawtime = 100
+vim.o.redrawtime = 100
 
 -- Set true colors
 vim.o.termguicolors = true
@@ -103,11 +104,6 @@ vim.o.ruler = true
 -- Briefly jump to matching bracket if insert one
 vim.o.showmatch = true
 
--- Use filetype.lua instead
--- NOT needed since neovim 0.8
--- vim.g.do_filetype_lua = 1
--- vim.g.did_load_filetypes = 0
-
 -- Hide show current mode on status line
 vim.o.showmode = false
 
@@ -118,7 +114,7 @@ vim.o.relativenumber = false
 vim.o.pumheight = 15
 
 -- Don't show cmdline by default
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 
 -- Minimum nr. of lines above and below cursor
 vim.o.scrolloff = 5 -- could be 1
@@ -150,9 +146,6 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim.o.foldcolumn = "1"
-
--- Asyncrun automatically open quickfix window
-vim.g.asyncrun_open = 6
 
 -- Use ripgrep as grep tool
 vim.o.grepprg = "rg --vimgrep --no-heading"
