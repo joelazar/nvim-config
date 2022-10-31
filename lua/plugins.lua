@@ -532,4 +532,11 @@ return require("packer").startup(function()
 			require("scrollbar").setup()
 		end,
 	})
+	-- Improve default vim.ui interfaces
+	use({
+		"stevearc/dressing.nvim",
+		config = function()
+			require("config.dressing").setup()
+		end,
+	})
 end)
