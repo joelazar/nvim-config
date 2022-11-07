@@ -2,7 +2,7 @@ local M = {}
 
 M.config = {
 	space_char_blankline = " ",
-	buftype_exclude = { "telescope" },
+	buftype_exclude = { "telescope", "terminal", "nofile", "quickfix", "prompt" },
 	filetype_exclude = {
 		"starter",
 		"packer",
@@ -10,6 +10,12 @@ M.config = {
 		"TelescopePrompt",
 		"Float",
 		"OverseerForm",
+		"lspinfo",
+		"packer",
+		"checkhealth",
+		"help",
+		"man",
+		"",
 	},
 }
 
