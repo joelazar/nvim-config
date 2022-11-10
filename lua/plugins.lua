@@ -190,7 +190,7 @@ return require("packer").startup(function()
 		after = { "nvim-cmp" },
 	})
 
-	-- Using mini.nvim for surround text object plugin and trailing space detection
+	-- Using mini.nvim for starter screen and trailing space detection
 	use({
 		"echasnovski/mini.nvim",
 		config = function()
