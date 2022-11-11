@@ -232,10 +232,6 @@ end
 local typescript_nvim = require("typescript")
 
 local function disable_lsp_formatting(client)
-	--[[ client.resolved_capabilities.document_formatting = false ]]
-	--[[ client.resolved_capabilities.document_range_formatting = false ]]
-	--[[ client.resolved_capabilities.documentFormattingProvider = false ]]
-	--[[ client.resolved_capabilities.documentRangeFormattingProvider = false ]]
 	client.server_capabilities.document_formatting = false
 	client.server_capabilities.document_range_formatting = false
 	client.server_capabilities.documentFormattingProvider = false
