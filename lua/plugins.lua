@@ -544,4 +544,7 @@ return require("packer").startup(function()
 			require("config.dressing").setup()
 		end,
 	})
+
+	-- Open files from terminal window in the same neovim instance
+	use("samjwill/nvim-unception")
 end)
