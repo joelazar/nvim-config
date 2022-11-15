@@ -305,9 +305,6 @@ return require("packer").startup(function()
 		run = 'sh -c "npm install --prefix server"',
 	})
 
-	-- Lazygit in Neovim
-	use("kdheepak/lazygit.nvim")
-
 	-- Check git history
 	use("sindrets/diffview.nvim")
 
