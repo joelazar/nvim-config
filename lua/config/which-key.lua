@@ -189,7 +189,7 @@ M.config = {
 				"Close all but current buffer",
 			},
 			["f"] = {
-				"<cmd>lua vim.lsp.buf.format()<cr>",
+				"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
 				"Format buffer (LSP)",
 			},
 			["l"] = { "<cmd>BufferMovePrevious<cr>", "Move buffer to the left" },
