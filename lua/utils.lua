@@ -43,20 +43,6 @@ end
 
 M.open_lazygit = function()
 	vim.cmd.terminal({ "lazygit" })
-	vim.api.nvim_create_autocmd("TermClose", {
-		buffer = vim.api.nvim_get_current_buf(),
-		callback = function(opts)
-			if vim.v.event.status == 0 then
-				vim.api.nvim_buf_delete(opts.buf, { force = true })
-				local status_ok, gitsigns = pcall(require, "gitsigns")
-				if not status_ok then
-					return
-				end
-				gitsigns.refresh()
-			end
-		end,
-	})
-
 	vim.cmd.startinsert()
 end
 
