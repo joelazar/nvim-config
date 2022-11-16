@@ -75,12 +75,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 })
 
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-	desc = "Lightbulb autocmd",
-	pattern = "*",
-	callback = require("nvim-lightbulb").update_lightbulb,
-	group = highlight_group,
-})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "Create directories when needed, when saving a file",

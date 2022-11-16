@@ -97,6 +97,10 @@ M.config = {
 			["n"] = { "<cmd>cnext<cr>", "Select next item in quickfix list" },
 			["p"] = { "<cmd>cprev<cr>", "Select previous item in quickfix list" },
 		},
+		["o"] = {
+			"<cmd>LSoutlineToggle<cr>",
+			"Shot LSP outline",
+		},
 	},
 	secvmappings = {},
 	vmappings = {

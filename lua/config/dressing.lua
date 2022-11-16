@@ -7,6 +7,11 @@ M.setup = function()
 	end
 	dressing.setup({
 		input = {
+			mappings = {
+				n = {
+					q = "Close",
+				},
+			},
 			default_prompt = "➤ ",
 		},
 		select = {
@@ -17,6 +22,11 @@ M.setup = function()
 					height = 12,
 				},
 			}),
+			mappings = {
+				n = {
+					q = "Close",
+				},
+			},
 		},
 	})
 end

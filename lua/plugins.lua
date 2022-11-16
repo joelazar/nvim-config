@@ -25,9 +25,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Nicer code action signs
-	use("kosayoda/nvim-lightbulb")
-
 	-- Swap parameters easier
 	use("mizlan/iswap.nvim")
 
@@ -462,7 +459,7 @@ return require("packer").startup(function()
 		requires = "kevinhwang91/promise-async",
 	})
 
-	-- Improved lsp ui
+	-- Improved LSP UI
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
@@ -471,10 +468,14 @@ return require("packer").startup(function()
 
 			saga.init_lsp_saga({
 				code_action_lightbulb = {
-					enable = false,
+					virtual_text = false,
+					enable_in_insert = false,
 				},
 				symbol_in_winbar = {
 					enable = false,
+				},
+				show_outline = {
+					jump_key = "<CR>",
 				},
 				max_preview_lines = 50,
 			})
