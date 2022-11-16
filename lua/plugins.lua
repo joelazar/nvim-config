@@ -71,8 +71,10 @@ return require("packer").startup(function()
 		requires = "nvim-lua/plenary.nvim",
 	})
 
+	-- Filebrowsing in telescope
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
+	-- Pass custom grep options to text search
 	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
 
 	-- FZF sorter for telescope
@@ -84,8 +86,6 @@ return require("packer").startup(function()
 		requires = "nvim-telescope/telescope.nvim",
 		run = "make",
 	})
-
-	use({ "ptethng/telescope-makefile" })
 
 	-- Status bar
 	use({
