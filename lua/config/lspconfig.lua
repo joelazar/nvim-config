@@ -12,17 +12,17 @@ local function custom_on_attach(client, bufnr)
 
 	local opts = { noremap = true, silent = true }
 
-	buf_set_keymap("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>Lspsaga implement<CR>", opts)
-	buf_set_keymap("n", "<C-k>", "<cmd>Lspsaga signature_help<CR>", opts)
-	buf_set_keymap("n", "gk", "<cmd>Lspsaga signature_help<CR>", opts)
-	buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = false })CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = false })<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>Lspsaga preview_definition<cr>", opts)
+	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+	buf_set_keymap("n", "gr", "<cmd>Lspsaga lsp_finder<cr>", opts)
+	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+	buf_set_keymap("n", "gi", "<cmd>Lspsaga implement<cr>", opts)
+	buf_set_keymap("n", "<C-k>", "<cmd>Lspsaga signature_help<cr>", opts)
+	buf_set_keymap("n", "gk", "<cmd>Lspsaga signature_help<cr>", opts)
+	buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+	buf_set_keymap("n", "gT", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = false })<cr>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = false })<cr>", opts)
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()

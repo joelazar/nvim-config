@@ -43,11 +43,11 @@ map("n", "<C-Right>", ":vertical resize -2<cr>", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", ":m .+1<cr>==", opts)
-map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+map("i", "<A-j>", "<Esc>:m .+1<cr>==gi", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-k>", ":m .-2<cr>==", opts)
-map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+map("i", "<A-k>", "<Esc>:m .-2<cr>==gi", opts)
 
 -- Enhanced increment/decrement
 map("n", "<C-a>", require("dial.map").inc_normal(), opts)
@@ -61,7 +61,7 @@ map("n", "N", "Nzzzv", opts)
 map("n", "J", "mzJ`z", opts)
 
 -- clear any highlights when <esc> is pressed
-map("n", "<Esc>", ":noh<CR>", opts)
+map("n", "<Esc>", ":noh<cr>", opts)
 
 -- move one up/down display line instead of physicial line
 map("n", "j", "gj", opts)
@@ -172,7 +172,8 @@ map(
 	,
 	{}
 )
-map("", "s", "<cmd>lua require'hop'.hint_words()<cr>", {})
+map("", "s", "<cmd>lua require'hop'.hint_char2()<cr>", {})
+map("", "S", "<cmd>lua require'hop'.hint_patterns()<cr>", {})
 map("", "L", "<cmd>lua require'hop'.hint_lines()<cr>", {})
 
 -- DAP
@@ -186,10 +187,40 @@ map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)
 map("v", ".", ":norm .<cr>", opts)
 
 -- quickfix mappings
-map("n", "[q", ":cprevious<CR>", opts)
-map("n", "]q", ":cnext<CR>", opts)
-map("n", "]Q", ":clast<CR>", opts)
-map("n", "[Q", ":cfirst<CR>", opts)
+map("n", "[q", ":cprevious<cr>", opts)
+map("n", "]q", ":cnext<cr>", opts)
+map("n", "]Q", ":clast<cr>", opts)
+map("n", "[Q", ":cfirst<cr>", opts)
+
+-- todo comments mappings
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- gitsigns mappings
+vim.keymap.set("n", "]c", function()
+	if vim.wo.diff then
+		return "]c"
+	end
+	vim.schedule(function()
+		require("gitsigns").next_hunk()
+	end)
+	return "<Ignore>"
+end, { expr = true })
+
+vim.keymap.set("n", "[c", function()
+	if vim.wo.diff then
+		return "[c"
+	end
+	vim.schedule(function()
+		require("gitsigns").prev_hunk()
+	end)
+	return "<Ignore>"
+end, { expr = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
@@ -198,13 +229,6 @@ vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
 vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
-
-vim.keymap.set("n", "]t", function()
-	require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-vim.keymap.set("n", "[t", function()
-	require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
 
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
 	local overseer = require("overseer")

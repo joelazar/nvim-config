@@ -160,12 +160,12 @@ M.config = {
 		},
 		["x"] = {
 			name = "Misc",
-			["u"] = { ":PP<cr>", "Upload selection to dpaste" },
+			["u"] = { "<cmd>PP<cr>", "Upload selection to dpaste" },
 		},
 	},
 	mappings = {
 		["'"] = {
-			"<cmd>1ToggleTerm size=15 direction=horizontal<cr>",
+			"<cmd>1ToggleTerm size=20 direction=horizontal<cr>",
 			"Open toggle terminal",
 		},
 		['"'] = {
@@ -182,30 +182,27 @@ M.config = {
 		["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 		["b"] = {
 			name = "Buffers",
-			["j"] = { "<cmd>BufferPick<cr>", "Jump to buffer" },
 			["d"] = { "<cmd>BufferClose<cr>", "Delete buffer" },
-			["D"] = {
-				"<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
-				"Close all but current buffer",
-			},
+			["D"] = { "<cmd>BufferClose!<cr>", "Force Delete buffer" },
 			["f"] = {
 				"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
 				"Format buffer (LSP)",
 			},
 			["l"] = { "<cmd>BufferMovePrevious<cr>", "Move buffer to the left" },
-			["r"] = { "<cmd>BufferMoveNext<cr>", "Move buffer to the right" },
 			["L"] = {
 				"<cmd>BufferCloseBuffersLeft<cr>",
 				"Close all buffers to the left",
 			},
+			["n"] = { "<cmd>BufferNext<cr>", "Next buffer" },
+			["p"] = { "<cmd>BufferPrevious<cr>", "Previous buffer" },
+			["P"] = { "<cmd>BufferPin<cr>", "Pin/Unpin buffer" },
+			["r"] = { "<cmd>BufferMoveNext<cr>", "Move buffer to the right" },
 			["R"] = {
 				"<cmd>BufferCloseBuffersRight<cr>",
 				"Close all buffers to the right",
 			},
-			["p"] = { "<cmd>BufferPrevious<cr>", "Previous buffer" },
-			["P"] = { "<cmd>BufferPin<cr>", "Pin/Unpin buffer" },
-			["n"] = { "<cmd>BufferNext<cr>", "Next buffer" },
-			["s"] = {
+			["s"] = { "<cmd>Telescope buffers<cr>", "Search buffers" },
+			["S"] = {
 				name = "Sort buffers",
 				["d"] = {
 					"<cmd>BufferOrderByDirectory<cr>",
@@ -216,32 +213,14 @@ M.config = {
 					"Sort buffers automatically by language",
 				},
 			},
-			["W"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffer(s)" },
+			["w"] = {
+				"<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
+				"Close all but current buffer",
+			},
+			["W"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffers" },
 		},
 		["d"] = {
 			name = "Debug",
-			s = {
-				name = "Step",
-				c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
-				v = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
-				i = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
-				o = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
-			},
-			h = {
-				name = "Hover",
-				h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
-				v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual Hover" },
-			},
-			u = {
-				name = "UI",
-				h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
-				f = { "local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", "Float" },
-			},
-			r = {
-				name = "Repl",
-				o = { "<cmd>lua require('dap').repl.open()<CR>", "Open" },
-				l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run Last" },
-			},
 			b = {
 				name = "Breakpoints",
 				c = {
@@ -254,7 +233,29 @@ M.config = {
 				},
 				t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Create" },
 			},
+			h = {
+				name = "Hover",
+				h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
+				v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual Hover" },
+			},
 			i = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
+			r = {
+				name = "Repl",
+				o = { "<cmd>lua require('dap').repl.open()<CR>", "Open" },
+				l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run Last" },
+			},
+			s = {
+				name = "Step",
+				c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
+				v = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
+				i = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
+				o = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
+			},
+			u = {
+				name = "UI",
+				h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
+				f = { "local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", "Float" },
+			},
 		},
 		["p"] = {
 			name = "Packer",
@@ -265,19 +266,38 @@ M.config = {
 		},
 		["g"] = {
 			name = "Git",
-			["j"] = {
-				'<cmd>lua require"gitsigns".next_hunk()<cr>',
-				"Next Hunk",
+			["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+			["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+			["C"] = {
+				"<cmd>Telescope git_bcommits<cr>",
+				"Checkout commit(for current file)",
 			},
-			["k"] = {
-				'<cmd>lua require"gitsigns".prev_hunk()<cr>',
-				"Prev Hunk",
+			["d"] = {
+				name = "Diffview",
+				["o"] = { "<cmd>DiffviewOpen<cr>", "Open" },
+				["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
+				["h"] = { "<cmd>DiffviewFileHistory<cr>", "History" },
+				["H"] = { "<cmd>DiffviewFileHistory %<cr>", "History for current file only" },
+				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
+				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
+			},
+			["D"] = {
+				'<cmd>lua require"gitsigns".diffthis()<cr>',
+				"Diff this file",
 			},
 			["l"] = {
 				'<cmd>lua require"gitsigns".blame_line{full=true}<cr>',
 				"Blame Line",
 			},
+			["n"] = {
+				'<cmd>lua require"gitsigns".next_hunk()<cr>',
+				"Next Hunk",
+			},
 			["p"] = {
+				'<cmd>lua require"gitsigns".prev_hunk()<cr>',
+				"Prev Hunk",
+			},
+			["P"] = {
 				'<cmd>lua require"gitsigns".preview_hunk()<cr>',
 				"Preview Hunk",
 			},
@@ -301,26 +321,7 @@ M.config = {
 				'<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
 				"Undo Stage Hunk",
 			},
-			["D"] = {
-				'<cmd>lua require"gitsigns".diffthis()<cr>',
-				"Diff this file",
-			},
 			["o"] = { "<cmd>Telescope git_status<cr>", "Open changed files" },
-			["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-			["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-			["C"] = {
-				"<cmd>Telescope git_bcommits<cr>",
-				"Checkout commit(for current file)",
-			},
-			["d"] = {
-				name = "Diffview",
-				["o"] = { "<cmd>DiffviewOpen<cr>", "Open" },
-				["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
-				["h"] = { "<cmd>DiffviewFileHistory<cr>", "History" },
-				["H"] = { "<cmd>DiffviewFileHistory %<cr>", "History for current file only" },
-				["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
-				["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
-			},
 			["t"] = {
 				name = "Toggle",
 				["b"] = { '<cmd>lua require"gitsigns".toggle_current_line_blame()<cr>', "Blame line" },
@@ -436,11 +437,11 @@ M.config = {
 		},
 		["S"] = {
 			name = "Search and replace",
-			["m"] = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
 			["f"] = {
 				"<cmd>lua require('spectre').open_file_search()<CR>",
 				"Open file menu",
 			},
+			["m"] = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
 			["w"] = {
 				"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
 				"Replace word under cursor",
@@ -490,51 +491,39 @@ M.config = {
 			["s"] = { '<cmd>lua require("neotest").run.stop()<CR>', "Stop test" },
 			["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
 		},
-		["T"] = {
-			name = "Treesitter",
-			["i"] = { "<cmd>TSConfigInfo<cr>", "Info" },
-			["d"] = {
-				"<cmd>TSDisableAll rainbow<cr><cmd>TSDisableAll incremental_selection<cr><cmd>TSDisableAll highlight<cr><cmd>TSDisableAll autotag<cr><cmd>TSDisableAll indent<cr>",
-				"Disable",
-			},
-			["e"] = {
-				"<cmd>TSEnableAll rainbow<cr><cmd>TSEnableAll incremental_selection<cr><cmd>TSEnableAll highlight<cr><cmd>TSEnableAll autotag<cr><cmd>TSEnableAll indent<cr>",
-				"Enable",
-			},
-		},
 		["x"] = {
 			name = "Misc",
 			["c"] = { "<cmd>ColorizerToggle<cr>", "Toggle colorizer" },
-			["C"] = {
-				"<cmd>lua vim.opt.list=not vim.opt.list._value<cr>",
-				"Toggle hidden characters",
-			},
 			["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
-			["h"] = { ":nohlsearch<cr>", "Remove highlighting of search results" },
-			["s"] = { ":ISwap<cr>", "Swap parameters interactively" },
-			["u"] = { ":PP<cr>", "Upload file to dpaste" },
 			["g"] = {
 				name = "GitHub Copilot",
-				["e"] = {
-					"<cmd>let b:copilot_enabled=1<cr>",
-					"Force enable",
-				},
 				["d"] = {
 					"<cmd>let b:copilot_enabled=0<cr>",
 					"Force disable",
 				},
+				["e"] = {
+					"<cmd>let b:copilot_enabled=1<cr>",
+					"Force enable",
+				},
 			},
+			["h"] = {
+				"<cmd>lua vim.opt.list=not vim.opt.list._value<cr>",
+				"Toggle hidden characters",
+			},
+			["H"] = { "<cmd>nohlsearch<cr>", "Remove highlighting of search results" },
 			["m"] = {
 				name = "Markdown preview",
-				["o"] = {
-					"<cmd>PeekOpen<cr>",
-					"Open preview",
-				},
 				["c"] = {
 					"<cmd>PeekClose<cr>",
 					"Close preview",
 				},
+				["o"] = {
+					"<cmd>PeekOpen<cr>",
+					"Open preview",
+				},
 			},
+			["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
+			["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
 		},
 		["z"] = {
 			name = "Notes",
