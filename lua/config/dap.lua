@@ -198,7 +198,7 @@ M.setup = function()
 			cwd = "${workspaceFolder}",
 		},
 		{
-			name = "Nope -Node - Attach with pwa-node",
+			name = "Nope - Node - Attach with pwa-node",
 			type = "pwa-node",
 			skipFiles = { "<node_internals>/**" },
 			request = "attach",
