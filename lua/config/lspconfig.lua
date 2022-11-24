@@ -145,7 +145,15 @@ local servers = {
 		filetypes = { "go", "gomod" },
 	},
 	html = { init_options = { provideFormatter = false } },
-	jsonls = { init_options = { provideFormatter = false } },
+	jsonls = {
+		init_options = { provideFormatter = false },
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
 	ltex = {
 		autostart = false,
 		filetypes = {

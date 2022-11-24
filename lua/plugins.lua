@@ -546,4 +546,7 @@ return require("packer").startup(function()
 
 	-- Open files from terminal window in the same neovim instance
 	use("samjwill/nvim-unception")
+
+	-- JSON schemas for Neovim
+	use("b0o/schemastore.nvim")
 end)
