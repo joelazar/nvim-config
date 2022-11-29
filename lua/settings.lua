@@ -113,7 +113,7 @@ vim.o.relativenumber = false
 -- Maximum height of the popup menu
 vim.o.pumheight = 15
 
--- Don't show cmdline by default
+-- Show cmdline by default
 vim.o.cmdheight = 1
 
 -- Minimum nr. of lines above and below cursor
