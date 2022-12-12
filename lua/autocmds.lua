@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "Autoformat before save",
-	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma", "*.py" },
+	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma", "*.py", "*.mjs" },
 	callback = function()
 		vim.lsp.buf.format()
 	end,
@@ -74,7 +74,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 	group = highlight_group,
 })
-
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	desc = "Create directories when needed, when saving a file",
