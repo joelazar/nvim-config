@@ -172,6 +172,8 @@ if not undodir:exists() then
 end
 vim.o.undodir = tostring(undodir)
 
+vim.g.python3_host_prog = "/usr/bin/python3"
+
 -- Disable some builtin providers
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
