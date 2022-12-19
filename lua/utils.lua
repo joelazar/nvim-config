@@ -2,10 +2,6 @@ local M = {}
 
 M.sudo_exec = function(cmd, print_output)
 	local password = vim.fn.inputsecret("Password: ")
-	if not password or #password == 0 then
-		print("Invalid password, sudo aborted")
-		return false
-	end
 	local out = vim.fn.system(string.format("sudo -p '' -S %s", cmd), password)
 	if vim.v.shell_error ~= 0 then
 		print("\r\n")
