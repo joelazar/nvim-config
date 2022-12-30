@@ -4,11 +4,12 @@ local builtin = require("nnn").builtin
 
 M.config = {
 	explorer = {
-		cmd = "nnn -od", -- command overrride (-F1 flags are implied, -a flag is invalid!)
+		cmd = "nnn", -- command overrride (-F1 flags are implied, -a flag is invalid!)
 		width = 32, -- width of the vertical split
 		session = "", -- or global/local/shared
 		side = "topleft", -- or "botright", location of the explorer window
 		tabs = true, -- seperate nnn instance per tab
+		fullscreen = true, -- whether to fullscreen explorer window when current tab is empty
 	},
 	picker = {
 		cmd = "nnn -od", -- command override (-p flag is implied)
@@ -20,6 +21,7 @@ M.config = {
 			border = "single", -- border decoration e.g. "rounded"(:h nvim_open_win)
 		},
 		session = "", -- or global/local/shared
+		fullscreen = true, -- whether to fullscreen picker window when current tab is empty
 	},
 	auto_open = {
 		setup = nil, -- or "explorer" / "picker", auto open on setup function
