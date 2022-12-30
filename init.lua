@@ -9,14 +9,13 @@ if present then
 end
 
 -- installs packer if needed
-if require("first_load")() then
+if require("config.first_load")() then
 	return
 end
 
 vim.g.mapleader = " "
 
-require("plugins")
-require("keymaps")
-require("settings")
-require("autocmds")
-require("snippets.react")
+require("config.plugins")
+require("config.keymaps")
+require("config.settings")
+require("config.autocmds")

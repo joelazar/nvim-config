@@ -12,7 +12,7 @@ return require("packer").startup(function()
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("config.lspconfig")
+			require("config.plugins.lspconfig")
 		end,
 		after = { "nvim-cmp", "typescript.nvim" },
 	})
@@ -21,7 +21,7 @@ return require("packer").startup(function()
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
-			require("config.null-ls").setup()
+			require("config.plugins.null-ls").setup()
 		end,
 	})
 
@@ -49,7 +49,7 @@ return require("packer").startup(function()
 	use({
 		"folke/which-key.nvim",
 		config = function()
-			require("config.which-key").setup()
+			require("config.plugins.which-key").setup()
 		end,
 	})
 
@@ -57,7 +57,7 @@ return require("packer").startup(function()
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
-			require("config.comment").setup()
+			require("config.plugins.comment").setup()
 		end,
 	})
 
@@ -65,7 +65,7 @@ return require("packer").startup(function()
 	use({
 		"ahmedkhalf/project.nvim",
 		config = function()
-			require("config.project").setup()
+			require("config.plugins.project").setup()
 		end,
 		requires = "nvim-telescope/telescope.nvim",
 	})
@@ -74,7 +74,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = function()
-			require("config.telescope").setup()
+			require("config.plugins.telescope").setup()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	})
@@ -102,7 +102,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("config.lualine").setup()
+			require("config.plugins.lualine").setup()
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
 		after = { "nightfox.nvim" },
@@ -112,7 +112,7 @@ return require("packer").startup(function()
 	use({
 		"EdenEast/nightfox.nvim",
 		config = function()
-			require("config.nightfox").setup()
+			require("config.plugins.nightfox").setup()
 		end,
 		run = ':lua require("nightfox").compile()',
 	})
@@ -121,7 +121,7 @@ return require("packer").startup(function()
 	use({
 		"NTBBloodbath/rest.nvim",
 		config = function()
-			require("config.rest").setup()
+			require("config.plugins.rest").setup()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 		ft = { "http" },
@@ -131,7 +131,7 @@ return require("packer").startup(function()
 	use({
 		"NvChad/nvim-colorizer.lua",
 		config = function()
-			require("config.colorizer").setup()
+			require("config.plugins.colorizer").setup()
 		end,
 	})
 
@@ -177,7 +177,7 @@ return require("packer").startup(function()
 			"cmp-emoji",
 		},
 		config = function()
-			require("config.cmp").setup()
+			require("config.plugins.cmp").setup()
 		end,
 	})
 
@@ -185,7 +185,7 @@ return require("packer").startup(function()
 	use({
 		"windwp/nvim-spectre",
 		config = function()
-			require("config.spectre").setup()
+			require("config.plugins.spectre").setup()
 		end,
 	})
 
@@ -193,7 +193,7 @@ return require("packer").startup(function()
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("config.autopairs").setup()
+			require("config.plugins.autopairs").setup()
 		end,
 		after = { "nvim-cmp" },
 	})
@@ -202,7 +202,7 @@ return require("packer").startup(function()
 	use({
 		"echasnovski/mini.nvim",
 		config = function()
-			require("config.mini").setup()
+			require("config.plugins.mini").setup()
 		end,
 	})
 
@@ -210,7 +210,7 @@ return require("packer").startup(function()
 	use({
 		"AckslD/nvim-neoclip.lua",
 		config = function()
-			require("config.neoclip").setup()
+			require("config.plugins.neoclip").setup()
 		end,
 		requires = {
 			{ "nvim-telescope/telescope.nvim" },
@@ -222,7 +222,7 @@ return require("packer").startup(function()
 	use({
 		"ray-x/go.nvim",
 		config = function()
-			require("config.go").setup()
+			require("config.plugins.go").setup()
 		end,
 		ft = { "go", "gomod" },
 	})
@@ -240,7 +240,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require("config.treesitter").setup()
+			require("config.plugins.treesitter").setup()
 		end,
 		run = ":TSUpdate",
 	})
@@ -249,7 +249,7 @@ return require("packer").startup(function()
 	use({
 		"monaqa/dial.nvim",
 		config = function()
-			require("config.dial").setup()
+			require("config.plugins.dial").setup()
 		end,
 	})
 
@@ -269,7 +269,7 @@ return require("packer").startup(function()
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("config.indent-blankline").setup()
+			require("config.plugins.indent-blankline").setup()
 		end,
 	})
 
@@ -280,7 +280,7 @@ return require("packer").startup(function()
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("config.gitsigns").setup()
+			require("config.plugins.gitsigns").setup()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	})
@@ -302,7 +302,7 @@ return require("packer").startup(function()
 		run = "deno task --quiet build:fast",
 		ft = "markdown",
 		config = function()
-			require("config.peek").setup()
+			require("config.plugins.peek").setup()
 		end,
 	})
 
@@ -320,7 +320,7 @@ return require("packer").startup(function()
 	use({
 		"luukvbaal/nnn.nvim",
 		config = function()
-			require("config.nnn").setup()
+			require("config.plugins.nnn").setup()
 		end,
 	})
 
@@ -328,7 +328,7 @@ return require("packer").startup(function()
 	use({
 		"folke/todo-comments.nvim",
 		config = function()
-			require("config.todo").setup()
+			require("config.plugins.todo").setup()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	})
@@ -337,7 +337,7 @@ return require("packer").startup(function()
 	use({
 		"akinsho/nvim-toggleterm.lua",
 		config = function()
-			require("config.terminal").setup()
+			require("config.plugins.terminal").setup()
 		end,
 	})
 
@@ -360,7 +360,7 @@ return require("packer").startup(function()
 	use({
 		"romgrk/barbar.nvim",
 		config = function()
-			require("config.barbar").setup()
+			require("config.plugins.barbar").setup()
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
 		after = { "nightfox.nvim" },
@@ -384,7 +384,7 @@ return require("packer").startup(function()
 			"mfussenegger/nvim-dap-python",
 		},
 		config = function()
-			require("config.dap").setup()
+			require("config.plugins.dap").setup()
 		end,
 	})
 
@@ -410,7 +410,7 @@ return require("packer").startup(function()
 			"typescriptreact",
 		},
 		config = function()
-			require("config.neotest").setup()
+			require("config.plugins.neotest").setup()
 		end,
 	})
 
@@ -419,7 +419,7 @@ return require("packer").startup(function()
 		"michaelb/sniprun",
 		run = "bash ./install.sh",
 		config = function()
-			require("config.sniprun").setup()
+			require("config.plugins.sniprun").setup()
 		end,
 	})
 
@@ -427,7 +427,7 @@ return require("packer").startup(function()
 	use({
 		"github/copilot.vim",
 		config = function()
-			require("config.copilot").setup()
+			require("config.plugins.copilot").setup()
 		end,
 	})
 
@@ -444,7 +444,7 @@ return require("packer").startup(function()
 	use({
 		"mickael-menu/zk-nvim",
 		config = function()
-			require("config.zk").setup()
+			require("config.plugins.zk").setup()
 		end,
 	})
 
@@ -526,7 +526,7 @@ return require("packer").startup(function()
 	use({
 		"rktjmp/paperplanes.nvim",
 		config = function()
-			require("config.paperplanes").setup()
+			require("config.plugins.paperplanes").setup()
 		end,
 	})
 
@@ -551,7 +551,7 @@ return require("packer").startup(function()
 	use({
 		"stevearc/dressing.nvim",
 		config = function()
-			require("config.dressing").setup()
+			require("config.plugins.dressing").setup()
 		end,
 	})
 
@@ -589,7 +589,7 @@ return require("packer").startup(function()
 	use({
 		"williamboman/mason.nvim",
 		config = function()
-			require("config.mason").setup()
+			require("config.plugins.mason").setup()
 		end,
 	})
 
