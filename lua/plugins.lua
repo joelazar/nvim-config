@@ -592,4 +592,6 @@ return require("packer").startup(function()
 			require("config.mason").setup()
 		end,
 	})
+
+	use("dstein64/vim-startuptime")
 end)
