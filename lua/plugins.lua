@@ -80,10 +80,13 @@ return require("packer").startup(function()
 	})
 
 	-- Filebrowsing in telescope
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
+	use("nvim-telescope/telescope-file-browser.nvim")
 
 	-- Pass custom grep options to text search
-	use({ "nvim-telescope/telescope-live-grep-args.nvim" })
+	use("nvim-telescope/telescope-live-grep-args.nvim")
+
+	-- Undo tree in telescope
+	use("debugloop/telescope-undo.nvim")
 
 	-- FZF sorter for telescope
 	use({

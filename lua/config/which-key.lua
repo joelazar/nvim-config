@@ -184,6 +184,7 @@ M.config = {
 		["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
 		["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 		["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
+		["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
 		["b"] = {
 			name = "Buffers",
 			["d"] = { "<cmd>BufferClose<cr>", "Delete buffer" },
