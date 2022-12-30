@@ -96,29 +96,12 @@ local servers = {
 			},
 		},
 	},
-	ltex = {
-		autostart = false,
-		filetypes = {
-			"typescript",
-			"typescriptreact",
-			"javascript",
-			"javascriptreact",
-			"go",
-			"lua",
-			"markdown",
-			"plaintex",
-			"tex",
-		},
-	},
 	prismals = true,
 	pyright = true,
 	rust_analyzer = true,
 	tailwindcss = true,
 	stylelint_lsp = {
 		autostart = false,
-		cmd = {
-			"stylelint",
-		},
 	},
 	sumneko_lua = {
 		cmd = { "lua-language-server" },

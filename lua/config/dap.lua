@@ -116,26 +116,26 @@ M.setup = function()
 
 	dap_vscode_js.setup({
 		node_path = "/usr/bin/node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-		debugger_path = { os.getenv("HOME") .. "/git/dev/dap/vscode-js-debug/" }, -- Path to vscode-js-debug installation. TODO - does it work?
+		debugger_path = { vim.fn.stdpath("data") .. "/mason/packages/vscode-js-debug/" }, -- Path to vscode-js-debug installation. TODO - does it work?
 		adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
 	})
 
 	dap.adapters.firefox = {
 		type = "executable",
 		command = "node",
-		args = { os.getenv("HOME") .. "/git/dev/dap/vscode-firefox-debug/dist/adapter.bundle.js" },
+		args = { vim.fn.stdpath("data") .. "/mason/packages/vscode-firefox-debug/dist/adapter.bundle.js" },
 	}
 
 	dap.adapters.node2 = {
 		type = "executable",
 		command = "node",
-		args = { os.getenv("HOME") .. "/git/dev/dap/vscode-node-debug2/out/src/nodeDebug.js" },
+		args = { vim.fn.stdpath("data") .. "/mason/packages/node-debug2-adapter/out/src/nodeDebug.js" },
 	}
 
 	dap.adapters.chrome = {
 		type = "executable",
 		command = "node",
-		args = { os.getenv("HOME") .. "/git/dev/dap/vscode-chrome-debug/out/src/chromeDebug.js" },
+		args = { vim.fn.stdpath("data") .. "/mason/packages/vscode-chrome-debug/out/src/chromeDebug.js" },
 	}
 
 	dap.configurations.typescript = {
@@ -214,7 +214,7 @@ M.setup = function()
 		type = "server",
 		port = "${port}",
 		executable = {
-			command = "dlv",
+			command = vim.fn.stdpath("data") .. "/mason/bin/dlv",
 			args = { "dap", "-l", "127.0.0.1:${port}" },
 		},
 	}

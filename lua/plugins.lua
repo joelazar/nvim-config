@@ -567,12 +567,72 @@ return require("packer").startup(function()
 	use({
 		"jackMort/ChatGPT.nvim",
 		config = function()
-			require("chatgpt").setup({})
+			require("chatgpt").setup({
+				keymaps = {
+					close = { "<C-c>", "<Esc>" },
+					yank_last = "<C-y>",
+					scroll_up = "<C-u>",
+					scroll_down = "<C-d>",
+					toggle_settings = "<C-o>",
+					new_session = "<C-n>",
+					cycle_windows = "<C-m>",
+				},
+			})
 		end,
 		requires = {
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+	})
+
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+
+			local ensure_installed = {
+				"actionlint",
+				"bash-language-server",
+				"black",
+				"chrome-debug-adapter",
+				"clangd",
+				"css-lsp",
+				"delve",
+				"dockerfile-language-server",
+				"eslint-lsp",
+				"eslint_d",
+				"firefox-debug-adapter",
+				"flake8",
+				"gofumpt",
+				"golangci-lint-langserver",
+				"gopls",
+				"gotestsum",
+				"html-lsp",
+				"isort",
+				"js-debug-adapter",
+				"json-lsp",
+				"lua-language-server",
+				"mypy",
+				"node-debug2-adapter",
+				"prettierd",
+				"prisma-language-server",
+				"pylint",
+				"pyright",
+				"rust-analyzer",
+				"shellcheck",
+				"shfmt",
+				"sqlfluff",
+				"stylelint-lsp",
+				"stylua",
+				"tailwindcss-language-server",
+				"texlab",
+				"typescript-language-server",
+				"yaml-language-server",
+			}
+			vim.api.nvim_create_user_command("MasonInstallAll", function()
+				vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
+			end, {})
+		end,
 	})
 end)
