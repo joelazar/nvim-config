@@ -17,6 +17,14 @@ return require("packer").startup(function()
 		after = { "nvim-cmp", "typescript.nvim" },
 	})
 
+	-- use Neovim as a language server
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("config.null-ls").setup()
+		end,
+	})
+
 	-- Nicer diagnostics
 	use({
 		"folke/lsp-trouble.nvim",

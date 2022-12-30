@@ -48,69 +48,11 @@ custom_capabilities.textDocument.colorProvider = {
 	dynamicRegistration = true,
 }
 
-local black = require("config/efm/black")
-local fish = require("config/efm/fish")
-local flake8 = require("config/efm/flake8")
-local isort = require("config/efm/isort")
-local mypy = require("config/efm/mypy")
-local pgformat = require("config/efm/pgformat")
-local prettierd = require("config/efm/prettierd")
-local pylint = require("config/efm/pylint")
-local shellcheck = require("config/efm/shellcheck")
-local shfmt = require("config/efm/shfmt")
-local stylua = require("config/efm/stylua")
-
 local servers = {
 	bashls = true,
 	cssls = true,
 	clangd = true,
 	dockerls = true,
-	efm = {
-		init_options = { documentFormatting = true },
-		root_dir = vim.loop.cwd,
-		settings = {
-			rootMarkers = { ".git/" },
-			languages = {
-				lua = { stylua },
-				python = { black, isort, mypy, flake8, pylint },
-				typescript = { prettierd },
-				javascript = { prettierd },
-				typescriptreact = { prettierd },
-				javascriptreact = { prettierd },
-				yaml = { prettierd },
-				json = { prettierd },
-				html = { prettierd },
-				scss = { prettierd },
-				css = { prettierd },
-				markdown = { prettierd },
-				sh = { shellcheck, shfmt },
-				sql = { pgformat },
-				fish = { fish },
-			},
-		},
-		filetypes = {
-			"css",
-			"fish",
-			"html",
-			"javascript",
-			"javascriptreact",
-			"json",
-			"lua",
-			"markdown",
-			"python",
-			"scss",
-			"sh",
-			"sql",
-			"ts",
-			"typescript",
-			"typescriptreact",
-			"yaml",
-		},
-	},
-	eslint = {
-		root_dir = require("lspconfig").util.find_node_modules_ancestor,
-	},
-	golangci_lint_ls = true,
 	gopls = {
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
