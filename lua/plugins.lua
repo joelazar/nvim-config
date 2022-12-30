@@ -557,4 +557,7 @@ return require("packer").startup(function()
 
 	-- JSON schemas for Neovim
 	use("b0o/schemastore.nvim")
+
+	-- Training for vim movements
+	use("ThePrimeagen/vim-be-good")
 end)
