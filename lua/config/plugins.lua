@@ -2,9 +2,6 @@ return require("packer").startup(function()
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- Improve startup time
-	use("lewis6991/impatient.nvim")
-
 	-- Improved Typescript LSP config
 	use("jose-elias-alvarez/typescript.nvim")
 
