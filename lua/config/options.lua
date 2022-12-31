@@ -1,8 +1,11 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Incremental live completion
 vim.o.inccommand = "nosplit"
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 
 -- Enable highlight on search
 vim.o.hlsearch = true
@@ -150,6 +153,9 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- Use ripgrep as grep tool
 vim.o.grepprg = "rg --vimgrep --no-heading"
 vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+
+-- No double spaces with join after a dot
+vim.opt.joinspaces = false
 
 -- Set directories for backup/swap/undo files and create them if necessary
 local Path = require("plenary.path")

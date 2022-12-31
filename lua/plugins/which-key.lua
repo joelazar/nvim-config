@@ -88,7 +88,7 @@ M.config = {
 	-- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
 	-- see https://neovim.io/doc/user/map.html#:map-cmd
 	secmappings = {
-		["g"] = { "<cmd>lua require'utils'.open_lazygit()<cr>", "Lazygit" },
+		["g"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
 		["q"] = {
 			name = "Quickfix list",
 			["o"] = { "<cmd>copen<cr>", "Open quickfix list window" },
@@ -178,7 +178,7 @@ M.config = {
 		},
 		["e"] = { "<cmd>SnipRun<cr>", "Execute (sniprun)" },
 		["w"] = { "<cmd>w!<cr>", "Save" },
-		["W"] = { "<cmd>lua require'utils'.sudo_write()<cr>", "Sudo Save" },
+		["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
 		["q"] = { "<cmd>q!<cr>", "Quit" },
 		[";"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment Operator" },
 		["n"] = { "<cmd>NnnPicker<cr>", "nnn" },

@@ -30,8 +30,9 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave", "CmdlineEnter" }, {
 
 vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Open file at same location where it was opened last time",
-	pattern = "*",
-	command = 'if expand(\'%:p\') !~# \'\\m/\\.git/\' && line("\'\\"") > 1 && line("\'\\"") <= line("$") | exe "normal! g\'\\"" | endif',
+	callback = function()
+		vim.cmd([[silent! normal! g`"]])
+	end,
 	group = vimrc_group,
 })
 
@@ -91,3 +92,24 @@ vim.api.nvim_create_autocmd("TermClose", {
 	end,
 	group = vimrc_group,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	desc = "Close some filetypes with <q>",
+	pattern = {
+		"qf",
+		"help",
+		"man",
+		"notify",
+		"lspinfo",
+		"spectre_panel",
+		"startuptime",
+		"tsplayground",
+		"PlenaryTestPopup",
+	},
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+	end,
+	group = vimrc_group,
+})
+
