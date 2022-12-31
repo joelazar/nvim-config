@@ -1,3 +1,4 @@
+-- Set space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -178,6 +179,7 @@ if not undodir:exists() then
 end
 vim.o.undodir = tostring(undodir)
 
+-- Set python3 interpreter
 vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- Disable some builtin providers
@@ -186,37 +188,5 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
 
--- Disable some builtin vim plugins
-local disabled_built_ins = {
-	"2html_plugin",
-	"bugreport",
-	"compiler",
-	"ftplugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"matchit",
-	"matchparen",
-	"netrw",
-	"netrwFileHandlers",
-	"netrwPlugin",
-	"netrwSettings",
-	"optwin",
-	"rplugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"synmenu",
-	"tar",
-	"tarPlugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-	vim.g["loaded_" .. plugin] = 1
-end
-
+-- Do not load system vimfiles
 vim.api.nvim_command("set rtp-=/usr/share/vim/vimfiles")
