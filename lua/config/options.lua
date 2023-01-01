@@ -165,26 +165,10 @@ vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 -- No double spaces with join after a dot
 vim.opt.joinspaces = false
 
--- Set directories for backup/swap/undo files and create them if necessary
-local Path = require("plenary.path")
-
-local swapdir = Path:new(Path.path.home .. "/.cache/nvim/swap/")
-if not swapdir:exists() then
-	swapdir:mkdir()
-end
-vim.o.directory = tostring(swapdir)
-
-local backupdir = Path:new(Path.path.home .. "/.cache/nvim/backup/")
-if not backupdir:exists() then
-	backupdir:mkdir()
-end
-vim.o.backupdir = tostring(backupdir)
-
-local undodir = Path:new(Path.path.home .. "/.cache/nvim/undo/")
-if not undodir:exists() then
-	undodir:mkdir()
-end
-vim.o.undodir = tostring(undodir)
+-- Set directories for backup/swap/undo files
+vim.opt.directory = vim.fn.stdpath("state") .. "/swap"
+vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
 -- Set python3 interpreter
 vim.g.python3_host_prog = "/usr/bin/python3"
