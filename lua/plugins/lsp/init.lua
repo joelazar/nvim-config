@@ -5,7 +5,6 @@ local M = {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/schemastore.nvim",
-		"jose-elias-alvarez/typescript.nvim",
 		"williamboman/mason.nvim",
 		"glepnir/lspsaga.nvim",
 		"jose-elias-alvarez/typescript.nvim",
@@ -48,6 +47,7 @@ M.config = function()
 		cssls = {},
 		clangd = {},
 		dockerls = {},
+		golangci_lint_ls = {},
 		gopls = {
 			flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 			settings = {
@@ -70,7 +70,6 @@ M.config = function()
 					staticcheck = true,
 					matcher = "Fuzzy",
 					diagnosticsDelay = "500ms",
-					experimentalWatchedFileDelay = "100ms",
 					experimentalPostfixCompletions = true,
 					symbolMatcher = "fuzzy",
 					gofumpt = true,
@@ -168,7 +167,7 @@ M.config = function()
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 	vim.lsp.handlers["textDocument/signatureHelp"] =
-		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+	vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 	-- suppress error messages from lang servers
 	vim.notify = function(msg, log_level, _)
