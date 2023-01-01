@@ -1,12 +1,9 @@
-local M = {}
+local M = {
+	"mickael-menu/zk-nvim"
+}
 
-M.setup = function()
-	local status_ok, zk = pcall(require, "zk")
-	if not status_ok then
-		return
-	end
-
-	zk.setup({
+M.config = function()
+	require("zk").setup({
 		-- can be "telescope", "fzf" or "select" (`vim.ui.select`)
 		-- it's recommended to use "telescope" or "fzf"
 		picker = "telescope",

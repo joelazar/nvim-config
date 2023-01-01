@@ -1,10 +1,9 @@
-local M = {}
+local M = {
+	"monaqa/dial.nvim"
+}
 
-M.setup = function()
-	local status_ok, augend = pcall(require, "dial.augend")
-	if not status_ok then
-		return
-	end
+M.config = function()
+	local augend = require("dial.augend")
 
 	require("dial.config").augends:register_group({
 		default = {

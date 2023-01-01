@@ -1,12 +1,9 @@
-local M = {}
+local M = {
+	"windwp/nvim-spectre"
+}
 
-M.setup = function()
-	local status_ok, spectre = pcall(require, "spectre")
-	if not status_ok then
-		return
-	end
-
-	spectre.setup({
+M.config = function()
+	require("spectre").setup({
 		mapping = {
 			["toggle_line"] = {
 				map = "dd",

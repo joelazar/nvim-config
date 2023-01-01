@@ -1,16 +1,13 @@
-local M = {}
+local M = {
+	"ahmedkhalf/project.nvim",
+	event = "BufReadPre",
+	dependencies = {
+		"nvim-telescope/telescope.nvim",
+	}
+}
 
-M.setup = function()
-	local project_ok, project_nvim = pcall(require, "project_nvim")
-	if not project_ok then
-		return
-	end
-	local telescope_ok, telescope = pcall(require, "telescope")
-	if not telescope_ok then
-		return
-	end
-
-	project_nvim.setup({
+M.config = function()
+	require("project_nvim").setup({
 		manual_mode = false,
 		detection_methods = { "lsp", "pattern" },
 		patterns = { ".git", "Makefile", "package.json" },
@@ -21,7 +18,8 @@ M.setup = function()
 		scope_chdir = "global",
 		datapath = vim.fn.stdpath("data"),
 	})
-	telescope.load_extension("projects")
+
+	require("telescope").load_extension("projects")
 end
 
 return M

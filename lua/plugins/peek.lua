@@ -1,12 +1,11 @@
-local M = {}
+local M = {
+	"toppair/peek.nvim",
+	build = "deno task --quiet build:fast",
+	ft = "markdown",
+}
 
-M.setup = function()
-	local status_ok, peak = pcall(require, "peak")
-	if not status_ok then
-		return
-	end
-
-	peak.setup({
+M.config = function()
+	require("peek").setup({
 		auto_load = true,
 		close_on_bdelete = true,
 		syntax = true,

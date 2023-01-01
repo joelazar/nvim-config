@@ -1,12 +1,7 @@
-local M = {}
-
-M.setup = function()
-	local status_ok, colorizer = pcall(require, "colorizer")
-	if not status_ok then
-		return
-	end
-
-	colorizer.setup({
+local M = {
+	"NvChad/nvim-colorizer.lua",
+	event = "BufReadPre",
+	config = {
 		filetypes = { "*", "!help" },
 		user_default_options = {
 			RGB = true, -- #RGB hex codes
@@ -21,7 +16,8 @@ M.setup = function()
 			mode = "background", -- Set the display mode.
 			tailwind = true, -- Enable tailwind colors
 		},
-	})
-end
+	}
+
+}
 
 return M

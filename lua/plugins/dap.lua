@@ -1,14 +1,27 @@
-local M = {}
+local M = {
+	"mfussenegger/nvim-dap",
+	ft = {
+		"go",
+		"javascript",
+		"javascriptreact",
+		"python",
+		"typescript",
+		"typescriptreact",
+	},
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+		"theHamsta/nvim-dap-virtual-text",
+		"mxsdev/nvim-dap-vscode-js",
+		"mfussenegger/nvim-dap-python",
+	},
+}
 
-M.setup = function()
-	local present_dap, dap = pcall(require, "dap")
-	local present_dapui, dapui = pcall(require, "dapui")
-	local present_virtual_text, dap_vt = pcall(require, "nvim-dap-virtual-text")
-	local present_vscode_js, dap_vscode_js = pcall(require, "dap-vscode-js")
-	local present_dap_python, dap_python = pcall(require, "dap-python")
-	if not (present_dap and present_dapui and present_virtual_text and present_vscode_js and present_dap_python) then
-		return
-	end
+M.config = function()
+	local dap = require("dap")
+	local dapui = require("dapui")
+	local dap_vt = require("nvim-dap-virtual-text")
+	local dap_vscode_js = require("dap-vscode-js")
+	local dap_python = require("dap-python")
 
 	dap_vt.setup({
 		enabled = true, -- enable this plugin (the default)

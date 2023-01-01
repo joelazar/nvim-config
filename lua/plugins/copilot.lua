@@ -1,6 +1,9 @@
-local M = {}
+local M = {
+	"github/copilot.vim",
+	event = "VeryLazy",
+}
 
-M.setup = function()
+M.config = function()
 	vim.g.copilot_filetypes = {
 		["*"] = false,
 		-- ["markdown"] = true,

@@ -1,13 +1,29 @@
-local M = {}
+local M = {
+	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
+	dependencies = {
+		"dmitmel/cmp-cmdline-history",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-calc",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-path",
+		"mtoohey31/cmp-fish",
+		"octaltree/cmp-look",
+		"onsails/lspkind-nvim",
+		"saadparwaiz1/cmp_luasnip",
+		"L3MON4D3/LuaSnip"
+	},
+}
 
-M.setup = function()
-	local present1, cmp = pcall(require, "cmp")
-	local present2, lspkind = pcall(require, "lspkind")
-	local present3, luasnip = pcall(require, "luasnip")
 
-	if not (present1 and present2 and present3) then
-		return
-	end
+M.config = function()
+	local cmp = require("cmp")
+	local lspkind = require("lspkind")
+	local luasnip = require("luasnip")
 
 	cmp.setup({
 		mapping = {

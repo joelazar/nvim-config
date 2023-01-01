@@ -1,11 +1,10 @@
-local M = {}
+local M = {
+	"stevearc/dressing.nvim",
+	event = "VeryLazy",
+}
 
-M.setup = function()
-	local status_ok, dressing = pcall(require, "dressing")
-	if not status_ok then
-		return
-	end
-	dressing.setup({
+M.config = function()
+	require("dressing").setup({
 		input = {
 			mappings = {
 				n = {

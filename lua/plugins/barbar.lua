@@ -1,13 +1,13 @@
-local M = {}
+local M = {
+	"romgrk/barbar.nvim",
+	dependencies = {
+		"kyazdani42/nvim-web-devicons"
+	},
+	event = "BufAdd",
+}
 
--- Set barbar's options
-M.config_function = function()
-	local status_ok, bufferline = pcall(require, "bufferline")
-	if not status_ok then
-		return
-	end
-
-	bufferline.setup({
+M.config = function()
+	require("bufferline").setup({
 		-- Enable/disable animations
 		animation = false,
 
@@ -67,10 +67,6 @@ M.config_function = function()
 		-- where X is the buffer number. But only a static string is accepted here.
 		no_name_title = nil,
 	})
-end
-
-M.setup = function()
-	M.config_function()
 end
 
 return M

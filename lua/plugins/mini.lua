@@ -1,20 +1,16 @@
-local M = {}
+local M = {
+	"echasnovski/mini.nvim",
+	event = "VimEnter"
+}
 
-M.setup = function()
-	local trailspace_ok, trailspace = pcall(require, "mini.trailspace")
-	if not trailspace_ok then
-		return
-	end
-	trailspace.setup({
+M.config = function()
+	require("mini.trailspace").setup({
 		-- Highlight only in normal buffers (ones with empty 'buftype'). This is
 		-- useful to not show trailing whitespace where it usually doesn't matter.
 		only_in_normal_buffers = true,
 	})
 
-	local starter_ok, starter = pcall(require, "mini.starter")
-	if not starter_ok then
-		return
-	end
+	local starter = require("mini.starter")
 	starter.setup({
 		-- Whether to open starter buffer on VimEnter. Not opened if Neovim was
 		-- started with intent to show something else.

@@ -50,12 +50,19 @@ vim.o.termguicolors = true
 -- Disable intro message
 vim.opt.shortmess:append("I")
 
+-- Disable search count res from the bottom right corner
+vim.opt.shortmess:append("S")
+
 -- Disable ins-completion-menu messages
 vim.opt.shortmess:append("c")
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append("<>hl")
+
+-- set symbols for space and newline
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
 
 -- Take indent for new line from previous line
 vim.o.autoindent = true

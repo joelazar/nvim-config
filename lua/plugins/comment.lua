@@ -1,12 +1,10 @@
-local M = {}
+local M = {
+	"numToStr/Comment.nvim",
+	event = "VeryLazy",
+}
 
-M.setup = function()
-	local status_ok, comment = pcall(require, "Comment")
-	if not status_ok then
-		return
-	end
-
-	comment.setup({
+M.config = function()
+	require("Comment").setup({
 		pre_hook = function(ctx)
 			-- Only calculate commentstring for tsx filetypes
 			if vim.bo.filetype == "typescriptreact" then
