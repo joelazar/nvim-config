@@ -1,6 +1,6 @@
 local M = {
 	"folke/which-key.nvim",
-	event = "VimEnter"
+	event = "VeryLazy"
 }
 
 M.config = function()
@@ -268,12 +268,11 @@ M.config = function()
 					f = { "local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", "Float" },
 				},
 			},
-			["p"] = {
-				name = "Packer",
-				["c"] = { "<cmd>PackerCompile<cr>", "Compile" },
-				["i"] = { "<cmd>PackerInstall<cr>", "Install" },
-				["s"] = { "<cmd>PackerSync<cr>", "Sync" },
-				["u"] = { "<cmd>PackerUpdate<cr>", "Update" },
+			["L"] = {
+				name = "Lazy",
+				["m"] = { "<cmd>Lazy<cr>", "Menu" },
+				["u"] = { "<cmd>Lazy update<cr>", "Update" },
+				["s"] = { "<cmd>Lazy sync<cr>", "Sync" },
 			},
 			["g"] = {
 				name = "Git",

@@ -8,7 +8,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
 	defaults = { lazy = true, version = "*" },
 	install = { colorscheme = { "nightfox" } },
-	checker = { enabled = true },
 	performance = {
 		rtp = {
 			disabled_plugins = {
@@ -24,5 +23,3 @@ require("lazy").setup("plugins", {
 		},
 	},
 })
-
--- vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

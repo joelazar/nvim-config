@@ -6,13 +6,11 @@ local M = {
 		buftype_exclude = { "telescope", "terminal", "nofile", "quickfix", "prompt" },
 		filetype_exclude = {
 			"starter",
-			"packer",
 			"Trouble",
 			"TelescopePrompt",
 			"Float",
 			"OverseerForm",
 			"lspinfo",
-			"packer",
 			"checkhealth",
 			"help",
 			"man",

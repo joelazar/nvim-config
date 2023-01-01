@@ -45,13 +45,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vimrc_group,
 })
 
--- vim.api.nvim_create_autocmd("BufWritePost", {
--- 	desc = "Source new nvim config file",
--- 	pattern = { vim.fn.stdpath("config") .. "/**/*.lua" },
--- 	command = "source <afile>",
--- 	group = vimrc_group,
--- })
-
 vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Don't auto commenting new lines",
 	pattern = "*",
