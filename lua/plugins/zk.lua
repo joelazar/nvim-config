@@ -1,5 +1,9 @@
 local M = {
-	"mickael-menu/zk-nvim"
+	"mickael-menu/zk-nvim",
+	cmd = {
+		"ZkNew",
+		"ZkNotes",
+	},
 }
 
 M.config = function()

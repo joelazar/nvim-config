@@ -17,7 +17,6 @@ local M = {
 			tailwind = true, -- Enable tailwind colors
 		},
 	}
-
 }
 
 return M
