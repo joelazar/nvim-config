@@ -15,10 +15,9 @@ local M = {
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
-		"L3MON4D3/LuaSnip"
+		"L3MON4D3/LuaSnip",
 	},
 }
-
 
 M.config = function()
 	local cmp = require("cmp")

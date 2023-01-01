@@ -1,7 +1,7 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
-		"kyazdani42/nvim-web-devicons"
+		"kyazdani42/nvim-web-devicons",
 	},
 	event = "VeryLazy",
 }
@@ -41,8 +41,7 @@ M.config = function()
 			lualine_z = { "location" },
 		},
 		extensions = { "quickfix", "toggleterm", "man" },
-	}
-	)
+	})
 end
 
 return M

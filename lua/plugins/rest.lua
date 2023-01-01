@@ -10,7 +10,7 @@ local M = {
 		-- Jump to request line on run
 		jump_to_request = false,
 	},
-	ft = { "http" }
+	ft = { "http" },
 }
 
 return M

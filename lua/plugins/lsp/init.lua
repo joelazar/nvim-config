@@ -8,12 +8,12 @@ local M = {
 		"jose-elias-alvarez/typescript.nvim",
 		"williamboman/mason.nvim",
 		"glepnir/lspsaga.nvim",
-		"jose-elias-alvarez/typescript.nvim"
+		"jose-elias-alvarez/typescript.nvim",
 	},
 }
 
 M.config = function()
-	require('mason')
+	require("mason")
 	require("plugins.lsp.diagnostics").setup()
 
 	require("lspsaga").init_lsp_saga({
@@ -160,8 +160,6 @@ M.config = function()
 		else
 			lspconfig[server].setup(config)
 		end
-
-
 	end
 
 	for server, config in pairs(servers) do
@@ -169,7 +167,8 @@ M.config = function()
 	end
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+	vim.lsp.handlers["textDocument/signatureHelp"] =
+		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 	-- suppress error messages from lang servers
 	vim.notify = function(msg, log_level, _)

@@ -5,11 +5,10 @@ local M = {
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"debugloop/telescope-undo.nvim",
 		"tom-anders/telescope-vim-bookmarks.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
-	cmd = { "Telescope" }
+	cmd = { "Telescope" },
 }
-
 
 M.config = function()
 	local telescope = require("telescope")
@@ -131,8 +130,6 @@ M.config = function()
 			default_text = visual_selection(),
 		})
 	end
-
-
 end
 
 return M

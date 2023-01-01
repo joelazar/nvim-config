@@ -1,7 +1,7 @@
 local M = {
 	"michaelb/sniprun",
 	build = "bash ./install.sh",
-	cmd = "SnipRun"
+	cmd = "SnipRun",
 }
 
 M.config = function()

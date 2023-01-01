@@ -3,7 +3,7 @@ local M = {
 	event = "BufReadPre",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
-	}
+	},
 }
 
 M.config = function()

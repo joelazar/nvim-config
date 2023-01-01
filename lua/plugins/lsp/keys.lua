@@ -9,10 +9,14 @@ function M.setup(buffer)
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
 		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev({ float = false })<CR>", "Next Diagnostic" },
 		["]d"] = { "<cmd>lua vim.diagnostic.goto_next({ float = false })<cr><CR>", "Prev Diagnostic" },
-		["[e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
-			"Next Error" },
-		["]e"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
-			"Prev Error" },
+		["[e"] = {
+			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
+			"Next Error",
+		},
+		["]e"] = {
+			"<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
+			"Prev Error",
+		},
 		["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
 		["gD"] = { "<cmd>Lspsaga peek_definition<CR>", "Peek definition" },
 		["gr"] = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga finder" },

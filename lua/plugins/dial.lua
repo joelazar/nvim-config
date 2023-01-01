@@ -1,5 +1,5 @@
 local M = {
-	"monaqa/dial.nvim"
+	"monaqa/dial.nvim",
 }
 
 M.config = function()

@@ -16,7 +16,7 @@ local M = {
 			mode = "background", -- Set the display mode.
 			tailwind = true, -- Enable tailwind colors
 		},
-	}
+	},
 }
 
 return M

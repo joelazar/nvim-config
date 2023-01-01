@@ -6,7 +6,7 @@ local M = {
 		provider_options = {},
 		notifier = vim.notify or print,
 	},
-	cmd = "PP"
+	cmd = "PP",
 }
 
 return M

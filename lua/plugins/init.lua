@@ -5,7 +5,6 @@ return {
 	-- Devicons
 	"kyazdani42/nvim-web-devicons",
 
-
 	-- Swap parameters easier
 	{
 		"mizlan/iswap.nvim",
@@ -32,7 +31,6 @@ return {
 		cmd = "VimBeGood",
 	},
 
-
 	-- Measure startuptime
 	{
 		"dstein64/vim-startuptime",
@@ -58,7 +56,7 @@ return {
 			"DiffviewFocusFiles",
 			"DiffviewFileHistory",
 			"DiffviewRefresh",
-		}
+		},
 	},
 
 	-- Generate shareable file permalinks
@@ -67,14 +65,14 @@ return {
 	-- Better quickfix
 	{
 		"kevinhwang91/nvim-bqf",
-		event = "VeryLazy"
+		event = "VeryLazy",
 	},
 
 	-- Nicer diagnostics
 	{
 		"folke/lsp-trouble.nvim",
 		config = { auto_preview = false, auto_fold = true, auto_close = true },
-		cmd = { "TroubleToggle", "Trouble" }
+		cmd = { "TroubleToggle", "Trouble" },
 	},
 
 	-- GitHub integration for issues and prs
@@ -87,13 +85,13 @@ return {
 		cmd = { "Octo" },
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
-		}
+		},
 	},
 
 	-- HTML/JS
 	{
 		"turbio/bracey.vim",
-		ft    = "html",
+		ft = "html",
 		build = 'sh -c "npm install --prefix server"',
 	},
 
@@ -154,7 +152,7 @@ return {
 			require("neogen").setup({ snippet_engine = "luasnip" })
 		end,
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		cmd = "Neogen"
+		cmd = "Neogen",
 	},
 
 	-- Change strings to template string on the fly in jsx/tsx
@@ -209,6 +207,6 @@ return {
 			"ChatGPT",
 			"ChatGPTActAs",
 			"ChatGPTEditWithInstructions",
-		}
-	}
+		},
+	},
 }

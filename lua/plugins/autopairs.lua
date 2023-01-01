@@ -1,7 +1,7 @@
 local M = {
 	"windwp/nvim-autopairs",
 	dependencies = {
-		"hrsh7th/nvim-cmp"
+		"hrsh7th/nvim-cmp",
 	},
 	event = "VeryLazy",
 }

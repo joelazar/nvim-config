@@ -1,6 +1,6 @@
 local M = {
 	"folke/which-key.nvim",
-	event = "VeryLazy"
+	event = "VeryLazy",
 }
 
 M.config = function()
@@ -265,7 +265,10 @@ M.config = function()
 				u = {
 					name = "UI",
 					h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
-					f = { "local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", "Float" },
+					f = {
+						"local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>",
+						"Float",
+					},
 				},
 			},
 			["L"] = {

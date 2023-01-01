@@ -1,7 +1,7 @@
 local M = {
 	"romgrk/barbar.nvim",
 	dependencies = {
-		"kyazdani42/nvim-web-devicons"
+		"kyazdani42/nvim-web-devicons",
 	},
 	event = "BufAdd",
 }
