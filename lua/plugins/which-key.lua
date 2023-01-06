@@ -427,7 +427,7 @@ M.config = function()
 				["B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
 				["c"] = { "<cmd>Telescope commands<cr>", "Commands" },
 				["C"] = {
-					"<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+					"<cmd>Telescope colorscheme enable_preview=true<cr>",
 					"Colorscheme",
 				},
 				["f"] = { "<cmd>Telescope find_files<cr>", "Files" },
