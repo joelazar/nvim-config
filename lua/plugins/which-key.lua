@@ -283,7 +283,7 @@ M.config = function()
 				["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 				["C"] = {
 					"<cmd>Telescope git_bcommits<cr>",
-					"Checkout commit(for current file)",
+					"Checkout commit (for current file)",
 				},
 				["d"] = {
 					name = "Diffview",
