@@ -4,7 +4,7 @@ local M = {
 	dependencies = {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
-		"b0o/schemastore.nvim",
+		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
 		"glepnir/lspsaga.nvim",
 		"jose-elias-alvarez/typescript.nvim",
@@ -15,18 +15,19 @@ M.config = function()
 	require("mason")
 	require("plugins.lsp.diagnostics").setup()
 
-	require("lspsaga").init_lsp_saga({
-		code_action_lightbulb = {
+	require("lspsaga").setup({
+		lightbulb = {
 			virtual_text = false,
 			enable_in_insert = false,
 		},
 		symbol_in_winbar = {
 			enable = false,
 		},
-		show_outline = {
-			jump_key = "<CR>",
+		outline = {
+			keys = {
+				jump = "<CR>",
+			},
 		},
-		max_preview_lines = 50,
 	})
 
 	local lspconfig = require("lspconfig")
@@ -167,7 +168,7 @@ M.config = function()
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 	vim.lsp.handlers["textDocument/signatureHelp"] =
-	vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
 	-- suppress error messages from lang servers
 	vim.notify = function(msg, log_level, _)

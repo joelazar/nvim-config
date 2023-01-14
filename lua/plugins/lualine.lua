@@ -2,17 +2,36 @@ local M = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
+		"glepnir/lspsaga.nvim",
 	},
 	event = "VeryLazy",
 }
 
 M.config = function()
+	local function lspsaga_symbols()
+		local exclude = {
+			["terminal"] = true,
+			["toggleterm"] = true,
+			["prompt"] = true,
+			["help"] = true,
+		}
+		if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+			return "" -- Excluded filetypes
+		else
+			local ok, lspsaga = pcall(require, "lspsaga.symbolwinbar")
+			if ok then
+				if lspsaga:get_winbar() ~= nil then
+					return lspsaga:get_winbar()
+				else
+					return "" -- Cannot get node
+				end
+			end
+		end
+	end
+
 	require("lualine").setup({
 		options = {
 			theme = "nightfox",
-			section_separators = { left = "", right = "" },
-			component_separators = { left = "", right = "" },
-			icons_enabled = true,
 			globalstatus = true,
 		},
 		sections = {
@@ -20,8 +39,9 @@ M.config = function()
 			lualine_b = { "branch" },
 			lualine_c = {
 				"diff",
-				{ "diagnostics", sources = { "nvim_diagnostic" } },
+				"diagnostics",
 				"overseer",
+				lspsaga_symbols,
 			},
 			lualine_x = {
 				"searchcount",
@@ -32,15 +52,7 @@ M.config = function()
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
 		},
-		inactive_sections = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = { "filename" },
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = { "location" },
-		},
-		extensions = { "quickfix", "toggleterm", "man" },
+		extensions = { "quickfix", "toggleterm", "man", "nvim-dap-ui" },
 	})
 end
 
