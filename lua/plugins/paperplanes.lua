@@ -1,6 +1,6 @@
 local M = {
 	"rktjmp/paperplanes.nvim",
-	config = {
+	opts = {
 		register = "+",
 		provider = "dpaste.org",
 		provider_options = {},

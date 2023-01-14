@@ -1,7 +1,7 @@
 local M = {
 	"ray-x/go.nvim",
 	ft = { "go", "gomod" },
-	config = {
+	opts = {
 		test_dir = "",
 		comment_placeholder = "   ",
 		lsp_cfg = false, -- false: use your own lspconfig

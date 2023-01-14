@@ -1,7 +1,7 @@
 local M = {
 	"lukas-reineke/indent-blankline.nvim",
 	event = "BufReadPre",
-	config = {
+	opts = {
 		space_char_blankline = " ",
 		buftype_exclude = { "telescope", "terminal", "nofile", "quickfix", "prompt" },
 		filetype_exclude = {

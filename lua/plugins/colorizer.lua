@@ -1,7 +1,7 @@
 local M = {
 	"NvChad/nvim-colorizer.lua",
 	event = "BufReadPre",
-	config = {
+	opts = {
 		filetypes = { "*", "!help" },
 		user_default_options = {
 			RGB = true, -- #RGB hex codes
