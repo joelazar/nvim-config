@@ -26,6 +26,8 @@ M.config = function()
 				else
 					return "" -- Cannot get node
 				end
+			else
+				return "" -- Lspsaga was not loaded yet
 			end
 		end
 	end
