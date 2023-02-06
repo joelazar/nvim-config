@@ -9,6 +9,7 @@ M.config = function()
 		sources = {
 			null_ls.builtins.code_actions.eslint_d,
 			null_ls.builtins.code_actions.shellcheck,
+			require("typescript.extensions.null-ls.code-actions"),
 
 			null_ls.builtins.completion.spell,
 
