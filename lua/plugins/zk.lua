@@ -4,6 +4,7 @@ local M = {
 		"ZkNew",
 		"ZkNotes",
 	},
+	ft = { "markdown" },
 }
 
 M.config = function()
