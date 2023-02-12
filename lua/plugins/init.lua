@@ -14,7 +14,7 @@ return {
 	-- Better % navigation
 	{
 		"andymass/vim-matchup",
-		event = "BufReadPost",
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
@@ -42,7 +42,7 @@ return {
 	-- Bookmarks
 	{
 		"MattesGroeger/vim-bookmarks",
-		event = "BufReadPost",
+		event = { "BufReadPost", "BufNewFile" },
 	},
 
 	-- Check git history
@@ -105,7 +105,7 @@ return {
 			})
 		end,
 		dependencies = "kevinhwang91/promise-async",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 
 	-- Task runner for Neovim
@@ -124,7 +124,7 @@ return {
 		config = function()
 			require("hlargs").setup()
 		end,
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 
 	-- Quick annotation generator

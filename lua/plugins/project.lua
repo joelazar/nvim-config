@@ -1,6 +1,6 @@
 local M = {
 	"ahmedkhalf/project.nvim",
-	event = "BufReadPre",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},

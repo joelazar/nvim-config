@@ -9,7 +9,7 @@ local M = {
 		-- Autocreate/update html tags
 		"windwp/nvim-ts-autotag",
 	},
-	event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 }
 
 M.config = function()
@@ -47,7 +47,6 @@ M.config = function()
 		},
 		ignore_install = {},
 		sync_install = true,
-
 		autotag = { enable = true },
 		context_commentstring = {
 			enable = true,

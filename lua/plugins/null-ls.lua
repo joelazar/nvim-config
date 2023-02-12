@@ -1,6 +1,6 @@
 local M = {
 	"jose-elias-alvarez/null-ls.nvim",
-	event = "BufReadPre",
+	event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()

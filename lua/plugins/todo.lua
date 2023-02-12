@@ -1,7 +1,7 @@
 local M = {
 	"folke/todo-comments.nvim",
 	cmd = { "TodoTrouble", "TodoTelescope" },
-	event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 }
 
 M.config = function()
@@ -19,7 +19,6 @@ M.config = function()
 			NOTE = { icon = " ", color = "hint", alt = { "note", "INFO", "info" } },
 			TEST = { icon = "⏲ ", color = "test", alt = { "test" } },
 		},
-
 		highlight = {
 			before = "", -- "fg" or "bg" or empty
 			keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
