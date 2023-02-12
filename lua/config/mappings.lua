@@ -100,12 +100,16 @@ map("x", "<Tab>", ">gv|", opts)
 map("x", "<S-Tab>", "<gv", opts)
 
 -- Copy to system clipboard
+map("n", "\\y", '"+y', opts)
 map("x", "\\y", '"+y', opts)
+map("n", "\\Y", '"*y', opts)
 map("x", "\\Y", '"*y', opts)
 
--- Cut to system clipboard
-map("x", "\\d", '"+d', opts)
-map("x", "\\D", '"*d', opts)
+-- Delete to blackhole register
+map("n", "\\d", '"_d', opts)
+map("x", "\\d", '"_d', opts)
+map("n", "\\D", '"_*d', opts)
+map("x", "\\D", '"_*d', opts)
 
 -- Paste from system clipboard
 map("n", "\\p", '<ESC>"+p', opts)
@@ -119,57 +123,49 @@ map("n", "\\c.", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", opts)
 map(
 	"n",
 	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
 	{}
 )
 map(
 	"n",
 	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
 	{}
 )
 map(
 	"o",
 	"f",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
 	{}
 )
 map(
 	"o",
 	"F",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
 	{}
 )
 map(
 	"n",
 	"t",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>",
 	{}
 )
 map(
 	"n",
 	"T",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })<cr>",
 	{}
 )
 map(
 	"o",
 	"t",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>",
 	{}
 )
 map(
 	"o",
 	"T",
-	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>"
-	,
+	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>",
 	{}
 )
 map("", "s", "<cmd>lua require'hop'.hint_char2()<cr>", {})
