@@ -58,7 +58,6 @@ M.config = function()
 			}, -- hide mapping boilerplate
 			show_help = true, -- show help message on the command line when the popup is visible
 		},
-
 		opts = {
 			mode = "n", -- NORMAL mode
 			prefix = "<leader>",
@@ -188,6 +187,7 @@ M.config = function()
 			["q"] = { "<cmd>q!<cr>", "Quit" },
 			[";"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment Operator" },
 			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
+			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 			["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
