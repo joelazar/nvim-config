@@ -14,8 +14,7 @@ return {
 	-- Better % navigation
 	{
 		"andymass/vim-matchup",
-		lazy = true,
-		-- event = "BufReadPost", -- TODO - this doesn't work
+		event = "BufReadPost",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
@@ -88,13 +87,6 @@ return {
 		},
 	},
 
-	-- HTML/JS
-	{
-		"turbio/bracey.vim",
-		ft = "html",
-		build = 'sh -c "npm install --prefix server"',
-	},
-
 	-- Enhanced movement plugin
 	{
 		"phaazon/hop.nvim",
@@ -107,22 +99,12 @@ return {
 		"kevinhwang91/nvim-ufo",
 		config = function()
 			require("ufo").setup({
-				provider_selector = function(bufnr, filetype)
+				provider_selector = function(bufnr, filetype, buftype)
 					return { "treesitter", "indent" }
 				end,
 			})
 		end,
 		dependencies = "kevinhwang91/promise-async",
-		event = "BufReadPre",
-	},
-
-	-- Scrollbar for Neovim
-	{
-		"petertriho/nvim-scrollbar",
-		config = function()
-			require("scrollbar").setup()
-			require("scrollbar.handlers.gitsigns").setup()
-		end,
 		event = "BufReadPre",
 	},
 
