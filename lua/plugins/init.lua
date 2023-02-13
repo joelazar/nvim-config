@@ -169,6 +169,7 @@ return {
 		"jackMort/ChatGPT.nvim",
 		config = function()
 			require("chatgpt").setup({
+				welcome_message = "",
 				keymaps = {
 					close = { "<C-c>", "<Esc>" },
 					yank_last = "<C-y>",

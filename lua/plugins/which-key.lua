@@ -190,6 +190,7 @@ M.config = function()
 			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 			["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
+			["C"] = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 			["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
 			["b"] = {
 				name = "Buffers",
