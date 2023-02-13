@@ -36,6 +36,7 @@ M.config = function()
 			"lua",
 			"make",
 			"markdown",
+			"markdown_inline",
 			"prisma",
 			"python",
 			"rust",
