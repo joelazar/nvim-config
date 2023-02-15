@@ -30,7 +30,7 @@ M.config = function()
 			icons = {
 				breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 				separator = "➜", -- symbol used between a key and it's label
-				group = "+", -- symbol prepended to a group
+				group = "", -- symbol prepended to a group
 			},
 			window = {
 				border = "none", -- none, single, double, shadow
@@ -43,7 +43,7 @@ M.config = function()
 				height = { min = 4, max = 25 }, -- min and max height of the columns
 				width = { min = 20, max = 50 }, -- min and max width of the columns
 				spacing = 3, -- spacing between columns
-				align = "center",
+				align = "left",
 			},
 			ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 			hidden = {
