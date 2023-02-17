@@ -33,7 +33,6 @@ M.config = function()
 		only_first_definition = true, -- only show virtual text at first definition (if there are multiple)
 		all_references = false, -- show virtual text on all all references of the variable (not only definitions)
 		filter_references_pattern = "<module", -- filter references (not definitions) pattern when all_references is activated (Lua gmatch pattern, default filters out Python modules)
-
 		-- Experimental Features:
 		virt_text_pos = "eol", -- position of virtual text, see `:h nvim_buf_set_extmark()`
 		all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
@@ -136,7 +135,7 @@ M.config = function()
 	dap.adapters.firefox = {
 		type = "executable",
 		command = "node",
-		args = { vim.fn.stdpath("data") .. "/mason/packages/vscode-firefox-debug/dist/adapter.bundle.js" },
+		args = { vim.fn.stdpath("data") .. "/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js" },
 	}
 
 	dap.adapters.node2 = {
@@ -148,7 +147,7 @@ M.config = function()
 	dap.adapters.chrome = {
 		type = "executable",
 		command = "node",
-		args = { vim.fn.stdpath("data") .. "/mason/packages/vscode-chrome-debug/out/src/chromeDebug.js" },
+		args = { vim.fn.stdpath("data") .. "/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
 	}
 
 	dap.configurations.typescript = {
