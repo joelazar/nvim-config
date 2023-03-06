@@ -1,3 +1,5 @@
+-- Some options are set through [mini.basics](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-basics.md)
+
 -- Set space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -5,56 +7,26 @@ vim.g.maplocalleader = " "
 -- Incremental live completion
 vim.o.inccommand = "nosplit"
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menu,menuone,noselect"
-
 -- Enable highlight on search
 vim.o.hlsearch = true
 
--- Highlight match while typing search pattern
-vim.o.incsearch = true
-
--- Make line numbers default
-vim.wo.number = true
-
 -- Do not save when switching buffers
 vim.o.hidden = true
-
--- Enable break indent
-vim.o.breakindent = true
 
 -- Use swapfiles
 vim.o.swapfile = true
 
 -- Save undo history
-vim.o.undofile = true
 vim.o.undolevels = 1000
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = "yes"
 
 -- Faster scrolling
 vim.o.lazyredraw = true
 
 -- Decrease redraw time
 vim.o.redrawtime = 100
-
--- Set true colors
-vim.o.termguicolors = true
-
--- Disable intro message
-vim.opt.shortmess:append("I")
-
--- Disable search count res from the bottom right corner
-vim.opt.shortmess:append("S")
-
--- Disable ins-completion-menu messages
-vim.opt.shortmess:append("c")
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
@@ -63,10 +35,6 @@ vim.opt.whichwrap:append("<>hl")
 -- set symbols for space and newline
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
-
--- Take indent for new line from previous line
-vim.o.autoindent = true
-vim.o.smartindent = true
 
 -- GUI: Name(s) of font(s) to be used
 vim.o.guifont = "Roboto Mono:h14"
@@ -87,39 +55,23 @@ vim.o.wildmenu = true
 -- Enable wrap
 vim.o.wrap = true
 
--- Wrap long lines at a blank
-vim.o.linebreak = true
-
--- Highlight the current line
-vim.o.cursorline = true
-
 -- Autom. read file when changed outside of Vim
 vim.o.autoread = true
 
 -- Autom. save file before some action
 vim.o.autowrite = true
 
--- Keep backup file after overwriting a file
-vim.o.backup = true
-
--- Make a backup before overwriting a file
-vim.o.writebackup = false
-
--- For opening splits on right or bottom.
-vim.o.splitbelow = true
-vim.o.splitright = true
-
--- Show cursor line and column in the status line
-vim.o.ruler = true
-
 -- Briefly jump to matching bracket if insert one
 vim.o.showmatch = true
 
--- Hide show current mode on status line
-vim.o.showmode = false
-
 -- Show absolute line number in front of each line
 vim.o.relativenumber = false
+
+-- Make builtin completion menus slightly transparent
+vim.o.pumblend = 10
+
+-- Make floating windows slightly transparent
+vim.o.winblend = 10
 
 -- Maximum height of the popup menu
 vim.o.pumheight = 15

@@ -8,6 +8,8 @@ local M = {
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		-- Autocreate/update html tags
 		"windwp/nvim-ts-autotag",
+		-- Additional textobjects for treesitter
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	event = { "BufReadPost", "BufNewFile" },
 }

@@ -147,14 +147,6 @@ return {
 		},
 	},
 
-	-- Add/change/delete surrounding delimiter pairs
-	{
-		"kylechui/nvim-surround",
-		version = "*",
-		config = true,
-		event = "VeryLazy",
-	},
-
 	-- Refactoring library based off the Refactoring book by Martin Fowler
 	{
 		"ThePrimeagen/refactoring.nvim",

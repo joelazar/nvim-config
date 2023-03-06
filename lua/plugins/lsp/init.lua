@@ -106,6 +106,9 @@ M.config = function()
 			cmd = { "lua-language-server" },
 			settings = {
 				Lua = {
+					format = {
+						enable = false,
+					},
 					runtime = {
 						version = "LuaJIT",
 						path = { "lua/?.lua", "lua/?/init.lua" },

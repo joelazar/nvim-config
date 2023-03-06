@@ -2,6 +2,7 @@ local M = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
+		"L3MON4D3/LuaSnip",
 		"dmitmel/cmp-cmdline-history",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-calc",
@@ -15,7 +16,6 @@ local M = {
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
-		"L3MON4D3/LuaSnip",
 	},
 }
 
@@ -44,7 +44,6 @@ M.config = function()
 					fallback()
 				end
 			end, { "i", "s" }),
-
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
@@ -55,7 +54,6 @@ M.config = function()
 				end
 			end, { "i", "s" }),
 		},
-
 		sources = {
 			{ name = "nvim_lua" },
 			{ name = "nvim_lsp" },
@@ -72,31 +70,17 @@ M.config = function()
 			{ name = "fish" },
 			{ name = "emoji" },
 		},
-
 		snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body)
 			end,
 		},
-
 		formatting = {
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
-				menu = {
-					buffer = "[buf]",
-					calc = "[calc]",
-					emoji = "[emoji]",
-					fish = "[fish]",
-					look = "[look]",
-					luasnip = "[snip]",
-					nvim_lsp = "[lsp]",
-					nvim_lua = "[lua]",
-					path = "[path]",
-				},
 			}),
 		},
-
 		sorting = {
 			comparators = {
 				cmp.config.compare.offset,
@@ -121,8 +105,11 @@ M.config = function()
 				cmp.config.compare.order,
 			},
 		},
-
-		experimental = { ghost_text = true },
+		experimental = {
+			ghost_text = {
+				hl_group = "LspCodeLens",
+			},
+		},
 	})
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),

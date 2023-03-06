@@ -90,45 +90,7 @@ M.config = function()
 			noremap = true, -- use `noremap` when creating keymaps
 			nowait = true, -- use `nowait` when creating keymaps
 		},
-		secopts = {
-			mode = "n", -- NORMAL mode
-			prefix = "\\",
-			buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-			silent = true, -- use `silent` when creating keymaps
-			noremap = true, -- use `noremap` when creating keymaps
-			nowait = true, -- use `nowait` when creating keymaps
-		},
-		secvopts = {
-			mode = "v", -- VISUAL mode
-			prefix = "\\",
-			buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-			silent = true, -- use `silent` when creating keymaps
-			noremap = true, -- use `noremap` when creating keymaps
-			nowait = true, -- use `nowait` when creating keymaps
-		},
-		-- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
-		-- see https://neovim.io/doc/user/map.html#:map-cmd
-		secmappings = {
-			["g"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
-			["q"] = {
-				name = "Quickfix list",
-				["o"] = { "<cmd>copen<cr>", "Open quickfix list window" },
-				["c"] = { "<cmd>cclose<cr>", "Close quickfix list window" },
-				["C"] = { "<cmd>call setqflist([])<cr>", "Clear quickfix list" },
-				["n"] = { "<cmd>cnext<cr>", "Select next item in quickfix list" },
-				["p"] = { "<cmd>cprev<cr>", "Select previous item in quickfix list" },
-			},
-			["o"] = {
-				"<cmd>LSoutlineToggle<cr>",
-				"Shot LSP outline",
-			},
-		},
-		secvmappings = {},
 		vmappings = {
-			[";"] = {
-				'<ESC><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
-				"Comment Operator",
-			},
 			["e"] = { "<ESC><cmd>'<,'>SnipRun<cr>", "Execute (sniprun)" },
 			["g"] = {
 				name = "Git",
@@ -201,7 +163,6 @@ M.config = function()
 			["w"] = { "<cmd>w!<cr>", "Save" },
 			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
 			["q"] = { "<cmd>q!<cr>", "Quit" },
-			[";"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment Operator" },
 			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
 			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
@@ -216,15 +177,11 @@ M.config = function()
 					"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
 					"Format buffer (LSP)",
 				},
-				["l"] = { "<cmd>BufferMovePrevious<cr>", "Move buffer to the left" },
 				["L"] = {
 					"<cmd>BufferCloseBuffersLeft<cr>",
 					"Close all buffers to the left",
 				},
-				["n"] = { "<cmd>BufferNext<cr>", "Next buffer" },
-				["p"] = { "<cmd>BufferPrevious<cr>", "Previous buffer" },
 				["P"] = { "<cmd>BufferPin<cr>", "Pin/Unpin buffer" },
-				["r"] = { "<cmd>BufferMoveNext<cr>", "Move buffer to the right" },
 				["R"] = {
 					"<cmd>BufferCloseBuffersRight<cr>",
 					"Close all buffers to the right",
@@ -319,6 +276,7 @@ M.config = function()
 					'<cmd>lua require"gitsigns".blame_line{full=true}<cr>',
 					"Blame Line",
 				},
+				["L"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
 				["n"] = {
 					'<cmd>lua require"gitsigns".next_hunk()<cr>',
 					"Next Hunk",
@@ -403,17 +361,9 @@ M.config = function()
 					"<cmd>lua vim.diagnostic.setqflist()<cr>",
 					"Set quickfix list",
 				},
-				["n"] = {
-					"<cmd>lua vim.diagnostic.goto_next({ float = false })<cr>",
-					"Next Diagnostic",
-				},
-				["p"] = {
-					"<cmd>lua vim.diagnostic.goto_prev({ float = false })<cr>",
-					"Prev Diagnostic",
-				},
 				["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },
 				["o"] = {
-					"<cmd>LSoutlineToggle<cr>",
+					"<cmd>Lspsaga outline<cr>",
 					"Outline toggle",
 				},
 				["s"] = {
@@ -520,6 +470,7 @@ M.config = function()
 				["s"] = { '<cmd>lua require("neotest").run.stop()<CR>', "Stop test" },
 				["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
 			},
+			["T"] = { name = "Toggle" },
 			["x"] = {
 				name = "Misc",
 				["c"] = { "<cmd>ColorizerToggle<cr>", "Toggle colorizer" },
@@ -576,8 +527,6 @@ M.config = function()
 	wk.setup(config.setup)
 	wk.register(config.mappings, config.opts)
 	wk.register(config.vmappings, config.vopts)
-	wk.register(config.secmappings, config.secopts)
-	wk.register(config.secvmappings, config.secvopts)
 end
 
 return M

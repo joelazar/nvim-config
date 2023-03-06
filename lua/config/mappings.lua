@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Normal mode
@@ -35,12 +35,6 @@ map("n", "Q", ":close<cr>", opts)
 -- Telescope select files
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 
--- Resize with arrows
-map("n", "<C-Up>", ":resize +2<cr>", opts)
-map("n", "<C-Down>", ":resize -2<cr>", opts)
-map("n", "<C-Left>", ":vertical resize +2<cr>", opts)
-map("n", "<C-Right>", ":vertical resize -2<cr>", opts)
-
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", ":m .+1<cr>==", opts)
 map("i", "<A-j>", "<Esc>:m .+1<cr>==gi", opts)
@@ -48,10 +42,6 @@ map("i", "<A-j>", "<Esc>:m .+1<cr>==gi", opts)
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-k>", ":m .-2<cr>==", opts)
 map("i", "<A-k>", "<Esc>:m .-2<cr>==gi", opts)
-
--- Enhanced increment/decrement
-map("n", "<C-a>", require("dial.map").inc_normal(), opts)
-map("n", "<C-x>", require("dial.map").dec_normal(), opts)
 
 -- Stay centered jumping between search results
 map("n", "n", "nzzzv", opts)
@@ -62,10 +52,6 @@ map("n", "J", "mzJ`z", opts)
 
 -- clear any highlights when <esc> is pressed
 map("n", "<Esc>", ":noh<cr>", opts)
-
--- move one up/down display line instead of physicial line
-map("n", "j", "gj", opts)
-map("n", "k", "gk", opts)
 
 -- Insert mode
 
@@ -99,27 +85,9 @@ map("x", "<A-k>", ":m '<-2<cr>gv-gv", opts)
 map("x", "<Tab>", ">gv|", opts)
 map("x", "<S-Tab>", "<gv", opts)
 
--- Copy to system clipboard
-map("n", "\\y", '"+y', opts)
-map("x", "\\y", '"+y', opts)
-map("n", "\\Y", '"*y', opts)
-map("x", "\\Y", '"*y', opts)
-
 -- Delete to blackhole register
-map("n", "\\d", '"_d', opts)
-map("x", "\\d", '"_d', opts)
-map("n", "\\D", '"_*d', opts)
-map("x", "\\D", '"_*d', opts)
+map({ "n", "x" }, "\\d", '"_d', { desc = "Delete to blackhole register" })
 
--- Paste from system clipboard
-map("n", "\\p", '<ESC>"+p', opts)
-map("n", "\\P", '<ESC>"*p', opts)
-
--- Search and Replace
-map("n", "c.", ":%s//g<Left><Left>", opts)
-map("n", "\\c.", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", opts)
-
--- Hop keybindings
 map(
 	"n",
 	"f",
@@ -168,7 +136,6 @@ map(
 	"<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = -1, inclusive_jump = true })<cr>",
 	{}
 )
-map("", "s", "<cmd>lua require'hop'.hint_char2()<cr>", {})
 map("", "S", "<cmd>lua require'hop'.hint_patterns()<cr>", {})
 map("", "L", "<cmd>lua require'hop'.hint_lines()<cr>", {})
 
@@ -182,12 +149,6 @@ map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
 map("v", ".", ":norm .<cr>", opts)
 
--- quickfix mappings
-map("n", "[q", ":cprevious<cr>", opts)
-map("n", "]q", ":cnext<cr>", opts)
-map("n", "]Q", ":clast<cr>", opts)
-map("n", "[Q", ":cfirst<cr>", opts)
-
 vim.cmd([[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -199,36 +160,6 @@ vim.cmd([[
 ]])
 
 map("n", "<C-q>", ":call QuickFixToggle()<cr>", opts)
-
--- todo comments mappings
-vim.keymap.set("n", "]t", function()
-	require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-
-vim.keymap.set("n", "[t", function()
-	require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
-
--- gitsigns mappings
-vim.keymap.set("n", "]c", function()
-	if vim.wo.diff then
-		return "]c"
-	end
-	vim.schedule(function()
-		require("gitsigns").next_hunk()
-	end)
-	return "<Ignore>"
-end, { expr = true })
-
-vim.keymap.set("n", "[c", function()
-	if vim.wo.diff then
-		return "[c"
-	end
-	vim.schedule(function()
-		require("gitsigns").prev_hunk()
-	end)
-	return "<Ignore>"
-end, { expr = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })

@@ -8,9 +8,8 @@ function M.setup(buffer)
 		["<C-k>"] = { "<cmd>Lspsaga hover_doc<CR>", "Signature Help", mode = { "n", "i" } },
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Signature Help" },
 		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help - builtin lsp" },
-
 		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev({ float = false })<CR>", "Next Diagnostic" },
-		["]d"] = { "<cmd>lua vim.diagnostic.goto_next({ float = false })<cr><CR>", "Prev Diagnostic" },
+		["]d"] = { "<cmd>lua vim.diagnostic.goto_next({ float = false })<CR>", "Prev Diagnostic" },
 		["[e"] = {
 			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
 			"Next Error",

@@ -43,7 +43,6 @@ M.config = function()
 			lualine_c = {
 				"diff",
 				"diagnostics",
-				"overseer",
 				lspsaga_symbols,
 			},
 			lualine_x = {
