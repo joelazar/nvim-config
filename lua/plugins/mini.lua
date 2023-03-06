@@ -183,6 +183,10 @@ return {
 					-- Window navigation with <C-hulk>, resize with <C-arrow>
 					windows = true,
 				},
+				autocommands = {
+					-- Basic autocommands (highlight on yank, start Insert in terminal, ...)
+					basic = false,
+				},
 			})
 		end,
 	},

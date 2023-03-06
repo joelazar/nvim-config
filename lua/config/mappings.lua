@@ -160,6 +160,7 @@ vim.cmd([[
 ]])
 
 map("n", "<C-q>", ":call QuickFixToggle()<cr>", opts)
+map("n", "<C-`>", ":ToggleTerm<cr>", opts)
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
