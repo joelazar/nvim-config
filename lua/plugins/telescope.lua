@@ -17,7 +17,7 @@ M.config = function()
 			path_display = { truncate = 3 },
 			mappings = {
 				i = {
-					["<esc>"] = require("telescope.actions").close,
+					-- ["<esc>"] = require("telescope.actions").close,
 					["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
