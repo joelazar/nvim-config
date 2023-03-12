@@ -169,7 +169,11 @@ return {
 					scroll_down = "<C-d>",
 					toggle_settings = "<C-o>",
 					new_session = "<C-n>",
-					cycle_windows = "<C-m>",
+					cycle_windows = "<Tab>",
+					-- in the Sessions pane
+					select_session = "<Space>",
+					rename_session = "r",
+					delete_session = "d",
 				},
 			})
 		end,
