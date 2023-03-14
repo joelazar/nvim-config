@@ -105,7 +105,7 @@ return {
 			})
 		end,
 		dependencies = "kevinhwang91/promise-async",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufRead", "BufNewFile" },
 	},
 
 	-- Task runner for Neovim
