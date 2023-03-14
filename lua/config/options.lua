@@ -70,9 +70,6 @@ vim.o.relativenumber = false
 -- Make builtin completion menus slightly transparent
 vim.o.pumblend = 10
 
--- Make floating windows slightly transparent
-vim.o.winblend = 10
-
 -- Maximum height of the popup menu
 vim.o.pumheight = 15
 
