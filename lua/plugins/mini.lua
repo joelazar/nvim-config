@@ -96,7 +96,17 @@ return {
 		"echasnovski/mini.surround",
 		event = "VeryLazy",
 		config = function()
-			require("mini.surround").setup()
+			require("mini.surround").setup({
+				n_lines = 50,
+				highlight_duration = 500,
+				custom_surroundings = {
+					["("] = { output = { left = "(", right = ")" } },
+					[")"] = { output = { left = "(", right = ")" } },
+					["["] = { output = { left = "[", right = "]" } },
+					["]"] = { output = { left = "[", right = "]" } },
+				},
+				search_method = "next",
+			})
 		end,
 	},
 
