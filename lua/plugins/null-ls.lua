@@ -13,7 +13,6 @@ M.config = function()
 
 			null_ls.builtins.completion.spell,
 
-			null_ls.builtins.diagnostics.actionlint,
 			null_ls.builtins.diagnostics.eslint_d,
 			null_ls.builtins.diagnostics.fish,
 			null_ls.builtins.diagnostics.flake8,

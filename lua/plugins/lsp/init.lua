@@ -140,7 +140,14 @@ M.config = function()
 		},
 		texlab = {},
 		tsserver = {},
-		yamlls = {},
+		yamlls = {
+			settings = {
+				yaml = {
+					schemas = require("schemastore").yaml.schemas(),
+					orderedKeys = false,
+				},
+			},
+		},
 	}
 
 	local setup_server = function(server, config)

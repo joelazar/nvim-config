@@ -7,7 +7,6 @@ function M.config()
 	require("mason").setup()
 
 	local tools = {
-		"actionlint",
 		"bash-language-server",
 		"black",
 		"chrome-debug-adapter",
