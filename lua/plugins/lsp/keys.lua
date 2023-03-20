@@ -5,25 +5,27 @@ function M.setup(buffer)
 
 	local keymap = {
 		buffer = buffer,
-		["<C-k>"] = { "<cmd>Lspsaga hover_doc<CR>", "Signature Help", mode = { "n", "i" } },
-		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Signature Help" },
-		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help - builtin lsp" },
-		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev({ float = false })<CR>", "Next Diagnostic" },
-		["]d"] = { "<cmd>lua vim.diagnostic.goto_next({ float = false })<CR>", "Prev Diagnostic" },
+		["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", mode = { "n", "i" } },
+		["K"] = { "<cmd>Lspsaga hover_doc<cr>", "Signature Help" },
+		["[d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next Diagnostic" },
+		["]d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Prev Diagnostic" },
 		["[e"] = {
-			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
+			function()
+				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+			end,
 			"Next Error",
 		},
 		["]e"] = {
-			"<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR, float = false})<CR>",
+			function()
+				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+			end,
 			"Prev Error",
 		},
-		["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
-		["gD"] = { "<cmd>Lspsaga peek_definition<CR>", "Peek definition" },
-		["gr"] = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga finder" },
-		["gi"] = { "<cmd>Lspsaga implement<CR>", "Go to implementation" },
-		["gR"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
-		["gT"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
+		["gr"] = { "<cmd>Lspsaga lsp_finder<cr>", "Lspsaga finder" },
+		["gd"] = { "<cmd>Lspsaga goto_definition<cr>", "Go to definition" },
+		["gD"] = { "<cmd>Lspsaga peek_definition<cr>", "Peek definition" },
+		["gt"] = { "<cmd>Lspsaga goto_type_definition<cr>", "Go to type definition" },
+		["gT"] = { "<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition" },
 	}
 
 	wk.register(keymap)
