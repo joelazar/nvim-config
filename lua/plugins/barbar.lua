@@ -25,6 +25,24 @@ M.config = function()
 		--  - middle-click: delete buffer
 		clickable = false,
 
+		-- Enables / disables diagnostic symbols
+		diagnostics = {
+			-- you can use a list
+			{ enabled = true, icon = "ﬀ" }, -- ERROR
+			{ enabled = false }, -- WARN
+			{ enabled = false }, -- INFO
+			{ enabled = true }, -- HINT
+
+			-- OR `vim.diagnostic.severity`
+			[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+			[vim.diagnostic.severity.WARN] = { enabled = false },
+			[vim.diagnostic.severity.INFO] = { enabled = false },
+			[vim.diagnostic.severity.HINT] = { enabled = true },
+		},
+
+		-- Enable highlighting visible buffers
+		highlight_visible = true,
+
 		-- Enable/disable icons
 		-- if set to 'numbers', will show buffer index in the tabline
 		-- if set to 'both', will show buffer index and icons in the tabline
@@ -42,6 +60,11 @@ M.config = function()
 		icon_close_tab = "",
 		icon_close_tab_modified = "●",
 		icon_pinned = "車",
+
+		-- If true, new buffers will be inserted at the start/end of the list.
+		-- Default is to insert after current buffer.
+		insert_at_end = true,
+		insert_at_start = false,
 
 		-- Sets the maximum padding width with which to surround each tab
 		maximum_padding = 1,
