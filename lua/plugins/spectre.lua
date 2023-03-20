@@ -55,7 +55,11 @@ M.config = function()
 				cmd = "<cmd>lua require('spectre').change_options('hidden')<CR>",
 				desc = "toggle search hidden",
 			},
-			-- you can put your mapping here it only use normal mode
+			["resume_last_search"] = {
+				map = "\\l",
+				cmd = "<cmd>lua require('spectre').resume_last_search()<CR>",
+				desc = "resume last search before close",
+			},
 		},
 	})
 end

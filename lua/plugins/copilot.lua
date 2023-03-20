@@ -14,13 +14,17 @@ M.config = function()
 		html = true,
 		javascript = true,
 		javascriptreact = true,
+		json = true,
 		lua = true,
 		python = true,
 		rust = true,
 		sh = true,
 		terraform = true,
+		toml = true,
 		typescript = true,
 		typescriptreact = true,
+		vim = true,
+		yaml = true,
 	}
 	vim.cmd([[
       imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")

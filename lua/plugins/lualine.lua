@@ -39,17 +39,15 @@ M.config = function()
 		},
 		sections = {
 			lualine_a = { "mode" },
-			lualine_b = { "branch" },
+			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = {
-				"diff",
-				"diagnostics",
 				lspsaga_symbols,
 			},
 			lualine_x = {
 				"searchcount",
-				"filetype",
-				"fileformat",
 				"encoding",
+				"fileformat",
+				"filetype",
 			},
 			lualine_y = { "progress" },
 			lualine_z = { "location" },

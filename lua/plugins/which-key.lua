@@ -91,17 +91,8 @@ M.config = function()
 			nowait = true, -- use `nowait` when creating keymaps
 		},
 		vmappings = {
-			["e"] = { "<ESC><cmd>'<,'>SnipRun<cr>", "Execute (sniprun)" },
 			["g"] = {
 				name = "Git",
-				["s"] = {
-					'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<cr>',
-					"Stage Hunk",
-				},
-				["r"] = {
-					'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<cr>',
-					"Undo Stage Hunk",
-				},
 				["y"] = {
 					'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 					"Copy link to clipboard",
@@ -110,8 +101,8 @@ M.config = function()
 			["l"] = {
 				name = "LSP",
 				["a"] = {
-					"<cmd>Lspsaga range_code_action<cr>",
-					"Code Action Range",
+					"<cmd>Lspsaga code_action<cr>",
+					"Code Action",
 				},
 			},
 			["r"] = {
@@ -143,11 +134,7 @@ M.config = function()
 			},
 			["s"] = {
 				name = "Search",
-				["v"] = { '<cmd>lua require"config.telescope".grep_string_visual()<CR>', "Visual selection" },
-			},
-			["x"] = {
-				name = "Misc",
-				["u"] = { "<cmd>PP<cr>", "Upload selection to dpaste" },
+				["w"] = { '<cmd>lua require"plugins.telescope".grep_string_visual()<CR>', "Visual selection" },
 			},
 		},
 		mappings = {
@@ -159,16 +146,17 @@ M.config = function()
 				"<cmd>execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
 				"Open terminal",
 			},
-			["e"] = { "<cmd>SnipRun<cr>", "Execute (sniprun)" },
-			["w"] = { "<cmd>w!<cr>", "Save" },
-			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
-			["q"] = { "<cmd>q!<cr>", "Quit" },
-			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
-			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
-			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
-			["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["C"] = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+			["G"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
+			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
+			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
+			["c"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
+			["e"] = { "<cmd>SnipRun<cr>", "Execute (sniprun)" },
+			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
+			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
+			["q"] = { "<cmd>q!<cr>", "Quit" },
 			["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
+			["w"] = { "<cmd>w!<cr>", "Save" },
 			["b"] = {
 				name = "Buffers",
 				["d"] = { "<cmd>BufferClose<cr>", "Delete buffer" },
@@ -268,57 +256,14 @@ M.config = function()
 					["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
 					["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
 				},
-				["D"] = {
-					'<cmd>lua require"gitsigns".diffthis()<cr>',
-					"Diff this file",
-				},
-				["l"] = {
-					'<cmd>lua require"gitsigns".blame_line{full=true}<cr>',
-					"Blame Line",
-				},
-				["L"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
-				["n"] = {
-					'<cmd>lua require"gitsigns".next_hunk()<cr>',
-					"Next Hunk",
-				},
-				["p"] = {
-					'<cmd>lua require"gitsigns".prev_hunk()<cr>',
-					"Prev Hunk",
-				},
-				["P"] = {
-					'<cmd>lua require"gitsigns".preview_hunk()<cr>',
-					"Preview Hunk",
-				},
-				["r"] = {
-					'<cmd>lua require"gitsigns".reset_hunk()<cr>',
-					"Reset Hunk",
-				},
-				["R"] = {
-					'<cmd>lua require"gitsigns".reset_buffer()<cr>',
-					"Reset Buffer",
-				},
-				["s"] = {
-					'<cmd>lua require"gitsigns".stage_hunk()<cr>',
-					"Stage Hunk",
-				},
-				["S"] = {
-					'<cmd>lua require"gitsigns".stage_buffer()<cr>',
-					"Stage Buffer",
-				},
-				["u"] = {
-					'<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
-					"Undo Stage Hunk",
-				},
 				["o"] = { "<cmd>Telescope git_status<cr>", "Open changed files" },
-				["t"] = {
-					name = "Toggle",
-					["b"] = { '<cmd>lua require"gitsigns".toggle_current_line_blame()<cr>', "Blame line" },
-					["d"] = { '<cmd>lua require"gitsigns".toggle_deleted()<cr>', "Deleted" },
-					["h"] = { '<cmd>lua require"gitsigns".toggle_linehl()<cr>', "Line highlight" },
-				},
 				["y"] = {
 					'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 					"Copy link to clipboard",
+				},
+				["q"] = {
+					"<cmd>Gitsigns setqflist<cr>",
+					"Open quickfix list with hunks",
 				},
 			},
 			["h"] = {
@@ -344,14 +289,10 @@ M.config = function()
 					"<cmd>Telescope diagnostics<cr>",
 					"Workspace Diagnostics (Telescope)",
 				},
-				["h"] = {
-					"<cmd>Lspsaga signature_help<cr>",
-					"Signature help",
-				},
 				["i"] = { "<cmd>LspInfo<cr>", "Info" },
 				["k"] = {
-					"<cmd>Lspsaga hover_doc<cr>",
-					"Show hover doc",
+					"<cmd>Lspsaga hover_doc ++keep<cr>",
+					"Toggle hover doc",
 				},
 				["l"] = {
 					"<cmd>Lspsaga show_line_diagnostics<cr>",
@@ -364,7 +305,7 @@ M.config = function()
 				["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },
 				["o"] = {
 					"<cmd>Lspsaga outline<cr>",
-					"Outline toggle",
+					"Toggle Outline",
 				},
 				["s"] = {
 					"<cmd>Telescope lsp_document_symbols<cr>",
@@ -373,13 +314,6 @@ M.config = function()
 				["S"] = {
 					"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 					"Workspace Symbols",
-				},
-				["t"] = {
-					name = "Toggle diagnostic",
-					["s"] = { "<cmd>vim.diagnostic.show(nil, 0)<cr>", "Show diagnostic for buffer" },
-					["h"] = { "<cmd>vim.diagnostic.show(nil, 0)<cr>", "Hide diagnostic for buffer" },
-					["S"] = { "<cmd>vim.diagnostic.show()<cr>", "Show diagnostic for all buffers" },
-					["H"] = { "<cmd>vim.diagnostic.hide()<cr>", "Hide diagnostic for all buffers" },
 				},
 			},
 			["o"] = {
@@ -486,11 +420,6 @@ M.config = function()
 						"Force enable",
 					},
 				},
-				["h"] = {
-					"<cmd>lua vim.opt.list=not vim.opt.list._value<cr>",
-					"Toggle hidden characters",
-				},
-				["H"] = { "<cmd>nohlsearch<cr>", "Remove highlighting of search results" },
 				["m"] = {
 					name = "Markdown preview",
 					["c"] = {

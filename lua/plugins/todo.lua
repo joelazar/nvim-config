@@ -6,6 +6,8 @@ local M = {
 
 M.config = function()
 	require("todo-comments").setup({
+		signs = true, -- show icons in the signs column
+		sign_priority = 8, -- sign priority
 		keywords = {
 			FIX = {
 				icon = " ",
@@ -19,7 +21,15 @@ M.config = function()
 			NOTE = { icon = " ", color = "hint", alt = { "note", "INFO", "info" } },
 			TEST = { icon = "⏲ ", color = "test", alt = { "test" } },
 		},
+		gui_style = {
+			fg = "NONE", -- The gui style to use for the fg highlight group.
+			bg = "BOLD", -- The gui style to use for the bg highlight group.
+		},
+		merge_keywords = true, -- when true, custom keywords will be merged with the defaults
 		highlight = {
+			multiline = true, -- enable multine todo comments
+			multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
+			multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
 			before = "", -- "fg" or "bg" or empty
 			keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
 			after = "fg", -- "fg" or "bg" or empty
