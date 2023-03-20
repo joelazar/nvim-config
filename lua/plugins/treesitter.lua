@@ -3,7 +3,7 @@ local M = {
 	build = ":TSUpdate",
 	dependencies = {
 		-- Rainbow parentheses by using tree-sitter
-		"p00f/nvim-ts-rainbow",
+		"HiPhish/nvim-ts-rainbow2",
 		-- Setting the commentstring based on the cursor location in a file
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		-- Autocreate/update html tags
@@ -75,8 +75,10 @@ M.config = function()
 		},
 		rainbow = {
 			enable = true,
-			extended_mode = true,
-			max_file_lines = 2000,
+			-- Which query to use for finding delimiters
+			query = "rainbow-parens",
+			-- Highlight the entire buffer all at once
+			strategy = require("ts-rainbow").strategy.global,
 		},
 	})
 end
