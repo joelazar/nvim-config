@@ -124,11 +124,11 @@ M.config = function()
 					"Inline Variable",
 				},
 				["r"] = {
-					":lua require('refactoring').select_refactor()<CR>",
+					"<cmd>lua require('refactoring').select_refactor()<CR>",
 					"Select refactor",
 				},
 				["p"] = {
-					":lua require('refactoring').debug.print_var({})<CR>",
+					"<cmd>lua require('refactoring').debug.print_var({})<CR>",
 					"Print variable",
 				},
 			},
@@ -375,15 +375,15 @@ M.config = function()
 					"Inline Variable",
 				},
 				["l"] = {
-					":lua require('refactoring').debug.printf({below = true})<CR>",
+					"<cmd>lua require('refactoring').debug.printf({below = true})<CR>",
 					"Print debug log",
 				},
 				["p"] = {
-					":lua require('refactoring').debug.print_var({ normal = true })<CR>",
+					"<cmd>lua require('refactoring').debug.print_var({ normal = true })<CR>",
 					"Print variable",
 				},
 				["c"] = {
-					":lua require('refactoring').debug.cleanup({})<CR>",
+					"<cmd>lua require('refactoring').debug.cleanup({})<CR>",
 					"Cleanup debug log",
 				},
 			},

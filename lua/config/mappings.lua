@@ -30,18 +30,22 @@ map("n", "<A-p>", "<cmd>BufferPin<cr>", opts)
 map("n", "<A-c>", "<cmd>BufferClose<cr>", opts)
 
 -- Close windows
-map("n", "Q", ":close<cr>", opts)
+map("n", "Q", "<cmd>close<cr>", opts)
 
 -- Telescope select files
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 
 -- Move current line / block with Alt-j/k ala vscode.
-map("n", "<A-j>", ":m .+1<cr>==", opts)
-map("i", "<A-j>", "<Esc>:m .+1<cr>==gi", opts)
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
--- Move current line / block with Alt-j/k ala vscode.
-map("n", "<A-k>", ":m .-2<cr>==", opts)
-map("i", "<A-k>", "<Esc>:m .-2<cr>==gi", opts)
+-- Better up/down
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Stay centered jumping between search results
 map("n", "n", "nzzzv", opts)
@@ -50,8 +54,8 @@ map("n", "N", "Nzzzv", opts)
 -- Fix cursor position after joining lines
 map("n", "J", "mzJ`z", opts)
 
--- clear any highlights when <esc> is pressed
-map("n", "<Esc>", ":noh<cr>", opts)
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Insert mode
 
@@ -76,10 +80,6 @@ map("v", "//", 'y/<C-R>"<cr>', opts)
 map("v", "p", "pgvy", opts)
 
 -- Visual block mode
-
--- Move current line / block with Alt-j/k ala vscode.
-map("x", "<A-j>", ":m '>+1<cr>gv-gv", opts)
-map("x", "<A-k>", ":m '<-2<cr>gv-gv", opts)
 
 -- Use tab for indenting in visual mode
 map("x", "<Tab>", ">gv|", opts)
@@ -147,7 +147,7 @@ map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)
 
 -- Make the dot command work as expected in visual mode
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
-map("v", ".", ":norm .<cr>", opts)
+map("v", ".", "<cmd>norm .<cr>", opts)
 
 vim.cmd([[
   function! QuickFixToggle()
@@ -159,14 +159,14 @@ vim.cmd([[
   endfunction
 ]])
 
-map("n", "<C-q>", ":call QuickFixToggle()<cr>", opts)
-map("n", "<C-`>", ":ToggleTerm<cr>", opts)
+map("n", "<C-q>", "<cmd>call QuickFixToggle()<cr>", opts)
+map("n", "<C-`>", "<cmd>ToggleTerm<cr>", opts)
 
--- Resize with arrows
-map("n", "<C-Up>", "<cmd>resize +3<cr>", opts)
-map("n", "<C-Down>", "<cmd>resize -3<cr>", opts)
-map("n", "<C-Left>", "<cmd>vertical resize +3<cr>", opts)
-map("n", "<C-Right>", "<cmd>vertical resize -3<cr>", opts)
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-Down>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Left>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-Right>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
@@ -175,6 +175,11 @@ vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
 vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
+
+-- Add undo break-points
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
 
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
 	local overseer = require("overseer")
