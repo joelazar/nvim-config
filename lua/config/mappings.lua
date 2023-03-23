@@ -162,6 +162,12 @@ vim.cmd([[
 map("n", "<C-q>", ":call QuickFixToggle()<cr>", opts)
 map("n", "<C-`>", ":ToggleTerm<cr>", opts)
 
+-- Resize with arrows
+map("n", "<C-Up>", "<cmd>resize +3<cr>", opts)
+map("n", "<C-Down>", "<cmd>resize -3<cr>", opts)
+map("n", "<C-Left>", "<cmd>vertical resize +3<cr>", opts)
+map("n", "<C-Right>", "<cmd>vertical resize -3<cr>", opts)
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
 vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true })

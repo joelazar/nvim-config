@@ -191,7 +191,7 @@ return {
 					-- Supply empty string to not create these mappings.
 					option_toggle_prefix = [[<leader>T]],
 					-- Window navigation with <C-hulk>, resize with <C-arrow>
-					windows = true,
+					windows = false,
 				},
 				autocommands = {
 					-- Basic autocommands (highlight on yank, start Insert in terminal, ...)
