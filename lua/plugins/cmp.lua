@@ -57,7 +57,7 @@ M.config = function()
 			{ name = "nvim_lua" },
 			{ name = "nvim_lsp" },
 			{ name = "path" },
-			{ name = "luasnip" },
+			{ name = "luasnip", keyword_length = 2 },
 			{ name = "buffer", keyword_length = 3 },
 			{
 				name = "look",
@@ -115,12 +115,15 @@ M.config = function()
 		sources = {
 			{ name = "cmdline" },
 			{ name = "path" },
+			{ name = "buffer" },
+			{ name = "cmdline_history" },
 		},
 	})
 	cmp.setup.cmdline("/", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
 			{ name = "buffer" },
+			{ name = "cmdline_history" },
 		},
 	})
 end
