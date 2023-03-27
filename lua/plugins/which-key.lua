@@ -361,6 +361,15 @@ M.config = function()
 				},
 			},
 			["r"] = {
+				name = "Rest",
+				["r"] = { "<Plug>RestNvim", "Run request under the cursor" },
+				["p"] = {
+					"<Plug>RestNvimPreview",
+					"Preview request under the cursor",
+				},
+				["l"] = { "<Plug>RestNvimLast", "Run last request" },
+			},
+			["R"] = {
 				name = "Refactoring",
 				["b"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
@@ -386,15 +395,6 @@ M.config = function()
 					"<cmd>lua require('refactoring').debug.cleanup({})<CR>",
 					"Cleanup debug log",
 				},
-			},
-			["R"] = {
-				name = "Rest",
-				["r"] = { "<Plug>RestNvim", "Run request under the cursor" },
-				["p"] = {
-					"<Plug>RestNvimPreview",
-					"Preview request under the cursor",
-				},
-				["l"] = { "<Plug>RestNvimLast", "Run last request" },
 			},
 			["t"] = {
 				name = "Test",
