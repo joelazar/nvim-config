@@ -105,7 +105,6 @@ return {
 					["["] = { output = { left = "[", right = "]" } },
 					["]"] = { output = { left = "[", right = "]" } },
 				},
-				search_method = "next",
 			})
 		end,
 	},
