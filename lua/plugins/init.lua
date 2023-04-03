@@ -190,4 +190,9 @@ return {
 			"ChatGPTEditWithInstructions",
 		},
 	},
+
+	{
+		"subnut/nvim-ghost.nvim",
+		event = "VeryLazy",
+	},
 }
