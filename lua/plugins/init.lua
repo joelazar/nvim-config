@@ -194,5 +194,13 @@ return {
 	{
 		"subnut/nvim-ghost.nvim",
 		event = "VeryLazy",
+		config = function()
+			vim.g.nvim_ghost_super_quiet = 1
+			vim.cmd([[
+				augroup nvim_ghost_user_autocommands
+					au User *github.com,*stackoverflow.com,*reddit.com setfiletype markdown
+				augroup END
+			]])
+		end,
 	},
 }
