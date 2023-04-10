@@ -54,11 +54,12 @@ M.config = function()
 			end, { "i", "s" }),
 		},
 		sources = {
-			{ name = "nvim_lua" },
 			{ name = "nvim_lsp" },
-			{ name = "path" },
-			{ name = "luasnip", keyword_length = 2 },
 			{ name = "buffer", keyword_length = 3 },
+			{ name = "luasnip", keyword_length = 2 },
+			{ name = "nvim_lua" },
+			{ name = "fish" },
+			{ name = "path" },
 			{
 				name = "look",
 				keyword_length = 5,
@@ -66,7 +67,6 @@ M.config = function()
 				option = { convert_case = true, loud = true },
 			},
 			{ name = "calc" },
-			{ name = "fish" },
 			{ name = "emoji" },
 		},
 		snippet = {

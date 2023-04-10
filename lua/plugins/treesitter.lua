@@ -70,7 +70,7 @@ M.config = function()
 				node_decremental = "<S-TAB>",
 			},
 		},
-		indent = { enable = false },
+		indent = { enable = true },
 		matchup = {
 			enable = true,
 		},
