@@ -113,10 +113,9 @@ M.config = function()
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
+			{ name = "cmdline_history", max_item_count = 5 },
 			{ name = "cmdline" },
 			{ name = "path" },
-			{ name = "buffer" },
-			{ name = "cmdline_history" },
 		},
 	})
 	cmp.setup.cmdline("/", {
