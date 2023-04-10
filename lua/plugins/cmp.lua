@@ -16,6 +16,7 @@ local M = {
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
+		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
 	},
 }
 
@@ -32,7 +33,7 @@ M.config = function()
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
 			}),
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<CR>"] = cmp.mapping.confirm({ select = false, replace = true }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -123,6 +124,7 @@ M.config = function()
 		sources = {
 			{ name = "buffer" },
 			{ name = "cmdline_history" },
+			{ name = "fuzzy_buffer" },
 		},
 	})
 end
