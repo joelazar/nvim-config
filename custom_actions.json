@@ -1,5 +1,5 @@
 {
-  "grammar_correction": {
+  "custom_grammar_correction": {
     "type": "chat",
     "opts": {
       "template": "Correct this to standard {{lang}}:\n\n{{input}}",
@@ -16,7 +16,7 @@
       }
     }
   },
-  "translate": {
+  "custom_translate": {
     "type": "chat",
     "opts": {
       "template": "Translate this into {{lang}}:\n\n{{input}}",

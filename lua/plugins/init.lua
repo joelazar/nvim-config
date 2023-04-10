@@ -177,6 +177,7 @@ return {
 					rename_session = "r",
 					delete_session = "d",
 				},
+				actions_paths = { "~/.config/nvim/custom_actions.json" },
 			})
 		end,
 		dependencies = {
