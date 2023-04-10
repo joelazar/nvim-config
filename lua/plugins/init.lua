@@ -177,6 +177,17 @@ return {
 					rename_session = "r",
 					delete_session = "d",
 				},
+				-- openai_params = {
+				-- 	model = "gpt-3.5-turbo",
+				-- 	-- model = "gpt-4",
+				-- 	-- model = "gpt-4-32k",
+				-- 	frequency_penalty = 0,
+				-- 	presence_penalty = 0,
+				-- 	max_tokens = 300,
+				-- 	temperature = 0,
+				-- 	top_p = 1,
+				-- 	n = 1,
+				-- },
 				actions_paths = { "~/.config/nvim/custom_actions.json" },
 			})
 		end,
