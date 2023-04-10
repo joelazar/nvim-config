@@ -188,6 +188,8 @@ return {
 			"ChatGPT",
 			"ChatGPTActAs",
 			"ChatGPTEditWithInstructions",
+			"ChatGPTRun",
+			"ChatGPTRunCustomCodeAction",
 		},
 	},
 
