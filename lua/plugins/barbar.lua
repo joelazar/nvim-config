@@ -38,10 +38,10 @@ M.config = function()
 			button = "",
 			-- Enables / disables diagnostic symbols
 			diagnostics = {
-				[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+				[vim.diagnostic.severity.ERROR] = { enabled = false, icon = "ﬀ" },
 				[vim.diagnostic.severity.WARN] = { enabled = false },
 				[vim.diagnostic.severity.INFO] = { enabled = false },
-				[vim.diagnostic.severity.HINT] = { enabled = true },
+				[vim.diagnostic.severity.HINT] = { enabled = false },
 			},
 			filetype = {
 				-- Sets the icon's highlight group.
