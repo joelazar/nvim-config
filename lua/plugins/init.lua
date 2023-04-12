@@ -203,16 +203,21 @@ return {
 			"ChatGPTRun",
 			"ChatGPTRunCustomCodeAction",
 		},
+		pin = "a18b19cbb3e20b91d7bf9b662bf29dd66158112c",
 	},
 
 	{
 		"subnut/nvim-ghost.nvim",
-		event = "VeryLazy",
+		lazy = false,
+		pin = "967be0880b2ccbf338990149f14a1f873a9054fa",
+		-- cmd = { "GhostTextStart" },
 		config = function()
 			vim.g.nvim_ghost_super_quiet = 1
+			-- vim.g.nvim_ghost_autostart = 0
 			vim.cmd([[
 				augroup nvim_ghost_user_autocommands
 					au User *github.com,*stackoverflow.com,*reddit.com setfiletype markdown
+					au User *github.com,*stackoverflow.com,*reddit.com let b:copilot_enabled=1
 				augroup END
 			]])
 		end,
