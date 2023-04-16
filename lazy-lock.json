@@ -1,5 +1,5 @@
 {
-  "ChatGPT.nvim": { "branch": "main", "commit": "a18b19cbb3e20b91d7bf9b662bf29dd66158112c" },
+  "ChatGPT.nvim": { "branch": "main", "commit": "cd0ae3f865fb89d87c904c3de14502dd7dcee5af" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "a6355b12a3b7da0aef71f02560e17ff480182b97" },
   "SchemaStore.nvim": { "branch": "main", "commit": "a592fbe98959d13014b022ec1b1418498309019c" },
@@ -97,6 +97,6 @@
   "vim-bookmarks": { "branch": "master", "commit": "9cc5fa7ecc23b052bd524d07c85356c64b92aeef" },
   "vim-matchup": { "branch": "master", "commit": "57499f5ca9a66f233efa4faeb04571e5194863a6" },
   "vim-startuptime": { "branch": "master", "commit": "c9da356b59eb30dfca6cd573b63d0e81c0a24ff9" },
-  "which-key.nvim": { "branch": "main", "commit": "8b1bb02fed6fd5c1f7e851959eaa1d0e8738da7f" },
+  "which-key.nvim": { "branch": "main", "commit": "b0ebb6722c77dda1ab1e3ce13521fe7db20cbc79" },
   "zk-nvim": { "branch": "main", "commit": "275578853dc76d282ee5b31f86cd3a4f02d91f2f" }
 }

@@ -203,7 +203,6 @@ return {
 			"ChatGPTRun",
 			"ChatGPTRunCustomCodeAction",
 		},
-		pin = "a18b19cbb3e20b91d7bf9b662bf29dd66158112c",
 	},
 
 	{
