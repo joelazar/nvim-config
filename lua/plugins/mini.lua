@@ -55,7 +55,7 @@ return {
 
 	{
 		"echasnovski/mini.trailspace",
-		event = "BufRead",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("mini.trailspace").setup()
 		end,
@@ -63,7 +63,7 @@ return {
 
 	{
 		"echasnovski/mini.bracketed",
-		event = "BufReadPost",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("mini.bracketed").setup()
 		end,
@@ -117,6 +117,14 @@ return {
 				-- Number of lines within which textobject is searched
 				n_lines = 500,
 			})
+		end,
+	},
+
+	{
+		"echasnovski/mini.splitjoin",
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			require("mini.splitjoin").setup()
 		end,
 	},
 
