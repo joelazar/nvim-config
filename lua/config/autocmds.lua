@@ -1,5 +1,11 @@
 local vimrc_group = vim.api.nvim_create_augroup("vimrc", { clear = true })
 
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+	desc = "Check if we need to reload the file when it changed",
+	command = "checktime",
+	group = vimrc_group,
+})
+
 vim.api.nvim_create_autocmd("InsertEnter", {
 	desc = "Hide cursorline in insert mode",
 	pattern = "*",
@@ -86,6 +92,14 @@ vim.api.nvim_create_autocmd("TermClose", {
 	group = vimrc_group,
 })
 
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+	desc = "Resize splits if window got resized",
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+	end,
+	group = vimrc_group,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	desc = "Close some filetypes with <q>",
 	pattern = {
@@ -100,6 +114,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"chatgpt",
 		"PlenaryTestPopup",
 		"TelescopePrompt",
+		"checkhealth",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
