@@ -51,7 +51,7 @@ M.config = function()
 			prev = "<C-w>W",
 		},
 		buflisted = false, -- whether or not nnn buffers show up in the bufferlist
-		quitcd = "tcd", -- or "cd" / "lcd", command to run if quitcd file is found
+		quitcd = nil, -- or "cd" / "lcd", command to run if quitcd file is found
 		offset = false, -- whether or not to write position offset to tmpfile(for use in preview-tui)
 	})
 end

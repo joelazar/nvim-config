@@ -9,7 +9,7 @@ local M = {
 M.config = function()
 	require("bufferline").setup({
 		-- Enable/disable animations
-		animation = true,
+		animation = false,
 
 		-- Enable/disable auto-hiding the tab bar when there is a single buffer
 		auto_hide = false,
@@ -51,18 +51,18 @@ M.config = function()
 				-- Requires `nvim-web-devicons` if `true`
 				enabled = true,
 			},
-			separator = { left = "▎", right = "" },
+			separator = { left = "", right = "" },
 
 			-- Configure the icons on the bufferline when modified or pinned.
 			-- Supports all the base icon options.
 			modified = { button = "●" },
-			pinned = { button = "車" },
+			pinned = { button = "車", filename = true, separator = { right = "" } },
 
 			-- Configure the icons on the bufferline based on the visibility of a buffer.
 			-- Supports all the base icon options, plus `modified` and `pinned`.
 			alternate = { filetype = { enabled = false } },
 			current = { buffer_index = false },
-			-- inactive = { button = "×" },
+			inactive = { button = "" },
 			visible = { modified = { buffer_number = false } },
 		},
 
