@@ -222,11 +222,14 @@ M.config = function()
 					h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
 					v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual Hover" },
 				},
-				i = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
 				r = {
 					name = "Repl",
-					o = { "<cmd>lua require('dap').repl.open()<CR>", "Open" },
+					o = { "<cmd>lua require('dap').repl.toggle()<CR>", "Toggle" },
 					l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run Last" },
+				},
+				R = {
+					"<cmd>lua require('dap').run_to_cursor()<CR>",
+					"Run to cursor",
 				},
 				s = {
 					name = "Step",
@@ -235,6 +238,7 @@ M.config = function()
 					i = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
 					o = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
 				},
+				t = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
 				u = {
 					name = "UI",
 					h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
