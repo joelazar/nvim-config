@@ -448,6 +448,7 @@ M.config = function()
 				},
 				["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
 				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
+				["z"] = { "<cmd>ZenMode<cr>", "ZenMode" },
 			},
 			["z"] = {
 				name = "Notes",
