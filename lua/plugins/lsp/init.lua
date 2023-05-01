@@ -8,6 +8,7 @@ local M = {
 		"williamboman/mason.nvim",
 		"glepnir/lspsaga.nvim",
 		"jose-elias-alvarez/typescript.nvim",
+		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	},
 }
 
@@ -104,37 +105,13 @@ M.config = function()
 			autostart = false,
 		},
 		lua_ls = {
-			cmd = { "lua-language-server" },
 			settings = {
 				Lua = {
-					format = {
-						enable = false,
+					workspace = {
+						checkThirdParty = false,
 					},
-					runtime = {
-						version = "LuaJIT",
-						path = { "lua/?.lua", "lua/?/init.lua" },
-					},
-					completion = { keywordSnippet = "Replace", callSnippet = "Replace" },
-					diagnostics = {
-						enable = true,
-						globals = {
-							"vim",
-							"describe",
-							"it",
-							"before_each",
-							"after_each",
-							"teardown",
-							"pending",
-							"use",
-						},
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-							},
-							maxPreload = 100000,
-							preloadFileSize = 10000,
-						},
+					completion = {
+						callSnippet = "Replace",
 					},
 				},
 			},
