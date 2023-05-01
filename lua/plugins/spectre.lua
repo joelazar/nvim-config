@@ -1,5 +1,5 @@
 local M = {
-	"windwp/nvim-spectre",
+	"nvim-pack/nvim-spectre",
 }
 
 M.config = function()
