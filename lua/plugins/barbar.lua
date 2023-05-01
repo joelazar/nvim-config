@@ -43,6 +43,11 @@ M.config = function()
 				[vim.diagnostic.severity.INFO] = { enabled = false },
 				[vim.diagnostic.severity.HINT] = { enabled = false },
 			},
+			gitsigns = {
+				added = { enabled = false, icon = "+" },
+				changed = { enabled = false, icon = "~" },
+				deleted = { enabled = false, icon = "-" },
+			},
 			filetype = {
 				-- Sets the icon's highlight group.
 				-- If false, will use nvim-web-devicons colors
