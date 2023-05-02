@@ -116,6 +116,7 @@ M.config = function()
 				},
 			},
 		},
+		ruff_lsp = {},
 		texlab = {},
 		tsserver = {},
 		yamlls = {
