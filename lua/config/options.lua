@@ -39,13 +39,6 @@ vim.opt.listchars:append("eol:↴")
 -- GUI: Name(s) of font(s) to be used
 vim.o.guifont = "Roboto Mono:h14"
 
--- Neovide config
-vim.g.neovide_cursor_animation_length = 0.0
-vim.g.neovide_cursor_trail_length = 0.0
-vim.g.neovide_fullscreen = true
-vim.g.neovide_floating_blur_amount_x = 2.0
-vim.g.neovide_floating_blur_amount_y = 2.0
-
 -- Number of command-lines that are remembered
 vim.o.history = 10000
 
