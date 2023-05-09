@@ -24,7 +24,8 @@ M.config = function()
 					tritan = 0, -- Severity [0,1] for tritan (blue)
 				},
 			},
-			styles = { -- Style to be applied to different syntax groups
+			styles = {
+				-- Style to be applied to different syntax groups
 				comments = "italic",
 				conditionals = "NONE",
 				constants = "NONE",
