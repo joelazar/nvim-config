@@ -17,16 +17,16 @@ return {
 				-- If `nil` (default), default items will be used (see |mini.starter|).
 				-- items = nil,
 				items = {
-					{ action = "bdelete", name = "New file", section = "Files" },
-					{ action = "Telescope file_browser", name = "File browser", section = "Files" },
-					{ action = "Telescope oldfiles", name = "Recent files", section = "Files" },
-					{ action = "Telescope find_files", name = "Find files", section = "Files" },
-					{ action = "Telescope live_grep", name = "Grep", section = "Search" },
-					{ action = "Telescope projects", name = "Projects", section = "Search" },
-					{ action = "Telescope vim_bookmarks", name = "Bookmarks", section = "Search" },
+					{ action = "bdelete",                   name = "New file",        section = "Files" },
+					{ action = "Telescope file_browser",    name = "File browser",    section = "Files" },
+					{ action = "Telescope oldfiles",        name = "Recent files",    section = "Files" },
+					{ action = "Telescope find_files",      name = "Find files",      section = "Files" },
+					{ action = "Telescope live_grep",       name = "Grep",            section = "Search" },
+					{ action = "Telescope projects",        name = "Projects",        section = "Search" },
+					{ action = "Telescope vim_bookmarks",   name = "Bookmarks",       section = "Search" },
 					{ action = "Telescope command_history", name = "Command history", section = "Search" },
-					{ action = "ZkNotes", name = "Notes", section = "Notes" },
-					{ action = "ZkNew", name = "Create note", section = "Notes" },
+					{ action = "ZkNotes",                   name = "Notes",           section = "Notes" },
+					{ action = "ZkNew",                     name = "Create note",     section = "Notes" },
 				},
 				content_hooks = {
 					starter.gen_hook.adding_bullet(),
@@ -56,40 +56,25 @@ return {
 	{
 		"echasnovski/mini.trailspace",
 		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("mini.trailspace").setup()
-		end,
+		opts = {},
 	},
 
 	{
 		"echasnovski/mini.bracketed",
 		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("mini.bracketed").setup()
-		end,
+		opts = {},
 	},
 
 	{
 		"echasnovski/mini.pairs",
 		event = "InsertEnter",
-		config = function()
-			require("mini.pairs").setup()
-		end,
+		opts = {},
 	},
 
 	{
 		"echasnovski/mini.comment",
 		event = "VeryLazy",
-		opts = {
-			hooks = {
-				pre = function()
-					require("ts_context_commentstring.internal").update_commentstring({})
-				end,
-			},
-		},
-		config = function(_, opts)
-			require("mini.comment").setup(opts)
-		end,
+		opts = {},
 	},
 
 	{
@@ -123,9 +108,7 @@ return {
 	{
 		"echasnovski/mini.splitjoin",
 		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("mini.splitjoin").setup()
-		end,
+		opts = {},
 	},
 
 	{

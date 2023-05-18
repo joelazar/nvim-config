@@ -4,8 +4,6 @@ local M = {
 	dependencies = {
 		-- Rainbow parentheses by using tree-sitter
 		"HiPhish/nvim-ts-rainbow2",
-		-- Setting the commentstring based on the cursor location in a file
-		"JoosepAlviste/nvim-ts-context-commentstring",
 		-- Autocreate/update html tags
 		"windwp/nvim-ts-autotag",
 		-- Additional textobjects for treesitter
@@ -52,10 +50,6 @@ M.config = function()
 		ignore_install = {},
 		sync_install = true,
 		autotag = { enable = true },
-		context_commentstring = {
-			enable = true,
-			enable_autocmd = false,
-		},
 		highlight = {
 			enable = true,
 			use_languagetree = true,
