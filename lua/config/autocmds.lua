@@ -42,15 +42,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	group = vimrc_group,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "Autoformat before save",
-	pattern = { "*.go", "*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma", "*.py", "*.mjs" },
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-	group = vimrc_group,
-})
-
 vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Don't auto commenting new lines",
 	pattern = "*",

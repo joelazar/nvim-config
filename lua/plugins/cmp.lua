@@ -58,6 +58,7 @@ M.config = function()
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
 			}),
+			["<C-j>"] = cmp.mapping.confirm({ select = true, replace = true }),
 			["<CR>"] = cmp.mapping.confirm({ select = false, replace = true }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
@@ -82,7 +83,7 @@ M.config = function()
 		sources = {
 			{ name = "copilot" },
 			{ name = "nvim_lsp" },
-			{ name = "buffer",  keyword_length = 3 },
+			{ name = "buffer", keyword_length = 3 },
 			{ name = "luasnip", keyword_length = 2 },
 			{ name = "nvim_lua" },
 			{ name = "fish" },

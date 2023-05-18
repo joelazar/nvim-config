@@ -39,8 +39,9 @@ M.config = function()
 	local lspconfig = require("lspconfig")
 	local cmp_lsp = require("cmp_nvim_lsp")
 
-	local function on_attach(_, buffer)
+	local function on_attach(client, buffer)
 		require("plugins.lsp.keys").setup(buffer)
+		require("plugins.lsp.format").on_attach(client, buffer)
 	end
 
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -119,6 +120,7 @@ M.config = function()
 		ruff_lsp = {},
 		texlab = {},
 		tsserver = {},
+		eslint = {},
 		yamlls = {
 			settings = {
 				yaml = {
@@ -136,19 +138,14 @@ M.config = function()
 			flags = { debounce_text_changes = 150 },
 		}, config)
 
+		config.on_attach = function(client, buffer)
+			require("plugins.lsp.keys").setup(buffer)
+			if server ~= "tsserver" then
+				require("plugins.lsp.format").on_attach(client, buffer)
+			end
+		end
+
 		if server == "tsserver" then
-			local function disable_lsp_formatting(client)
-				client.server_capabilities.document_formatting = false
-				client.server_capabilities.document_range_formatting = false
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end
-
-			config.on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				disable_lsp_formatting(client)
-			end
-
 			require("typescript").setup({ server = config })
 		else
 			lspconfig[server].setup(config)
