@@ -249,4 +249,10 @@ return {
 	},
 
 	"folke/twilight.nvim",
+
+	{
+		"huggingface/hfcc.nvim",
+		opts = {},
+		cmd = "HFccSuggestion",
+	},
 }
