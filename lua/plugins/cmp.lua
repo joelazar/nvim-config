@@ -17,6 +17,23 @@ local M = {
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
 		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
+		{
+			"zbirenbaum/copilot-cmp",
+			dependencies = "copilot.lua",
+			opts = {},
+			config = function(_, opts)
+				local copilot_cmp = require("copilot_cmp")
+				copilot_cmp.setup(opts)
+				vim.api.nvim_create_autocmd("LspAttach", {
+					callback = function(args)
+						local client = vim.lsp.get_client_by_id(args.data.client_id)
+						if client.name == "copilot" then
+							copilot_cmp._on_insert_enter({})
+						end
+					end,
+				})
+			end,
+		},
 	},
 }
 
@@ -24,6 +41,14 @@ M.config = function()
 	local cmp = require("cmp")
 	local lspkind = require("lspkind")
 	local luasnip = require("luasnip")
+
+	local has_words_before = function()
+		if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+			return false
+		end
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+	end
 
 	cmp.setup({
 		mapping = {
@@ -36,8 +61,8 @@ M.config = function()
 			["<CR>"] = cmp.mapping.confirm({ select = false, replace = true }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
+				if cmp.visible() and has_words_before() then
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 				elseif luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
 				else
@@ -55,8 +80,9 @@ M.config = function()
 			end, { "i", "s" }),
 		},
 		sources = {
+			{ name = "copilot" },
 			{ name = "nvim_lsp" },
-			{ name = "buffer", keyword_length = 3 },
+			{ name = "buffer",  keyword_length = 3 },
 			{ name = "luasnip", keyword_length = 2 },
 			{ name = "nvim_lua" },
 			{ name = "fish" },
@@ -79,26 +105,21 @@ M.config = function()
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
+				symbol_map = { Copilot = "" },
 			}),
 		},
 		sorting = {
+			priority_weight = 2,
 			comparators = {
+				require("copilot_cmp.comparators").prioritize,
+
+				-- Below is the default comparitor list and order for nvim-cmp
 				cmp.config.compare.offset,
+				-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
 				cmp.config.compare.exact,
 				cmp.config.compare.score,
-
-				function(entry1, entry2)
-					local _, entry1_under = entry1.completion_item.label:find("^_+")
-					local _, entry2_under = entry2.completion_item.label:find("^_+")
-					entry1_under = entry1_under or 0
-					entry2_under = entry2_under or 0
-					if entry1_under > entry2_under then
-						return false
-					elseif entry1_under < entry2_under then
-						return true
-					end
-				end,
-
+				cmp.config.compare.recently_used,
+				cmp.config.compare.locality,
 				cmp.config.compare.kind,
 				cmp.config.compare.sort_text,
 				cmp.config.compare.length,
@@ -134,6 +155,11 @@ M.config = function()
 			{ name = "fuzzy_buffer" },
 		},
 	})
+end
+
+-- create a function which writes some nice text to the current buffer
+function M.hello()
+	print("Hello from Lua!")
 end
 
 return M
