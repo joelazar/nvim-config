@@ -140,9 +140,11 @@ M.config = function()
 
 		config.on_attach = function(client, buffer)
 			require("plugins.lsp.keys").setup(buffer)
-			if server ~= "tsserver" then
-				require("plugins.lsp.format").on_attach(client, buffer)
+			if server == "tsserver" then
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
 			end
+			require("plugins.lsp.format").on_attach(client, buffer)
 		end
 
 		if server == "tsserver" then
