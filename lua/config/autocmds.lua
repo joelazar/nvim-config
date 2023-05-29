@@ -94,18 +94,21 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	desc = "Close some filetypes with <q>",
 	pattern = {
-		"qf",
+		"PlenaryTestPopup",
+		"TelescopePrompt",
+		"chatgpt",
+		"checkhealth",
 		"help",
-		"man",
-		"notify",
 		"lspinfo",
+		"man",
+		"neotest-output",
+		"neotest-output-panel",
+		"neotest-summary",
+		"notify",
+		"qf",
 		"spectre_panel",
 		"startuptime",
 		"tsplayground",
-		"chatgpt",
-		"PlenaryTestPopup",
-		"TelescopePrompt",
-		"checkhealth",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
