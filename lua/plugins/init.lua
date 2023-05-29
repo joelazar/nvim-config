@@ -161,6 +161,7 @@ return {
 		"jackMort/ChatGPT.nvim",
 		config = function()
 			require("chatgpt").setup({
+				api_key_cmd = "pass private/openai_api_key",
 				edit_with_instructions = {
 					diff = false,
 					keymaps = {
