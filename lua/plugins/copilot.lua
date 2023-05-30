@@ -13,6 +13,7 @@ return {
 			help = false,
 			svn = false,
 			cvs = false,
+			conf = false,
 			["."] = false,
 			markdown = function()
 				if string.match(vim.fn.expand("%:p:h"), "notes") then
