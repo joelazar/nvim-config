@@ -219,7 +219,6 @@ return {
 	{
 		"subnut/nvim-ghost.nvim",
 		lazy = false,
-		pin = "967be0880b2ccbf338990149f14a1f873a9054fa",
 		-- cmd = { "GhostTextStart" },
 		config = function()
 			vim.g.nvim_ghost_super_quiet = 1
