@@ -67,7 +67,7 @@ M.config = function()
 			-- Supports all the base icon options, plus `modified` and `pinned`.
 			alternate = { filetype = { enabled = false } },
 			current = { buffer_index = false },
-			inactive = { button = "" },
+			inactive = { button = nil, separator = { left = "", right = "" } },
 			visible = { modified = { buffer_number = false } },
 		},
 
