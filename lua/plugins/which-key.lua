@@ -197,11 +197,11 @@ M.config = function()
 						"Sort buffers automatically by language",
 					},
 				},
-				["w"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffers" },
-				["W"] = {
+				["w"] = {
 					"<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
 					"Close all but current buffer",
 				},
+				["W"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffers" },
 			},
 			["d"] = {
 				name = "Debug",
