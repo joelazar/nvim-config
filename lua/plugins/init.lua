@@ -18,10 +18,12 @@ return {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
-	-- Open files from terminal window in the same neovim instance
 	{
-		"samjwill/nvim-unception",
-		event = "VeryLazy",
+		"willothy/flatten.nvim",
+		config = true,
+		-- Ensure that it runs first to minimize delay when opening file from terminal
+		lazy = false,
+		priority = 1001,
 	},
 
 	-- Training for vim movements
