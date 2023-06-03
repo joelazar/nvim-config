@@ -12,6 +12,7 @@ local M = {
 		"rcarriga/nvim-dap-ui",
 		"theHamsta/nvim-dap-virtual-text",
 		"mfussenegger/nvim-dap-python",
+		"LiadOz/nvim-dap-repl-highlights",
 	},
 }
 
@@ -25,6 +26,9 @@ M.config = function()
 
 	-- DAP UI
 	dapui.setup()
+
+	-- DAP REPL Highlights
+	require("nvim-dap-repl-highlights").setup()
 
 	vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError", linehl = "", numhl = "" })
