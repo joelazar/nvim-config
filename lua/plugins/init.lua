@@ -167,6 +167,7 @@ return {
 				edit_with_instructions = {
 					diff = false,
 					keymaps = {
+						close = { "<C-c>" },
 						accept = "<C-y>",
 						toggle_diff = "<C-d>",
 						toggle_settings = "<C-o>",
@@ -188,6 +189,10 @@ return {
 						select_session = { "<Space>", "o", "<cr>" },
 						rename_session = "r",
 						delete_session = "d",
+						cycle_modes = "<C-f>",
+						draft_message = "<C-d>",
+						toggle_message_role = "<C-r>",
+						toggle_system_role_open = "<C-s>",
 					},
 				},
 				-- openai_params = {

@@ -58,8 +58,11 @@ M.config = function()
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
 			}),
-			["<C-j>"] = cmp.mapping.confirm({ select = true, replace = true }),
-			["<CR>"] = cmp.mapping.confirm({ select = false, replace = true }),
+			["<C-j>"] = cmp.mapping.confirm({
+				select = true,
+				behavior = cmp.ConfirmBehavior.Replace,
+			}),
+			["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and has_words_before() then
