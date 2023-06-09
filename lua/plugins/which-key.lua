@@ -116,22 +116,23 @@ M.config = function()
 					"Code Action",
 				},
 			},
+			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
 			["r"] = {
 				name = "Refactoring",
 				["e"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+					"<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>",
 					"Extract Function",
 				},
 				["f"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+					"<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
 					"Extract Function to File",
 				},
 				["v"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+					"<Esc><cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
 					"Extract Variable",
 				},
 				["i"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+					"<Esc><cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
 					"Inline Variable",
 				},
 				["r"] = {
@@ -159,7 +160,6 @@ M.config = function()
 			},
 			["c"] = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
-			["e"] = { "<cmd>SnipRun<cr>", "Execute (sniprun)" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 			["G"] = { "<cmd>lua require'config.utils'.open_lazygit()<cr>", "Lazygit" },
 			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },

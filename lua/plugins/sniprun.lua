@@ -1,16 +1,17 @@
 local M = {
 	"michaelb/sniprun",
 	build = "bash ./install.sh",
-	cmd = "SnipRun",
+	cmd = { "SnipRun", "SnipInfo", "SnipLive", "SnipClose", "SnipReset", "SnipReplMemoryClean" },
 }
 
 M.config = function()
 	require("sniprun").setup({
 		selected_interpreters = {}, --# use those instead of the default for the current filetype
-		repl_enable = {}, --# enable REPL-like behavior for the given interpreters
+		repl_enable = { "javascript", "typescript" }, --# enable REPL-like behavior for the given interpreters
 		repl_disable = {}, --# disable REPL-like behavior for the given interpreters
 
-		interpreter_options = { --# interpreter-specific options, see docs / :SnipInfo <name>
+		interpreter_options = {
+			--# interpreter-specific options, see docs / :SnipInfo <name>
 
 			--# use the interpreter name as key
 			GFM_original = {
@@ -27,14 +28,14 @@ M.config = function()
 		--# you can combo different display modes as desired and with the 'Ok' or 'Err' suffix
 		--# to filter only sucessful runs (or errored-out runs respectively)
 		display = {
-			"Classic", --# display results in the command-line  area
-			"VirtualTextOk", --# display ok results as virtual text (multiline is shortened)
+			-- "Classic", --# display results in the command-line  area
+			-- "VirtualTextOk", --# display ok results as virtual text (multiline is shortened)
 
 			-- "VirtualText",             --# display results as virtual text
 			-- "TempFloatingWindow",      --# display results in a floating window
 			-- "LongTempFloatingWindow",  --# same as above, but only long results. To use with VirtualText[Ok/Err]
-			-- "Terminal",                --# display results in a vertical split
-			-- "TerminalWithCode",        --# display results and code history in a vertical split
+			"Terminal", --# display results in a vertical split
+			-- "TerminalWithCode", --# display results and code history in a vertical split
 			-- "NvimNotify",              --# display with the nvim-notify plugin
 			-- "Api"                      --# return output to a programming interface
 		},
@@ -42,6 +43,10 @@ M.config = function()
 		live_display = { "VirtualTextOk" }, --# display mode used in live_mode
 
 		display_options = {
+			terminal_scrollback = vim.o.scrollback, --# change terminal display scrollback lines
+			terminal_line_number = false, --# whether show line number in terminal window
+			terminal_signcolumn = false, --# whether show signcolumn in terminal window
+			terminal_persistence = true, --# always keep the terminal open (true) or close it at every occasion (false)
 			terminal_width = 45, --# change the terminal display option width
 			notification_timeout = 5, --# timeout for nvim_notify output
 		},
@@ -64,7 +69,7 @@ M.config = function()
 		live_mode_toggle = "off", --# live mode toggle, see Usage - Running for more info
 
 		--# miscellaneous compatibility/adjustement settings
-		inline_messages = 0, --# inline_message (0/1) is a one-line way to display messages
+		inline_messages = false, --# inline_message (0/1) is a one-line way to display messages
 		--# to workaround sniprun not being able to display anything
 
 		borders = "single", --# display borders around floating windows
