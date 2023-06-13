@@ -35,9 +35,6 @@ map("n", "Q", "<cmd>close<cr>", opts)
 -- Telescope select files
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 
--- Visual select whole buffer
-map("n", "<C-a>", "ggVG", opts)
-
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })

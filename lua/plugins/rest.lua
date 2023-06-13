@@ -12,11 +12,14 @@ local M = {
 		-- Highlight request on run
 		highlight = {
 			enabled = true,
-			timeout = 1000,
+			timeout = 500,
 		},
 		result = {
 			-- toggle showing URL, HTTP info, headers at top the of result window
 			show_url = true,
+			-- show the generated curl command in case you want to launch
+			-- the same request via the terminal (can be verbose)
+			show_curl_command = false,
 			show_http_info = true,
 			show_headers = true,
 			-- executables or functions for formatting response body [optional]
@@ -30,7 +33,7 @@ local M = {
 		},
 		-- Jump to request line on run
 		jump_to_request = false,
-		env_file = ".env",
+		env_file = ".envrc",
 		custom_dynamic_variables = {},
 		yank_dry_run = true,
 	},
