@@ -167,6 +167,7 @@ return {
 				edit_with_instructions = {
 					diff = false,
 					keymaps = {
+						close = "<C-c>",
 						accept = "<C-y>",
 						toggle_diff = "<C-d>",
 						toggle_settings = "<C-o>",
