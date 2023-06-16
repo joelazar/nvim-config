@@ -4,6 +4,7 @@ local M = {
 
 M.config = function()
 	require("spectre").setup({
+		open_cmd = "noswapfile vnew",
 		mapping = {
 			["toggle_line"] = {
 				map = "dd",

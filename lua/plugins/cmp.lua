@@ -3,7 +3,6 @@ local M = {
 	event = "InsertEnter",
 	dependencies = {
 		"L3MON4D3/LuaSnip",
-		"dmitmel/cmp-cmdline-history",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-calc",
 		"hrsh7th/cmp-cmdline",
@@ -146,7 +145,6 @@ M.config = function()
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
-			{ name = "cmdline_history", max_item_count = 5 },
 			{ name = "cmdline" },
 			{ name = "path" },
 		},
@@ -155,15 +153,9 @@ M.config = function()
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
 			{ name = "buffer" },
-			{ name = "cmdline_history" },
 			{ name = "fuzzy_buffer" },
 		},
 	})
-end
-
--- create a function which writes some nice text to the current buffer
-function M.hello()
-	print("Hello from Lua!")
 end
 
 return M

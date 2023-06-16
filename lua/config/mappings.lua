@@ -44,8 +44,8 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Better up/down
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Stay centered jumping between search results
 map("n", "n", "nzzzv", opts)
@@ -201,6 +201,14 @@ vim.api.nvim_create_user_command("OverseerRestartLast", function()
 	else
 		overseer.run_action(tasks[1], "restart")
 	end
+end, {})
+
+vim.api.nvim_create_user_command("TSReload", function()
+	vim.cmd([[
+      write
+      edit
+      TSBufEnable highlight
+  ]])
 end, {})
 
 -- smart deletion, dd
