@@ -267,4 +267,23 @@ return {
 	"folke/twilight.nvim",
 
 	{ "mrjones2014/smart-splits.nvim", build = "./kitty/install-kittens.bash" },
+
+	{
+		"tzachar/highlight-undo.nvim",
+		opts = {
+			hlgroup = "BufferCurrentCHANGED",
+			duration = 500,
+			keymaps = {
+				{ "n", "u", "undo", {} },
+				{ "n", "<C-r>", "redo", {} },
+			},
+		},
+		event = "VeryLazy",
+	},
+
+	{
+		"kiyoon/jupynium.nvim",
+		build = "pip3 install --user --break-system-packages .",
+		ft = "python",
+	},
 }
