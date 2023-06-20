@@ -59,15 +59,6 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 
 -- Insert mode
 
--- 'jk' for quitting insert mode
-map("i", "jk", "<ESC>", opts)
-
--- 'kj' for quitting insert mode
-map("i", "kj", "<ESC>", opts)
-
--- 'jj' for quitting insert mode
-map("i", "jj", "<ESC>", opts)
-
 -- Ctrl+V for pasting from system clipboard
 map("i", "<c-v>", "<c-r>+", opts)
 
