@@ -281,15 +281,6 @@ M.config = function()
 					"Open quickfix list with hunks",
 				},
 			},
-			["h"] = {
-				name = "Hop",
-				["c"] = { "<cmd>HopChar1<cr>", "Hop to single char" },
-				["C"] = { "<cmd>HopChar2<cr>", "Hop to bigram" },
-				["l"] = { "<cmd>HopLine<cr>", "Hop to line" },
-				["L"] = { "<cmd>HopLineStart<cr>", "Hop to line start" },
-				["p"] = { "<cmd>HopPattern<cr>", "Hop to pattern" },
-				["w"] = { "<cmd>HopWord<cr>", "Hop to word" },
-			},
 			["l"] = {
 				name = "LSP",
 				["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" },

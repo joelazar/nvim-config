@@ -67,7 +67,7 @@ vim.o.pumblend = 10
 vim.o.pumheight = 15
 
 -- Show cmdline by default
-vim.o.cmdheight = 1
+vim.o.cmdheight = 0
 
 -- Minimum nr. of lines above and below cursor
 vim.o.scrolloff = 5 -- could be 1
