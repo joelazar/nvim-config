@@ -2,7 +2,7 @@ local M = {}
 
 M.sudo_exec = function(cmd, print_output)
 	local password = vim.fn.inputsecret("Password: ")
-	local out = vim.fn.system(string.format("sudo -p '' -S %s", cmd), password)
+	local out = vim.fn.system(string.format("/usr/bin/sudo -p '' -S %s", cmd), password)
 	if vim.v.shell_error ~= 0 then
 		print("\r\n")
 		print(out)
