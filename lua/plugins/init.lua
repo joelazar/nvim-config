@@ -166,4 +166,6 @@ return {
 		build = "pip3 install --user --break-system-packages .",
 		ft = "python",
 	},
+
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 }
