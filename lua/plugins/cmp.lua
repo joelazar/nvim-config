@@ -93,8 +93,8 @@ M.config = function()
 			{ name = "path" },
 			{
 				name = "look",
-				keyword_length = 5,
-				max_item_count = 5,
+				keyword_length = 3,
+				max_item_count = 10,
 				option = { convert_case = true, loud = true },
 			},
 			{ name = "calc" },

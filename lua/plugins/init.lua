@@ -98,40 +98,6 @@ return {
 		},
 	},
 
-	-- Enhanced movement plugin
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					-- default options: exact mode, multi window, all directions, with a backdrop
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-		},
-	},
-
 	-- Enhanced folds
 	{
 		"kevinhwang91/nvim-ufo",
@@ -149,9 +115,7 @@ return {
 	-- Task runner for Neovim
 	{
 		"stevearc/overseer.nvim",
-		config = function()
-			require("overseer").setup()
-		end,
+		config = true,
 		cmd = { "OverseerRun", "OverseerRestartLast", "OverseerToggle" },
 	},
 
@@ -159,9 +123,7 @@ return {
 	{
 		"m-demare/hlargs.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("hlargs").setup()
-		end,
+		config = true,
 		event = { "BufReadPre", "BufNewFile" },
 	},
 
@@ -195,118 +157,9 @@ return {
 		config = true,
 	},
 
-	{
-		"jackMort/ChatGPT.nvim",
-		config = function()
-			require("chatgpt").setup({
-				api_key_cmd = "pass private/openai_api_key",
-				edit_with_instructions = {
-					diff = false,
-					keymaps = {
-						close = "<C-c>",
-						accept = "<C-y>",
-						toggle_diff = "<C-d>",
-						toggle_settings = "<C-o>",
-						cycle_windows = "<Tab>",
-						use_output_as_input = "<C-i>",
-					},
-				},
-				chat = {
-					welcome_message = "",
-					keymaps = {
-						close = { "<C-c>" },
-						yank_last = "<C-y>",
-						yank_last_code = "<C-k>",
-						scroll_up = "<C-u>",
-						scroll_down = "<C-d>",
-						new_session = "<C-n>",
-						cycle_windows = "<Tab>",
-						cycle_modes = "<C-f>",
-						select_session = { "<Space>", "o", "<cr>" },
-						rename_session = "r",
-						delete_session = "d",
-						draft_message = "<C-d>",
-						toggle_settings = "<C-o>",
-						toggle_message_role = "<C-r>",
-						toggle_system_role_open = "<C-s>",
-					},
-				},
-				openai_params = {
-					model = "gpt-3.5-turbo-16k-0613",
-					-- model = "gpt-4",
-					frequency_penalty = 0,
-					presence_penalty = 0,
-					max_tokens = 300,
-					temperature = 0,
-					top_p = 1,
-					n = 1,
-				},
-				show_quickfixes_cmd = "Trouble quickfix",
-				actions_paths = { "~/.config/nvim/custom_actions.json" },
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		cmd = {
-			"ChatGPT",
-			"ChatGPTActAs",
-			"ChatGPTEditWithInstructions",
-			"ChatGPTRun",
-			"ChatGPTRunCustomCodeAction",
-		},
-	},
-
-	{
-		"subnut/nvim-ghost.nvim",
-		lazy = false,
-		-- cmd = { "GhostTextStart" },
-		config = function()
-			vim.g.nvim_ghost_super_quiet = 1
-			-- vim.g.nvim_ghost_autostart = 0
-			vim.cmd([[
-				augroup nvim_ghost_user_autocommands
-					au User *github.com,*stackoverflow.com,*reddit.com setfiletype markdown
-					au User *github.com,*stackoverflow.com,*reddit.com let b:copilot_enabled=1
-					au User *github.com,*stackoverflow.com,*reddit.com setlocal spell
-				augroup END
-			]])
-		end,
-	},
-
-	{
-		"folke/zen-mode.nvim",
-		cmd = "ZenMode",
-		opts = {
-			plugins = {
-				twilight = { enabled = true },
-				gitsigns = { enabled = true },
-				kitty = {
-					enabled = true,
-					font = "+4",
-				},
-			},
-		},
-	},
-
 	"folke/twilight.nvim",
 
 	{ "mrjones2014/smart-splits.nvim", build = "./kitty/install-kittens.bash" },
-
-	{
-		"tzachar/highlight-undo.nvim",
-		opts = {
-			hlgroup = "BufferCurrentCHANGED",
-			duration = 500,
-			keymaps = {
-				{ "n", "u", "undo", {} },
-				{ "n", "<C-r>", "redo", {} },
-			},
-		},
-		event = "VeryLazy",
-	},
 
 	{
 		"kiyoon/jupynium.nvim",
