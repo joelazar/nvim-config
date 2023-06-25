@@ -34,10 +34,20 @@ M.config = function()
 		defaults = {
 			path_display = { truncate = 3 },
 			mappings = {
-				n = { s = flash },
+				n = {
+					s = flash,
+					["q"] = function(...)
+						return require("telescope.actions").close(...)
+					end,
+				},
 				i = {
 					["<c-s>"] = flash,
-					-- ["<esc>"] = require("telescope.actions").close,
+					["<c-t>"] = function(...)
+						return require("trouble.providers.telescope").open_with_trouble(...)
+					end,
+					["<a-t>"] = function(...)
+						return require("trouble.providers.telescope").open_selected_with_trouble(...)
+					end,
 					["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
