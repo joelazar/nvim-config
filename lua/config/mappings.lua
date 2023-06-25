@@ -1,38 +1,38 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local silent = { silent = true }
 
 -- Close windows
-map("n", "Q", "<cmd>close<cr>", opts)
+map("n", "Q", "<cmd>close<cr>", silent)
 
 -- Telescope select files
-map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
+map("n", "<C-p>", "<cmd>Telescope find_files<cr>", silent)
 
 -- Move to previous/next
-map("n", "<A-Left>", "<cmd>BufferPrevious<cr>", opts)
-map("n", "<A-Right>", "<cmd>BufferNext<cr>", opts)
-map("n", "<A-Tab>", "<cmd>BufferNext<cr>", opts)
+map("n", "<A-Left>", "<cmd>BufferPrevious<cr>", silent)
+map("n", "<A-Right>", "<cmd>BufferNext<cr>", silent)
+map("n", "<A-Tab>", "<cmd>BufferNext<cr>", silent)
 
 -- Re-order to previous/next
-map("n", "<A-,>", "<cmd>BufferMovePrevious<cr>", opts)
-map("n", "<A-.>", "<cmd>BufferMoveNext<cr>", opts)
+map("n", "<A-,>", "<cmd>BufferMovePrevious<cr>", silent)
+map("n", "<A-.>", "<cmd>BufferMoveNext<cr>", silent)
 
 -- Goto buffer in position...
-map("n", "<A-1>", "<cmd>BufferGoto 1<cr>", opts)
-map("n", "<A-2>", "<cmd>BufferGoto 2<cr>", opts)
-map("n", "<A-3>", "<cmd>BufferGoto 3<cr>", opts)
-map("n", "<A-4>", "<cmd>BufferGoto 4<cr>", opts)
-map("n", "<A-5>", "<cmd>BufferGoto 5<cr>", opts)
-map("n", "<A-6>", "<cmd>BufferGoto 6<cr>", opts)
-map("n", "<A-7>", "<cmd>BufferGoto 7<cr>", opts)
-map("n", "<A-8>", "<cmd>BufferGoto 8<cr>", opts)
-map("n", "<A-9>", "<cmd>BufferGoto 9<cr>", opts)
-map("n", "<A-0>", "<cmd>BufferLast<cr>", opts)
+map("n", "<A-1>", "<cmd>BufferGoto 1<cr>", silent)
+map("n", "<A-2>", "<cmd>BufferGoto 2<cr>", silent)
+map("n", "<A-3>", "<cmd>BufferGoto 3<cr>", silent)
+map("n", "<A-4>", "<cmd>BufferGoto 4<cr>", silent)
+map("n", "<A-5>", "<cmd>BufferGoto 5<cr>", silent)
+map("n", "<A-6>", "<cmd>BufferGoto 6<cr>", silent)
+map("n", "<A-7>", "<cmd>BufferGoto 7<cr>", silent)
+map("n", "<A-8>", "<cmd>BufferGoto 8<cr>", silent)
+map("n", "<A-9>", "<cmd>BufferGoto 9<cr>", silent)
+map("n", "<A-0>", "<cmd>BufferLast<cr>", silent)
 
 -- Pin buffer
-map("n", "<A-p>", "<cmd>BufferPin<cr>", opts)
+map("n", "<A-p>", "<cmd>BufferPin<cr>", silent)
 
 -- Close buffer
-map("n", "<A-c>", "<cmd>BufferClose<cr>", opts)
+map("n", "<A-c>", "<cmd>BufferClose<cr>", silent)
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
@@ -47,23 +47,23 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Stay centered jumping between search results
-map("n", "n", "nzzzv", opts)
-map("n", "N", "Nzzzv", opts)
+map("n", "n", "nzzzv", silent)
+map("n", "N", "Nzzzv", silent)
 
 -- Fix cursor position after joining lines
-map("n", "J", "mzJ`z", opts)
+map("n", "J", "mzJ`z", silent)
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Ctrl+V for pasting from system clipboard
-map("i", "<c-v>", "<c-r>+", opts)
+map("i", "<c-v>", "<c-r>+", silent)
 
 -- Search for visually selected text
-map("v", "//", 'y/<C-R>"<cr>', opts)
+map("v", "//", 'y/<C-R>"<cr>', silent)
 
 -- Have the same buffer on clipboard for multiple pastes
-map("v", "p", "pgvy", opts)
+map("v", "p", "pgvy", silent)
 
 -- Delete to blackhole register
 map({ "n", "x" }, "\\d", '"_d', { desc = "Delete to blackhole register" })
@@ -73,14 +73,14 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- DAP
-map("n", "<F5>", "<cmd>require'dap'.continue<cr>", opts)
-map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", opts)
-map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", opts)
-map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", opts)
+map("n", "<F5>", "<cmd>require'dap'.continue<cr>", silent)
+map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", silent)
+map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", silent)
+map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", silent)
 
 -- Make the dot command work as expected in visual mode
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
-map("v", ".", "<cmd>norm .<cr>", opts)
+map("v", ".", "<cmd>norm .<cr>", silent)
 
 vim.cmd([[
   function! QuickFixToggle()
@@ -92,8 +92,8 @@ vim.cmd([[
   endfunction
 ]])
 
-map("n", "<C-q>", "<cmd>call QuickFixToggle()<cr>", opts)
-map("n", "<C-`>", "<cmd>ToggleTerm<cr>", opts)
+map("n", "<C-q>", "<cmd>call QuickFixToggle()<cr>", silent)
+map("n", "<C-`>", "<cmd>ToggleTerm<cr>", silent)
 
 -- resizing splits
 -- these keymaps will also accept a range,
