@@ -1,11 +1,16 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Normal mode
+-- Close windows
+map("n", "Q", "<cmd>close<cr>", opts)
+
+-- Telescope select files
+map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 
 -- Move to previous/next
 map("n", "<A-Left>", "<cmd>BufferPrevious<cr>", opts)
 map("n", "<A-Right>", "<cmd>BufferNext<cr>", opts)
+map("n", "<A-Tab>", "<cmd>BufferNext<cr>", opts)
 
 -- Re-order to previous/next
 map("n", "<A-,>", "<cmd>BufferMovePrevious<cr>", opts)
@@ -29,19 +34,13 @@ map("n", "<A-p>", "<cmd>BufferPin<cr>", opts)
 -- Close buffer
 map("n", "<A-c>", "<cmd>BufferClose<cr>", opts)
 
--- Close windows
-map("n", "Q", "<cmd>close<cr>", opts)
-
--- Telescope select files
-map("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
-
 -- Move current line / block with Alt-j/k ala vscode.
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up", noremap = true, silent = true })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down", noremap = true, silent = true })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up", noremap = true, silent = true })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down", noremap = true, silent = true })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up", noremap = true, silent = true })
 
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -57,12 +56,8 @@ map("n", "J", "mzJ`z", opts)
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
--- Insert mode
-
 -- Ctrl+V for pasting from system clipboard
 map("i", "<c-v>", "<c-r>+", opts)
-
--- Visual mode
 
 -- Search for visually selected text
 map("v", "//", 'y/<C-R>"<cr>', opts)
@@ -70,14 +65,12 @@ map("v", "//", 'y/<C-R>"<cr>', opts)
 -- Have the same buffer on clipboard for multiple pastes
 map("v", "p", "pgvy", opts)
 
--- Visual block mode
-
--- Use tab for indenting in visual mode
-map("x", "<Tab>", ">gv|", opts)
-map("x", "<S-Tab>", "<gv", opts)
-
 -- Delete to blackhole register
 map({ "n", "x" }, "\\d", '"_d', { desc = "Delete to blackhole register" })
+
+-- Better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- DAP
 map("n", "<F5>", "<cmd>require'dap'.continue<cr>", opts)
