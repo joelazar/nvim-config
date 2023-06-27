@@ -14,6 +14,7 @@ local M = {
 		},
 		{
 			"S",
+			-- show labeled treesitter nodes around the cursor
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").treesitter()
@@ -27,6 +28,15 @@ local M = {
 				require("flash").remote()
 			end,
 			desc = "Remote Flash",
+		},
+		{
+			"R",
+			mode = { "x", "o" },
+			function()
+				-- show labeled treesitter nodes around the search matches
+				require("flash").treesitter_search()
+			end,
+			desc = "Treesitter Search",
 		},
 	},
 }
