@@ -82,7 +82,7 @@ vim.o.ttimeoutlen = 5
 
 -- Timeout on mapped sequences
 vim.o.timeout = true
-vim.o.timeoutlen = 20
+vim.o.timeoutlen = 300
 
 -- Show (partial) command in status line
 vim.o.showcmd = false
