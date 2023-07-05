@@ -91,7 +91,16 @@ vim.o.showcmd = false
 vim.o.tabstop = 4
 
 -- Number of spaces for a step of indent
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2
+
+-- Round indent to multiple of shiftwidth
+vim.o.shiftround = true
+
+-- Use smart indenting
+vim.o.smartindent = true
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
 
 -- Folding
 vim.o.foldenable = true
