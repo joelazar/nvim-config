@@ -44,6 +44,12 @@ local M = {
 				top_p = 1,
 				n = 1,
 			},
+			openai_edit_params = {
+				model = "gpt-3.5-turbo-instruct",
+				temperature = 0,
+				top_p = 1,
+				n = 1,
+			},
 			show_quickfixes_cmd = "Trouble quickfix",
 			actions_paths = { "~/.config/nvim/custom_actions.json" },
 		})
