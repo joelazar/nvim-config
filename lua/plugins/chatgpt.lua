@@ -45,7 +45,8 @@ local M = {
 				n = 1,
 			},
 			openai_edit_params = {
-				model = "gpt-3.5-turbo-instruct",
+				-- model = "gpt-3.5-turbo-instruct",
+				model = "code-davinci-edit-001",
 				temperature = 0,
 				top_p = 1,
 				n = 1,
