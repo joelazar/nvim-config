@@ -91,7 +91,7 @@ vim.o.showcmd = false
 vim.o.tabstop = 4
 
 -- Number of spaces for a step of indent
-vim.o.shiftwidth = 2
+vim.o.shiftwidth = 4
 
 -- Round indent to multiple of shiftwidth
 vim.o.shiftround = true
