@@ -2,7 +2,7 @@ local M = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
-		"glepnir/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 	},
 	event = "VeryLazy",
 }

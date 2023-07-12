@@ -6,7 +6,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
-		"glepnir/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 		"jose-elias-alvarez/typescript.nvim",
 		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	},
