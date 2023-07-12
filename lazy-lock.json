@@ -99,6 +99,7 @@
   "todo-comments.nvim": { "branch": "main", "commit": "09b0b17d824d2d56f02ff15967e8a2499a89c731" },
   "twilight.nvim": { "branch": "main", "commit": "a4843e6e67092a1e6fa9666f02bf0ab59174c1df" },
   "typescript-tools.nvim": { "branch": "master", "commit": "1b0af278f7415bc8fbb8128af99622dffcf5a9c2" },
+  "venv-selector.nvim": { "branch": "main", "commit": "27c502ee72071773932ef5e77df8464ffa876f7f" },
   "vim-be-good": { "branch": "master", "commit": "c290810728a4f75e334b07dc0f3a4cdea908d351" },
   "vim-bookmarks": { "branch": "master", "commit": "9cc5fa7ecc23b052bd524d07c85356c64b92aeef" },
   "vim-matchup": { "branch": "master", "commit": "17cc05867cb3314761e4baa20115a27120f8e82c" },
