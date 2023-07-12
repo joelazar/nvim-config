@@ -7,7 +7,7 @@ local M = {
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
 		"nvimdev/lspsaga.nvim",
-		"jose-elias-alvarez/typescript.nvim",
+		"pmizio/typescript-tools.nvim",
 		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	},
 }
@@ -148,7 +148,9 @@ M.config = function()
 		end
 
 		if server == "tsserver" then
-			require("typescript").setup({ server = config })
+			require("typescript-tools").setup({
+				on_attach = config.on_attach,
+			})
 		else
 			lspconfig[server].setup(config)
 		end

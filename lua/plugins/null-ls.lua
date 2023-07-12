@@ -8,7 +8,6 @@ M.config = function()
 	null_ls.setup({
 		sources = {
 			null_ls.builtins.code_actions.shellcheck,
-			require("typescript.extensions.null-ls.code-actions"),
 
 			null_ls.builtins.diagnostics.fish,
 			-- null_ls.builtins.diagnostics.mypy,
