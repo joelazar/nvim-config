@@ -1,7 +1,7 @@
 local M = {
 	"EdenEast/nightfox.nvim",
-	lazy = false,
-	priority = 1000,
+	-- lazy = false,
+	-- priority = 1000,
 	build = ':lua require("nightfox").compile()',
 }
 
