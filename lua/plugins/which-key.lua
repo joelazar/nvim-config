@@ -403,6 +403,7 @@ M.config = function()
 				["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
 			},
 			["T"] = { name = "Toggle" },
+			["Q"] = { name = "Session" },
 			["x"] = {
 				name = "Misc",
 				["c"] = { "<cmd>ColorizerToggle<cr>", "Toggle colorizer" },

@@ -80,6 +80,7 @@
   "overseer.nvim": { "branch": "master", "commit": "1ba74f7de6a8c6ae6dfa0df41a1ba83aacbd6456" },
   "paperplanes.nvim": { "branch": "master", "commit": "d704b2e1e594b32d454cc7e0c5f2cf9b391e3cc1" },
   "peek.nvim": { "branch": "master", "commit": "67752e7581f88da6899838985a05705b008e4185" },
+  "persistence.nvim": { "branch": "main", "commit": "4b8051c01f696d8849a5cb8afa9767be8db16e40" },
   "plenary.nvim": { "branch": "master", "commit": "bda256fab0eb66a15e8190937e417e6a14ee5d72" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "promise-async": { "branch": "main", "commit": "e94f35161b8c5d4a4ca3b6ff93dd073eb9214c0e" },
