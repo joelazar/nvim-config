@@ -335,6 +335,7 @@ M.config = function()
 				["k"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				["m"] = { "<cmd>Telescope marks<cr>", "Marks" },
 				["M"] = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+				["n"] = { "Noice" },
 				["o"] = { "<cmd>Telescope oldfiles<cr>", "Old files" },
 				["r"] = { "<cmd>Telescope resume<cr>", "Recent search" },
 				["R"] = { "<cmd>Telescope registers<cr>", "Registers" },

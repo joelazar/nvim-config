@@ -5,11 +5,9 @@ local M = {
 		"L3MON4D3/LuaSnip",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-calc",
-		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-emoji",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-path",
 		"mtoohey31/cmp-fish",
 		"octaltree/cmp-look",
@@ -158,20 +156,6 @@ M.config = function()
 			disallow_partial_fuzzy_matching = false,
 			disallow_partial_matching = false,
 			disallow_prefix_unmatching = false,
-		},
-	})
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "cmdline" },
-			{ name = "path" },
-		},
-	})
-	cmp.setup.cmdline("/", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "buffer" },
-			{ name = "fuzzy_buffer" },
 		},
 	})
 end

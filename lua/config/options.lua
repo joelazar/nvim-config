@@ -23,7 +23,7 @@ vim.o.undolevels = 1000
 vim.o.updatetime = 250
 
 -- Faster scrolling
-vim.o.lazyredraw = true
+-- vim.o.lazyredraw = true
 
 -- Decrease redraw time
 vim.o.redrawtime = 100
