@@ -153,6 +153,7 @@ M.config = function()
 				"<cmd>execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
 				"Open terminal",
 			},
+			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
 			["c"] = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
@@ -246,8 +247,9 @@ M.config = function()
 			["L"] = {
 				name = "Lazy",
 				["m"] = { "<cmd>Lazy<cr>", "Menu" },
-				["u"] = { "<cmd>Lazy update<cr>", "Update" },
+				["r"] = { "<cmd>Lazy restore<cr>", "Restore" },
 				["s"] = { "<cmd>Lazy sync<cr>", "Sync" },
+				["u"] = { "<cmd>Lazy update<cr>", "Update" },
 			},
 			["g"] = {
 				name = "Git",
