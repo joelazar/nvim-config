@@ -5,27 +5,24 @@ function M.setup(buffer)
 
 	local keymap = {
 		buffer = buffer,
-		["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", mode = { "n", "i" } },
-		["K"] = { "<cmd>Lspsaga hover_doc<cr>", "Signature Help" },
-		["[d"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next Diagnostic" },
-		["]d"] = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Prev Diagnostic" },
+		["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definition", has = "definition" },
+		["gr"] = { "<cmd>Telescope lsp_references<cr>", "References" },
+		["gD"] = { "<cmd>vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
+		["gi"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation" },
+		["gt"] = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto T[y]pe Definition" },
+		["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", has = "signatureHelp" },
+		["<c-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", mode = "i", "Signature Help", has = "signatureHelp" },
+		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
+		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr><CR>", "Prev Diagnostic" },
 		["[e"] = {
-			function()
-				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-			end,
+			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
 			"Next Error",
 		},
 		["]e"] = {
-			function()
-				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-			end,
+			"<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>",
 			"Prev Error",
 		},
-		["gr"] = { "<cmd>Lspsaga lsp_finder<cr>", "Lspsaga finder" },
-		["gd"] = { "<cmd>Lspsaga goto_definition<cr>", "Go to definition" },
-		["gD"] = { "<cmd>Lspsaga peek_definition<cr>", "Peek definition" },
-		["gt"] = { "<cmd>Lspsaga goto_type_definition<cr>", "Go to type definition" },
-		["gT"] = { "<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition" },
 	}
 
 	wk.register(keymap)

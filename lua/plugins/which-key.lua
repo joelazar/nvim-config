@@ -107,7 +107,7 @@ M.config = function()
 			["l"] = {
 				name = "LSP",
 				["a"] = {
-					"<cmd>Lspsaga code_action<cr>",
+					"<cmd>lua vim.lsp.buf.code_action()<cr>",
 					"Code Action",
 				},
 			},
@@ -278,7 +278,7 @@ M.config = function()
 			},
 			["l"] = {
 				name = "LSP",
-				["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+				["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 				["c"] = {
 					name = "Codelens",
 					["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
@@ -292,22 +292,18 @@ M.config = function()
 				},
 				["i"] = { "<cmd>LspInfo<cr>", "Info" },
 				["k"] = {
-					"<cmd>Lspsaga hover_doc ++keep<cr>",
+					"<cmd>lua vim.lsp.buf.hover()<cr>",
 					"Toggle hover doc",
 				},
 				["l"] = {
-					"<cmd>Lspsaga show_line_diagnostics<cr>",
+					"<cmd>lua vim.diagnostic.open_float()<cr>",
 					"Show line diagnostics",
 				},
 				["q"] = {
 					"<cmd>lua vim.diagnostic.setqflist()<cr>",
 					"Set quickfix list",
 				},
-				["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" },
-				["o"] = {
-					"<cmd>Lspsaga outline<cr>",
-					"Toggle Outline",
-				},
+				["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 				["s"] = {
 					"<cmd>Telescope lsp_document_symbols<cr>",
 					"Document Symbols",

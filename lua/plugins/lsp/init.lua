@@ -6,7 +6,6 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
-		"nvimdev/lspsaga.nvim",
 		"pmizio/typescript-tools.nvim",
 		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	},
@@ -15,26 +14,6 @@ local M = {
 M.config = function()
 	require("mason")
 	require("plugins.lsp.diagnostics").setup()
-
-	require("lspsaga").setup({
-		lightbulb = {
-			enable = false,
-			virtual_text = false,
-			enable_in_insert = false,
-		},
-		symbol_in_winbar = {
-			enable = false,
-		},
-		outline = {
-			keys = {
-				jump = "<CR>",
-			},
-		},
-		preview = {
-			lines_above = 5,
-			lines_below = 25,
-		},
-	})
 
 	local lspconfig = require("lspconfig")
 	local cmp_lsp = require("cmp_nvim_lsp")
