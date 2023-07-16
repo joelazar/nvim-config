@@ -2,13 +2,14 @@ local M = {
 	"folke/flash.nvim",
 	event = "VeryLazy",
 	opts = {
-		search = {
-			mode = "fuzzy",
-		},
 		label = {
 			rainbow = { enabled = true, shade = 3 },
 		},
-		continue = true,
+		modes = {
+			search = {
+				enabled = false,
+			},
+		},
 	},
 	keys = {
 		{
