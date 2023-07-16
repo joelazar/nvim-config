@@ -28,6 +28,9 @@ vim.o.updatetime = 250
 -- Decrease redraw time
 vim.o.redrawtime = 100
 
+-- Use spaces instead of tabs
+vim.opt.expandtab = true
+
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append("<>hl")
@@ -44,6 +47,12 @@ vim.o.history = 10000
 
 -- Use menu for command line completion
 vim.o.wildmenu = true
+
+-- Command-line completion mode
+vim.opt.wildmode = "longest:full,full"
+
+-- Ignore case when completing file names and directories.
+vim.o.wildignorecase = true
 
 -- Enable wrap
 vim.o.wrap = true
@@ -73,9 +82,6 @@ vim.o.cmdheight = 1
 vim.o.scrolloff = 5 -- could be 1
 vim.o.sidescrolloff = 5
 
--- Ignore case when completing file names and directories.
-vim.o.wildignorecase = true
-
 -- Timeout on leaderkey
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 5
@@ -88,10 +94,10 @@ vim.o.timeoutlen = 300
 vim.o.showcmd = false
 
 -- Configure the number of spaces a tab is counting for
-vim.o.tabstop = 4
+vim.o.tabstop = 2
 
 -- Number of spaces for a step of indent
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2
 
 -- Round indent to multiple of shiftwidth
 vim.o.shiftround = true
@@ -112,6 +118,11 @@ vim.o.foldcolumn = "0"
 -- Use ripgrep as grep tool
 vim.o.grepprg = "rg --vimgrep --no-heading"
 vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+
+-- Under evaluation
+vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.splitkeep = "screen"
+vim.opt.shortmess:append({ C = true })
 
 -- No double spaces with join after a dot
 vim.opt.joinspaces = false
