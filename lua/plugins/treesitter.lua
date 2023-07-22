@@ -3,7 +3,7 @@ local M = {
 	build = ":TSUpdate",
 	dependencies = {
 		-- Rainbow parentheses by using tree-sitter
-		"HiPhish/nvim-ts-rainbow2",
+		"hiphish/rainbow-delimiters.nvim",
 		-- Autocreate/update html tags
 		"windwp/nvim-ts-autotag",
 		-- Additional textobjects for treesitter
@@ -72,13 +72,6 @@ M.config = function()
 		indent = { enable = true },
 		matchup = {
 			enable = true,
-		},
-		rainbow = {
-			enable = true,
-			-- Which query to use for finding delimiters
-			query = "rainbow-parens",
-			-- Highlight the entire buffer all at once
-			strategy = require("ts-rainbow").strategy.global,
 		},
 	})
 end
