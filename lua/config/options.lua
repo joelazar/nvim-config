@@ -4,6 +4,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Set shell
+vim.o.shell = "/bin/bash"
+
 -- Incremental live completion
 vim.o.inccommand = "nosplit"
 
