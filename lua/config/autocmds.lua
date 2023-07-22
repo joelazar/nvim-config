@@ -2,6 +2,12 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("vimrc_" .. name, { clear = true })
 end
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	desc = "Do not auto comment new line",
+	group = augroup("disable_auto_comment"),
+	command = [[set formatoptions-=cro]],
+})
+
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	desc = "Check if we need to reload the file when it changed",
 	command = "checktime",
