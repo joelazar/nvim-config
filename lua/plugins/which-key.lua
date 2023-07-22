@@ -323,6 +323,7 @@ M.config = function()
 			},
 			["s"] = {
 				name = "Search",
+				['"'] = { "<cmd>Telescope registers<cr>", "Registers" },
 				["b"] = { "<cmd>Telescope vim_bookmarks all<cr>", "Bookmarks" },
 				["B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
 				["c"] = { "<cmd>Telescope commands<cr>", "Commands" },
