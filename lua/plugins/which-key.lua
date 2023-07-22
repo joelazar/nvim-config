@@ -352,12 +352,16 @@ M.config = function()
 				["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
 			},
 			["S"] = {
-				name = "Search and replace",
+				name = "Search & Replace",
 				["f"] = {
 					"<cmd>lua require('spectre').open_file_search()<CR>",
 					"Open file menu",
 				},
 				["m"] = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
+				["y"] = {
+					"<cmd>lua require('spectre').open_visual()<CR>",
+					"Replace yank",
+				},
 				["w"] = {
 					"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
 					"Replace word under cursor",

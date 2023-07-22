@@ -1,5 +1,6 @@
 local M = {
 	"nvim-pack/nvim-spectre",
+	cmd = "Spectre",
 }
 
 M.config = function()
