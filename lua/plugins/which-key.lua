@@ -253,11 +253,13 @@ M.config = function()
 			},
 			["g"] = {
 				name = "Git",
-				["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-				["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-				["C"] = {
-					"<cmd>Telescope git_bcommits<cr>",
-					"Checkout commit (for current file)",
+				["c"] = {
+					["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+					["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+					["f"] = {
+						"<cmd>Telescope git_bcommits<cr>",
+						"Checkout commit (for current file)",
+					},
 				},
 				["d"] = {
 					name = "Diffview",
@@ -268,7 +270,7 @@ M.config = function()
 					["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
 					["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
 				},
-				["o"] = { "<cmd>Telescope git_status<cr>", "Open changed files" },
+				["s"] = { "<cmd>Telescope git_status<cr>", "Open changed files" },
 				["y"] = {
 					'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 					"Copy link to clipboard",
