@@ -15,8 +15,14 @@ M.config = function()
 			augend.semver.alias.semver, -- 1.0.1
 			augend.date.alias["%m/%d"], -- 12/01
 			augend.date.alias["%H:%M"], -- 14:30
+			-- typescript specific keywords below
 			augend.constant.new({ elements = { "asc", "desc" }, word = true, cyclic = true }),
 			augend.constant.new({ elements = { "let", "const" }, word = true, cyclic = true }),
+			augend.constant.new({
+				elements = { "debug", "info", "notice", "warning", "error", "crit", "alert", "emerg" },
+				word = true,
+				cyclic = true,
+			}),
 			augend.constant.new({ elements = { "forEach", "map" }, word = true, cyclic = true }),
 		},
 	})
