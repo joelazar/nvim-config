@@ -289,7 +289,7 @@ M.config = function()
 					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
 					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
 				},
-				["d"] = { "<cmd>Trouble<cr>", "Workspace Diagnostics (Trouble)" },
+				["d"] = { "<cmd>TroubleToggle<cr>", "Workspace Diagnostics (Trouble)" },
 				["D"] = {
 					"<cmd>Telescope diagnostics<cr>",
 					"Workspace Diagnostics (Telescope)",
