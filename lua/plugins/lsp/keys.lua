@@ -23,15 +23,15 @@ function M.setup(buffer)
 		["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
 		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", has = "signatureHelp" },
 		["<c-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", mode = "i", "Signature Help", has = "signatureHelp" },
-		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
-		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr><CR>", "Prev Diagnostic" },
+		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
+		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
 		["[e"] = {
-			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
-			"Next Error",
+			"<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<cr>",
+			"Prev Error",
 		},
 		["]e"] = {
-			"<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>",
-			"Prev Error",
+			"<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<cr>",
+			"Next Error",
 		},
 	}
 
