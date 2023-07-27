@@ -86,7 +86,6 @@ M.config = function()
 		sources = {
 			{ name = "jupynium", priority = 1000 },
 			{ name = "copilot" },
-			{ name = "codeium" },
 			{ name = "nvim_lsp" },
 			{ name = "buffer", keyword_length = 3 },
 			{ name = "luasnip", keyword_length = 2 },
@@ -111,7 +110,7 @@ M.config = function()
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
-				symbol_map = { Copilot = "", Codeium = "" },
+				symbol_map = { Copilot = "" },
 			}),
 		},
 		sorting = {
