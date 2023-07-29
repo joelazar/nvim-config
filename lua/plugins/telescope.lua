@@ -101,7 +101,27 @@ M.config = function()
 			-- 	msg_bg_fillchar = "╱",
 			-- },
 		},
-		pickers = { find_files = { hidden = true } },
+		pickers = {
+			find_files = { hidden = true },
+			lsp_implementations = {
+				layout_strategy = "vertical",
+				layout_config = {
+					width = 0.9,
+					height = 0.9,
+					preview_cutoff = 1,
+					mirror = false,
+				},
+			},
+			lsp_references = {
+				layout_strategy = "vertical",
+				layout_config = {
+					width = 0.9,
+					height = 0.9,
+					preview_cutoff = 1,
+					mirror = false,
+				},
+			},
+		},
 		extensions = {
 			fzf = {
 				fuzzy = true, -- false will only do exact matching

@@ -10,7 +10,10 @@ function M.setup(buffer)
 			"Goto Definition",
 			has = "definition",
 		},
-		["gr"] = { "<cmd>Telescope lsp_references<cr>", "References" },
+		["gr"] = {
+			'<cmd>lua require("telescope.builtin").lsp_references({ fname_width = 80 })<cr>',
+			"References",
+		},
 		["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
 		["gi"] = {
 			'<cmd>lua require("telescope.builtin").lsp_implementations({ reuse_win = true })<cr>',
