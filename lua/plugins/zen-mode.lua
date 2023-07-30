@@ -1,4 +1,4 @@
-local M = {
+return {
 	"folke/zen-mode.nvim",
 	cmd = "ZenMode",
 	opts = {
@@ -12,5 +12,3 @@ local M = {
 		},
 	},
 }
-
-return M

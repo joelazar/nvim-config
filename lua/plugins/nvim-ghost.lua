@@ -1,4 +1,4 @@
-local M = {
+return {
 	"subnut/nvim-ghost.nvim",
 	lazy = false,
 	config = function()
@@ -12,5 +12,3 @@ local M = {
 			]])
 	end,
 }
-
-return M

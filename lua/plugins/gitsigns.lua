@@ -1,4 +1,4 @@
-local M = {
+return {
 	"lewis6991/gitsigns.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
@@ -97,5 +97,3 @@ local M = {
 		end,
 	},
 }
-
-return M

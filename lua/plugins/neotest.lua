@@ -1,4 +1,4 @@
-local M = {
+return {
 	"nvim-neotest/neotest",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -18,22 +18,19 @@ local M = {
 		"typescript.tsx",
 		"typescriptreact",
 	},
+	config = function()
+		require("neotest").setup({
+			adapters = {
+				require("neotest-python"),
+				require("neotest-jest"),
+				require("neotest-go"),
+			},
+			output = { open_on_run = true },
+			quickfix = {
+				open = function()
+					vim.cmd("Trouble quickfix")
+				end,
+			},
+		})
+	end,
 }
-
-M.config = function()
-	require("neotest").setup({
-		adapters = {
-			require("neotest-python"),
-			require("neotest-jest"),
-			require("neotest-go"),
-		},
-		output = { open_on_run = true },
-		quickfix = {
-			open = function()
-				vim.cmd("Trouble quickfix")
-			end,
-		},
-	})
-end
-
-return M

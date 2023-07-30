@@ -1,4 +1,4 @@
-local M = {
+return {
 	"akinsho/nvim-toggleterm.lua",
 	cmd = "ToggleTerm",
 	opts = {
@@ -36,5 +36,3 @@ local M = {
 		{ "<c-`>", "<cmd>ToggleTerm<CR>", mode = "n", desc = "Toggle terminal" },
 	},
 }
-
-return M

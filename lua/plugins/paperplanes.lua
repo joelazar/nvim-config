@@ -1,4 +1,4 @@
-local M = {
+return {
 	"rktjmp/paperplanes.nvim",
 	opts = {
 		register = "+",
@@ -8,5 +8,3 @@ local M = {
 	},
 	cmd = "PP",
 }
-
-return M

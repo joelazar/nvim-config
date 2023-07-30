@@ -1,4 +1,4 @@
-local M = {
+return {
 	"NvChad/nvim-colorizer.lua",
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
@@ -29,5 +29,3 @@ local M = {
 		buftypes = {},
 	},
 }
-
-return M

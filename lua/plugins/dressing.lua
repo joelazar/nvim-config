@@ -1,10 +1,7 @@
-local M = {
+return {
 	"stevearc/dressing.nvim",
 	event = "VeryLazy",
-}
-
-M.config = function()
-	require("dressing").setup({
+	opts = {
 		input = {
 			mappings = {
 				n = {
@@ -27,7 +24,5 @@ M.config = function()
 				},
 			},
 		},
-	})
-end
-
-return M
+	},
+}

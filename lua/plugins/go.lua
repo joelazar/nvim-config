@@ -1,4 +1,4 @@
-local M = {
+return {
 	"ray-x/go.nvim",
 	ft = { "go", "gomod" },
 	opts = {
@@ -9,5 +9,3 @@ local M = {
 		dap_debug = true,
 	},
 }
-
-return M

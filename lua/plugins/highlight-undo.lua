@@ -1,4 +1,4 @@
-local M = {
+return {
 	"tzachar/highlight-undo.nvim",
 	opts = {
 		hlgroup = "BufferCurrentCHANGED",
@@ -10,5 +10,3 @@ local M = {
 	},
 	event = "VeryLazy",
 }
-
-return M

@@ -1,4 +1,4 @@
-local M = {
+return {
 	"NTBBloodbath/rest.nvim",
 	opts = {
 		-- Open request results in a horizontal split
@@ -39,5 +39,3 @@ local M = {
 	},
 	ft = { "http" },
 }
-
-return M

@@ -1,4 +1,4 @@
-local M = {
+return {
 	"jackMort/ChatGPT.nvim",
 	config = function()
 		require("chatgpt").setup({
@@ -68,5 +68,3 @@ local M = {
 		"ChatGPTRunCustomCodeAction",
 	},
 }
-
-return M
