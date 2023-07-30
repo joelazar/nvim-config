@@ -90,7 +90,6 @@ vim.cmd([[
 ]])
 
 map("n", "<C-q>", "<cmd>call QuickFixToggle()<cr>", silent)
-map("n", "<C-`>", "<cmd>ToggleTerm<cr>", silent)
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
