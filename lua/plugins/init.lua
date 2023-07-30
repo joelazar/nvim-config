@@ -206,5 +206,8 @@ return {
 		cmd = { "NodeAction", "NodeActionDebug" },
 		dependencies = { "nvim-treesitter" },
 		opts = {},
+		keys = {
+			{ "<C-e>", "<cmd>NodeAction<cr>", mode = "n", desc = "Node action" },
+		},
 	},
 }
