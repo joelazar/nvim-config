@@ -292,4 +292,11 @@ return {
       { "<leader>Qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
 	},
+
+	{
+		"ckolkey/ts-node-action",
+		cmd = { "NodeAction", "NodeActionDebug" },
+		dependencies = { "nvim-treesitter" },
+		opts = {},
+	},
 }
