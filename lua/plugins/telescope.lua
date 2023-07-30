@@ -8,6 +8,18 @@ local M = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	cmd = { "Telescope" },
+	keys = {
+		{
+			"<C-p>",
+			function()
+				require("telescope.builtin").find_files({
+					previewer = false,
+				})
+			end,
+			desc = "Find files",
+			mode = "n",
+		},
+	},
 }
 
 M.config = function()
@@ -70,13 +82,14 @@ M.config = function()
 				"--glob=!package-lock.json",
 				"--glob=!yarn.lock",
 			},
-			prompt_prefix = "❯ ",
-			selection_caret = "❯ ",
+			prompt_prefix = " ",
+			selection_caret = " ",
 			entry_prefix = "  ",
 			initial_mode = "insert",
 			selection_strategy = "reset",
 			sorting_strategy = "descending",
 			scroll_strategy = "cycle",
+			dynamic_preview_title = true,
 			layout_strategy = "horizontal",
 			layout_config = {
 				prompt_position = "bottom",
@@ -93,16 +106,25 @@ M.config = function()
 			file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 			grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 			qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-			-- preview = {
-			-- 	check_mime_type = true,
-			-- 	filesize_limit = 0.5,
-			-- 	timeout = 200,
-			-- 	treesitter = true,
-			-- 	msg_bg_fillchar = "╱",
-			-- },
 		},
 		pickers = {
-			find_files = { hidden = true },
+			find_files = {
+				results_title = false,
+				prompt_title = false,
+				hidden = true,
+				theme = "ivy",
+				sorting_strategy = "descending",
+				layout_config = {
+					height = 0.3,
+				},
+				mappings = {
+					i = {
+						["<esc>"] = function(...)
+							return require("telescope.actions").close(...)
+						end,
+					},
+				},
+			},
 			lsp_implementations = {
 				layout_strategy = "vertical",
 				layout_config = {

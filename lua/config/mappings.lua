@@ -4,9 +4,6 @@ local silent = { silent = true }
 -- Close windows
 map("n", "Q", "<cmd>close<cr>", silent)
 
--- Telescope select files
-map("n", "<C-p>", "<cmd>Telescope find_files<cr>", silent)
-
 -- Move to previous/next
 map("n", "<A-Left>", "<cmd>BufferPrevious<cr>", silent)
 map("n", "<A-Right>", "<cmd>BufferNext<cr>", silent)
