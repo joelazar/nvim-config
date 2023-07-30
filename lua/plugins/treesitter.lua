@@ -32,6 +32,7 @@ M.config = function()
 			"html",
 			"http",
 			"javascript",
+			"jsdoc",
 			"json",
 			"latex",
 			"lua",
@@ -70,9 +71,7 @@ M.config = function()
 			},
 		},
 		indent = { enable = true },
-		matchup = {
-			enable = true,
-		},
+		matchup = { enable = true },
 	})
 
 	vim.api.nvim_create_user_command("TSReload", function()
