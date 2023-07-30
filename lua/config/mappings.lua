@@ -84,17 +84,3 @@ local function smart_dd()
 end
 
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
-
-local fences = {
-	"go",
-	"javascript",
-	"js=javascript",
-	"json",
-	"lua",
-	"python",
-	"sh",
-	"shell=sh",
-	"ts=typescript",
-	"typescript",
-}
-vim.g.markdown_fenced_languages = fences

@@ -143,3 +143,17 @@ vim.g.loaded_node_provider = 0
 
 -- Do not load system vimfiles
 vim.api.nvim_command("set rtp-=/usr/share/vim/vimfiles")
+
+local fences = {
+	"go",
+	"javascript",
+	"js=javascript",
+	"json",
+	"lua",
+	"python",
+	"sh",
+	"shell=sh",
+	"ts=typescript",
+	"typescript",
+}
+vim.g.markdown_fenced_languages = fences
