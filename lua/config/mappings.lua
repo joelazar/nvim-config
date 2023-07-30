@@ -4,33 +4,6 @@ local silent = { silent = true }
 -- Close windows
 map("n", "Q", "<cmd>close<cr>", silent)
 
--- Move to previous/next
-map("n", "<A-Left>", "<cmd>BufferPrevious<cr>", silent)
-map("n", "<A-Right>", "<cmd>BufferNext<cr>", silent)
-map("n", "<A-Tab>", "<cmd>BufferNext<cr>", silent)
-
--- Re-order to previous/next
-map("n", "<A-,>", "<cmd>BufferMovePrevious<cr>", silent)
-map("n", "<A-.>", "<cmd>BufferMoveNext<cr>", silent)
-
--- Goto buffer in position...
-map("n", "<A-1>", "<cmd>BufferGoto 1<cr>", silent)
-map("n", "<A-2>", "<cmd>BufferGoto 2<cr>", silent)
-map("n", "<A-3>", "<cmd>BufferGoto 3<cr>", silent)
-map("n", "<A-4>", "<cmd>BufferGoto 4<cr>", silent)
-map("n", "<A-5>", "<cmd>BufferGoto 5<cr>", silent)
-map("n", "<A-6>", "<cmd>BufferGoto 6<cr>", silent)
-map("n", "<A-7>", "<cmd>BufferGoto 7<cr>", silent)
-map("n", "<A-8>", "<cmd>BufferGoto 8<cr>", silent)
-map("n", "<A-9>", "<cmd>BufferGoto 9<cr>", silent)
-map("n", "<A-0>", "<cmd>BufferLast<cr>", silent)
-
--- Pin buffer
-map("n", "<A-p>", "<cmd>BufferPin<cr>", silent)
-
--- Close buffer
-map("n", "<A-c>", "<cmd>BufferClose<cr>", silent)
-
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
 map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up", noremap = true, silent = true })
