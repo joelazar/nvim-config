@@ -74,6 +74,14 @@ M.config = function()
 			enable = true,
 		},
 	})
+
+	vim.api.nvim_create_user_command("TSReload", function()
+		vim.cmd([[
+      write
+      edit
+      TSBufEnable highlight
+  ]])
+	end, {})
 end
 
 return M

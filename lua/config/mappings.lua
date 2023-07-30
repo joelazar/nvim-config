@@ -42,12 +42,6 @@ map({ "n", "x" }, "\\d", '"_d', { desc = "Delete to blackhole register" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- DAP
-map("n", "<F5>", "<cmd>require'dap'.continue<cr>", silent)
-map("n", "<F10>", "<cmd>require'dap'.step_over<cr>", silent)
-map("n", "<F11>", "<cmd>require'dap'.step_into<cr>", silent)
-map("n", "<F12>", "<cmd>require'dap'.step_out<cr>", silent)
-
 -- Make the dot command work as expected in visual mode
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
 map("v", ".", "<cmd>norm .<cr>", silent)
@@ -76,24 +70,6 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
-
-vim.api.nvim_create_user_command("OverseerRestartLast", function()
-	local overseer = require("overseer")
-	local tasks = overseer.list_tasks({ recent_first = true })
-	if vim.tbl_isempty(tasks) then
-		vim.notify("No tasks found", vim.log.levels.WARN)
-	else
-		overseer.run_action(tasks[1], "restart")
-	end
-end, {})
-
-vim.api.nvim_create_user_command("TSReload", function()
-	vim.cmd([[
-      write
-      edit
-      TSBufEnable highlight
-  ]])
-end, {})
 
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
