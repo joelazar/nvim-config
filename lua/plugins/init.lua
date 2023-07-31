@@ -20,7 +20,7 @@ return {
 
 	{
 		"willothy/flatten.nvim",
-		config = {
+		opts = {
 			one_per = {
 				kitty = false,
 			},
