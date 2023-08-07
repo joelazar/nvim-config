@@ -5,6 +5,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set shell
+-- https://github.com/neovim/nvim-lspconfig/issues/2713
 vim.o.shell = "/bin/bash"
 
 -- Incremental live completion
