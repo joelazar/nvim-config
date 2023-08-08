@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- [Neovim](https://neovim.io/) (>= 0.8.2)
+- [Neovim](https://neovim.io/) (>= 0.9.2)
 - [git](https://git-scm.com/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [python3](https://www.python.org/)
@@ -28,47 +28,43 @@ And you are done! :tada:
 
 ### Start screen - [mini.nvim - starter](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md)
 
-![Starter](https://user-images.githubusercontent.com/16268238/210172282-5ce5e6dd-e02d-46df-8854-e67c91254bb3.png)
-
-### [Toggle Terminal](https://github.com/akinsho/toggleterm.nvim)
-
-![Terminal](https://user-images.githubusercontent.com/16268238/210172270-061020d7-2aad-4da8-8b03-8700444fa9d6.png)
+![Starter](https://github.com/joelazar/nvim-config/assets/16268238/869e86a7-23c5-4c5e-a271-50b2d6932ac7)
 
 ### [lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager
 
-![lazy.nvim](https://user-images.githubusercontent.com/16268238/210172078-36119579-7599-4180-af34-cbbc37137332.png)
+![lazy.nvim](https://github.com/joelazar/nvim-config/assets/16268238/c457e173-e84d-4117-8bf9-ef2e8c7a6d2c)
 
 ### [mason.nvim](https://github.com/williamboman/mason.nvim) - Maintaining LSPs, formatters and dap adapters
 
-![mason](https://user-images.githubusercontent.com/16268238/210172011-28c8445f-99dd-4eaf-a909-5559a97ff86e.png)
+![mason](https://github.com/joelazar/nvim-config/assets/16268238/7a85e117-354a-4533-a455-6f21c678076e)
 
 ### Startuptime - [vim-startuptime](https://github.com/dstein64/vim-startuptime)
 
-![startup](https://user-images.githubusercontent.com/16268238/210172118-8c16704d-5379-4b6f-8da3-810e08e82854.png)
+![startup](https://github.com/joelazar/nvim-config/assets/16268238/e358bf8b-cb90-4226-a012-1492ec306a01)
 
 ### [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim) - Interact with ChatGPT from Neovim
 
-![chatgpt](https://user-images.githubusercontent.com/16268238/210172149-38839178-8c00-44ad-9a7c-d1280c6cee8a.png)
+![chatgpt](https://github.com/joelazar/nvim-config/assets/16268238/3a5fd140-d194-4654-991d-8bc784b5dbb7)
 
 ### File manager - [nnn.nvim](https://github.com/luukvbaal/nnn.nvim)
 
-![nnn](https://user-images.githubusercontent.com/16268238/210172251-ca3a0783-338a-4baa-bd6d-fc1580d992b8.png)
+![nnn](https://github.com/joelazar/nvim-config/assets/16268238/c71eafc2-9502-48f3-84b7-27a9f141b00d)
 
-### Motions on speed - [hop.nvim](https://github.com/phaazon/hop.nvim)
+### Motions on speed - [flash.nvim](https://github.com/folke/flash.nvim)
 
-![hop](https://user-images.githubusercontent.com/16268238/210172234-e0ba5ca9-dbda-4885-82f8-96cc276d2f35.png)
+![flash](https://github.com/joelazar/nvim-config/assets/16268238/3bfe5c53-a021-4a84-8b06-3d1502dc3f95)
 
 ### Fuzzy search - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
-![telescope](https://user-images.githubusercontent.com/16268238/210172220-38717ee7-bf1a-4eed-a26b-b5d7cc9687f9.png)
+![telescope](https://github.com/joelazar/nvim-config/assets/16268238/8e8f8c36-21ee-41f3-bfed-8cc49f5dc9ac)
 
 ### Display keybindings - [which-key.nvim](https://github.com/folke/which-key.nvim)
 
-![which-key](https://user-images.githubusercontent.com/16268238/210172204-22d43394-c25e-4d45-822b-a9518dd50d3d.png)
+![which-key](https://github.com/joelazar/nvim-config/assets/16268238/c1f59f42-d777-4c13-b0a7-adf28ceab3f6)
 
 ### Debugging - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 
-![debug](https://user-images.githubusercontent.com/16268238/210172191-9a54daca-3ecd-4414-a217-b276879e2431.png)
+![debug](https://github.com/joelazar/nvim-config/assets/16268238/ce2dde62-66fb-4d5c-bc82-0de3cc1c57cc)
 
 ## Inspiration
 
