@@ -11,8 +11,7 @@ return {
 		insert_mappings = true, -- whether or not the open mapping applies in insert mode
 		persist_size = true,
 		persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
-		-- direction = 'vertical' | 'horizontal' | 'window' | 'float',
-		direction = "float",
+		direction = "tab",
 		close_on_exit = true, -- close the terminal window when the process exits
 		shell = "/bin/fish", -- change the default shell
 		auto_scroll = true, -- automatically scroll to the bottom on terminal output

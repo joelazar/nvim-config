@@ -145,14 +145,6 @@ M.config = function()
 			},
 		},
 		mappings = {
-			["'"] = {
-				"<cmd>ToggleTerm size=20 direction=horizontal<cr>",
-				"Open toggle terminal",
-			},
-			['"'] = {
-				"<cmd>execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
-				"Open terminal",
-			},
 			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
 			["c"] = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
