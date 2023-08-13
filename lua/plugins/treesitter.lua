@@ -61,15 +61,6 @@ M.config = function()
 			use_languagetree = true,
 			additional_vim_regex_highlighting = false,
 		},
-		incremental_selection = {
-			enable = true,
-			keymaps = {
-				init_selection = "<CR>",
-				node_incremental = "<TAB>",
-				node_decremental = "<S-TAB>",
-				scope_incremental = false,
-			},
-		},
 		indent = { enable = true },
 		matchup = { enable = true },
 	})

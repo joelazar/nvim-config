@@ -196,4 +196,13 @@ return {
 		opts = {},
 		keys = { { "<C-e>", "<cmd>NodeAction<cr>", mode = "n", desc = "Node action" } },
 	},
+
+	{
+		"sustech-data/wildfire.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("wildfire").setup()
+		end,
+	},
 }
