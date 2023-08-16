@@ -65,8 +65,8 @@ return {
 	cmd = {
 		"ChatGPT",
 		"ChatGPTActAs",
+		"ChatGPTCompleteCode",
 		"ChatGPTEditWithInstructions",
 		"ChatGPTRun",
-		"ChatGPTRunCustomCodeAction",
 	},
 }

@@ -165,6 +165,7 @@ M.config = function()
 			["c"] = {
 				name = "ChatGPT",
 				["a"] = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests" },
+				["A"] = { "<cmd>ChatGPTActAs<cr>", "Act as" },
 				["c"] = { "<cmd>ChatGPT<CR>", "ChatGPT" },
 				["C"] = { "<cmd>ChatGPTRun complete_code<CR>", "Complete code" },
 				["d"] = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" },
