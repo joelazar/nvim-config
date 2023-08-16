@@ -37,7 +37,7 @@ return {
 				},
 			},
 			openai_params = {
-				model = "gpt-3.5-turbo-16k-0613",
+				model = "gpt-3.5-turbo-16k",
 				-- model = "gpt-4",
 				frequency_penalty = 0,
 				presence_penalty = 0,
