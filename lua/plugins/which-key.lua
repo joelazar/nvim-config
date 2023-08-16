@@ -304,7 +304,7 @@ M.config = function()
 				},
 				["q"] = {
 					"<cmd>Gitsigns setqflist<cr>",
-					"Quickfix list with hunks",
+					"Trouble list with hunks",
 				},
 			},
 			["l"] = {
@@ -316,7 +316,7 @@ M.config = function()
 					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
 					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
 				},
-				["d"] = { "<cmd>TroubleToggle<cr>", "Workspace Diagnostics (Trouble)" },
+				["d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
 				["D"] = {
 					"<cmd>Telescope diagnostics<cr>",
 					"Workspace Diagnostics (Telescope)",
@@ -329,10 +329,6 @@ M.config = function()
 				["l"] = {
 					"<cmd>lua vim.diagnostic.open_float()<cr>",
 					"Show line diagnostics",
-				},
-				["q"] = {
-					"<cmd>lua vim.diagnostic.setqflist()<cr>",
-					"Set quickfix list",
 				},
 				["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 				["s"] = {

@@ -45,7 +45,9 @@ return {
 	{
 		"echasnovski/mini.bracketed",
 		event = { "BufReadPost", "BufNewFile" },
-		opts = {},
+		opts = {
+			quickfix = { suffix = "" },
+		},
 	},
 
 	{

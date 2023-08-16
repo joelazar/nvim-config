@@ -46,17 +46,20 @@ map("v", ">", ">gv")
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
 map("v", ".", "<cmd>norm .<cr>", silent)
 
-vim.cmd([[
-  function! QuickFixToggle()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-      copen
-    else
-      cclose
-    endif
-  endfunction
-]])
-
-map("n", "<C-q>", "<cmd>call QuickFixToggle()<cr>", silent)
+-- Trouble mappings
+map("n", "<C-q>", "<cmd>TroubleToggle<cr>", silent)
+map("n", "]q", function()
+	require("trouble").next({ skip_groups = true, jump = true })
+end, silent)
+map("n", "[q", function()
+	require("trouble").previous({ skip_groups = true, jump = true })
+end, silent)
+map("n", "]Q", function()
+	require("trouble").last({ skip_groups = true, jump = true })
+end, silent)
+map("n", "[Q", function()
+	require("trouble").first({ skip_groups = true, jump = true })
+end, silent)
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })

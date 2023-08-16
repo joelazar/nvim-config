@@ -64,16 +64,10 @@ return {
 	-- Generate shareable file permalinks
 	"ruifm/gitlinker.nvim",
 
-	-- Better quickfix
-	{
-		"kevinhwang91/nvim-bqf",
-		event = "VeryLazy",
-	},
-
 	-- Nicer diagnostics
 	{
 		"folke/lsp-trouble.nvim",
-		opts = { auto_preview = false, auto_fold = true, auto_close = true },
+		opts = { auto_preview = true, auto_fold = false, auto_close = true },
 		cmd = { "TroubleToggle", "Trouble" },
 	},
 
