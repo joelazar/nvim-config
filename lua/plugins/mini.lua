@@ -111,6 +111,16 @@ return {
 	},
 
 	{
+		"echasnovski/mini.operators",
+		opts = {
+			replace = {
+				prefix = "gR",
+			},
+		},
+		event = { "BufReadPost", "BufNewFile" },
+	},
+
+	{
 		"echasnovski/mini.basics",
 		event = "VimEnter",
 		config = function()

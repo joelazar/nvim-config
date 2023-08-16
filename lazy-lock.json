@@ -43,6 +43,7 @@
   "mini.basics": { "branch": "main", "commit": "c31a4725710db9733e8a8edb420f51fd617d72a3" },
   "mini.bracketed": { "branch": "main", "commit": "ac93e3d6df596c750200aa8529fd352ec91bbad2" },
   "mini.comment": { "branch": "main", "commit": "877acea5b2a32ff55f808fc0ebe9aa898648318c" },
+  "mini.operators": { "branch": "main", "commit": "6820ae46ee0eef111eae3ac7fe690b9ebe9cc1cf" },
   "mini.pairs": { "branch": "main", "commit": "dfa9f6e2576bb8853be277d96b735af59d9be7c2" },
   "mini.splitjoin": { "branch": "main", "commit": "5f4237ae557f255a1f1a435c76c6a715be39060a" },
   "mini.starter": { "branch": "main", "commit": "c7e027558477838eac7109d8576ff1f2d9804845" },
