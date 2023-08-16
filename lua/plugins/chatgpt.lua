@@ -1,6 +1,5 @@
 return {
 	"jackMort/ChatGPT.nvim",
-	commit = "24bcca7f3fedfd5451d2c500d4e2cdfb9707d661",
 	config = function()
 		require("chatgpt").setup({
 			api_key_cmd = "pass private/openai_api_key",
