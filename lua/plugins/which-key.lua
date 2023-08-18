@@ -428,9 +428,18 @@ M.config = function()
 			},
 			["t"] = {
 				name = "Test",
-				["r"] = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "Run tests" },
+				["r"] = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "Run file tests" },
+				["R"] = { '<cmd>lua require("neotest").run.run(vim.loop.cwd())<CR>', "Run all tests" },
 				["n"] = { '<cmd>lua require("neotest").run.run()<CR>', "Run nearest test" },
 				["d"] = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', "Debug nearest test" },
+				["o"] = {
+					'<cmd>lua require("neotest").output.open({ enter = true, auto_close = true })<CR>',
+					"Show output",
+				},
+				["O"] = {
+					'<cmd>lua require("neotest").output_panel.toggle()<CR>',
+					"Toggle output",
+				},
 				["s"] = { '<cmd>lua require("neotest").run.stop()<CR>', "Stop test" },
 				["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
 			},
