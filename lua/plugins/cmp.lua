@@ -14,6 +14,7 @@ local M = {
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
 		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
+		{ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
 		{
 			"zbirenbaum/copilot-cmp",
 			dependencies = "copilot.lua",
@@ -84,6 +85,7 @@ M.config = function()
 			end, { "i", "s" }),
 		},
 		sources = {
+			{ name = "git" },
 			{ name = "jupynium", priority = 1000 },
 			{ name = "copilot" },
 			{ name = "nvim_lsp" },
@@ -110,7 +112,7 @@ M.config = function()
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
-				symbol_map = { Copilot = "" },
+				symbol_map = { Copilot = "", Git = "" },
 			}),
 		},
 		sorting = {
@@ -158,6 +160,8 @@ M.config = function()
 			disallow_prefix_unmatching = false,
 		},
 	})
+
+	require("cmp_git").setup({ filetypes = { "gitcommit", "octo", "markdown" } })
 end
 
 return M
