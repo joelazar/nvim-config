@@ -6,7 +6,9 @@ return {
 	},
 	ft = { "markdown" },
 	config = function()
-		require("zk").setup({
+		local zk = require("zk")
+		local commands = require("zk.commands")
+		zk.setup({
 			-- can be "telescope", "fzf" or "select" (`vim.ui.select`)
 			-- it's recommended to use "telescope" or "fzf"
 			picker = "telescope",
@@ -27,5 +29,10 @@ return {
 				},
 			},
 		})
+
+		commands.add("ZkOrphans", function(options)
+			options = vim.tbl_extend("force", { orphan = true }, options or {})
+			zk.edit(options, { title = "Zk Orphans" })
+		end)
 	end,
 }

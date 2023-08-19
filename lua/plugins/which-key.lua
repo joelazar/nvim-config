@@ -352,10 +352,7 @@ M.config = function()
 				["b"] = { "<cmd>Telescope vim_bookmarks all<cr>", "Bookmarks" },
 				["B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
 				["c"] = { "<cmd>Telescope commands<cr>", "Commands" },
-				["C"] = {
-					"<cmd>Telescope colorscheme enable_preview=true<cr>",
-					"Colorscheme",
-				},
+				["C"] = { "<cmd>Telescope colorscheme enable_preview=true<cr>", "Colorscheme" },
 				["f"] = { "<cmd>Telescope find_files<cr>", "Files" },
 				["h"] = { "<cmd>Telescope command_history<cr>", "Command history" },
 				["H"] = { "<cmd>Telescope help_tags<cr>", "Help" },
@@ -451,25 +448,8 @@ M.config = function()
 				["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
 				["g"] = {
 					name = "GitHub Copilot",
-					["d"] = {
-						"<cmd>let b:copilot_enabled=0<cr>",
-						"Force disable",
-					},
-					["e"] = {
-						"<cmd>let b:copilot_enabled=1<cr>",
-						"Force enable",
-					},
-				},
-				["m"] = {
-					name = "Markdown preview",
-					["c"] = {
-						"<cmd>PeekClose<cr>",
-						"Close preview",
-					},
-					["o"] = {
-						"<cmd>PeekOpen<cr>",
-						"Open preview",
-					},
+					["d"] = { "<cmd>let b:copilot_enabled=0<cr>", "Force disable" },
+					["e"] = { "<cmd>let b:copilot_enabled=1<cr>", "Force enable" },
 				},
 				["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
 				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
@@ -477,19 +457,18 @@ M.config = function()
 			},
 			["z"] = {
 				name = "Notes",
-				["n"] = { "<cmd>ZkNew<cr>", "Create new note" },
-				["l"] = {
-					"<cmd>ZkNotes<cr>",
-					"List all notes",
+				["b"] = { "<cmd>ZkBacklinks<cr>", "List backlinks" },
+				["f"] = { "<cmd>ZkLinks<cr>", "List forwardlinks" },
+				["l"] = { "<cmd>ZkNotes<cr>", "List notes" },
+				["n"] = {
+					"<cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<cr>",
+					"Create new note (in current dir)",
 				},
-				["r"] = {
-					'<cmd>ZkNotes { modifiedAfter = "5 days ago"}<cr>',
-					"Recent notes",
-				},
-				["w"] = {
-					'<cmd>ZkNotes { tags = { "work" }}<cr>',
-					"List work notes",
-				},
+				["p"] = { "<cmd>PeekToggle<cr>", "Toggle preview" },
+				["o"] = { "<cmd>ZkOrphans<cr>", "List orphan notes" },
+				["r"] = { '<cmd>ZkNotes { modifiedAfter = "5 days ago"}<cr>', "Recent notes" },
+				["t"] = { "<cmd>ZkTags<cr>", "List tags" },
+				["w"] = { '<cmd>ZkNotes { tags = { "work" }}<cr>', "List work notes" },
 				["W"] = { '<cmd>ZkNew { dir = "work" }<cr>', "Create new work note" },
 			},
 		},
