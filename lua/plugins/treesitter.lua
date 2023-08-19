@@ -59,7 +59,7 @@ M.config = function()
 		highlight = {
 			enable = true,
 			use_languagetree = true,
-			additional_vim_regex_highlighting = false,
+			additional_vim_regex_highlighting = { "markdown" },
 		},
 		indent = { enable = true },
 		matchup = { enable = true },
