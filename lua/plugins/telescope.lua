@@ -42,6 +42,8 @@ M.config = function()
 			end,
 		})
 	end
+	local fb_actions = require("telescope").extensions.file_browser.actions
+
 	local config = {
 		defaults = {
 			path_display = { truncate = 3 },
@@ -145,6 +147,12 @@ M.config = function()
 			},
 		},
 		extensions = {
+			file_browser = {
+				theme = "ivy",
+				hijack_netrw = true,
+				hidden = true,
+				grouped = true,
+			},
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
 				override_generic_sorter = true, -- override the generic sorter

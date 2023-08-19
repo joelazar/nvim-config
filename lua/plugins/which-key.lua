@@ -182,6 +182,10 @@ M.config = function()
 			},
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["f"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
+			["F"] = {
+				"<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>",
+				"File browser (current buffer dir)",
+			},
 			["G"] = { "<cmd>lua require'config.utils'.lazygit_toggle()<cr>", "Lazygit" },
 			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
 			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
