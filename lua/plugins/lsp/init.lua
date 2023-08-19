@@ -81,6 +81,7 @@ M.config = function()
 		pyright = {},
 		rust_analyzer = {},
 		tailwindcss = {},
+		taplo = {},
 		stylelint_lsp = {
 			autostart = false,
 		},

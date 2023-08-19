@@ -40,6 +40,7 @@ function M.config()
 		"stylelint-lsp",
 		"stylua",
 		"tailwindcss-language-server",
+		"taplo",
 		"texlab",
 		"typescript-language-server",
 		"yaml-language-server",
