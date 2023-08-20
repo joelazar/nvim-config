@@ -67,7 +67,7 @@ return {
 	-- Nicer diagnostics
 	{
 		"folke/lsp-trouble.nvim",
-		opts = { auto_preview = true, auto_fold = false, auto_close = true },
+		opts = { auto_preview = false, auto_fold = false, auto_close = true },
 		cmd = { "TroubleToggle", "Trouble" },
 	},
 

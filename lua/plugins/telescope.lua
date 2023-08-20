@@ -42,7 +42,24 @@ M.config = function()
 			end,
 		})
 	end
-	local fb_actions = require("telescope").extensions.file_browser.actions
+
+	local select_one_or_multi = function(prompt_bufnr)
+		local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+		local multi = picker:get_multi_selection()
+		print(multi)
+		if not vim.tbl_isempty(multi) then
+			print("hello")
+			require("telescope.actions").close(prompt_bufnr)
+			for _, j in pairs(multi) do
+				print(j.path)
+				if j.path ~= nil then
+					vim.cmd(string.format("%s %s", "edit", j.path))
+				end
+			end
+		else
+			require("telescope.actions").select_default(prompt_bufnr)
+		end
+	end
 
 	local config = {
 		defaults = {
@@ -53,8 +70,25 @@ M.config = function()
 					["q"] = function(...)
 						return require("telescope.actions").close(...)
 					end,
+					["<c-a>"] = function(...)
+						return require("telescope.actions").toggle_all(...)
+					end,
+					["<c-t>"] = function(...)
+						return require("trouble.providers.telescope").open_with_trouble(...)
+					end,
+					["<a-t>"] = function(...)
+						return require("trouble.providers.telescope").open_selected_with_trouble(...)
+					end,
+					["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
+					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
+					["<PageDown>"] = require("telescope.actions").cycle_history_next,
+					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
+					["<CR>"] = select_one_or_multi,
 				},
 				i = {
+					["<c-a>"] = function(...)
+						return require("telescope.actions").toggle_all(...)
+					end,
 					["<c-s>"] = flash,
 					["<c-t>"] = function(...)
 						return require("trouble.providers.telescope").open_with_trouble(...)
@@ -66,6 +100,7 @@ M.config = function()
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
 					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
+					["<CR>"] = select_one_or_multi,
 				},
 			},
 			vimgrep_arguments = {
@@ -124,6 +159,10 @@ M.config = function()
 						["<esc>"] = function(...)
 							return require("telescope.actions").close(...)
 						end,
+						["<c-a>"] = function(...)
+							return require("telescope.actions").toggle_all(...)
+						end,
+						["<CR>"] = select_one_or_multi,
 					},
 				},
 			},
