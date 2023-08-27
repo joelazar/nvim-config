@@ -90,7 +90,14 @@ M.config = function()
 			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "buffer", keyword_length = 3 },
-			{ name = "luasnip", keyword_length = 2 },
+			{
+				name = "luasnip",
+				option = { use_show_condition = true },
+				entry_filter = function()
+					local context = require("cmp.config.context")
+					return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
+				end,
+			},
 			{ name = "nvim_lua" },
 			{ name = "fish" },
 			{ name = "path" },
