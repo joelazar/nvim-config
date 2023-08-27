@@ -31,9 +31,10 @@ M.config = function()
 
 	local servers = {
 		bashls = {},
-		cssls = {},
 		clangd = {},
+		cssls = {},
 		dockerls = {},
+		eslint = {},
 		golangci_lint_ls = {},
 		gopls = {
 			flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
@@ -46,12 +47,7 @@ M.config = function()
 						unusedparams = true,
 						unreachable = true,
 					},
-					codelenses = {
-						generate = true,
-						gc_details = true,
-						test = true,
-						tidy = true,
-					},
+					codelenses = { generate = true, gc_details = true, test = true, tidy = true },
 					usePlaceholders = true,
 					completeUnimported = true,
 					staticcheck = true,
@@ -62,67 +58,40 @@ M.config = function()
 					gofumpt = true,
 				},
 			},
-			init_options = {
-				usePlaceholders = true,
-			},
+			init_options = { usePlaceholders = true },
 			filetypes = { "go", "gomod" },
 		},
 		html = { init_options = { provideFormatter = false } },
 		jsonls = {
 			init_options = { provideFormatter = false },
+			settings = { json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } } },
+		},
+		lua_ls = {
 			settings = {
-				json = {
-					schemas = require("schemastore").json.schemas(),
-					validate = { enable = true },
-				},
+				Lua = { workspace = { checkThirdParty = false }, completion = { callSnippet = "Replace" } },
 			},
 		},
 		prismals = {},
 		pyright = {},
-		rust_analyzer = {},
-		tailwindcss = {},
-		taplo = {},
-		stylelint_lsp = {
-			autostart = false,
-		},
-		lua_ls = {
-			settings = {
-				Lua = {
-					workspace = {
-						checkThirdParty = false,
-					},
-					completion = {
-						callSnippet = "Replace",
-					},
-				},
-			},
-		},
 		ruff_lsp = {},
+		rust_analyzer = {},
+		stylelint_lsp = { autostart = false },
+		tailwindcss = { autostart = false },
+		taplo = {},
 		texlab = {},
 		tsserver = {},
-		eslint = {},
 		yamlls = {
 			-- Have to add this for yamlls to understand that we support line folding
-			capabilities = {
-				textDocument = {
-					foldingRange = {
-						dynamicRegistration = false,
-						lineFoldingOnly = true,
-					},
-				},
-			},
+			capabilities = { textDocument = { foldingRange = { dynamicRegistration = false, lineFoldingOnly = true } } },
 			settings = {
 				redhat = { telemetry = { enabled = false } },
 				yaml = {
 					schemas = require("schemastore").yaml.schemas(),
 					keyOrdering = false,
-					format = {
-						enable = true,
-					},
+					format = { enable = true },
 					validate = true,
 					schemaStore = {
-						-- Must disable built-in schemaStore support to use
-						-- schemas from SchemaStore.nvim plugin
+						--Must disable built-in schemaStore support to use schemas from SchemaStore.nvim plugin
 						enable = false,
 						-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
 						url = "",
