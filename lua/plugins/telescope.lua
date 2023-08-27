@@ -46,12 +46,9 @@ M.config = function()
 	local select_one_or_multi = function(prompt_bufnr)
 		local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
 		local multi = picker:get_multi_selection()
-		print(multi)
 		if not vim.tbl_isempty(multi) then
-			print("hello")
 			require("telescope.actions").close(prompt_bufnr)
 			for _, j in pairs(multi) do
-				print(j.path)
 				if j.path ~= nil then
 					vim.cmd(string.format("%s %s", "edit", j.path))
 				end
