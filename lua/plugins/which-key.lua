@@ -159,6 +159,19 @@ M.config = function()
 				name = "Search",
 				["w"] = { '<cmd>lua require"plugins.telescope".grep_string_visual()<CR>', "Visual selection" },
 			},
+			["z"] = {
+				name = "Notes",
+				["l"] = { "<cmd>ObsidianLink<CR>", "Link a note" },
+				["n"] = {
+					function()
+						local title = vim.fn.input("Title: ")
+						if title ~= "" then
+							vim.cmd("ObsidianLinkNew " .. title)
+						end
+					end,
+					"Create new linked note (in current dir)",
+				},
+			},
 		},
 		mappings = {
 			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
@@ -461,19 +474,23 @@ M.config = function()
 			},
 			["z"] = {
 				name = "Notes",
-				["b"] = { "<cmd>ZkBacklinks<cr>", "List backlinks" },
-				["f"] = { "<cmd>ZkLinks<cr>", "List forwardlinks" },
-				["l"] = { "<cmd>ZkNotes<cr>", "List notes" },
+				["b"] = { "<cmd>ObsidianBacklinks<cr>", "List backlinks" },
+				["l"] = { "<cmd>ObsidianQuickSwitch<cr>", "List notes" },
 				["n"] = {
-					"<cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<cr>",
+					function()
+						local title = vim.fn.input("Title: ")
+						if title ~= "" then
+							vim.cmd("ObsidianNew " .. title)
+						end
+					end,
 					"Create new note (in current dir)",
 				},
+				["o"] = { "<cmd>ObsidianOpen<cr>", "Open Obsidian" },
 				["p"] = { "<cmd>PeekToggle<cr>", "Toggle preview" },
-				["o"] = { "<cmd>ZkOrphans<cr>", "List orphan notes" },
-				["r"] = { '<cmd>ZkNotes { modifiedAfter = "5 days ago"}<cr>', "Recent notes" },
-				["t"] = { "<cmd>ZkTags<cr>", "List tags" },
-				["w"] = { '<cmd>ZkNotes { tags = { "work" }}<cr>', "List work notes" },
-				["W"] = { '<cmd>ZkNew { dir = "work" }<cr>', "Create new work note" },
+				["s"] = { "<cmd>ObsidianSearch<cr>", "Search notes" },
+				["t"] = { "<cmd>ObsidianToday<cr>", "Create/open note for today" },
+				["y"] = { "<cmd>ObsidianYesterday<cr>", "Create/open note for yesterday" },
+				["T"] = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
 			},
 		},
 	}

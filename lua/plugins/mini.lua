@@ -20,8 +20,7 @@ return {
 					{ action = "Telescope projects", name = "Projects", section = "Session" },
 					{ action = [[lua require("persistence").load()]], name = "Session restore", section = "Session" },
 
-					{ action = "ZkNotes", name = "Notes", section = "Notes" },
-					{ action = "ZkNew", name = "Create note", section = "Notes" },
+					{ action = "ObsidianQuickSwitch", name = "Notes", section = "Notes" },
 
 					{ action = "qa", name = "Exit", section = "Exit" },
 				},
