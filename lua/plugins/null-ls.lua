@@ -4,6 +4,7 @@ return {
 	config = function()
 		local null_ls = require("null-ls")
 		null_ls.setup({
+			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
 			sources = {
 				null_ls.builtins.code_actions.shellcheck,
 
@@ -26,6 +27,10 @@ return {
 
 				null_ls.builtins.hover.dictionary,
 			},
+			on_attach = function(client, buffer)
+				require("plugins.lsp.keys").setup(buffer)
+				require("plugins.lsp.format").on_attach(client, buffer)
+			end,
 		})
 	end,
 }
