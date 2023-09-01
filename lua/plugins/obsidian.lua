@@ -67,7 +67,7 @@ return {
 			end,
 
 			-- Optional, set to true if you don't want obsidian.nvim to manage frontmatter.
-			disable_frontmatter = false,
+			disable_frontmatter = true,
 
 			templates = {
 				subdir = "_templates",
