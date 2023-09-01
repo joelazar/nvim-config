@@ -25,7 +25,7 @@ return {
 			-- log_level = vim.log.levels.DEBUG,
 
 			daily_notes = {
-				folder = "notes/journal/daily",
+				folder = "journal/daily",
 				date_format = "%Y-%m-%d",
 			},
 
