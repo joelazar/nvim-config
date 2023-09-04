@@ -14,7 +14,7 @@ local M = {
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
 		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
-		{ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+		{ "petertriho/cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
 		{
 			"zbirenbaum/copilot-cmp",
 			dependencies = "copilot.lua",
