@@ -14,7 +14,7 @@ return {
 					{ action = "Telescope find_files", name = "Find files", section = "Files" },
 
 					{ action = "Telescope live_grep", name = "Grep", section = "Search" },
-					{ action = "Telescope vim_bookmarks", name = "Bookmarks", section = "Search" },
+					{ action = "Telescope vim_bookmarks all", name = "Bookmarks", section = "Search" },
 					{ action = "Telescope command_history", name = "Command history", section = "Search" },
 
 					{ action = "Telescope projects", name = "Projects", section = "Session" },

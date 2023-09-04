@@ -36,7 +36,7 @@ return {
 	-- Bookmarks
 	{
 		"MattesGroeger/vim-bookmarks",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "VimEnter" },
 	},
 
 	-- Check git history

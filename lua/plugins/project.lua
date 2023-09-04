@@ -1,6 +1,6 @@
 return {
 	"ahmedkhalf/project.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "VimEnter" },
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
