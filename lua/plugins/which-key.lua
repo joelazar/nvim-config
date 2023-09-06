@@ -159,6 +159,13 @@ M.config = function()
 				name = "Search",
 				["w"] = { '<cmd>lua require"plugins.telescope".grep_string_visual()<CR>', "Visual selection" },
 			},
+			["S"] = {
+				name = "Search & Replace",
+				["w"] = {
+					"<esc><cmd>lua require('spectre').open_visual()<CR>",
+					"Replace selection",
+				},
+			},
 			["z"] = {
 				name = "Notes",
 				["l"] = { "<cmd>ObsidianLink<CR>", "Link a note" },
@@ -382,7 +389,6 @@ M.config = function()
 				["k"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				["m"] = { "<cmd>Telescope marks<cr>", "Marks" },
 				["M"] = { "<cmd>Telescope man_pages<cr>", "Man pages" },
-				["n"] = { "Noice" },
 				["o"] = { "<cmd>Telescope oldfiles<cr>", "Old files" },
 				["r"] = { "<cmd>Telescope resume<cr>", "Recent search" },
 				["R"] = { "<cmd>Telescope registers<cr>", "Registers" },
@@ -393,6 +399,7 @@ M.config = function()
 				["Q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 				["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
 			},
+			["m"] = { "Messages" },
 			["S"] = {
 				name = "Search & Replace",
 				["f"] = {
