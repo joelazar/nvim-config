@@ -9,10 +9,10 @@ local M = {
 		"typescriptreact",
 	},
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
-		"theHamsta/nvim-dap-virtual-text",
+		{ "rcarriga/nvim-dap-ui", opts = true },
+		{ "theHamsta/nvim-dap-virtual-text", opts = true },
 		"mfussenegger/nvim-dap-python",
-		"LiadOz/nvim-dap-repl-highlights",
+		{ "LiadOz/nvim-dap-repl-highlights", opts = true },
 	},
   -- stylua: ignore
 	keys = {
@@ -25,17 +25,7 @@ local M = {
 
 M.config = function()
 	local dap = require("dap")
-	local dapui = require("dapui")
-	local dap_vt = require("nvim-dap-virtual-text")
 	local dap_python = require("dap-python")
-
-	dap_vt.setup({})
-
-	-- DAP UI
-	dapui.setup()
-
-	-- DAP REPL Highlights
-	require("nvim-dap-repl-highlights").setup()
 
 	vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError", linehl = "", numhl = "" })

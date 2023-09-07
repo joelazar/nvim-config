@@ -80,7 +80,7 @@ M.config = function()
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
 					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-					["<CR>"] = select_one_or_multi,
+					-- ["<CR>"] = select_one_or_multi,
 				},
 				i = {
 					["<c-a>"] = function(...)
@@ -97,7 +97,7 @@ M.config = function()
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
 					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-					["<CR>"] = select_one_or_multi,
+					-- ["<CR>"] = select_one_or_multi,
 				},
 			},
 			vimgrep_arguments = {
