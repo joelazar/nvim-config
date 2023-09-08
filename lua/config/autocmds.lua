@@ -130,3 +130,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 	group = augroup("close_with_q"),
 })
+
+require("mini.misc").setup()
+MiniMisc.setup_auto_root({ "package.json", "Makefile", ".git" })

@@ -360,6 +360,7 @@ M.config = function()
 					"Show line diagnostics",
 				},
 				["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+				["o"] = { "<cmd>AerialToggle<cr>", "Toggle outline" },
 				["s"] = {
 					"<cmd>Telescope lsp_document_symbols<cr>",
 					"Document Symbols",
@@ -372,7 +373,6 @@ M.config = function()
 			["o"] = {
 				name = "Overseer",
 				["l"] = { "<cmd>OverseerRun<cr>", "List tasks in project" },
-				["r"] = { "<cmd>OverseerRestartLast<cr>", "Restart last task" },
 				["t"] = { "<cmd>OverseerToggle<cr>", "Toggle summary window" },
 			},
 			["s"] = {

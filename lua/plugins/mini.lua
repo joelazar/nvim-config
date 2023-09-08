@@ -141,4 +141,8 @@ return {
 			})
 		end,
 	},
+
+	{
+		"echasnovski/mini.misc",
+	},
 }
