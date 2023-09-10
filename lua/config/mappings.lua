@@ -16,6 +16,10 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up", noremap = true, silent
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
+-- Better page up/down
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+
 -- Stay centered jumping between search results
 map("n", "n", "nzzzv", silent)
 map("n", "N", "Nzzzv", silent)
