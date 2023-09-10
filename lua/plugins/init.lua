@@ -301,4 +301,18 @@ return {
 		event = "VeryLazy",
 	},
 
+	{
+		"theprimeagen/harpoon",
+		config = function()
+			require("harpoon").setup({ save_on_toggle = true })
+			require("telescope").load_extension("harpoon")
+			local mark = require("harpoon.mark")
+			local ui = require("harpoon.ui")
+			vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "Harpoon add file" })
+			vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Harpoon quick menu" })
+			vim.keymap.set({ "n", "x" }, "]]", ui.nav_next, { desc = "Harpoon next file" })
+			vim.keymap.set({ "n", "x" }, "[[", ui.nav_prev, { desc = "Harpoon previous file" })
+		end,
+		event = "VeryLazy",
+	},
 }
