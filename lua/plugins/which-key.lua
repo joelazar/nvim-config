@@ -298,12 +298,12 @@ M.config = function()
 				["o"] = { "<cmd>DevdocsOpen<cr>", "Open docs" },
 				["c"] = { "<cmd>DevdocsOpenCurrent<cr>", "Open docs for current filetype" },
 			},
-			["L"] = {
-				name = "Lazy",
-				["m"] = { "<cmd>Lazy<cr>", "Menu" },
-				["r"] = { "<cmd>Lazy restore<cr>", "Restore" },
-				["s"] = { "<cmd>Lazy sync<cr>", "Sync" },
-				["u"] = { "<cmd>Lazy update<cr>", "Update" },
+			["P"] = {
+				name = "Plugin manager",
+				["m"] = { "<cmd>Lazy<cr>", "Lazy menu" },
+				["r"] = { "<cmd>Lazy restore<cr>", "Lazy restore" },
+				["s"] = { "<cmd>Lazy sync<cr>", "Lazy sync" },
+				["u"] = { "<cmd>Lazy update<cr>", "Lazy update" },
 			},
 			["g"] = {
 				name = "Git",
@@ -399,6 +399,7 @@ M.config = function()
 				["Q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 				["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
 			},
+			["L"] = { name = "Leetcode" },
 			["m"] = { "Messages" },
 			["S"] = {
 				name = "Search & Replace",
