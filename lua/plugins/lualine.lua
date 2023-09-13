@@ -18,7 +18,11 @@ M.config = function()
 			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = {
 				{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-				{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+				{
+					"filename",
+					path = 1,
+					symbols = { modified = "", readonly = "  readonly", unnamed = "" },
+				},
 			},
 			lualine_x = { "searchcount", "encoding", "fileformat", "filetype" },
 			lualine_y = { "progress" },
