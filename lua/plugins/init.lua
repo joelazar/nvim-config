@@ -210,28 +210,6 @@ return {
 	},
 
 	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {
-			restricted_keys = {
-				["h"] = {},
-				["j"] = {},
-				["k"] = {},
-				["l"] = {},
-				["-"] = {},
-				["+"] = {},
-				["gj"] = { "n", "x" },
-				["gk"] = { "n", "x" },
-				["<CR>"] = { "n", "x" },
-				["<C-M>"] = { "n", "x" },
-				["<C-N>"] = { "n", "x" },
-				["<C-P>"] = {},
-			},
-		},
-		event = { "BufReadPost", "BufNewFile" },
-	},
-
-	{
 		"piersolenski/wtf.nvim",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
