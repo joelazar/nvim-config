@@ -3,7 +3,7 @@ return {
 	"nvim-lua/plenary.nvim",
 
 	-- Devicons
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 
 	-- Swap parameters easier
 	{
@@ -126,10 +126,16 @@ return {
 	-- Change strings to template string on the fly in jsx/tsx
 	{
 		"axelvc/template-string.nvim",
-		config = true,
+		opts = {
+			remove_template_string = true, -- remove backticks when there are no template strings
+		},
 		ft = {
-			"javascriptreact",
+			"html",
+			"typescript",
+			"javascript",
 			"typescriptreact",
+			"javascriptreact",
+			"python",
 		},
 	},
 
@@ -264,7 +270,7 @@ return {
 		cmd = { "AerialToggle", "AerialOpen", "AerialOpenAll" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			"kyazdani42/nvim-web-devicons",
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 

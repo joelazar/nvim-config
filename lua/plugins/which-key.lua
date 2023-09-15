@@ -215,8 +215,6 @@ M.config = function()
 			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
 			["b"] = {
 				name = "Buffers",
-				["d"] = { "<cmd>BufferClose<cr>", "Delete buffer" },
-				["D"] = { "<cmd>BufferClose!<cr>", "Force Delete buffer" },
 				["f"] = {
 					"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
 					"Format buffer (LSP)",

@@ -1,7 +1,7 @@
 local M = {
 	"romgrk/barbar.nvim",
 	dependencies = {
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 	},
 	event = "VeryLazy",
   -- stylua: ignore
