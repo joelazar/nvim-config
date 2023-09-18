@@ -220,31 +220,22 @@ M.config = function()
 					"Format buffer (LSP)",
 				},
 				["L"] = {
-					"<cmd>BufferCloseBuffersLeft<cr>",
+					"<cmd>BufferLineCloseLeft<cr>",
 					"Close all buffers to the left",
 				},
-				["P"] = { "<cmd>BufferPin<cr>", "Pin/Unpin buffer" },
+				["P"] = { "<cmd>BufferLineTogglePin<cr>", "Pin/Unpin buffer" },
 				["R"] = {
-					"<cmd>BufferCloseBuffersRight<cr>",
+					"<cmd>BufferLineCloseRight<cr>",
 					"Close all buffers to the right",
 				},
 				["s"] = { "<cmd>Telescope buffers<cr>", "Search buffers" },
 				["S"] = {
 					name = "Sort buffers",
-					["d"] = {
-						"<cmd>BufferOrderByDirectory<cr>",
-						"Sort buffers automatically by directory",
-					},
-					["l"] = {
-						"<cmd>BufferOrderByLanguage<cr>",
-						"Sort buffers automatically by language",
-					},
+					["d"] = { "<cmd>BufferLineSortByDirectory<cr>", "Sort buffers automatically by directory" },
+					["l"] = { "<cmd>BufferLineSortByExtension<cr>", "Sort buffers automatically by language" },
 				},
-				["w"] = {
-					"<cmd>only<cr><cmd>BufferCloseAllButCurrent<cr>",
-					"Close all but current buffer",
-				},
-				["W"] = { "<cmd>BufferCloseAllButPinned<cr>", "Close all but pinned buffers" },
+				["w"] = { "<cmd>BufferLineCloseOthers<cr>", "Close all but current buffer" },
+				["W"] = { "<cmd>BufferLineGroupClose ungrouped<cr>", "Close all but pinned buffers" },
 			},
 			["d"] = {
 				name = "Debug",
