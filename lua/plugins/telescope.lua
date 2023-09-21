@@ -188,6 +188,7 @@ M.config = function()
 				hijack_netrw = true,
 				hidden = true,
 				grouped = true,
+				respect_gitignore = false,
 			},
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
