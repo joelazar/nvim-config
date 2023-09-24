@@ -36,7 +36,7 @@ return {
 	-- Bookmarks
 	{
 		"MattesGroeger/vim-bookmarks",
-		event = { "VimEnter" },
+		event = "VeryLazy",
 	},
 
 	-- Check git history
@@ -109,7 +109,7 @@ return {
 	{
 		"m-demare/hlargs.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true,
+		opts = {},
 		event = { "BufReadPre", "BufNewFile" },
 	},
 
@@ -146,7 +146,7 @@ return {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
-		config = true,
+		opts = {},
 	},
 
 	{ "folke/twilight.nvim", cmd = { "Twilight" } },
@@ -157,13 +157,13 @@ return {
 		ft = "python",
 	},
 
-	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	{
 		"linux-cultist/venv-selector.nvim",
 		dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-		config = true,
-		event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+		opts = {},
+		cmd = { "VenvSelect" },
 	},
 
 	{
@@ -221,6 +221,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {},
+		cmd = { "Wtf", "WtfSearch" },
 		keys = {
 			{
 				"gw",
@@ -248,6 +249,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
+		build = ":DevdocsUpdateAll",
 		opts = {},
 		cmd = {
 			"DevdocsFetch",
@@ -265,23 +267,12 @@ return {
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 
 	{
-		"stevearc/aerial.nvim",
-		opts = {},
-		cmd = { "AerialToggle", "AerialOpen", "AerialOpenAll" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-
-	{
 		"johmsalas/text-case.nvim",
 		config = function()
 			require("textcase").setup({})
 			require("telescope").load_extension("textcase")
-			vim.api.nvim_set_keymap("n", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-			vim.api.nvim_set_keymap("v", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
 		end,
+		keys = { { "ga.", mode = { "n", "v" }, "<cmd>TextCaseOpenTelescope<CR>", desc = "Telescope text-case" } },
 		event = "VeryLazy",
 	},
 
