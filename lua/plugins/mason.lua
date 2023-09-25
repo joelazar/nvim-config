@@ -13,6 +13,7 @@ function M.config()
 		"chrome-debug-adapter",
 		"clangd",
 		"css-lsp",
+		"debugpy",
 		"delve",
 		"dockerfile-language-server",
 		"eslint-lsp",
