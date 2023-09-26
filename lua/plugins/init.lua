@@ -157,7 +157,12 @@ return {
 		ft = "python",
 	},
 
-	"JoosepAlviste/nvim-ts-context-commentstring",
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		opts = {
+			enable_autocmd = false,
+		},
+	},
 
 	{
 		"linux-cultist/venv-selector.nvim",
