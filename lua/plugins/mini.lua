@@ -142,8 +142,6 @@ return {
 		end,
 	},
 
-	"echasnovski/mini.misc",
-
 	{
 		"echasnovski/mini.bufremove",
     -- stylua: ignore
