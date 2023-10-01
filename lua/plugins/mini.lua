@@ -113,12 +113,12 @@ return {
 
 	{
 		"echasnovski/mini.operators",
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			replace = {
 				prefix = "gR",
 			},
 		},
-		event = { "BufReadPost", "BufNewFile" },
 	},
 
 	{
@@ -142,9 +142,7 @@ return {
 		end,
 	},
 
-	{
-		"echasnovski/mini.misc",
-	},
+	"echasnovski/mini.misc",
 
 	{
 		"echasnovski/mini.bufremove",

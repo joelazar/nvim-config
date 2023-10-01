@@ -6,7 +6,7 @@ local M = {
 M.config = function()
 	require("nnn").setup({
 		explorer = {
-			cmd = "sleep 0.1 && nnn", -- command overrride (-F1 flags are implied, -a flag is invalid!)
+			cmd = "nnn", -- command overrride (-F1 flags are implied, -a flag is invalid!)
 			width = 32, -- width of the vertical split
 			session = "", -- or global/local/shared
 			side = "topleft", -- or "botright", location of the explorer window
@@ -14,7 +14,7 @@ M.config = function()
 			fullscreen = true, -- whether to fullscreen explorer window when current tab is empty
 		},
 		picker = {
-			cmd = "sleep 0.1 && nnn -od", -- command override (-p flag is implied)
+			cmd = "nnn -od", -- command override (-p flag is implied)
 			style = {
 				width = 0.9, -- width in percentage of the viewport
 				height = 0.8, -- height in percentage of the viewport

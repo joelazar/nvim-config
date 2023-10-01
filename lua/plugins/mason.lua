@@ -17,7 +17,6 @@ function M.config()
 		"delve",
 		"dockerfile-language-server",
 		"eslint-lsp",
-		"eslint_d",
 		"firefox-debug-adapter",
 		"gofumpt",
 		"golangci-lint-langserver",

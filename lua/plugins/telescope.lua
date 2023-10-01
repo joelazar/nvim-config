@@ -1,7 +1,6 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
-		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"debugloop/telescope-undo.nvim",
 		"tom-anders/telescope-vim-bookmarks.nvim",
@@ -183,13 +182,6 @@ M.config = function()
 			},
 		},
 		extensions = {
-			file_browser = {
-				theme = "ivy",
-				hijack_netrw = true,
-				hidden = true,
-				grouped = true,
-				respect_gitignore = false,
-			},
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
 				override_generic_sorter = true, -- override the generic sorter
@@ -228,7 +220,6 @@ M.config = function()
 	}
 
 	telescope.setup(config)
-	telescope.load_extension("file_browser")
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("undo")
 	telescope.load_extension("fzf")
