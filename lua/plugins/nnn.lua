@@ -2,6 +2,7 @@ local M = {
 	"luukvbaal/nnn.nvim",
 	cmd = { "NnnPicker", "NnnExplorer" },
 	lazy = false,
+	dir = "~/git/vim/plugins/nnn.nvim/",
 }
 
 M.config = function()
