@@ -42,21 +42,6 @@ M.config = function()
 		})
 	end
 
-	local select_one_or_multi = function(prompt_bufnr)
-		local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-		local multi = picker:get_multi_selection()
-		if not vim.tbl_isempty(multi) then
-			require("telescope.actions").close(prompt_bufnr)
-			for _, j in pairs(multi) do
-				if j.path ~= nil then
-					vim.cmd(string.format("%s %s", "edit", j.path))
-				end
-			end
-		else
-			require("telescope.actions").select_default(prompt_bufnr)
-		end
-	end
-
 	local config = {
 		defaults = {
 			path_display = { truncate = 3 },
@@ -79,7 +64,6 @@ M.config = function()
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
 					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-					-- ["<CR>"] = select_one_or_multi,
 				},
 				i = {
 					["<c-a>"] = function(...)
@@ -96,7 +80,6 @@ M.config = function()
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
 					["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-					-- ["<CR>"] = select_one_or_multi,
 				},
 			},
 			vimgrep_arguments = {
@@ -158,7 +141,6 @@ M.config = function()
 						["<c-a>"] = function(...)
 							return require("telescope.actions").toggle_all(...)
 						end,
-						["<CR>"] = select_one_or_multi,
 					},
 				},
 			},
