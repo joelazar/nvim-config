@@ -118,6 +118,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"neotest-output",
 		"neotest-output-panel",
 		"neotest-summary",
+		"nnn",
 		"notify",
 		"qf",
 		"spectre_panel",
