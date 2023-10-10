@@ -280,4 +280,9 @@ return {
 		keys = { { "ga.", mode = { "n", "v" }, "<cmd>TextCaseOpenTelescope<CR>", desc = "Telescope text-case" } },
 		event = "VeryLazy",
 	},
+
+	{
+		"wakatime/vim-wakatime",
+		event = "VeryLazy",
+	},
 }
