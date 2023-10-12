@@ -9,7 +9,7 @@ return {
 				evaluate_single = true,
 				items = {
 					{ action = "ene | startinsert", name = "New file", section = "Files" },
-					{ action = "Telescope file_browser", name = "File browser", section = "Files" },
+					{ action = "NnnPicker", name = "File browser", section = "Files" },
 					{ action = "Telescope oldfiles", name = "Recent files", section = "Files" },
 					{ action = "Telescope find_files", name = "Find files", section = "Files" },
 
