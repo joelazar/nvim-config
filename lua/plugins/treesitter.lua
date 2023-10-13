@@ -35,6 +35,7 @@ M.config = function()
 			"javascript",
 			"jsdoc",
 			"json",
+			"jsonc",
 			"latex",
 			"lua",
 			"luadoc",
