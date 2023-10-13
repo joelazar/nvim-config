@@ -11,6 +11,7 @@ return {
 				enabled = true,
 				enable_ui = true, -- enable nvim-dap-ui
 			},
+			flash = true,
 			gitsigns = true,
 			indent_blankline = { enabled = true },
 			lsp_trouble = true,
