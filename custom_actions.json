@@ -27,6 +27,16 @@
       }
     }
   },
+  "markdown": {
+    "type": "chat",
+    "opts": {
+      "template": "Format this to properly formatted markdown and correct the grammar:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-4"
+      }
+    }
+  },
   "translate": {
     "type": "chat",
     "opts": {
