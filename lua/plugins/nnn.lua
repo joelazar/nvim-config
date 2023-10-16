@@ -2,7 +2,6 @@ local M = {
 	"luukvbaal/nnn.nvim",
 	cmd = { "NnnPicker", "NnnExplorer" },
 	lazy = false,
-	dir = "~/git/vim/plugins/nnn.nvim/",
 }
 
 M.config = function()
@@ -35,7 +34,7 @@ M.config = function()
 				"gitcommit",
 			},
 		},
-		auto_close = true, -- close tabpage/nvim when nnn is last window
+		auto_close = false, -- close tabpage/nvim when nnn is last window
 		replace_netrw = "picker",
 		mappings = {
 			{ "<C-t>", require("nnn").builtin.open_in_tab }, -- open file(s) in tab

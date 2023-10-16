@@ -83,17 +83,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup("auto_create_dir"),
 })
 
-vim.api.nvim_create_autocmd("TermClose", {
-	desc = "Close terminals automatically at exit",
-	pattern = "term://*",
-	callback = function()
-		if vim.v.event.status == 0 then
-			vim.api.nvim_input("<CR>")
-		end
-	end,
-	group = augroup("terminal_close_at_exit"),
-})
-
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	desc = "Resize splits if window got resized",
 	callback = function()

@@ -1,8 +1,7 @@
 local map = vim.keymap.set
-local silent = { silent = true }
 
 -- Close windows
-map("n", "Q", "<cmd>close<cr>", silent)
+map("n", "Q", "<cmd>close<cr>", { silent = true })
 
 -- Move current line / block with Alt-j/k ala vscode.
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
@@ -21,23 +20,23 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 -- Stay centered jumping between search results
-map("n", "n", "nzzzv", silent)
-map("n", "N", "Nzzzv", silent)
+map("n", "n", "nzzzv", { silent = true })
+map("n", "N", "Nzzzv", { silent = true })
 
 -- Fix cursor position after joining lines
-map("n", "J", "mzJ`z", silent)
+map("n", "J", "mzJ`z", { silent = true })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Ctrl+V for pasting from system clipboard
-map("i", "<c-v>", "<c-r>+", silent)
+map("i", "<c-v>", "<c-r>+", { silent = true })
 
 -- Search for visually selected text
-map("v", "//", 'y/<C-R>"<cr>', silent)
+map("v", "//", 'y/<C-R>"<cr>', { silent = true })
 
 -- Have the same buffer on clipboard for multiple pastes
-map("v", "p", "pgvy", silent)
+map("v", "p", "pgvy", { silent = true })
 
 -- Delete to blackhole register
 map({ "n", "x" }, "\\d", '"_d', { desc = "Delete to blackhole register" })
@@ -48,10 +47,10 @@ map("v", ">", ">gv")
 
 -- Make the dot command work as expected in visual mode
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
-map("v", ".", "<cmd>norm .<cr>", silent)
+map("v", ".", "<cmd>norm .<cr>", { silent = true })
 
 -- Trouble mappings
-map("n", "<C-q>", "<cmd>TroubleToggle<cr>", silent)
+map("n", "<C-q>", "<cmd>TroubleToggle<cr>", { silent = true })
 map("n", "]q", function()
 	require("trouble").next({ skip_groups = true, jump = true })
 end, { desc = "Trouble forward", silent = true })
