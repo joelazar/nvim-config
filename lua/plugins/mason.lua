@@ -23,7 +23,6 @@ function M.config()
 		"gopls",
 		"gotestsum",
 		"html-lsp",
-		"isort",
 		"js-debug-adapter",
 		"json-lsp",
 		"lua-language-server",

@@ -42,16 +42,20 @@ M.config = function()
 
 	cmp.setup({
 		mapping = {
-			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+			["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 			["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.abort(),
+			["<C-CR>"] = function(fallback)
+				cmp.abort()
+				fallback()
+			end,
+			["<C-Space>"] = cmp.mapping.complete(),
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
 			["<S-CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
-				select = false,
+				select = true,
 			}),
 			["<C-j>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
