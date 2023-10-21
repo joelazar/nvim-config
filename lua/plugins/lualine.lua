@@ -9,7 +9,7 @@ local M = {
 M.config = function()
 	require("lualine").setup({
 		options = {
-			theme = "auto",
+			theme = "catppuccin",
 			globalstatus = true,
 			disabled_filetypes = { statusline = { "starter" } },
 		},
