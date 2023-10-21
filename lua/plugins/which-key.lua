@@ -463,6 +463,16 @@ M.config = function()
 					end,
 					"Toggle autoformat",
 				},
+				["t"] = {
+					function()
+						if vim.b.ts_highlight then
+							vim.treesitter.stop()
+						else
+							vim.treesitter.start()
+						end
+					end,
+					"Toggle treesitter highlight",
+				},
 			},
 			["Q"] = { name = "Session" },
 			["x"] = {
