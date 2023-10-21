@@ -7,6 +7,7 @@ return {
 		"nvim-neotest/neotest-go",
 		"nvim-neotest/neotest-python",
 		"haydenmeade/neotest-jest",
+		"folke/lsp-trouble.nvim",
 	},
 	ft = {
 		"go",
@@ -29,7 +30,7 @@ return {
 			output = { open_on_run = true },
 			quickfix = {
 				open = function()
-					vim.cmd("Trouble quickfix")
+					require("trouble").open({ mode = "quickfix", focus = false })
 				end,
 			},
 		})
