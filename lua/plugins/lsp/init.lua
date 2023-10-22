@@ -6,7 +6,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
-		{ "pmizio/typescript-tools.nvim", dir = "~/git/vim/plugins/typescript-tools.nvim/" },
+		"pmizio/typescript-tools.nvim",
 		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	},
 }
