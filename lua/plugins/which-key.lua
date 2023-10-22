@@ -130,11 +130,19 @@ M.config = function()
 			},
 			["r"] = {
 				name = "Refactoring",
+				["b"] = {
+					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
+					"Extract Block",
+				},
+				["f"] = {
+					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
+					"Extract Block to File",
+				},
 				["e"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>",
 					"Extract Function",
 				},
-				["f"] = {
+				["F"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
 					"Extract Function to File",
 				},
@@ -403,15 +411,6 @@ M.config = function()
 				},
 			},
 			["r"] = {
-				name = "Rest",
-				["r"] = { "<Plug>RestNvim", "Run request under the cursor" },
-				["p"] = {
-					"<Plug>RestNvimPreview",
-					"Preview request under the cursor",
-				},
-				["l"] = { "<Plug>RestNvimLast", "Run last request" },
-			},
-			["R"] = {
 				name = "Refactoring",
 				["b"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
@@ -421,22 +420,47 @@ M.config = function()
 					"<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
 					"Extract Block to File",
 				},
+				["e"] = {
+					"<Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+					"Extract Function",
+				},
+				["F"] = {
+					"<Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+					"Extract Function to File",
+				},
 				["i"] = {
 					"<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
 					"Inline Variable",
+				},
+				["I"] = {
+					"<Cmd>lua require('refactoring').refactor('Inline Function')<CR>",
+					"Inline Function",
 				},
 				["l"] = {
 					"<cmd>lua require('refactoring').debug.printf({below = true})<CR>",
 					"Print debug log",
 				},
 				["p"] = {
-					"<cmd>lua require('refactoring').debug.print_var({ normal = true })<CR>",
+					"<cmd>lua require('refactoring').debug.print_var()<CR>",
 					"Print variable",
 				},
 				["c"] = {
 					"<cmd>lua require('refactoring').debug.cleanup({})<CR>",
 					"Cleanup debug log",
 				},
+				["r"] = {
+					"<cmd>lua require('refactoring').select_refactor()<CR>",
+					"Open selector",
+				},
+			},
+			["R"] = {
+				name = "Rest",
+				["r"] = { "<Plug>RestNvim", "Run request under the cursor" },
+				["p"] = {
+					"<Plug>RestNvimPreview",
+					"Preview request under the cursor",
+				},
+				["l"] = { "<Plug>RestNvimLast", "Run last request" },
 			},
 			["t"] = {
 				name = "Test",
@@ -473,11 +497,11 @@ M.config = function()
 					end,
 					"Toggle treesitter highlight",
 				},
+				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
 			},
 			["Q"] = { name = "Session" },
 			["x"] = {
 				name = "Misc",
-				["c"] = { "<cmd>ColorizerToggle<cr>", "Toggle colorizer" },
 				["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
 				["g"] = {
 					name = "GitHub Copilot",
