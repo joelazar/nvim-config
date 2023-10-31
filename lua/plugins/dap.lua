@@ -25,6 +25,7 @@ local M = {
 
 M.config = function()
 	local dap = require("dap")
+	local dapui = require("dapui")
 	local dap_python = require("dap-python")
 
 	vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
