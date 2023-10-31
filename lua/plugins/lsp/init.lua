@@ -71,6 +71,7 @@ M.config = function()
 				Lua = { workspace = { checkThirdParty = false }, completion = { callSnippet = "Replace" } },
 			},
 		},
+		mojo = {},
 		prismals = {},
 		pyright = {},
 		ruff_lsp = {},
