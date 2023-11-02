@@ -105,6 +105,8 @@ return {
 		end,
 	},
 
+	"echasnovski/mini.misc",
+
 	{
 		"echasnovski/mini.splitjoin",
 		event = { "BufReadPost", "BufNewFile" },
