@@ -7,7 +7,7 @@ local M = {
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
 		"pmizio/typescript-tools.nvim",
-		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+		{ "folke/neodev.nvim", opts = {} },
 	},
 }
 
