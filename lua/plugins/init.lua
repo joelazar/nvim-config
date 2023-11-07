@@ -285,4 +285,23 @@ return {
 		"wakatime/vim-wakatime",
 		event = "VeryLazy",
 	},
+
+	{
+		"nmac427/guess-indent.nvim",
+		opts = {
+			auto_cmd = true,
+			override_editorconfig = false,
+			filetype_exclude = {
+				"netrw",
+				"tutor",
+			},
+			buftype_exclude = {
+				"help",
+				"nofile",
+				"terminal",
+				"prompt",
+			},
+		},
+		event = { "BufRead", "BufNewFile" },
+	},
 }
