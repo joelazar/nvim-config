@@ -6,14 +6,18 @@ return {
 	},
 	cmd = {
 		"ObsidianBacklinks",
+		"ObsidianFollowLink",
 		"ObsidianLink",
 		"ObsidianLinkNew",
 		"ObsidianNew",
 		"ObsidianOpen",
 		"ObsidianQuickSwitch",
+		"ObsidianRename",
 		"ObsidianSearch",
 		"ObsidianTemplate",
 		"ObsidianToday",
+		"ObsidianTomorrow",
+		"ObsidianWorkspace",
 		"ObsidianYesterday",
 	},
 	config = function()
