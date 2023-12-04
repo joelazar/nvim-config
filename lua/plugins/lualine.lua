@@ -7,6 +7,21 @@ local M = {
 }
 
 M.config = function()
+	local function is_textfile()
+		local filetype = vim.bo.filetype
+		return filetype == "markdown"
+			or filetype == "asciidoc"
+			or filetype == "pandoc"
+			or filetype == "tex"
+			or filetype == "text"
+	end
+	local function wordcount()
+		local wc = vim.fn.wordcount()
+		local visual_words = wc.visual_words or wc.words
+		local word_string = visual_words == 1 and " word" or " words"
+		return tostring(visual_words) .. word_string
+	end
+
 	require("lualine").setup({
 		options = {
 			theme = "catppuccin",
@@ -26,7 +41,10 @@ M.config = function()
 			},
 			lualine_x = { "searchcount", "encoding", "fileformat", "filetype" },
 			lualine_y = { "progress" },
-			lualine_z = { "location" },
+			lualine_z = {
+				{ wordcount, cond = is_textfile },
+				"location",
+			},
 		},
 		extensions = { "lazy", "man", "nvim-dap-ui", "overseer", "quickfix", "toggleterm", "trouble" },
 	})
