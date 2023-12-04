@@ -46,7 +46,7 @@ M.config = function()
 				"location",
 			},
 		},
-		extensions = { "lazy", "man", "nvim-dap-ui", "overseer", "quickfix", "toggleterm", "trouble" },
+		extensions = { "lazy", "man", "mason", "nvim-dap-ui", "overseer", "quickfix", "toggleterm", "trouble" },
 	})
 end
 
