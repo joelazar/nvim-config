@@ -7,10 +7,10 @@ function M.setup()
 		vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 	end
 
-	lspSymbol("Error", "")
-	lspSymbol("Info", "")
-	lspSymbol("Hint", "")
-	lspSymbol("Warn", "")
+	lspSymbol("Error", " ")
+	lspSymbol("Info", " ")
+	lspSymbol("Hint", " ")
+	lspSymbol("Warn", " ")
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		signs = true,

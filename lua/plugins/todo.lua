@@ -10,16 +10,15 @@ M.config = function()
 		sign_priority = 8, -- sign priority
 		keywords = {
 			FIX = {
-				icon = " ",
 				color = "error",
 				alt = { "fix", "FIXME", "BUG", "fixme", "bug" },
 			},
-			TODO = { icon = " ", color = "info", alt = { "todo" } },
-			HACK = { icon = " ", color = "warning", alt = { "hack" } },
-			WARN = { icon = " ", color = "warning", alt = { "warn" } },
-			PERF = { icon = " ", alt = { "perf" } },
-			NOTE = { icon = " ", color = "hint", alt = { "note", "INFO", "info" } },
-			TEST = { icon = "⏲ ", color = "test", alt = { "test" } },
+			TODO = { color = "info", alt = { "todo" } },
+			HACK = { color = "warning", alt = { "hack" } },
+			WARN = { color = "warning", alt = { "warn" } },
+			PERF = { alt = { "perf" } },
+			NOTE = { color = "hint", alt = { "note", "INFO", "info" } },
+			TEST = { color = "test", alt = { "test" } },
 		},
 		gui_style = {
 			fg = "NONE", -- The gui style to use for the fg highlight group.
