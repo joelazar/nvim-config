@@ -1,5 +1,8 @@
 -- Some options are set through [mini.basics](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-basics.md)
 
+-- Disable mouse
+vim.o.mouse = ""
+
 -- Set space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

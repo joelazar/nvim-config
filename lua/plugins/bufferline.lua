@@ -11,9 +11,6 @@ return {
 				close_command = function(n)
 					require("mini.bufremove").delete(n, false)
 				end,
-				right_mouse_command = function(n)
-					require("mini.bufremove").delete(n, false)
-				end,
 				always_show_bufferline = false,
 				show_buffer_close_icons = false,
 				show_close_icon = false,
