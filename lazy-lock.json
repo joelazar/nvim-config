@@ -103,6 +103,7 @@
   "sniprun": { "branch": "master", "commit": "639877399a23e375a8c07b75c14d017735eab7cb" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
+  "telescope-gpt": { "branch": "main", "commit": "a7cfb9629314355964679f2b1f366fcd0fa8c50e" },
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "731a046da7dd3adff9de871a42f9b7fb85f60f47" },
   "telescope-undo.nvim": { "branch": "main", "commit": "d3afc1c105535a90caec092ce27a113f77ba7b84" },
   "telescope-vim-bookmarks.nvim": { "branch": "main", "commit": "92498cbf7c127dea37c3d27117b60dd7ab9baef4" },

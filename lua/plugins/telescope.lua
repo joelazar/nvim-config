@@ -5,6 +5,10 @@ local M = {
 		"debugloop/telescope-undo.nvim",
 		"tom-anders/telescope-vim-bookmarks.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{
+			"HPRIOR/telescope-gpt",
+			dependencies = { "jackMort/ChatGPT.nvim" },
+		},
 	},
 	cmd = { "Telescope" },
 	keys = {
@@ -170,6 +174,27 @@ M.config = function()
 				override_file_sorter = true, -- override the file sorter
 				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			},
+			gpt = {
+				title = "GPT Actions",
+				commands = {
+					"add_tests",
+					"complete_code",
+					"docstring",
+					"explain_code",
+					"fix_bugs",
+					"grammar_correction danish",
+					"grammar_correction english",
+					"grammar_correction hungarian",
+					"keywords",
+					"markdown",
+					"optimize_code",
+					"summarize",
+					"translate danish",
+					"translate english",
+					"translate hungarian",
+				},
+				theme = require("telescope.themes").get_cursor(),
+			},
 			live_grep_args = {
 				auto_quoting = true,
 				mappings = {
@@ -202,9 +227,10 @@ M.config = function()
 	}
 
 	telescope.setup(config)
+	telescope.load_extension("fzf")
+	telescope.load_extension("gpt")
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("undo")
-	telescope.load_extension("fzf")
 	telescope.load_extension("vim_bookmarks")
 end
 
