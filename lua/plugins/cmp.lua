@@ -13,6 +13,7 @@ local M = {
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"saadparwaiz1/cmp_luasnip",
+		"ray-x/cmp-treesitter",
 		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
 		{ "petertriho/cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
 		{
@@ -85,6 +86,7 @@ M.config = function()
 			{ name = "jupynium", priority = 1000 },
 			{ name = "copilot" },
 			{ name = "nvim_lsp" },
+			{ name = "treesitter" },
 			{ name = "buffer", keyword_length = 3 },
 			{
 				name = "luasnip",
@@ -115,9 +117,10 @@ M.config = function()
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				maxwidth = 50,
-				symbol_map = { Copilot = "", Git = "" },
+				symbol_map = { Copilot = "", Git = "", Comment = "", String = "󰉿" },
 			}),
 		},
+
 		sorting = {
 			priority_weight = 2,
 			comparators = {
