@@ -1,135 +1,11 @@
 {
-  "complete_code": {
-    "type": "chat",
-    "opts": {
-      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it.\n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n\n```{{filetype}}\n",
-      "strategy": "replace",
-      "params": {
-        "model": "gpt-4",
-        "stop": ["```"]
-      }
-    }
-  },
-  "grammar_correction": {
-    "type": "chat",
-    "opts": {
-      "template": "Correct this to standard {{lang}}:\n\n{{input}}",
-      "strategy": "replace",
-      "params": {
-        "model": "gpt-3.5-turbo-1106"
-      }
-    },
-    "args": {
-      "lang": {
-        "type": "string",
-        "optional": "true",
-        "default": "english"
-      }
-    }
-  },
-  "markdown": {
-    "type": "chat",
-    "opts": {
-      "template": "Format this to properly formatted markdown and correct the grammar:\n\n{{input}}",
-      "strategy": "replace",
-      "params": {
-        "model": "gpt-4"
-      }
-    }
-  },
-  "translate": {
-    "type": "chat",
-    "opts": {
-      "template": "Translate this into {{lang}}:\n\n{{input}}",
-      "strategy": "replace",
-      "params": {
-        "model": "gpt-3.5-turbo-1106",
-        "temperature": 0.3
-      }
-    },
-    "args": {
-      "lang": {
-        "type": "string",
-        "optional": "true",
-        "default": "english"
-      }
-    }
-  },
-  "keywords": {
-    "type": "chat",
-    "opts": {
-      "template": "Extract the main keywords from the following text.\n\n{{input}}",
-      "strategy": "display",
-      "title": " Keywords",
-      "params": {
-        "model": "gpt-4",
-        "temperature": 0.5,
-        "frequency_penalty": 0.8
-      }
-    }
-  },
-  "docstring": {
-    "type": "chat",
-    "opts": {
-      "template": "# An elaborate, high quality docstring for the above function:\n# Writing a good docstring\n\nThis is an example of writing a really good docstring that follows a best practice for the given language. Attention is paid to detailing things like\n* parameter and return types (if applicable)\n* any errors that might be raised or returned, depending on the language\n\nI received the following code:\n\n```{{filetype}}\n{{input}}\n```\n\nThe code with a really good docstring added is below:\n\n```{{filetype}}",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4",
-        "stop": ["```"]
-      }
-    }
-  },
   "add_tests": {
     "type": "chat",
     "opts": {
       "template": "Implement tests for the following code.\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nTests:\n```{{filetype}}",
       "strategy": "append",
       "params": {
-        "model": "gpt-4",
-        "stop": ["```"]
-      }
-    }
-  },
-  "optimize_code": {
-    "type": "chat",
-    "opts": {
-      "template": "Optimize the following code.\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nOptimized version:\n```{{filetype}}",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4",
-        "stop": ["```"]
-      }
-    }
-  },
-  "summarize": {
-    "type": "chat",
-    "opts": {
-      "template": "Summarize the following text.\n\nText:\n\"\"\"\n{{input}}\n\"\"\"\n\nSummary:",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4"
-      }
-    }
-  },
-  "fix_bugs": {
-    "type": "chat",
-    "opts": {
-      "template": "Fix bugs in the below code\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nFixed code:\n```{{filetype}}",
-      "strategy": "edit",
-      "params": {
-        "model": "gpt-4",
-        "stop": ["```"]
-      }
-    }
-  },
-  "explain_code": {
-    "type": "chat",
-    "opts": {
-      "title": " Explain Code",
-      "template": "Explain the following code:\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nUse markdown format.\nHere's what the above code is doing:\n```",
-      "strategy": "display",
-      "params": {
-        "model": "gpt-4",
+        "model": "gpt-4-1106-preview",
         "stop": ["```"]
       }
     }
@@ -140,7 +16,7 @@
       "strategy": "quick_fix",
       "template": "{{input}}",
       "params": {
-        "model": "gpt-4",
+        "model": "gpt-4-1106-preview",
         "max_tokens": 4096,
         "messages": [
           {
@@ -172,6 +48,130 @@
             "content": "<OK>"
           }
         ]
+      }
+    }
+  },
+  "complete_code": {
+    "type": "chat",
+    "opts": {
+      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it.\n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n\n```{{filetype}}\n",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "stop": ["```"]
+      }
+    }
+  },
+  "docstring": {
+    "type": "chat",
+    "opts": {
+      "template": "# An elaborate, high quality docstring for the above function:\n# Writing a good docstring\n\nThis is an example of writing a really good docstring that follows a best practice for the given language. Attention is paid to detailing things like\n* parameter and return types (if applicable)\n* any errors that might be raised or returned, depending on the language\n\nI received the following code:\n\n```{{filetype}}\n{{input}}\n```\n\nThe code with a really good docstring added is below:\n\n```{{filetype}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "stop": ["```"]
+      }
+    }
+  },
+  "explain_code": {
+    "type": "chat",
+    "opts": {
+      "title": " Explain Code",
+      "template": "Explain the following code:\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nUse markdown format.\nHere's what the above code is doing:\n```",
+      "strategy": "display",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "stop": ["```"]
+      }
+    }
+  },
+  "fix_bugs": {
+    "type": "chat",
+    "opts": {
+      "template": "Fix bugs in the below code\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nFixed code:\n```{{filetype}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "stop": ["```"]
+      }
+    }
+  },
+  "grammar_correction": {
+    "type": "chat",
+    "opts": {
+      "template": "Correct this to standard {{lang}}:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-3.5-turbo-1106"
+      }
+    },
+    "args": {
+      "lang": {
+        "type": "string",
+        "optional": "true",
+        "default": "english"
+      }
+    }
+  },
+  "keywords": {
+    "type": "chat",
+    "opts": {
+      "template": "Extract the main keywords from the following text.\n\n{{input}}",
+      "strategy": "display",
+      "title": " Keywords",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "temperature": 0.5,
+        "frequency_penalty": 0.8
+      }
+    }
+  },
+  "markdown": {
+    "type": "chat",
+    "opts": {
+      "template": "Format this to properly formatted markdown and correct the grammar:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-4-1106-preview"
+      }
+    }
+  },
+  "optimize_code": {
+    "type": "chat",
+    "opts": {
+      "template": "Optimize the following code.\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nOptimized version:\n```{{filetype}}",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-4-1106-preview",
+        "stop": ["```"]
+      }
+    }
+  },
+  "summarize": {
+    "type": "chat",
+    "opts": {
+      "template": "Summarize the following text.\n\nText:\n\"\"\"\n{{input}}\n\"\"\"\n\nSummary:",
+      "strategy": "edit",
+      "params": {
+        "model": "gpt-4-1106-preview"
+      }
+    }
+  },
+  "translate": {
+    "type": "chat",
+    "opts": {
+      "template": "Translate this into {{lang}}:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-3.5-turbo-1106",
+        "temperature": 0.3
+      }
+    },
+    "args": {
+      "lang": {
+        "type": "string",
+        "optional": "true",
+        "default": "english"
       }
     }
   }
