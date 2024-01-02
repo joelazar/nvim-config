@@ -70,8 +70,8 @@ vim.o.autowrite = true
 -- Briefly jump to matching bracket if insert one
 vim.o.showmatch = true
 
--- Show relative line number in front of each line
-vim.o.relativenumber = true
+-- Show absolute line number in front of each line
+vim.o.relativenumber = false
 
 -- Make builtin completion menus slightly transparent
 vim.o.pumblend = 10
