@@ -465,6 +465,10 @@ M.config = function()
 					end,
 					"Toggle autoformat",
 				},
+				["g"] = {
+					"<cmd>Copilot! toggle<cr>",
+					"Toggle GitHub Copilot ",
+				},
 				["t"] = {
 					function()
 						if vim.b.ts_highlight then
@@ -476,19 +480,14 @@ M.config = function()
 					"Toggle treesitter highlight",
 				},
 				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
+				["z"] = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },
 			},
 			["Q"] = { name = "Session" },
 			["x"] = {
 				name = "Misc",
 				["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
-				["g"] = {
-					name = "GitHub Copilot",
-					["d"] = { "<cmd>let b:copilot_enabled=0<cr>", "Force disable" },
-					["e"] = { "<cmd>let b:copilot_enabled=1<cr>", "Force enable" },
-				},
 				["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
 				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
-				["z"] = { "<cmd>ZenMode<cr>", "ZenMode" },
 			},
 			["z"] = {
 				name = "Notes",
