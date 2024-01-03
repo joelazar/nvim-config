@@ -38,6 +38,7 @@
   "iswap.nvim": { "branch": "master", "commit": "0a77d73eb7a0ae408a1d384d61f6251b90c4bd23" },
   "jupynium.nvim": { "branch": "master", "commit": "c6fdf2f38512d822d7444d58c1aa58703e004ee6" },
   "jupytext.nvim": { "branch": "main", "commit": "04024f58877bec2917b589a61b35efc1d2e506aa" },
+  "kitty-scrollback.nvim": { "branch": "main", "commit": "7f33ae83bbcccc15022a9b9b5802b5796b73fea7" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "lsp-trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
   "lspkind-nvim": { "branch": "master", "commit": "7f26cf5e27e2bd910ce0ea00c514da2bf97423b8" },
