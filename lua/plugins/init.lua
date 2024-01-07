@@ -304,4 +304,33 @@ return {
 		},
 		event = { "BufRead", "BufNewFile" },
 	},
+
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup({
+				layout = {
+					min_width = 30,
+					default_direction = "right",
+					placement = "edge",
+				},
+				highlight_on_hover = true,
+				autojump = true,
+				manage_folds = true,
+				show_guides = true,
+			})
+			require("telescope").load_extension("aerial")
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+			"nvim-telescope/telescope.nvim",
+		},
+		cmd = {
+			"AerialToggle",
+			"AerialOpen",
+			"AerialClose",
+			"AerialNavOpen",
+		},
+	},
 }

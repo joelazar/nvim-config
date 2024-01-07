@@ -232,6 +232,7 @@ M.config = function()
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("undo")
 	telescope.load_extension("vim_bookmarks")
+	telescope.load_extension("noice")
 end
 
 M.grep_string_visual = function()
