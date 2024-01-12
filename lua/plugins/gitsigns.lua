@@ -79,7 +79,7 @@ return {
 			map({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
 			map({ "n", "v" }, "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
 			map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
-			map("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
+			map("n", "<leader>gp", gs.preview_hunk_inline, { desc = "Preview hunk" })
 
 			map("n", "<leader>gS", gs.stage_buffer, { desc = "Stage buffer" })
 			map("n", "<leader>gR", gs.reset_buffer, { desc = "Reset buffer" })
