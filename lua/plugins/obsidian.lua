@@ -26,8 +26,8 @@ return {
 			dir = "~/notes",
 
 			-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
-			-- levels defined by "vim.log.levels.*" or nil, which is equivalent to DEBUG (1).
-			-- log_level = vim.log.levels.DEBUG,
+			-- levels defined by "vim.log.levels.*".
+			-- log_level = vim.log.levels.INFO,
 
 			daily_notes = {
 				folder = "journal/daily",
@@ -64,8 +64,20 @@ return {
 
 			-- Optional, key mappings.
 			mappings = {
-				-- 	-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-				-- 	["gf"] = require("obsidian.mapping").gf_passthrough(),
+				-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+				["gf"] = {
+					action = function()
+						return require("obsidian").util.gf_passthrough()
+					end,
+					opts = { noremap = false, expr = true, buffer = true },
+				},
+				-- Toggle check-boxes.
+				["<C-c>"] = {
+					action = function()
+						return require("obsidian").util.toggle_checkbox()
+					end,
+					opts = { buffer = true },
+				},
 			},
 
 			-- Optional, customize how names/IDs for new notes are created.
@@ -88,6 +100,20 @@ return {
 
 			-- Optional, set to true if you don't want obsidian.nvim to manage frontmatter.
 			disable_frontmatter = true,
+
+			-- Optional, alternatively you can customize the frontmatter data.
+			note_frontmatter_func = function(note)
+				-- This is equivalent to the default frontmatter function.
+				local out = { title = note.id, tags = note.tags }
+				-- `note.metadata` contains any manually added fields in the frontmatter.
+				-- So here we just make sure those fields are kept in the frontmatter.
+				if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+					for k, v in pairs(note.metadata) do
+						out[k] = v
+					end
+				end
+				return out
+			end,
 
 			templates = {
 				subdir = "_templates",
