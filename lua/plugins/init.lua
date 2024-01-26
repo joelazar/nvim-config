@@ -333,4 +333,10 @@ return {
 			"AerialNavOpen",
 		},
 	},
+
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {},
+	},
 }
