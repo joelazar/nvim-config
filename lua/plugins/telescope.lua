@@ -113,9 +113,7 @@ M.config = function()
 			layout_strategy = "horizontal",
 			layout_config = {
 				prompt_position = "bottom",
-				horizontal = { preview_width = 0.6, results_width = 0.8 },
-				width = 0.95,
-				height = 0.95,
+				horizontal = { preview_width = 0.6, width = 0.95 },
 				preview_cutoff = 120,
 			},
 			file_ignore_patterns = { "node_modules", "^.git/" },
