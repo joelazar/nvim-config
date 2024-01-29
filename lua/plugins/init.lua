@@ -278,7 +278,7 @@ return {
 			require("telescope").load_extension("textcase")
 		end,
 		keys = { { "ga.", mode = { "n", "v" }, "<cmd>TextCaseOpenTelescope<CR>", desc = "Telescope text-case" } },
-		event = "VeryLazy",
+		cmd = { "TextCaseOpenTelescope" },
 	},
 
 	{

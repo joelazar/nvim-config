@@ -3,7 +3,9 @@ local M = {
 	dependencies = {
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"debugloop/telescope-undo.nvim",
+		"AckslD/nvim-neoclip.lua",
 		"tom-anders/telescope-vim-bookmarks.nvim",
+		"ahmedkhalf/project.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
 			"HPRIOR/telescope-gpt",
@@ -231,6 +233,9 @@ M.config = function()
 	telescope.load_extension("undo")
 	telescope.load_extension("vim_bookmarks")
 	telescope.load_extension("noice")
+	telescope.load_extension("neoclip")
+	telescope.load_extension("macroscope")
+	telescope.load_extension("projects")
 end
 
 M.grep_string_visual = function()

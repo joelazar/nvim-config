@@ -1,13 +1,7 @@
 return {
 	"ahmedkhalf/project.nvim",
-	event = { "VimEnter" },
-	dependencies = {
-		"nvim-telescope/telescope.nvim",
-	},
+	event = "VeryLazy",
 	config = function()
-		require("project_nvim").setup({
-			manual_mode = true,
-		})
-		require("telescope").load_extension("projects")
+		require("project_nvim").setup({ manual_mode = true })
 	end,
 }

@@ -35,7 +35,6 @@ M.config = function()
 			lualine_a = { "mode" },
 			lualine_b = {
 				"branch",
-
 				"diff",
 				"diagnostics",
 			},
