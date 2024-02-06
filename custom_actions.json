@@ -102,7 +102,7 @@
       "template": "Correct this to standard {{lang}}:\n\n{{input}}",
       "strategy": "replace",
       "params": {
-        "model": "gpt-3.5-turbo-1106"
+        "model": "gpt-3.5-turbo"
       }
     },
     "args": {
@@ -136,6 +136,23 @@
       }
     }
   },
+  "change_tone": {
+    "type": "chat",
+    "opts": {
+      "template": "Change the tone of the following text to {{tone}}. Output in the same language as the source:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-4-turbo-preview"
+      }
+    },
+    "args": {
+      "tone": {
+        "type": "string",
+        "optional": "true",
+        "default": "straightforward"
+      }
+    }
+  },
   "optimize_code": {
     "type": "chat",
     "opts": {
@@ -163,7 +180,7 @@
       "template": "Translate this into {{lang}}:\n\n{{input}}",
       "strategy": "replace",
       "params": {
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-3.5-turbo",
         "temperature": 0.3
       }
     },

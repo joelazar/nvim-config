@@ -178,6 +178,12 @@ M.config = function()
 				title = "GPT Actions",
 				commands = {
 					"add_tests",
+					"change_tone casual",
+					"change_tone confident",
+					"change_tone formal",
+					"change_tone friendly",
+					"change_tone professional",
+					"change_tone straightforward",
 					"complete_code",
 					"docstring",
 					"explain_code",
