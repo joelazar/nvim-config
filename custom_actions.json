@@ -129,10 +129,10 @@
   "markdown": {
     "type": "chat",
     "opts": {
-      "template": "Format this to properly formatted markdown and correct the grammar:\n\n{{input}}",
+      "template": "Format this to properly formatted markdown:\n\n{{input}}",
       "strategy": "replace",
       "params": {
-        "model": "gpt-4-turbo-preview"
+        "model": "gpt-3.5-turbo-16k"
       }
     }
   },
