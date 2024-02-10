@@ -30,6 +30,8 @@ M.config = function()
 			"gitignore",
 			"go",
 			"gomod",
+			"gosum",
+			"gowork",
 			"html",
 			"http",
 			"javascript",

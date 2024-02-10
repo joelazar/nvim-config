@@ -7,6 +7,8 @@ return {
 			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
 			sources = {
 				null_ls.builtins.code_actions.shellcheck,
+				null_ls.builtins.code_actions.gomodifytags,
+				null_ls.builtins.code_actions.impl,
 
 				null_ls.builtins.diagnostics.fish,
 				-- null_ls.builtins.diagnostics.mypy,
@@ -23,6 +25,8 @@ return {
 					extra_args = { "--dialect", "postgres" },
 				}),
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.goimports,
+				null_ls.builtins.formatting.gofumpt,
 
 				null_ls.builtins.hover.dictionary,
 			},

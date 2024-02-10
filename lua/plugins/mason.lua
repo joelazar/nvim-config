@@ -18,6 +18,7 @@ function M.config()
 		"dockerfile-language-server",
 		"eslint-lsp",
 		"firefox-debug-adapter",
+		"goimports",
 		"gofumpt",
 		"golangci-lint-langserver",
 		"gopls",
