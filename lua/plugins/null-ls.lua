@@ -25,8 +25,6 @@ return {
 					extra_args = { "--dialect", "postgres" },
 				}),
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.goimports,
-				null_ls.builtins.formatting.gofumpt,
 
 				null_ls.builtins.hover.dictionary,
 			},
