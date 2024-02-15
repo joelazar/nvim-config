@@ -54,11 +54,11 @@
   "complete_code": {
     "type": "chat",
     "opts": {
-      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it. Only reply with the code without any explanation. Do not send the first ``` signs in your reply. \n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n\n```{{filetype}}\n",
+      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it. Only reply with the code without any explanation. Do not put the code into markdown code block. End your reply with \"stop\". \n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n",
       "strategy": "replace",
       "params": {
         "model": "gpt-4-turbo-preview",
-        "stop": ["```"]
+        "stop": ["stop"]
       }
     }
   },
