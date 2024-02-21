@@ -21,6 +21,7 @@ M.config = function()
 			"comment",
 			"cpp",
 			"css",
+			"dap_repl",
 			"diff",
 			"dockerfile",
 			"fish",
