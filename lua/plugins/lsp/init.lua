@@ -133,11 +133,7 @@ M.config = function()
 		end
 
 		if server == "tsserver" then
-			require("typescript-tools").setup({
-				on_attach = config.on_attach,
-				separate_diagnostic_server = true,
-				expose_as_code_actions = { "fix_all", "add_missing_imports", "remove_unused" },
-			})
+			require("typescript-tools").setup({ on_attach = config.on_attach })
 		else
 			lspconfig[server].setup(config)
 		end
