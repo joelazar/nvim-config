@@ -113,7 +113,8 @@ M.config = function()
 			},
 			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
 			["c"] = {
-				name = "ChatGPT",
+				name = "AI",
+				["c"] = { "CopilotChat" },
 				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
 				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
 			},
@@ -180,11 +181,12 @@ M.config = function()
 		mappings = {
 			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
 			["c"] = {
-				name = "ChatGPT",
-				["a"] = { "<cmd>ChatGPTActAs<cr>", "Act as" },
-				["c"] = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
-				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
+				name = "AI",
+				["a"] = { "<cmd>ChatGPTActAs<cr>", "ChatGPT - Act as" },
+				["c"] = { "CopilotChat" },
+				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "ChatGPT - Edit with instruction" },
+				["s"] = { "<cmd>ChatGPT<CR>", "ChatGPT - Session" },
+				["t"] = { "<cmd>Telescope gpt<CR>", "ChatGPT - Custom actions" },
 			},
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["G"] = { "<cmd>lua require'config.utils'.lazygit_toggle()<cr>", "Lazygit" },
@@ -370,7 +372,6 @@ M.config = function()
 				["Q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
 				["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
 			},
-			["L"] = { name = "Leetcode" },
 			["m"] = { "Messages" },
 			["S"] = {
 				name = "Search & Replace",
