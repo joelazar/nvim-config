@@ -23,7 +23,7 @@ return {
 	},
 	config = function()
 		require("obsidian").setup({
-			dir = "~/notes",
+			dir = "~/Documents/notes",
 
 			-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
 			-- levels defined by "vim.log.levels.*".
@@ -133,8 +133,6 @@ return {
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 			},
-
-			backlinks = { height = 10, wrap = true },
 
 			-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
 			-- URL it will be ignored but you can customize this behavior here.
