@@ -1,6 +1,6 @@
 return {
 	"epwalsh/obsidian.nvim",
-	event = { "BufReadPre " .. vim.fn.expand("~") .. "/notes/**.md" },
+	event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/notes/**.md" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
