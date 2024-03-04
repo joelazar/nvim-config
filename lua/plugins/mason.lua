@@ -34,7 +34,6 @@ function M.config()
 		"pyright",
 		"ruff-lsp",
 		"rust-analyzer",
-		"shellcheck",
 		"shfmt",
 		"sqlfluff",
 		"stylelint-lsp",

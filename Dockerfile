@@ -15,7 +15,6 @@ RUN sudo -u aur yay -Sy --noconfirm \
     rust-analyzer \
     dockerfile-language-server-bin \
     efm-langserver \
-    shellcheck \
     shfmt \
     python-black \
     python-isort \
