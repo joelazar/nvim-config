@@ -136,9 +136,6 @@ vim.opt.directory = vim.fn.stdpath("state") .. "/swap"
 vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
--- Set python3 interpreter
-vim.g.python3_host_prog = "/usr/bin/python3"
-
 -- Disable some builtin providers
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
