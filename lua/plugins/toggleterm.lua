@@ -13,7 +13,7 @@ return {
 		persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
 		direction = "float",
 		close_on_exit = true, -- close the terminal window when the process exits
-		shell = "/bin/fish", -- change the default shell
+		shell = "/opt/homebrew/bin/fish", -- change the default shell
 		auto_scroll = true, -- automatically scroll to the bottom on terminal output
 		-- This field is only relevant if direction is set to 'float'
 		float_opts = {

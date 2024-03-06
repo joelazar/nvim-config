@@ -9,7 +9,7 @@ vim.g.maplocalleader = " "
 
 -- Set shell
 -- https://github.com/neovim/nvim-lspconfig/issues/2713
-vim.o.shell = "/bin/bash"
+vim.o.shell = "/opt/homebrew/bin/fish"
 
 -- Incremental live completion
 vim.o.inccommand = "nosplit"
