@@ -2,7 +2,7 @@ return {
 	"3rd/image.nvim",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		-- + luarocks install magick
+		-- + luarocks --lua-version=5.1 install magick
 	},
 	ft = { "markdown" },
 	enabled = false,
