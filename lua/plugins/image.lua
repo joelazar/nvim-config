@@ -5,7 +5,6 @@ return {
 		-- + luarocks --lua-version=5.1 install magick
 	},
 	ft = { "markdown" },
-	enabled = false,
 	opts = {
 		backend = "kitty",
 		integrations = {
