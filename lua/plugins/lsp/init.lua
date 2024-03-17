@@ -7,6 +7,7 @@ local M = {
 		"b0o/SchemaStore.nvim",
 		"williamboman/mason.nvim",
 		"pmizio/typescript-tools.nvim",
+		"dmmulroy/ts-error-translator.nvim",
 		{ "folke/neodev.nvim", opts = {} },
 	},
 }
@@ -134,6 +135,7 @@ M.config = function()
 
 		if server == "tsserver" then
 			require("typescript-tools").setup({ on_attach = config.on_attach })
+			require("ts-error-translator").setup()
 		else
 			lspconfig[server].setup(config)
 		end
