@@ -1,5 +1,8 @@
 -- Some options are set through [mini.basics](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-basics.md)
 
+-- Make sure local lua rocks are available
+package.cpath = package.cpath .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/lib/lua/5.1/?.so"
+
 -- Disable mouse
 vim.o.mouse = ""
 
