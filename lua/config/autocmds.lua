@@ -103,7 +103,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"dap-repl",
 		"help",
 		"lspinfo",
-		"man",
 		"neotest-output",
 		"neotest-output-panel",
 		"neotest-summary",
@@ -119,6 +118,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.keymap.set("n", "q", "<cmd>close!<cr>", { buffer = event.buf, silent = true })
 	end,
 	group = augroup("close_with_q"),
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Make it easier to close man-files when opened inline",
+	group = augroup("man_unlisted"),
+	pattern = { "man" },
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+	end,
 })
 
 require("mini.misc").setup()
