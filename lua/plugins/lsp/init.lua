@@ -37,7 +37,6 @@ M.config = function()
 		dockerls = {},
 		eslint = {},
 		golangci_lint_ls = {},
-
 		gopls = {
 			settings = {
 				gopls = {
@@ -115,6 +114,7 @@ M.config = function()
 				},
 			},
 		},
+		zls = {},
 	}
 
 	local setup_server = function(server, config)
