@@ -60,9 +60,9 @@ M.config = function()
 
 		--# customize highlight groups (setting this overrides colorscheme)
 		snipruncolors = {
-			SniprunVirtualTextOk = { bg = "#66eeff", fg = "#000000", ctermbg = "Cyan", cterfg = "Black" },
+			SniprunVirtualTextOk = { bg = "#66eeff", fg = "#000000", ctermbg = "Cyan", ctermfg = "Black" },
 			SniprunFloatingWinOk = { fg = "#66eeff", ctermfg = "Cyan" },
-			SniprunVirtualTextErr = { bg = "#881515", fg = "#000000", ctermbg = "DarkRed", cterfg = "Black" },
+			SniprunVirtualTextErr = { bg = "#881515", fg = "#000000", ctermbg = "DarkRed", ctermfg = "Black" },
 			SniprunFloatingWinErr = { fg = "#881515", ctermfg = "DarkRed" },
 		},
 
