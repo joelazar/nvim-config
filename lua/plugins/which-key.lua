@@ -471,14 +471,17 @@ M.config = function()
 					"Toggle GitHub Copilot ",
 				},
 				["t"] = {
-					function()
-						if vim.b.ts_highlight then
-							vim.treesitter.stop()
-						else
-							vim.treesitter.start()
-						end
-					end,
-					"Toggle treesitter highlight",
+					["h"] = {
+						function()
+							if vim.b.ts_highlight then
+								vim.treesitter.stop()
+							else
+								vim.treesitter.start()
+							end
+						end,
+						"Toggle highlight",
+					},
+					"Treesitter",
 				},
 				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
 				["z"] = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },
