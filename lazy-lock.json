@@ -37,6 +37,7 @@
   "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },
   "hlargs.nvim": { "branch": "main", "commit": "0f2dbf02ff948e8fc8ebe07b215f3174a12bbe3c" },
   "image.nvim": { "branch": "master", "commit": "0dd8bdbb8855bc98c534a902c91dc9eddb8155b1" },
+  "img-clip.nvim": { "branch": "main", "commit": "ba847e55738979fcf54532a5b23bf0f040e5f968" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
   "iswap.nvim": { "branch": "master", "commit": "ff4f4671909ad859366f96981a617acee3762641" },
   "jupynium.nvim": { "branch": "master", "commit": "71c3c15f49e693e7c90e1f53051e04f4c5887af9" },
