@@ -6,15 +6,19 @@ return {
 	},
 	cmd = {
 		"ObsidianBacklinks",
+		"ObsidianDailies",
+		"ObsidianExtractNote",
 		"ObsidianFollowLink",
 		"ObsidianLink",
 		"ObsidianLinkNew",
+		"ObsidianLinks",
 		"ObsidianNew",
 		"ObsidianOpen",
 		"ObsidianPasteImg",
 		"ObsidianQuickSwitch",
 		"ObsidianRename",
 		"ObsidianSearch",
+		"ObsidianTags",
 		"ObsidianTemplate",
 		"ObsidianToday",
 		"ObsidianTomorrow",
@@ -29,7 +33,7 @@ return {
 			-- levels defined by "vim.log.levels.*".
 			-- log_level = vim.log.levels.INFO,
 			daily_notes = {
-				folder = "journal/daily",
+				folder = "daily",
 				date_format = "%Y-%m-%d",
 			},
 

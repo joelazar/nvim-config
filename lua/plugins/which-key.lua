@@ -490,12 +490,15 @@ M.config = function()
 			["x"] = {
 				name = "Misc",
 				["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
+				["p"] = { "<cmd>PeekToggle<cr>", "Toggle preview" },
 				["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
 				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
 			},
 			["z"] = {
 				name = "Notes",
 				["b"] = { "<cmd>ObsidianBacklinks<cr>", "List backlinks" },
+				["d"] = { "<cmd>ObsidianDailies -14 1<cr>", "List dailies" },
+				["i"] = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
 				["l"] = { "<cmd>ObsidianQuickSwitch<cr>", "List notes" },
 				["n"] = {
 					function()
@@ -507,11 +510,10 @@ M.config = function()
 					"Create new note (in current dir)",
 				},
 				["o"] = { "<cmd>ObsidianOpen<cr>", "Open Obsidian" },
-				["p"] = { "<cmd>PeekToggle<cr>", "Toggle preview" },
 				["s"] = { "<cmd>ObsidianSearch<cr>", "Search notes" },
 				["t"] = { "<cmd>ObsidianToday<cr>", "Create/open note for today" },
+				["T"] = { "<cmd>ObsidianTomorrow<cr>", "Create/open note for tomorrow" },
 				["y"] = { "<cmd>ObsidianYesterday<cr>", "Create/open note for yesterday" },
-				["T"] = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
 			},
 		},
 	}
