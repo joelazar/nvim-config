@@ -15,7 +15,7 @@ return {
 					extra_args = { "--dialect", "postgres" },
 				}),
 
-				null_ls.builtins.formatting.black,
+				-- null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.fish_indent,
 				null_ls.builtins.formatting.prettierd,
 				null_ls.builtins.formatting.shfmt.with({
