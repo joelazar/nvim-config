@@ -18,7 +18,9 @@ return {
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.fish_indent,
 				null_ls.builtins.formatting.prettierd,
-				null_ls.builtins.formatting.shfmt,
+				null_ls.builtins.formatting.shfmt.with({
+					extra_args = { "-i", "2", "-s", "-ci" },
+				}),
 				null_ls.builtins.formatting.sqlfluff.with({
 					extra_args = { "--dialect", "postgres" },
 				}),
