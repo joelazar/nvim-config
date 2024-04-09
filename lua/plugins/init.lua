@@ -339,4 +339,6 @@ return {
 		event = "InsertEnter",
 		opts = {},
 	},
+
+	{ "memgraph/cypher.vim", ft = { "cypher", "cql", "cyp" } },
 }
