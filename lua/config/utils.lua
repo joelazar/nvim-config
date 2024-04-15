@@ -37,11 +37,4 @@ M.sudo_write = function(tmpfile, filepath)
 	vim.fn.delete(tmpfile)
 end
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
-M.lazygit_toggle = function()
-	lazygit:toggle()
-end
-
 return M

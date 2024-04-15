@@ -44,6 +44,7 @@
   "jupynium.nvim": { "branch": "master", "commit": "71c3c15f49e693e7c90e1f53051e04f4c5887af9" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "2d4c6970e9b6155b857755a5499cdce313d923b3" },
   "lazy.nvim": { "branch": "main", "commit": "31ddbea7c10b6920c9077b66c97951ca8682d5c8" },
+  "lazygit.nvim": { "branch": "main", "commit": "0ada6c6e7e138df92f5009b6952f4ac41248305a" },
   "lsp-trouble.nvim": { "branch": "main", "commit": "b9cf677f20bb2faa2dacfa870b084e568dca9572" },
   "lspkind-nvim": { "branch": "master", "commit": "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf" },
   "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },

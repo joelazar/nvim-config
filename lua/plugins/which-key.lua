@@ -189,7 +189,6 @@ M.config = function()
 				["t"] = { "<cmd>Telescope gpt<CR>", "ChatGPT - Custom actions" },
 			},
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
-			["G"] = { "<cmd>lua require'config.utils'.lazygit_toggle()<cr>", "Lazygit" },
 			["f"] = { "<cmd>NnnExplorer<cr>", "nnn" },
 			["F"] = { "<cmd>NnnExplorer %:p:h<cr>", "nnn (current buffer dir)" },
 			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
