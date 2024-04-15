@@ -358,4 +358,10 @@ return {
 			{ "<leader>G", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4",
+		lazy = false, -- this plugin already lazy loads
+	},
 }

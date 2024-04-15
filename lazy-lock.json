@@ -108,6 +108,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "0563a31b1f46a911865cb85df3ddde2eff9fdada" },
   "refactoring.nvim": { "branch": "master", "commit": "d2786877c91aa409c824f27b4ce8a9f560dda60a" },
   "rest.nvim": { "branch": "main", "commit": "2ca87d30ff3f318a3136dcaa92d02be1145163c2" },
+  "rustaceanvim": { "branch": "master", "commit": "3d3818a6e4f88e1ccf40088df0cc3f525e0cbdf8" },
   "smart-splits.nvim": { "branch": "master", "commit": "e11caebbe3ce8fb70aced281931f73519a060e0a" },
   "sniprun": { "branch": "master", "commit": "97daa506e2faa3939e0491642103635f9d22cd04" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
