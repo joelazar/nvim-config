@@ -123,8 +123,8 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = "0"
 
 -- Use ripgrep as grep tool
-vim.o.grepprg = "rg --vimgrep --no-heading"
-vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+vim.opt.grepprg = "rg --vimgrep --color never"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- Under evaluation
 vim.opt.formatoptions = "jcroqlnt" -- tcqj
