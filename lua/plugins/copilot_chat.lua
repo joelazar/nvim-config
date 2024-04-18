@@ -78,6 +78,9 @@ return {
 		"CopilotChatSave",
 		"CopilotChatLoad",
 		"CopilotChatDebugInfo",
+		-- User commands
+		"CopilotChatInline",
+		"CopilotChatVisual",
 	},
 	keys = {
 		{ "<leader>cco", "<cmd>CopilotChatOpen<cr>", desc = "CopilotChat - Open" },

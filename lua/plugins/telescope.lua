@@ -131,12 +131,9 @@ M.config = function()
 				prompt_title = false,
 				hidden = true,
 				theme = "ivy",
-				sorting_strategy = "descending",
 				layout_config = {
-					prompt_position = "bottom",
 					height = 0.3,
 				},
-				border = {},
 				mappings = {
 					i = {
 						["<esc>"] = function(...)
