@@ -1,6 +1,68 @@
+local prompts = {
+	-- Code related prompts
+	Explain = "Please explain how the following code works.",
+	Review = "Please review the following code and provide suggestions for improvement.",
+	Tests = "Please explain how the selected code works, then generate unit tests for it.",
+	Refactor = "Please refactor the following code to improve its clarity and readability.",
+	FixCode = "Please fix the following code to make it work as intended.",
+	FixError = "Please explain the error in the following text and provide a solution.",
+	BetterNamings = "Please provide better names for the following variables and functions.",
+	Documentation = "Please provide documentation for the following code.",
+
+	-- Text related prompts
+	Summarize = "Please summarize the following text.",
+	Spelling = "Please correct any grammar and spelling errors in the following text.",
+	Wording = "Please improve the grammar and wording of the following text.",
+	Concise = "Please rewrite the following text to make it more concise.",
+}
+
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
-	opts = {},
+	opts = {
+		mappings = {
+			submit_prompt = {
+				normal = "<CR>",
+				insert = "<C-CR>",
+			},
+		},
+		prompts = prompts,
+	},
+	config = function(_, opts)
+		local chat = require("CopilotChat")
+		local select = require("CopilotChat.select")
+
+		-- Override the git prompts message
+		opts.prompts.Commit = {
+			prompt = "Write commit message for the change with commitizen convention",
+			selection = select.gitdiff,
+		}
+		opts.prompts.CommitStaged = {
+			prompt = "Write commit message for the change with commitizen convention",
+			selection = function(source)
+				return select.gitdiff(source, true)
+			end,
+		}
+
+		chat.setup(opts)
+
+		vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
+			chat.ask(args.args, { selection = select.visual })
+		end, { nargs = "*", range = true })
+
+		-- Inline chat with Copilot
+		vim.api.nvim_create_user_command("CopilotChatInline", function(args)
+			chat.ask(args.args, {
+				selection = select.visual,
+				window = {
+					layout = "float",
+					relative = "cursor",
+					width = 1,
+					height = 0.4,
+					row = 1,
+				},
+			})
+		end, { nargs = "*", range = true })
+	end,
 	-- sudo luarocks install --lua-version 5.1 tiktoken_core
 	dependencies = {
 		{ "zbirenbaum/copilot.lua" },
@@ -68,19 +130,16 @@ return {
 			end,
 			desc = "CopilotChat - Ask input",
 		},
-		-- Generate commit message based on the git diff
-		-- Quick chat with Copilot
 		{
 			"<leader>ccq",
 			function()
 				local input = vim.fn.input("Quick Chat: ")
 				if input ~= "" then
-					vim.cmd("CopilotChatBuffer " .. input)
+					require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
 				end
 			end,
 			desc = "CopilotChat - Quick chat",
 		},
-
 		-- Visual mode
 		{
 			"<leader>ccp",
