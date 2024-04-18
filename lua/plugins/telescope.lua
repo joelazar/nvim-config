@@ -114,14 +114,12 @@ M.config = function()
 			dynamic_preview_title = true,
 			layout_strategy = "horizontal",
 			layout_config = {
-				prompt_position = "bottom",
 				horizontal = { preview_width = 0.6, width = 0.95 },
 				preview_cutoff = 120,
 			},
 			file_ignore_patterns = { "node_modules", "^.git/" },
 			winblend = 0,
 			border = {},
-			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 			color_devicons = true,
 			file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 			grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -135,8 +133,10 @@ M.config = function()
 				theme = "ivy",
 				sorting_strategy = "descending",
 				layout_config = {
+					prompt_position = "bottom",
 					height = 0.3,
 				},
+				border = {},
 				mappings = {
 					i = {
 						["<esc>"] = function(...)
