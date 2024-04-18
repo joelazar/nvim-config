@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	desc = "Don't show any numbers inside terminals",
-	pattern = "term://*",
+	pattern = { "term://*", "copilot-chat" },
 	command = "setlocal signcolumn=no nonumber norelativenumber | setfiletype terminal",
 	group = augroup("terminal_no_numbers"),
 })
