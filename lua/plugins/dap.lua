@@ -225,7 +225,8 @@ M.config = function()
 		},
 	}
 
-	dap_python.setup(vim.fn.system("which python"))
+	local path = require("mason-registry").get_package("debugpy"):get_install_path()
+	require("dap-python").setup(path .. "/venv/bin/python")
 
 	-- TODO: mojo debugging is not working yet
 	dap.adapters.lldb = {
