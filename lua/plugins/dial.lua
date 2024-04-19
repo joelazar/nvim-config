@@ -64,6 +64,28 @@ return {
 			cyclic = true,
 		})
 
+		local default = {
+			augend.integer.alias.decimal_int, -- 100
+			augend.integer.alias.hex, -- 0xAB
+			augend.date.alias["%Y/%m/%d"], -- 2020/01/01
+			augend.date.alias["%Y-%m-%d"], -- 2020-01-01
+			augend.constant.alias.bool, -- true
+			augend.semver.alias.semver, -- 1.0.1
+			augend.date.alias["%m/%d"], -- 12/01
+			augend.date.alias["%H:%M"], -- 14:30
+			ordinal_numbers,
+			weekdays,
+			months,
+
+			-- config specific keywords
+			augend.constant.new({ elements = { "enable", "disable" } }),
+			augend.constant.new({
+				elements = { "debug", "info", "notice", "warning", "error", "crit", "alert", "emerg" },
+				word = true,
+				cyclic = true,
+			}),
+		}
+
 		return {
 			dials_by_ft = {
 				css = "css",
@@ -79,44 +101,29 @@ return {
 				typescriptreact = "typescript",
 			},
 			groups = {
-				default = {
-					augend.integer.alias.decimal_int, -- 100
-					augend.integer.alias.hex, -- 0xAB
-					augend.date.alias["%Y/%m/%d"], -- 2020/01/01
-					augend.date.alias["%Y-%m-%d"], -- 2020-01-01
-					augend.constant.alias.bool, -- true
-					augend.semver.alias.semver, -- 1.0.1
-					augend.date.alias["%m/%d"], -- 12/01
-					augend.date.alias["%H:%M"], -- 14:30
-					ordinal_numbers,
-					weekdays,
-					months,
-
-					-- config specific keywords
-					augend.constant.new({ elements = { "enable", "disable" } }),
-					augend.constant.new({
-						elements = { "debug", "info", "notice", "warning", "error", "crit", "alert", "emerg" },
-						word = true,
-						cyclic = true,
-					}),
-				},
+				default,
 				typescript = {
+					table.unpack(default),
 					augend.constant.new({ elements = { "&&", "||" } }),
 					augend.constant.new({ elements = { "let", "const" } }),
 					augend.constant.new({ elements = { "asc", "desc" } }),
 					augend.constant.new({ elements = { "forEach", "map" } }),
 				},
 				css = {
+					table.unpack(default),
 					augend.hexcolor.new({ case = "lower" }),
 					augend.hexcolor.new({ case = "upper" }),
 				},
 				markdown = {
+					table.unpack(default),
 					augend.misc.alias.markdown_header,
 				},
 				lua = { -- or
+					table.unpack(default),
 					augend.constant.new({ elements = { "and", "or" } }),
 				},
 				python = {
+					table.unpack(default),
 					augend.constant.new({ elements = { "and", "or" } }),
 					augend.constant.new({ elements = { "True", "False" } }),
 				},
