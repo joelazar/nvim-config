@@ -9,21 +9,21 @@ local M = {
 		-- Additional textobjects for treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		-- Show context of the current function
-		{
-			"nvim-treesitter/nvim-treesitter-context",
-			enabled = true,
-			opts = { mode = "cursor", max_lines = 3 },
-			keys = {
-				{
-					"<leader>Ttc",
-					function()
-						local tsc = require("treesitter-context")
-						tsc.toggle()
-					end,
-					desc = "Toggle context",
-				},
-			},
-		},
+		-- {
+		-- 	"nvim-treesitter/nvim-treesitter-context",
+		-- 	enabled = true,
+		-- 	opts = { enable = { "lua" }, mode = "cursor", max_lines = 3 },
+		-- 	keys = {
+		-- 		{
+		-- 			"<leader>Ttc",
+		-- 			function()
+		-- 				local tsc = require("treesitter-context")
+		-- 				tsc.toggle()
+		-- 			end,
+		-- 			desc = "Toggle context",
+		-- 		},
+		-- 	},
+		-- },
 	},
 	event = { "BufReadPost", "BufNewFile" },
 }
