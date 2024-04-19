@@ -10,7 +10,6 @@ return {
 				null_ls.builtins.code_actions.impl,
 
 				null_ls.builtins.diagnostics.fish,
-				-- null_ls.builtins.diagnostics.mypy,
 				null_ls.builtins.diagnostics.sqlfluff.with({
 					extra_args = { "--dialect", "postgres" },
 				}),

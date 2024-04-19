@@ -128,6 +128,9 @@ M.config = function()
 			if server == "tsserver" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentRangeFormattingProvider = false
+			elseif server == "ruff_lsp" then
+				-- Disable hover in favor of Pyright
+				client.server_capabilities.hoverProvider = false
 			end
 			require("plugins.lsp.keys").setup(buffer)
 			require("plugins.lsp.format").on_attach(client, buffer)
