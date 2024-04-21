@@ -135,7 +135,7 @@ return {
 		cmd = "Neogen",
 	},
 
-	-- Change strings to template string on the fly in jsx/tsx
+	-- Change strings to template string on the fly
 	{
 		"axelvc/template-string.nvim",
 		opts = {
@@ -147,7 +147,6 @@ return {
 			"javascript",
 			"typescriptreact",
 			"javascriptreact",
-			"python",
 		},
 	},
 
