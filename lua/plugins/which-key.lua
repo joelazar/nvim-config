@@ -199,7 +199,7 @@ M.config = function()
 			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
 			["b"] = {
 				name = "Buffers",
-				["f"] = {
+				["F"] = {
 					"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
 					"Format buffer (LSP)",
 				},
@@ -459,16 +459,8 @@ M.config = function()
 			},
 			["T"] = {
 				name = "Toggle",
-				["f"] = {
-					function()
-						require("plugins.lsp.format").toggle()
-					end,
-					"Toggle autoformat",
-				},
-				["g"] = {
-					"<cmd>Copilot! toggle<cr>",
-					"Toggle GitHub Copilot ",
-				},
+				["f"] = { "<cmd>FormatToggle<cr>", "Toggle autoformat" },
+				["g"] = { "<cmd>Copilot! toggle<cr>", "Toggle GitHub Copilot " },
 				["t"] = {
 					["h"] = {
 						function()
