@@ -344,7 +344,8 @@ M.config = function()
 			},
 			["o"] = {
 				name = "Overseer",
-				["l"] = { "<cmd>OverseerRun<cr>", "List tasks in project" },
+				["l"] = { "<cmd>OverseerRestartLast<cr>", "Run last task" },
+				["r"] = { "<cmd>OverseerRun<cr>", "List tasks in project" },
 				["t"] = { "<cmd>OverseerToggle<cr>", "Toggle summary window" },
 			},
 			["s"] = {
