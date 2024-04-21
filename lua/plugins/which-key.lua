@@ -165,7 +165,7 @@ M.config = function()
 				},
 			},
 			["z"] = {
-				name = "Notes",
+				name = "Obsidian",
 				["l"] = { "<cmd>ObsidianLink<CR>", "Link a note" },
 				["n"] = {
 					function()
@@ -494,7 +494,7 @@ M.config = function()
 				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
 			},
 			["z"] = {
-				name = "Notes",
+				name = "Obsidian",
 				["b"] = { "<cmd>ObsidianBacklinks<cr>", "List backlinks" },
 				["d"] = { "<cmd>ObsidianDailies -14 1<cr>", "List dailies" },
 				["i"] = { "<cmd>ObsidianTemplate<cr>", "Insert template" },

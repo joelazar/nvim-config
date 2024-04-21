@@ -16,7 +16,7 @@ return {
 			conf = false,
 			["."] = false,
 			markdown = function()
-				if string.match(vim.fn.expand("%:p:h"), "notes") then
+				if string.match(vim.fn.expand("%:p:h"), "obsidian") then
 					return false
 				end
 				return true

@@ -1,6 +1,6 @@
 return {
 	"epwalsh/obsidian.nvim",
-	event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/notes/**.md" },
+	event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/obsidian/**.md" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
@@ -27,7 +27,7 @@ return {
 	},
 	config = function()
 		require("obsidian").setup({
-			dir = "~/Documents/notes",
+			dir = "~/Documents/obsidian",
 
 			-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
 			-- levels defined by "vim.log.levels.*".
