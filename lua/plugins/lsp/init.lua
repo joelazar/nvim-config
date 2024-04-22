@@ -88,7 +88,7 @@ M.config = function()
 		mojo = {},
 		prismals = {},
 		pyright = {},
-		ruff_lsp = {},
+		ruff = {},
 		rust_analyzer = {},
 		stylelint_lsp = { autostart = false },
 		tailwindcss = { autostart = false },
@@ -128,7 +128,7 @@ M.config = function()
 			if server == "tsserver" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentRangeFormattingProvider = false
-			elseif server == "ruff_lsp" then
+			elseif server == "ruff" then
 				-- Disable hover in favor of Pyright
 				client.server_capabilities.hoverProvider = false
 			end
