@@ -33,7 +33,7 @@ function M.config()
 		"prettierd",
 		"prisma-language-server",
 		"pyright",
-		"ruff-lsp",
+		"ruff",
 		"rust-analyzer",
 		"shfmt",
 		"sqlfluff",
@@ -44,6 +44,7 @@ function M.config()
 		"texlab",
 		"typescript-language-server",
 		"yaml-language-server",
+		"zls",
 	}
 
 	local function check()
