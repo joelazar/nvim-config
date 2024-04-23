@@ -21,7 +21,6 @@ M.config = function()
 
 	local function on_attach(client, buffer)
 		require("plugins.lsp.keys").setup(buffer)
-		require("plugins.lsp.format").on_attach(client, buffer)
 	end
 
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -133,7 +132,6 @@ M.config = function()
 				client.server_capabilities.hoverProvider = false
 			end
 			require("plugins.lsp.keys").setup(buffer)
-			require("plugins.lsp.format").on_attach(client, buffer)
 		end
 
 		if server == "tsserver" then
