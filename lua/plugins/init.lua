@@ -375,4 +375,12 @@ return {
 		version = "^4",
 		lazy = false, -- this plugin already lazy loads
 	},
+
+	{
+		"FabijanZulj/blame.nvim",
+		config = function()
+			require("blame").setup()
+		end,
+		cmd = "BlameToggle",
+	},
 }
