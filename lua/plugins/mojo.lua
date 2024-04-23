@@ -2,27 +2,6 @@ return {
 	"igorgue/mojo.vim",
 	ft = { "mojo" },
 	init = function()
-		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-			pattern = { "*.🔥", ".mojo" },
-			callback = function()
-				if vim.bo.filetype ~= "mojo" then
-					vim.bo.filetype = "mojo"
-				end
-			end,
-		})
-
-		local function format_mojo()
-			if require("plugins.lsp.format").autoformat then
-				vim.cmd("noa silent! !mojo format --quiet " .. vim.fn.expand("%:p"))
-			end
-		end
-
-		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-			pattern = { "*.🔥", "*.mojo" },
-			nested = true,
-			callback = format_mojo,
-		})
-
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			pattern = "*",
 			callback = function()

@@ -31,6 +31,7 @@ return {
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
+			mojo = { "mojo" },
 			-- python = { "isort", "black" },
 			["javascript"] = { "prettierd" },
 			["javascriptreact"] = { "prettierd" },
@@ -57,6 +58,12 @@ return {
 			},
 			sqlfluff = {
 				prepend_args = { "--dialect", "postgres" },
+			},
+			mojo = {
+				inherit = false,
+				command = "mojo",
+				args = { "format", "--quiet", "$FILENAME" },
+				stdin = false,
 			},
 		},
 	},
