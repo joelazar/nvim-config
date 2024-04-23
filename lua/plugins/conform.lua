@@ -28,6 +28,9 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			zsh = { "shfmt" },
 			-- python = { "isort", "black" },
 			["javascript"] = { "prettierd" },
 			["javascriptreact"] = { "prettierd" },
