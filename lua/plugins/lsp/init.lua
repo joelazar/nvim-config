@@ -88,7 +88,6 @@ M.config = function()
 		prismals = {},
 		pyright = {},
 		ruff = {},
-		rust_analyzer = {},
 		stylelint_lsp = { autostart = false },
 		tailwindcss = { autostart = false },
 		taplo = {},
