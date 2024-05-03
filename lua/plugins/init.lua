@@ -362,9 +362,7 @@ return {
 			"LazyGitFilter",
 			"LazyGitFilterCurrentFile",
 		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
+		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
 			{ "<leader>G", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
@@ -382,5 +380,26 @@ return {
 			require("blame").setup()
 		end,
 		cmd = "BlameToggle",
+	},
+
+	{
+		"andythigpen/nvim-coverage",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			lang = {
+				python = {
+					-- ignore errors for now
+					coverage_command = "coverage json --fail-under=0 -i -q -o -",
+				},
+			},
+		},
+		config = true,
+		cmd = {
+			"Coverage",
+			"CoverageLoad",
+			"CoverageShow",
+			"CoverageSummary",
+			"CoverageToggle",
+		},
 	},
 }
