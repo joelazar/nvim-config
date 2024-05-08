@@ -28,7 +28,6 @@ function M.config()
 		"js-debug-adapter",
 		"json-lsp",
 		"lua-language-server",
-		"mypy",
 		"node-debug2-adapter",
 		"prettierd",
 		"prisma-language-server",
