@@ -8,6 +8,11 @@ local M = {
 		"ahmedkhalf/project.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
+			"danielfalk/smart-open.nvim",
+			branch = "0.2.x",
+			dependencies = { "kkharji/sqlite.lua" },
+		},
+		{
 			"HPRIOR/telescope-gpt",
 			dependencies = { "jackMort/ChatGPT.nvim" },
 		},
@@ -239,6 +244,7 @@ M.config = function()
 	telescope.load_extension("neoclip")
 	telescope.load_extension("macroscope")
 	telescope.load_extension("projects")
+	telescope.load_extension("smart_open")
 end
 
 M.grep_string_visual = function()

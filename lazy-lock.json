@@ -109,6 +109,7 @@
   "refactoring.nvim": { "branch": "master", "commit": "d2786877c91aa409c824f27b4ce8a9f560dda60a" },
   "rest.nvim": { "branch": "main", "commit": "f96edb54a2940322bc7ed81a1031be04db7d3a99" },
   "rustaceanvim": { "branch": "master", "commit": "187ba89020a6cb9c9bfe39818ef05964473baefc" },
+  "smart-open.nvim": { "branch": "0.2.x", "commit": "87626ee8748b9bba22093adec7bb58c63e7214f0" },
   "smart-splits.nvim": { "branch": "master", "commit": "159d4479a402d7f40cac1c097fa565fc2ba02cfb" },
   "sniprun": { "branch": "master", "commit": "9006d4af4f7016523f8619ae1526ab4e7f0df785" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
