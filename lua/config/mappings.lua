@@ -4,12 +4,12 @@ local map = vim.keymap.set
 map("n", "Q", "<cmd>close<cr>", { silent = true })
 
 -- Move current line / block with Alt-j/k ala vscode.
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up", noremap = true, silent = true })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down", noremap = true, silent = true })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up", noremap = true, silent = true })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down", noremap = true, silent = true })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up", noremap = true, silent = true })
+map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down", noremap = true, silent = true })
+map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up", noremap = true, silent = true })
+map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down", noremap = true, silent = true })
+map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up", noremap = true, silent = true })
+map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down", noremap = true, silent = true })
+map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up", noremap = true, silent = true })
 
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
