@@ -2,11 +2,11 @@
   "add_tests": {
     "type": "chat",
     "opts": {
-      "template": "Implement tests for the following code. Only reply with the code without any explanation. Do not send the first ``` signs in your reply. \n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nTests:\n```{{filetype}}",
+      "template": "Implement tests for the following code. Provide only the required code and nothing else. Do not send the opening markdown code block ticks ```. No explanations. End the block with END.\n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nTests:\n```{{filetype}}",
       "strategy": "append",
       "params": {
         "model": "gpt-4o",
-        "stop": ["```"]
+        "stop": ["END"]
       }
     }
   },
@@ -54,11 +54,11 @@
   "complete_code": {
     "type": "chat",
     "opts": {
-      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it. Only reply with the code without any explanation. Do not put the code into markdown code block. End your reply with \"stop\". \n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n",
+      "template": "Complete the following code written in {{lang}} by pasting the existing code and continuing it. Do not send the opening markdown code block ticks ```. No explanations. End the block with END. \n\nExisting code:\n```{{filetype}}\n{{input}}\n```\n\nCompleted code:\n```{{filetype}}",
       "strategy": "replace",
       "params": {
         "model": "gpt-4o",
-        "stop": ["stop"]
+        "stop": ["END"]
       }
     }
   },
@@ -88,11 +88,11 @@
   "fix_bugs": {
     "type": "chat",
     "opts": {
-      "template": "Fix bugs in the below code. Only reply with the corrected code without any explanation. Do not send the first ``` signs in your reply. \n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nFixed code:\n```{{filetype}}",
+      "template": "Fix bugs in the below code. Provide only the required code and nothing else. Do not send the opening markdown code block ticks ```. No explanations. End the block with END. \n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nFixed code:\n```{{filetype}}",
       "strategy": "edit",
       "params": {
         "model": "gpt-4o",
-        "stop": ["```"]
+        "stop": ["END"]
       }
     }
   },
@@ -156,11 +156,11 @@
   "optimize_code": {
     "type": "chat",
     "opts": {
-      "template": "Optimize the following code. Only reply with the optimized code without any explanation. Do not send the first ``` signs in your reply. \n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nOptimized version:\n```{{filetype}}",
+      "template": "Optimize the following code. Provide only the required code and nothing else. Do not send the opening markdown code block ticks ```. No explanations. End the block with END. \n\nCode:\n```{{filetype}}\n{{input}}\n```\n\nOptimized version:\n```{{filetype}}",
       "strategy": "edit",
       "params": {
         "model": "gpt-4o",
-        "stop": ["```"]
+        "stop": ["END"]
       }
     }
   },
