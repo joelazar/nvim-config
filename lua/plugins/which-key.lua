@@ -155,7 +155,7 @@ M.config = function()
 			},
 			["s"] = {
 				name = "Search",
-				["w"] = { '<cmd>lua require"plugins.telescope".grep_string_visual()<CR>', "Visual selection" },
+				["w"] = { "<cmd>Telescope grep_string<CR>", "Visual selection" },
 			},
 			["S"] = {
 				name = "Search & Replace",
