@@ -15,7 +15,7 @@ vim.g.maplocalleader = " "
 vim.o.shell = "/opt/homebrew/bin/fish"
 
 -- Incremental live completion
-vim.o.inccommand = "nosplit"
+vim.o.inccommand = "split"
 
 -- Enable highlight on search
 vim.o.hlsearch = true
@@ -86,8 +86,8 @@ vim.o.pumheight = 15
 vim.o.cmdheight = 1
 
 -- Minimum nr. of lines above and below cursor
-vim.o.scrolloff = 5 -- could be 1
-vim.o.sidescrolloff = 5
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
 
 -- Timeout on leaderkey
 vim.o.ttimeout = true
