@@ -1,7 +1,13 @@
 local M = {
 	"williamboman/mason.nvim",
 	build = ":MasonUpdate",
-	cmd = { "Mason", "MasonUpdate" },
+	dependencies = { "Zeioth/mason-extra-cmds", opts = {} },
+	cmd = {
+		"Mason",
+		"MasonLog",
+		"MasonUpdate",
+		"MasonUpdateAll",
+	},
 }
 
 function M.config()
