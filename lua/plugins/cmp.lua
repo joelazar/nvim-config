@@ -79,23 +79,32 @@ M.config = function()
 				fallback()
 			end,
 			["<C-Space>"] = cmp.mapping.complete(),
-			["<CR>"] = function()
-				utils.create_undo()
-				cmp.mapping.confirm({ select = false })
+			["<CR>"] = function(fallback)
+				if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
+					utils.create_undo()
+					if cmp.confirm({ select = false }) then
+						return
+					end
+				end
+				return fallback()
 			end,
-			["<S-CR>"] = function()
-				utils.create_undo()
-				cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				})
+			["<S-CR>"] = function(fallback)
+				if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
+					utils.create_undo()
+					if cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }) then
+						return
+					end
+				end
+				return fallback()
 			end,
-			["<C-j>"] = function()
-				utils.create_undo()
-				cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				})
+			["<C-j>"] = function(fallback)
+				if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
+					utils.create_undo()
+					if cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }) then
+						return
+					end
+				end
+				return fallback()
 			end,
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
