@@ -8,7 +8,7 @@ return {
 		"nvim-neotest/neotest-go",
 		"nvim-neotest/neotest-python",
 		"haydenmeade/neotest-jest",
-		"folke/lsp-trouble.nvim",
+		"folke/trouble.nvim",
 	},
 	ft = {
 		"go",

@@ -66,9 +66,10 @@ return {
 
 	-- Nicer diagnostics
 	{
-		"folke/lsp-trouble.nvim",
-		opts = { auto_preview = false, auto_fold = false, auto_close = true },
-		cmd = { "TroubleToggle", "Trouble" },
+		"folke/trouble.nvim",
+		branch = "dev",
+		opts = { auto_preview = true, auto_close = true },
+		cmd = { "Trouble" },
 	},
 
 	-- GitHub integration for issues and prs
@@ -128,9 +129,7 @@ return {
 	-- Quick annotation generator
 	{
 		"danymat/neogen",
-		config = function()
-			require("neogen").setup({ snippet_engine = "luasnip" })
-		end,
+		opts = {},
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		cmd = "Neogen",
 	},
@@ -169,10 +168,9 @@ return {
 	},
 
 	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		opts = {
-			enable_autocmd = false,
-		},
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+		opts = {},
 	},
 
 	{

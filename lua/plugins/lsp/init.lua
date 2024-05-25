@@ -131,11 +131,30 @@ M.config = function()
 				client.server_capabilities.hoverProvider = false
 			end
 			require("plugins.lsp.keys").setup(buffer)
+
+			-- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+			-- 	vim.keymap.set("n", "<leader>TI", function()
+			-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+			-- 	end, "Toggle inlay hints")
+			-- end
 		end
 
 		if server == "tsserver" then
-			require("typescript-tools").setup({ on_attach = config.on_attach })
+			require("typescript-tools").setup({
+				on_attach = config.on_attach,
+				settings = {
+					tsserver_file_preferences = {
+						includeInlayParameterNameHints = "all",
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = true,
+					},
+				},
+			})
 			require("ts-error-translator").setup()
+			vim.lsp.inlay_hint.enable()
 		else
 			lspconfig[server].setup(config)
 		end

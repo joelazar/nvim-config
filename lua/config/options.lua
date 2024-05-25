@@ -47,7 +47,7 @@ vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
 -- GUI: Name(s) of font(s) to be used
-vim.o.guifont = "Roboto Mono:h14"
+vim.o.guifont = "Fira Code:h14"
 
 -- Number of command-lines that are remembered
 vim.o.history = 10000

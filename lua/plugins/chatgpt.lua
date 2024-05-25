@@ -69,7 +69,7 @@ return {
 				top_p = 1,
 				n = 1,
 			},
-			show_quickfixes_cmd = "Trouble quickfix",
+			show_quickfixes_cmd = "Trouble qflist",
 			actions_paths = { "~/.config/nvim/custom_actions.json" },
 		})
 	end,

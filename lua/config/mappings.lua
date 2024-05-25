@@ -50,18 +50,26 @@ map("v", ">", ">gv")
 map("v", ".", "<cmd>norm .<cr>", { silent = true })
 
 -- Trouble mappings
-map("n", "<C-q>", "<cmd>TroubleToggle<cr>", { silent = true })
+map("n", "<C-q>", "<cmd>Trouble diagnostics toggle<cr>", { silent = true })
 map("n", "]q", function()
-	require("trouble").next({ skip_groups = true, jump = true })
+	if require("trouble").is_open() then
+		require("trouble").next({ skip_groups = true, jump = true })
+	end
 end, { desc = "Trouble forward", silent = true })
 map("n", "[q", function()
-	require("trouble").previous({ skip_groups = true, jump = true })
+	if require("trouble").is_open() then
+		require("trouble").prev({ skip_groups = true, jump = true })
+	end
 end, { desc = "Trouble backward", silent = true })
 map("n", "]Q", function()
-	require("trouble").last({ skip_groups = true, jump = true })
+	if require("trouble").is_open() then
+		require("trouble").last({ skip_groups = true, jump = true })
+	end
 end, { desc = "Trouble last", silent = true })
 map("n", "[Q", function()
-	require("trouble").first({ skip_groups = true, jump = true })
+	if require("trouble").is_open() then
+		require("trouble").first({ skip_groups = true, jump = true })
+	end
 end, { desc = "Trouble first", silent = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n

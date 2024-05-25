@@ -2,7 +2,6 @@ local M = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"L3MON4D3/LuaSnip",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-calc",
 		"hrsh7th/cmp-emoji",
@@ -12,8 +11,35 @@ local M = {
 		"mtoohey31/cmp-fish",
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
-		"saadparwaiz1/cmp_luasnip",
 		"ray-x/cmp-treesitter",
+		{
+			"garymjr/nvim-snippets",
+			opts = {
+				friendly_snippets = true,
+				global_snippets = { "all", "global" },
+			},
+			dependencies = { "rafamadriz/friendly-snippets" },
+			keys = {
+				{
+					"<Tab>",
+					function()
+						return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
+					end,
+					expr = true,
+					silent = true,
+					mode = { "i", "s" },
+				},
+				{
+					"<S-Tab>",
+					function()
+						return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<Tab>"
+					end,
+					expr = true,
+					silent = true,
+					mode = { "i", "s" },
+				},
+			},
+		},
 		{ "tzachar/cmp-fuzzy-buffer", dependencies = { "tzachar/fuzzy.nvim" } },
 		{ "petertriho/cmp-git", dependencies = { "nvim-lua/plenary.nvim" } },
 		{
@@ -39,7 +65,7 @@ local M = {
 M.config = function()
 	local cmp = require("cmp")
 	local lspkind = require("lspkind")
-	local luasnip = require("luasnip")
+	local utils = require("config.utils")
 
 	cmp.setup({
 		mapping = {
@@ -53,20 +79,27 @@ M.config = function()
 				fallback()
 			end,
 			["<C-Space>"] = cmp.mapping.complete(),
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
-			["<S-CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
-			["<C-j>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = true,
-			}),
+			["<CR>"] = function()
+				utils.create_undo()
+				cmp.mapping.confirm({ select = false })
+			end,
+			["<S-CR>"] = function()
+				utils.create_undo()
+				cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = true,
+				})
+			end,
+			["<C-j>"] = function()
+				utils.create_undo()
+				cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = true,
+				})
+			end,
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
 				else
 					fallback()
 				end
@@ -74,8 +107,6 @@ M.config = function()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
 				else
 					fallback()
 				end
@@ -88,14 +119,7 @@ M.config = function()
 			{ name = "nvim_lsp" },
 			{ name = "treesitter" },
 			{ name = "buffer", keyword_length = 3 },
-			{
-				name = "luasnip",
-				option = { use_show_condition = true },
-				entry_filter = function()
-					local context = require("cmp.config.context")
-					return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
-				end,
-			},
+			{ name = "snippets" },
 			{ name = "nvim_lua" },
 			{ name = "fish" },
 			{ name = "path" },
@@ -110,7 +134,7 @@ M.config = function()
 		},
 		snippet = {
 			expand = function(args)
-				luasnip.lsp_expand(args.body)
+				vim.snippet.expand(args.body)
 			end,
 		},
 		formatting = {

@@ -149,7 +149,7 @@ M.config = function()
 					"Select refactor",
 				},
 				["p"] = {
-					"<cmd>lua require('refactoring').debug.print_var({})<CR>",
+					"<cmd>lua require('refactoring').debug.print_var({normal = true})<CR>",
 					"Print variable",
 				},
 			},
@@ -318,7 +318,7 @@ M.config = function()
 					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
 					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
 				},
-				["d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace diagnostics (trouble)" },
+				["d"] = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace diagnostics (trouble)" },
 				["D"] = {
 					"<cmd>Telescope diagnostics<cr>",
 					"Workspace diagnostics (telescope)",
@@ -358,6 +358,8 @@ M.config = function()
 				["f"] = { "<cmd>Telescope find_files<cr>", "Files" },
 				["h"] = { "<cmd>Telescope command_history<cr>", "Command history" },
 				["H"] = { "<cmd>Telescope help_tags<cr>", "Help" },
+				["j"] = { "<cmd>Telescope jumplist<cr>", "Jump list" },
+				["l"] = { "<cmd>Telescope loclist<cr>", "Location list" },
 				["L"] = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
 				["k"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 				["m"] = { "<cmd>Telescope marks<cr>", "Marks" },
@@ -418,7 +420,11 @@ M.config = function()
 				},
 				["l"] = {
 					"<cmd>lua require('refactoring').debug.printf({below = true})<CR>",
-					"Print debug log",
+					"Print debug log (below)",
+				},
+				["L"] = {
+					"<cmd>lua require('refactoring').debug.printf({below = false})<CR>",
+					"Print debug log (above)",
 				},
 				["p"] = {
 					"<cmd>lua require('refactoring').debug.print_var()<CR>",
@@ -477,6 +483,10 @@ M.config = function()
 					"Treesitter",
 				},
 				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
+				["I"] = {
+					"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+					"Toggle inlay hints",
+				},
 				["z"] = { "<cmd>ZenMode<cr>", "Toggle zenmode" },
 			},
 			["Q"] = { name = "Session" },

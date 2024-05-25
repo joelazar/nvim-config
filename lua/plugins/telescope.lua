@@ -6,6 +6,7 @@ local M = {
 		"AckslD/nvim-neoclip.lua",
 		"tom-anders/telescope-vim-bookmarks.nvim",
 		"ahmedkhalf/project.nvim",
+		"ThePrimeagen/refactoring.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
 			"danielfalk/smart-open.nvim",
@@ -245,6 +246,7 @@ M.config = function()
 	telescope.load_extension("macroscope")
 	telescope.load_extension("projects")
 	telescope.load_extension("smart_open")
+	telescope.load_extension("refactoring")
 end
 
 return M
