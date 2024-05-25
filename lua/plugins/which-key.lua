@@ -108,7 +108,7 @@ M.config = function()
 				name = "LSP",
 				["a"] = {
 					"<cmd>lua vim.lsp.buf.code_action()<cr>",
-					"Code Action",
+					"Code action",
 				},
 			},
 			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
@@ -122,27 +122,27 @@ M.config = function()
 				name = "Refactoring",
 				["b"] = {
 					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
-					"Extract Block",
+					"Extract block",
 				},
 				["f"] = {
 					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
-					"Extract Block to File",
+					"Extract block to file",
 				},
 				["e"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-					"Extract Function",
+					"Extract function",
 				},
 				["F"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-					"Extract Function to File",
+					"Extract function to file",
 				},
 				["v"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
-					"Extract Variable",
+					"Extract variable",
 				},
 				["i"] = {
 					"<Esc><cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-					"Inline Variable",
+					"Inline variable",
 				},
 				["r"] = {
 					"<cmd>lua require('refactoring').select_refactor()<CR>",
@@ -196,7 +196,7 @@ M.config = function()
 			["q"] = { "<cmd>q!<cr>", "Quit" },
 			["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
 			["w"] = { "<cmd>w!<cr>", "Save" },
-			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo Save" },
+			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo save" },
 			["b"] = {
 				name = "Buffers",
 				["F"] = {
@@ -227,23 +227,23 @@ M.config = function()
 					name = "Breakpoints",
 					c = {
 						"<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-						"Breakpoint Condition",
+						"Breakpoint condition",
 					},
 					m = {
 						"<cmd>lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>",
-						"Log Point Message",
+						"Log point message",
 					},
 					t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Create" },
 				},
 				h = {
 					name = "Hover",
 					h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
-					v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual Hover" },
+					v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual hover" },
 				},
 				r = {
 					name = "Repl",
 					o = { "<cmd>lua require('dap').repl.toggle()<CR>", "Toggle" },
-					l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run Last" },
+					l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run last" },
 				},
 				R = {
 					"<cmd>lua require('dap').run_to_cursor()<CR>",
@@ -252,9 +252,9 @@ M.config = function()
 				s = {
 					name = "Step",
 					c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
-					v = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
-					i = { "<cmd>lua require('dap').step_into()<CR>", "Step Into" },
-					o = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
+					v = { "<cmd>lua require('dap').step_over()<CR>", "Step over" },
+					i = { "<cmd>lua require('dap').step_into()<CR>", "Step into" },
+					o = { "<cmd>lua require('dap').step_out()<CR>", "Step out" },
 				},
 				t = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
 				u = {
@@ -311,17 +311,17 @@ M.config = function()
 			},
 			["l"] = {
 				name = "LSP",
-				["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+				["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
 				["c"] = {
 					name = "Codelens",
 					["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
 					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
 					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
 				},
-				["d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+				["d"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace diagnostics (trouble)" },
 				["D"] = {
 					"<cmd>Telescope diagnostics<cr>",
-					"Workspace Diagnostics (Telescope)",
+					"Workspace diagnostics (telescope)",
 				},
 				["i"] = { "<cmd>LspInfo<cr>", "Info" },
 				["k"] = {
@@ -335,11 +335,11 @@ M.config = function()
 				["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 				["s"] = {
 					"<cmd>Telescope lsp_document_symbols<cr>",
-					"Document Symbols",
+					"Document symbols",
 				},
 				["S"] = {
 					"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-					"Workspace Symbols",
+					"Workspace symbols",
 				},
 			},
 			["o"] = {
@@ -394,27 +394,27 @@ M.config = function()
 				name = "Refactoring",
 				["b"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
-					"Extract Block",
+					"Extract block",
 				},
 				["f"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
-					"Extract Block to File",
+					"Extract block to file",
 				},
 				["e"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-					"Extract Function",
+					"Extract function",
 				},
 				["F"] = {
 					"<Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-					"Extract Function to File",
+					"Extract function to file",
 				},
 				["i"] = {
 					"<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-					"Inline Variable",
+					"Inline variable",
 				},
 				["I"] = {
 					"<Cmd>lua require('refactoring').refactor('Inline Function')<CR>",
-					"Inline Function",
+					"Inline function",
 				},
 				["l"] = {
 					"<cmd>lua require('refactoring').debug.printf({below = true})<CR>",
@@ -477,7 +477,7 @@ M.config = function()
 					"Treesitter",
 				},
 				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
-				["z"] = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },
+				["z"] = { "<cmd>ZenMode<cr>", "Toggle zenmode" },
 			},
 			["Q"] = { name = "Session" },
 			["x"] = {
@@ -502,7 +502,7 @@ M.config = function()
 					end,
 					"Create new note (in current dir)",
 				},
-				["o"] = { "<cmd>ObsidianOpen<cr>", "Open Obsidian" },
+				["o"] = { "<cmd>ObsidianOpen<cr>", "Open obsidian" },
 				["s"] = { "<cmd>ObsidianSearch<cr>", "Search notes" },
 				["t"] = { "<cmd>ObsidianToday<cr>", "Create/open note for today" },
 				["T"] = { "<cmd>ObsidianTomorrow<cr>", "Create/open note for tomorrow" },

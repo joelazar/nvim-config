@@ -7,25 +7,25 @@ function M.setup(buffer)
 		buffer = buffer,
 		["gd"] = {
 			'<cmd>lua require("telescope.builtin").lsp_definitions({ reuse_win = true })<cr>',
-			"Goto Definition",
+			"Goto definition",
 			has = "definition",
 		},
-		["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
+		["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto declaration" },
 		["gr"] = {
 			'<cmd>lua require("telescope.builtin").lsp_references({ fname_width = 80 })<cr>',
 			"References",
 		},
 		["gi"] = {
 			'<cmd>lua require("telescope.builtin").lsp_implementations({ reuse_win = true })<cr>',
-			"Goto Implementation",
+			"Goto implementation",
 		},
 		["gt"] = {
 			'<cmd>lua require("telescope.builtin").lsp_type_definitions({ reuse_win = true })<cr>',
-			"Goto T[y]pe Definition",
+			"Goto t[y]pe definition",
 		},
 		["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
-		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", has = "signatureHelp" },
-		["<c-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", mode = "i", "Signature Help", has = "signatureHelp" },
+		["gk"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help", has = "signatureHelp" },
+		["<c-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", mode = "i", "Signature help", has = "signatureHelp" },
 		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Diagnostic backward" },
 		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Diagnostic forward" },
 		["[e"] = {
