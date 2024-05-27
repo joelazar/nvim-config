@@ -20,6 +20,7 @@ return {
 	"CopilotC-Nvim/CopilotChat.nvim",
 	opts = {
 		mappings = {
+			auto_insert_mode = true,
 			submit_prompt = {
 				normal = "<CR>",
 				insert = "<C-CR>",
@@ -62,6 +63,15 @@ return {
 				},
 			})
 		end, { nargs = "*", range = true })
+
+		-- Disable number and relative number in chat buffer
+		vim.api.nvim_create_autocmd("BufEnter", {
+			pattern = "copilot-chat",
+			callback = function()
+				vim.opt_local.relativenumber = false
+				vim.opt_local.number = false
+			end,
+		})
 	end,
 	-- sudo luarocks install --lua-version 5.1 tiktoken_core
 	dependencies = {
@@ -83,84 +93,84 @@ return {
 		"CopilotChatVisual",
 	},
 	keys = {
-		{ "<leader>cco", "<cmd>CopilotChatOpen<cr>", desc = "CopilotChat - Open" },
-		{ "<leader>ccc", "<cmd>CopilotChatClose<cr>", desc = "CopilotChat - Close" },
-		{ "<leader>cct", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
-		{ "<leader>ccf", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
+		{ "<leader>co", "<cmd>CopilotChatOpen<cr>", desc = "Open" },
+		{ "<leader>cc", "<cmd>CopilotChatClose<cr>", desc = "Close" },
+		{ "<leader>ct", "<cmd>CopilotChatToggle<cr>", desc = "Toggle" },
+		{ "<leader>cf", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "Fix Diagnostic" },
 		{
-			"<leader>ccr",
+			"<leader>cr",
 			"<cmd>CopilotChatReset<cr>",
-			desc = "CopilotChat - Reset",
+			desc = "Reset",
 		},
 		{
-			"<leader>ccD",
+			"<leader>cD",
 			"<cmd>CopilotChatDebugInfo<cr>",
-			desc = "CopilotChat - Debug info",
+			desc = "Debug info",
 		},
 		{
-			"<leader>cch",
+			"<leader>ch",
 			function()
 				local actions = require("CopilotChat.actions")
 				require("CopilotChat.integrations.telescope").pick(actions.help_actions())
 			end,
-			desc = "CopilotChat - Help actions",
+			desc = "Help actions",
 		},
 		{
-			"<leader>ccp",
+			"<leader>cp",
 			function()
 				local actions = require("CopilotChat.actions")
 				require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 			end,
-			desc = "CopilotChat - Prompt actions",
+			desc = "Prompt actions",
 		},
 		{
-			"<leader>ccm",
+			"<leader>cm",
 			"<cmd>CopilotChatCommit<cr>",
-			desc = "CopilotChat - Generate commit message for all changes",
+			desc = "Generate commit message for all changes",
 		},
 		{
-			"<leader>ccM",
+			"<leader>cM",
 			"<cmd>CopilotChatCommitStaged<cr>",
-			desc = "CopilotChat - Generate commit message for staged changes",
+			desc = "Generate commit message for staged changes",
 		},
 		{
-			"<leader>cci",
+			"<leader>ci",
 			function()
 				local input = vim.fn.input("Ask Copilot: ")
 				if input ~= "" then
 					vim.cmd("CopilotChat " .. input)
 				end
 			end,
-			desc = "CopilotChat - Ask input",
+			desc = "Ask input",
 		},
 		{
-			"<leader>ccq",
+			"<leader>cq",
 			function()
 				local input = vim.fn.input("Quick Chat: ")
 				if input ~= "" then
 					require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
 				end
 			end,
-			desc = "CopilotChat - Quick chat",
+			desc = "Quick chat",
 		},
 		-- Visual mode
 		{
-			"<leader>ccp",
+			"<leader>cp",
 			":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
 			mode = "x",
-			desc = "CopilotChat - Prompt actions",
+			desc = "Prompt actions",
 		},
 		{
-			"<leader>ccv",
+			"<leader>cv",
 			":CopilotChatVisual",
 			mode = "x",
-			desc = "CopilotChat - Open in vertical split",
+			desc = "Open in vertical split",
 		},
 		{
-			"<leader>cci",
+			"<leader>ci",
 			":CopilotChatInline<cr>",
 			mode = "x",
-			desc = "CopilotChat - Inline chat",
+			desc = "Inline chat",
 		},
 	},
 }

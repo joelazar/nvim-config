@@ -112,12 +112,11 @@ M.config = function()
 				},
 			},
 			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
-			["c"] = {
-				name = "AI",
-				["c"] = { "CopilotChat" },
+			["a"] = {
 				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
 				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
 			},
+			["c"] = { "Copilot" },
 			["r"] = {
 				name = "Refactoring",
 				["b"] = {
@@ -180,14 +179,15 @@ M.config = function()
 		},
 		mappings = {
 			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
-			["c"] = {
+
+			["a"] = {
 				name = "AI",
 				["a"] = { "<cmd>ChatGPTActAs<cr>", "ChatGPT - Act as" },
-				["c"] = { "CopilotChat" },
 				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "ChatGPT - Edit with instruction" },
 				["s"] = { "<cmd>ChatGPT<CR>", "ChatGPT - Session" },
 				["t"] = { "<cmd>Telescope gpt<CR>", "ChatGPT - Custom actions" },
 			},
+			["c"] = { name = "Copilot" },
 			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
 			["f"] = { "<cmd>NnnExplorer<cr>", "nnn" },
 			["F"] = { "<cmd>NnnExplorer %:p:h<cr>", "nnn (current buffer dir)" },
