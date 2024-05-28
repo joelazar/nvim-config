@@ -7,6 +7,7 @@ local M = {
 		"tom-anders/telescope-vim-bookmarks.nvim",
 		"ahmedkhalf/project.nvim",
 		"ThePrimeagen/refactoring.nvim",
+		"folke/trouble.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
 			"danielfalk/smart-open.nvim",
@@ -66,12 +67,8 @@ M.config = function()
 					["<c-a>"] = function(...)
 						return require("telescope.actions").toggle_all(...)
 					end,
-					["<c-t>"] = function(...)
-						return require("trouble.providers.telescope").open_with_trouble(...)
-					end,
-					["<a-t>"] = function(...)
-						return require("trouble.providers.telescope").open_selected_with_trouble(...)
-					end,
+					["<c-t>"] = require("trouble.sources.telescope").open,
+					["<a-t>"] = require("trouble.sources.telescope").open,
 					["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
@@ -82,12 +79,8 @@ M.config = function()
 						return require("telescope.actions").toggle_all(...)
 					end,
 					["<c-s>"] = flash,
-					["<c-t>"] = function(...)
-						return require("trouble.providers.telescope").open_with_trouble(...)
-					end,
-					["<a-t>"] = function(...)
-						return require("trouble.providers.telescope").open_selected_with_trouble(...)
-					end,
+					["<c-t>"] = require("trouble.sources.telescope").open,
+					["<a-t>"] = require("trouble.sources.telescope").open,
 					["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
 					["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
 					["<PageDown>"] = require("telescope.actions").cycle_history_next,
