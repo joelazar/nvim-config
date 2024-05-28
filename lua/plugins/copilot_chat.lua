@@ -19,8 +19,18 @@ local prompts = {
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
 	opts = {
+		auto_insert_mode = true,
+		show_help = true,
+		question_header = "  " .. vim.env.USER or "User" .. " ",
+		answer_header = "  Copilot ",
+		window = {
+			width = 0.4,
+		},
+		selection = function(source)
+			local select = require("CopilotChat.select")
+			return select.visual(source) or select.buffer(source)
+		end,
 		mappings = {
-			auto_insert_mode = true,
 			submit_prompt = {
 				normal = "<CR>",
 				insert = "<C-CR>",
