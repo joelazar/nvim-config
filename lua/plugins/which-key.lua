@@ -113,9 +113,11 @@ M.config = function()
 			},
 			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
 			["a"] = {
+				name = "AI",
 				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
 				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
 			},
+			["b"] = { "Buffers" },
 			["c"] = { "Copilot" },
 			["r"] = {
 				name = "Refactoring",

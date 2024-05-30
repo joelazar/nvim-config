@@ -71,20 +71,6 @@ return {
 		opts = {
 			auto_preview = true,
 			auto_close = true,
-			modes = {
-				telescope = {
-					sort = { "pos", "filename", "severity", "message" },
-				},
-				quickfix = {
-					sort = { "pos", "filename", "severity", "message" },
-				},
-				loclist = {
-					sort = { "pos", "filename", "severity", "message" },
-				},
-				todo = {
-					sort = { "pos", "filename", "severity", "message" },
-				},
-			},
 		},
 		cmd = { "Trouble" },
 	},
