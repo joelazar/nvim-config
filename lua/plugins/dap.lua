@@ -229,27 +229,27 @@ M.config = function()
 	require("dap-python").setup(path .. "/venv/bin/python")
 
 	-- TODO: mojo debugging is not working yet
-	dap.adapters.lldb = {
-		type = "executable",
-		command = "lldb-vscode",
-		name = "lldb",
-	}
+	-- dap.adapters.lldb = {
+	-- 	type = "executable",
+	-- 	command = "lldb-vscode",
+	-- 	name = "lldb",
+	-- }
 
-	dap.configurations["mojo"] = {
-		{
-			name = "Launch",
-			type = "lldb",
-			request = "launch",
-			program = "${file}",
-			-- program = function()
-			-- 	---@diagnostic disable-next-line: redundant-parameter
-			-- 	return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			-- end,
-			cwd = "${workspaceFolder}",
-			stopOnEntry = false,
-			args = {},
-		},
-	}
+	-- dap.configurations["mojo"] = {
+	-- 	{
+	-- 		name = "Launch",
+	-- 		type = "lldb",
+	-- 		request = "launch",
+	-- 		program = "${file}",
+	-- 		-- program = function()
+	-- 		-- 	---@diagnostic disable-next-line: redundant-parameter
+	-- 		-- 	return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+	-- 		-- end,
+	-- 		cwd = "${workspaceFolder}",
+	-- 		stopOnEntry = false,
+	-- 		args = {},
+	-- 	},
+	-- }
 end
 
 return M

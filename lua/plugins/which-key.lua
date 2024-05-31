@@ -117,8 +117,8 @@ M.config = function()
 				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
 				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
 			},
-			["b"] = { "Buffers" },
-			["c"] = { "Copilot" },
+			["b"] = { name = "Buffers" },
+			["c"] = { name = "Copilot" },
 			["r"] = {
 				name = "Refactoring",
 				["b"] = {
@@ -320,7 +320,7 @@ M.config = function()
 					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
 					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
 				},
-				["d"] = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace diagnostics (trouble)" },
+				["d"] = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace diagnostics (Trouble)" },
 				["D"] = {
 					"<cmd>Telescope diagnostics<cr>",
 					"Workspace diagnostics (telescope)",
@@ -342,6 +342,10 @@ M.config = function()
 				["S"] = {
 					"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 					"Workspace symbols",
+				},
+				["t"] = {
+					"<cmd>Trouble symbols toggle focus=false<cr>",
+					"Document symbols (Trouble)",
 				},
 			},
 			["o"] = {

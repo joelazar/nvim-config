@@ -74,6 +74,8 @@ return {
 			})
 		end, { nargs = "*", range = true })
 
+		require("CopilotChat.integrations.cmp").setup()
+
 		-- Disable number and relative number in chat buffer
 		vim.api.nvim_create_autocmd("BufEnter", {
 			pattern = "copilot-chat",
