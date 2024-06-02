@@ -8,7 +8,6 @@ local M = {
 		"williamboman/mason.nvim",
 		"pmizio/typescript-tools.nvim",
 		"dmmulroy/ts-error-translator.nvim",
-		{ "folke/neodev.nvim", opts = {} },
 	},
 }
 
