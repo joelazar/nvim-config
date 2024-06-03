@@ -14,6 +14,7 @@ function M.config()
 	require("mason").setup()
 
 	local tools = {
+		"basedpyright",
 		"bash-language-server",
 		"black",
 		"chrome-debug-adapter",
@@ -37,8 +38,7 @@ function M.config()
 		"node-debug2-adapter",
 		"prettierd",
 		"prisma-language-server",
-		"pyright",
-		"ruff",
+		"ruff-lsp",
 		"rust-analyzer",
 		"shfmt",
 		"sqlfluff",

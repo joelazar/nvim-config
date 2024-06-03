@@ -85,8 +85,20 @@ M.config = function()
 		},
 		mojo = {},
 		prismals = {},
-		pyright = {},
-		ruff = {},
+		basedpyright = {
+			settings = {
+				basedpyright = {
+					-- diagnosticMode = "workspace",
+					autoImportCompletions = true,
+					analysis = {
+						typeCheckingMode = "basic", -- could be configured to "all"
+					},
+					-- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
+					diagnosticSeverityOverrides = {},
+				},
+			},
+		},
+		ruff_lsp = {},
 		stylelint_lsp = { autostart = false },
 		tailwindcss = { autostart = false },
 		taplo = {},
@@ -125,17 +137,11 @@ M.config = function()
 			if server == "tsserver" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentRangeFormattingProvider = false
-			elseif server == "ruff" then
+			elseif server == "ruff_lsp" then
 				-- Disable hover in favor of Pyright
 				client.server_capabilities.hoverProvider = false
 			end
 			require("plugins.lsp.keys").setup(buffer)
-
-			-- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-			-- 	vim.keymap.set("n", "<leader>TI", function()
-			-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-			-- 	end, "Toggle inlay hints")
-			-- end
 		end
 
 		if server == "tsserver" then
