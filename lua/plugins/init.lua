@@ -131,7 +131,7 @@ return {
 	-- Quick annotation generator
 	{
 		"danymat/neogen",
-		opts = {},
+		opts = { snippet_engine = "nvim" },
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		cmd = "Neogen",
 	},
