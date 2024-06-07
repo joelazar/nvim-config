@@ -4,9 +4,7 @@ local M = {
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-calc",
-		"hrsh7th/cmp-emoji",
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-path",
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
@@ -126,9 +124,9 @@ M.config = function()
 			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "treesitter" },
+			{ name = "fuzzy_buffer" },
 			{ name = "buffer", keyword_length = 3 },
 			{ name = "snippets" },
-			{ name = "nvim_lua" },
 			{ name = "path" },
 			{
 				name = "look",
@@ -137,7 +135,6 @@ M.config = function()
 				option = { convert_case = true, loud = true },
 			},
 			{ name = "calc" },
-			{ name = "emoji" },
 		},
 		snippet = {
 			expand = function(args)
@@ -195,6 +192,13 @@ M.config = function()
 			disallow_partial_fuzzy_matching = true,
 			disallow_partial_matching = false,
 			disallow_prefix_unmatching = false,
+		},
+	})
+
+	cmp.setup.cmdline({ "/", "?" }, {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "fuzzy_buffer" },
 		},
 	})
 
