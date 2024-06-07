@@ -8,7 +8,6 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-path",
-		"mtoohey31/cmp-fish",
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"ray-x/cmp-treesitter",
@@ -130,7 +129,6 @@ M.config = function()
 			{ name = "buffer", keyword_length = 3 },
 			{ name = "snippets" },
 			{ name = "nvim_lua" },
-			{ name = "fish" },
 			{ name = "path" },
 			{
 				name = "look",
