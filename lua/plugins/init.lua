@@ -161,14 +161,17 @@ return {
 		opts = {},
 	},
 
+	-- Hightlight active code
 	{ "folke/twilight.nvim", cmd = { "Twilight" } },
 
+	-- Enhanve native comments of NeoVim
 	{
 		"folke/ts-comments.nvim",
 		event = "VeryLazy",
 		opts = {},
 	},
 
+	-- Virtual environment selector for python
 	{
 		"linux-cultist/venv-selector.nvim",
 		dependencies = {
@@ -182,6 +185,7 @@ return {
 		cmd = "VenvSelect",
 	},
 
+	-- Session management
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
@@ -194,6 +198,7 @@ return {
     },
 	},
 
+	-- Running custom functions on nodes
 	{
 		"ckolkey/ts-node-action",
 		cmd = { "NodeAction", "NodeActionDebug" },
@@ -202,6 +207,7 @@ return {
 		keys = { { "<C-t>", "<cmd>NodeAction<cr>", mode = "n", desc = "Node action" } },
 	},
 
+	-- DevDocs integration
 	{
 		"luckasRanarison/nvim-devdocs",
 		dependencies = {
@@ -224,8 +230,10 @@ return {
 		},
 	},
 
+	-- Better quickfix list
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 
+	-- Change text case easily
 	{
 		"johmsalas/text-case.nvim",
 		config = function()
@@ -236,11 +244,13 @@ return {
 		cmd = { "TextCaseOpenTelescope" },
 	},
 
+	-- Measure the time spent on projects
 	{
 		"wakatime/vim-wakatime",
 		event = "VeryLazy",
 	},
 
+	-- Autodetect indentation
 	{
 		"nmac427/guess-indent.nvim",
 		opts = {
@@ -260,14 +270,17 @@ return {
 		event = { "BufRead", "BufNewFile" },
 	},
 
+	-- Autopairs for neovim
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {},
 	},
 
+	-- Cypher syntax highlighting
 	{ "memgraph/cypher.vim", ft = { "cypher", "cql", "cyp" } },
 
+	-- Lazygit integration
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {
@@ -283,12 +296,14 @@ return {
 		},
 	},
 
+	-- Rust plugin
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^4",
 		lazy = false, -- this plugin already lazy loads
 	},
 
+	-- Git blame in Neovim
 	{
 		"FabijanZulj/blame.nvim",
 		config = function()
@@ -297,6 +312,7 @@ return {
 		cmd = "BlameToggle",
 	},
 
+	-- Coverage for neovim
 	{
 		"andythigpen/nvim-coverage",
 		dependencies = { "nvim-lua/plenary.nvim" },
