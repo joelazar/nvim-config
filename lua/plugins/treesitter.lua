@@ -63,6 +63,7 @@ M.config = function()
 			"markdown",
 			"markdown_inline",
 			"ninja",
+			"printf",
 			"prisma",
 			"python",
 			"query",
@@ -75,6 +76,7 @@ M.config = function()
 			"typescript",
 			"vim",
 			"vimdoc",
+			"xml",
 			"yaml",
 			"zig",
 		},
@@ -88,6 +90,15 @@ M.config = function()
 		},
 		indent = { enable = true },
 		matchup = { enable = true },
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "<CR>",
+				node_incremental = "<CR>",
+				scope_incremental = false,
+				node_decremental = "<BS>",
+			},
+		},
 	})
 
 	vim.api.nvim_create_user_command("TSReload", function()
