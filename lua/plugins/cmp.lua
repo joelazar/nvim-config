@@ -9,6 +9,7 @@ local M = {
 		"octaltree/cmp-look",
 		"onsails/lspkind-nvim",
 		"ray-x/cmp-treesitter",
+		"windwp/nvim-autopairs",
 		{
 			"garymjr/nvim-snippets",
 			opts = {
@@ -203,6 +204,9 @@ M.config = function()
 	})
 
 	require("cmp_git").setup({ filetypes = { "gitcommit", "octo", "markdown" } })
+
+	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M
