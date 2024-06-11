@@ -164,12 +164,6 @@ return {
 	{ "folke/twilight.nvim", cmd = { "Twilight" } },
 
 	{
-		"kiyoon/jupynium.nvim",
-		build = "pip3 install --user --break-system-packages .",
-		ft = "python",
-	},
-
-	{
 		"folke/ts-comments.nvim",
 		event = "VeryLazy",
 		opts = {},
