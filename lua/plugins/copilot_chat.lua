@@ -93,13 +93,25 @@ return {
 	branch = "canary",
 	cmd = {
 		"CopilotChat",
-		"CopilotChatOpen",
 		"CopilotChatClose",
-		"CopilotChatToggle",
+		"CopilotChatDebugInfo",
+		"CopilotChatLoad",
+		"CopilotChatOpen",
 		"CopilotChatReset",
 		"CopilotChatSave",
-		"CopilotChatLoad",
-		"CopilotChatDebugInfo",
+		"CopilotChatToggle",
+
+		-- Default prompts
+		"CopilotChatCommit",
+		"CopilotChatCommitStaged",
+		"CopilotChatDocs",
+		"CopilotChatExplain",
+		"CopilotChatFix",
+		"CopilotChatFixDiagnostic",
+		"CopilotChatOptimize",
+		"CopilotChatReview",
+		"CopilotChatTests",
+
 		-- User commands
 		"CopilotChatInline",
 		"CopilotChatVisual",
