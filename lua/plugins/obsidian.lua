@@ -27,7 +27,16 @@ return {
 	},
 	config = function()
 		require("obsidian").setup({
-			dir = "~/Documents/obsidian",
+			workspaces = {
+				{
+					name = "private",
+					path = "~/Documents/obsidian/private",
+				},
+				{
+					name = "home",
+					path = "~/Documents/obsidian/home",
+				},
+			},
 
 			-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
 			-- levels defined by "vim.log.levels.*".

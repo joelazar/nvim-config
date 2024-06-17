@@ -438,6 +438,7 @@ M.config = function()
 				["t"] = { "<cmd>ObsidianToday<cr>", "Create/open note for today" },
 				["T"] = { "<cmd>ObsidianTomorrow<cr>", "Create/open note for tomorrow" },
 				["y"] = { "<cmd>ObsidianYesterday<cr>", "Create/open note for yesterday" },
+				["w"] = { "<cmd>ObsidianWorkspace<cr>", "Select active workspace" },
 			},
 		},
 	}
