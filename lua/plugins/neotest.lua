@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
-		"nvim-neotest/neotest-go",
+		"fredrikaverpil/neotest-golang",
 		"nvim-neotest/neotest-python",
 		"haydenmeade/neotest-jest",
 		"folke/trouble.nvim",
@@ -25,7 +25,7 @@ return {
 			adapters = {
 				require("neotest-python"),
 				require("neotest-jest"),
-				require("neotest-go"),
+				require("neotest-golang"),
 			},
 			status = { virtual_text = true },
 			output = { open_on_run = true },
