@@ -129,5 +129,5 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-require("mini.misc").setup()
-MiniMisc.setup_auto_root({ "go.mod", ".git", "Makefile", "cwd", ".obsidian" })
+-- require("mini.misc").setup()
+-- MiniMisc.setup_auto_root({ "go.mod", ".git", "Makefile", "cwd", ".obsidian" })
