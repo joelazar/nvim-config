@@ -129,5 +129,31 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.filetype.add({
+	desc = "Set filetype to bigfile for files larger than 1MB",
+	pattern = {
+		[".*"] = {
+			function(path, buf)
+				return vim.bo[buf].filetype ~= "bigfile"
+						and path
+						and vim.fn.getfsize(path) > 1024 * 1024 -- 1MB
+						and "bigfile"
+					or nil
+			end,
+		},
+	},
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	desc = "Only enable basic syntax for big files",
+	group = augroup("bigfile"),
+	pattern = "bigfile",
+	callback = function(ev)
+		vim.schedule(function()
+			vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or ""
+		end)
+	end,
+})
+
 -- require("mini.misc").setup()
 -- MiniMisc.setup_auto_root({ "go.mod", ".git", "Makefile", "cwd", ".obsidian" })
