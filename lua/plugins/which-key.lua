@@ -8,449 +8,383 @@ M.config = function()
 
 	local config = {
 		setup = {
-			layout = { align = "center" },
-			ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-		},
-		vmappings = {
-			["g"] = {
-				name = "Git",
-				["y"] = {
-					'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
-					"Copy link to clipboard",
-				},
-			},
-			["l"] = {
-				name = "LSP",
-				["a"] = {
-					"<cmd>lua vim.lsp.buf.code_action()<cr>",
-					"Code action",
-				},
-			},
-			["e"] = { ":SnipRun<cr>", "Execute (sniprun)" },
-			["a"] = {
-				name = "AI",
-				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
-				["t"] = { "<cmd>Telescope gpt<CR>", "Telescope GPT" },
-			},
-			["b"] = { name = "Buffers" },
-			["c"] = { name = "Copilot" },
-			["r"] = {
-				name = "Refactoring",
-				["b"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
-					"Extract block",
-				},
-				["f"] = {
-					"<Esc><Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
-					"Extract block to file",
-				},
-				["e"] = {
-					"<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-					"Extract function",
-				},
-				["F"] = {
-					"<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-					"Extract function to file",
-				},
-				["v"] = {
-					"<Esc><cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
-					"Extract variable",
-				},
-				["i"] = {
-					"<Esc><cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-					"Inline variable",
-				},
-				["r"] = {
-					"<cmd>lua require('refactoring').select_refactor()<CR>",
-					"Select refactor",
-				},
-				["p"] = {
-					"<cmd>lua require('refactoring').debug.print_var({normal = true})<CR>",
-					"Print variable",
-				},
-			},
-			["s"] = {
-				name = "Search",
-				["w"] = { "<cmd>Telescope grep_string<CR>", "Visual selection" },
-			},
-			["S"] = {
-				name = "Search & Replace",
-				["w"] = {
-					"<esc><cmd>lua require('spectre').open_visual()<CR>",
-					"Replace selection",
-				},
-			},
-			["z"] = {
-				name = "Obsidian",
-				["l"] = { "<cmd>ObsidianLink<CR>", "Link a note" },
-				["n"] = {
-					function()
-						local title = vim.fn.input("Title: ")
-						if title ~= "" then
-							vim.cmd("ObsidianLinkNew " .. title)
-						end
-					end,
-					"Create new linked note (in current dir)",
-				},
-			},
+			preset = "helix", -- "classic" | "modern" | "helix"
+			delay = 200,
+			layout = { align = "center" }, -- align columns left, center or right
+			sort = { "order", "group", "alphanum", "mod", "lower", "icase" },
 		},
 		mappings = {
-			[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
+			{
+				mode = { "n" },
+				{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
 
-			["a"] = {
-				name = "AI",
-				["a"] = { "<cmd>ChatGPTActAs<cr>", "ChatGPT - Act as" },
-				["e"] = { "<cmd>ChatGPTEditWithInstruction<CR>", "ChatGPT - Edit with instruction" },
-				["s"] = { "<cmd>ChatGPT<CR>", "ChatGPT - Session" },
-				["t"] = { "<cmd>Telescope gpt<CR>", "ChatGPT - Custom actions" },
-			},
-			["c"] = { name = "Copilot" },
-			["C"] = { "<cmd>Telescope neoclip<cr>", "Clipboard manager" },
-			["f"] = { "<cmd>NnnExplorer<cr>", "nnn" },
-			["F"] = { "<cmd>NnnExplorer %:p:h<cr>", "nnn (current buffer dir)" },
-			["n"] = { "<cmd>NnnPicker<cr>", "nnn" },
-			["N"] = { "<cmd>NnnPicker %:p:h<cr>", "nnn (current buffer dir)" },
-			["q"] = { "<cmd>q!<cr>", "Quit" },
-			["u"] = { "<cmd>Telescope undo<cr>", "Undotree" },
-			["w"] = { "<cmd>w!<cr>", "Save" },
-			["W"] = { "<cmd>lua require'config.utils'.sudo_write()<cr>", "Sudo save" },
-			["b"] = {
-				name = "Buffers",
-				["F"] = {
-					"<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
-					"Format buffer (LSP)",
+				{
+					"<leader>bF",
+					function()
+						vim.lsp.buf.format({ async = true })
+					end,
+					desc = "Format buffer (LSP)",
 				},
-				["L"] = {
-					"<cmd>BufferLineCloseLeft<cr>",
-					"Close all buffers to the left",
+				{ "<leader>bL", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all buffers to the left" },
+				{ "<leader>bP", "<cmd>BufferLineTogglePin<cr>", desc = "Pin/Unpin buffer" },
+				{ "<leader>bR", "<cmd>BufferLineCloseRight<cr>", desc = "Close all buffers to the right" },
+				{ "<leader>bs", "<cmd>Telescope buffers<cr>", desc = "Search buffers" },
+				{ "<leader>bw", "<cmd>BufferLineCloseOthers<cr>", desc = "Close all but current buffer" },
+				{ "<leader>bW", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close all but pinned buffers" },
+				{ "<leader>bS", group = "Sort buffers" },
+				{
+					"<leader>bSd",
+					"<cmd>BufferLineSortByDirectory<cr>",
+					desc = "Sort buffers automatically by directory",
 				},
-				["P"] = { "<cmd>BufferLineTogglePin<cr>", "Pin/Unpin buffer" },
-				["R"] = {
-					"<cmd>BufferLineCloseRight<cr>",
-					"Close all buffers to the right",
+				{
+					"<leader>bSl",
+					"<cmd>BufferLineSortByExtension<cr>",
+					desc = "Sort buffers automatically by language",
 				},
-				["s"] = { "<cmd>Telescope buffers<cr>", "Search buffers" },
-				["S"] = {
-					name = "Sort buffers",
-					["d"] = { "<cmd>BufferLineSortByDirectory<cr>", "Sort buffers automatically by directory" },
-					["l"] = { "<cmd>BufferLineSortByExtension<cr>", "Sort buffers automatically by language" },
+
+				{ "<leader>C", "<cmd>Telescope neoclip<cr>", desc = "Clipboard manager" },
+				{ "<leader>f", "<cmd>NnnExplorer<cr>", desc = "nnn" },
+				{ "<leader>F", "<cmd>NnnExplorer %:p:h<cr>", desc = "nnn (current dir)" },
+				{ "<leader>n", "<cmd>NnnPicker<cr>", desc = "nnn" },
+				{ "<leader>N", "<cmd>NnnPicker %:p:h<cr>", desc = "nnn  (current dir)" },
+				{ "<leader>u", "<cmd>Telescope undo<cr>", desc = "Undotree" },
+				{
+					"<leader>Sw",
+					'<cmd>lua require("spectre").open_visual({ select_word = true })<cr>',
+					desc = "Replace word under cursor",
 				},
-				["w"] = { "<cmd>BufferLineCloseOthers<cr>", "Close all but current buffer" },
-				["W"] = { "<cmd>BufferLineGroupClose ungrouped<cr>", "Close all but pinned buffers" },
-			},
-			["d"] = {
-				name = "Debug",
-				b = {
-					name = "Breakpoints",
-					c = {
-						"<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-						"Breakpoint condition",
-					},
-					m = {
-						"<cmd>lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>",
-						"Log point message",
-					},
-					t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Create" },
+				{ "<leader>T", group = "Toggle" },
+				{ "<leader>Tt", group = "Treesitter" },
+				{ "<leader>Tf", "<cmd>FormatToggle<cr>", desc = "Autoformat" },
+				{ "<leader>Tg", "<cmd>Copilot! toggle<cr>", desc = "GitHub Copilot" },
+				{ "<leader>TH", "<cmd>ColorizerToggle<cr>", desc = "Highlight colors" },
+				{
+					"<leader>TI",
+					function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+					end,
+					desc = "Inlay hints",
 				},
-				h = {
-					name = "Hover",
-					h = { "<cmd>lua require('dap.ui.variables').hover()<CR>", "Hover" },
-					v = { "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", "Visual hover" },
+				{ "<leader>Tz", "<cmd>ZenMode<cr>", desc = "Zenmode" },
+				{
+					"<leader>Tth",
+					function()
+						if vim.b.ts_highlight then
+							vim.treesitter.stop()
+						else
+							vim.treesitter.start()
+						end
+					end,
+					desc = "Toggle highlight",
 				},
-				r = {
-					name = "Repl",
-					o = { "<cmd>lua require('dap').repl.toggle()<CR>", "Toggle" },
-					l = { "<cmd>lua require('dap').repl.run_last()<CR>", "Run last" },
-				},
-				R = {
-					"<cmd>lua require('dap').run_to_cursor()<CR>",
-					"Run to cursor",
-				},
-				s = {
-					name = "Step",
-					c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
-					v = { "<cmd>lua require('dap').step_over()<CR>", "Step over" },
-					i = { "<cmd>lua require('dap').step_into()<CR>", "Step into" },
-					o = { "<cmd>lua require('dap').step_out()<CR>", "Step out" },
-				},
-				t = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle" },
-				u = {
-					name = "UI",
-					h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover" },
-					f = {
-						"local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>",
-						"Float",
-					},
-				},
-			},
-			["D"] = {
-				name = "Devdocs",
-				["o"] = { "<cmd>DevdocsOpen<cr>", "Open docs" },
-				["c"] = { "<cmd>DevdocsOpenCurrent<cr>", "Open docs for current filetype" },
-			},
-			["P"] = {
-				name = "Plugin manager",
-				["m"] = { "<cmd>Lazy<cr>", "Lazy menu" },
-				["r"] = { "<cmd>Lazy restore<cr>", "Lazy restore" },
-				["s"] = { "<cmd>Lazy sync<cr>", "Lazy sync" },
-				["u"] = { "<cmd>Lazy update<cr>", "Lazy update" },
-			},
-			["g"] = {
-				name = "Git",
-				["t"] = {
-					name = "Telescope",
-					["b"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-					["c"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-					["f"] = {
-						"<cmd>Telescope git_bcommits<cr>",
-						"Checkout commit (for current file)",
-					},
-					["s"] = { "<cmd>Telescope git_status<cr>", "Status" },
-					["S"] = { "<cmd>Telescope git_stash<cr>", "Stash" },
-				},
-				["d"] = {
-					name = "Diffview",
-					["o"] = { "<cmd>DiffviewOpen<cr>", "Open" },
-					["c"] = { "<cmd>DiffviewClose<cr>", "Close" },
-					["h"] = { "<cmd>DiffviewFileHistory<cr>", "History" },
-					["H"] = { "<cmd>DiffviewFileHistory %<cr>", "History for current file only" },
-					["r"] = { "<cmd>DiffviewRefresh<cr>", "Refresh stats and entries" },
-					["f"] = { "<cmd>DiffviewToggleFiles<cr>", "Toggle files panel" },
-				},
-				["y"] = {
-					'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
-					"Copy link to clipboard",
-				},
-				["q"] = {
-					"<cmd>Gitsigns setqflist<cr>",
-					"Trouble list with hunks",
-				},
-			},
-			["l"] = {
-				name = "LSP",
-				["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-				["c"] = {
-					name = "Codelens",
-					["r"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "Run" },
-					["d"] = { "<cmd>lua vim.lsp.codelens.display()<cr>", "Display" },
-					["u"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", "Update" },
-				},
-				["d"] = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace diagnostics (Trouble)" },
-				["D"] = {
-					"<cmd>Telescope diagnostics<cr>",
-					"Workspace diagnostics (telescope)",
-				},
-				["i"] = { "<cmd>LspInfo<cr>", "Info" },
-				["k"] = {
-					"<cmd>lua vim.lsp.buf.hover()<cr>",
-					"Toggle hover doc",
-				},
-				["l"] = {
-					"<cmd>lua vim.diagnostic.open_float()<cr>",
-					"Show line diagnostics",
-				},
-				["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-				["s"] = {
-					"<cmd>Telescope lsp_document_symbols<cr>",
-					"Document symbols",
-				},
-				["S"] = {
-					"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-					"Workspace symbols",
-				},
-				["t"] = {
-					"<cmd>Trouble symbols toggle focus=false<cr>",
-					"Document symbols (Trouble)",
-				},
-			},
-			["o"] = {
-				name = "Overseer",
-				["l"] = { "<cmd>OverseerRestartLast<cr>", "Run last task" },
-				["r"] = { "<cmd>OverseerRun<cr>", "List tasks in project" },
-				["t"] = { "<cmd>OverseerToggle<cr>", "Toggle summary window" },
-			},
-			["s"] = {
-				name = "Search",
-				['"'] = { "<cmd>Telescope registers<cr>", "Registers" },
-				["b"] = { "<cmd>Telescope vim_bookmarks all<cr>", "Bookmarks" },
-				["B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-				["c"] = { "<cmd>Telescope commands<cr>", "Commands" },
-				["C"] = { "<cmd>Telescope colorscheme enable_preview=true<cr>", "Colorscheme" },
-				["f"] = { "<cmd>Telescope find_files<cr>", "Files" },
-				["h"] = { "<cmd>Telescope command_history<cr>", "Command history" },
-				["H"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-				["j"] = { "<cmd>Telescope jumplist<cr>", "Jump list" },
-				["l"] = { "<cmd>Telescope loclist<cr>", "Location list" },
-				["L"] = { "<cmd>Telescope treesitter<cr>", "Treesitter" },
-				["k"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-				["m"] = { "<cmd>Telescope marks<cr>", "Marks" },
-				["M"] = { "<cmd>Telescope man_pages<cr>", "Man pages" },
-				["o"] = { "<cmd>Telescope oldfiles<cr>", "Recently opened files" },
-				["r"] = { "<cmd>Telescope resume<cr>", "Recent search" },
-				["R"] = { "<cmd>Telescope registers<cr>", "Registers" },
-				["p"] = { "<cmd>TodoTelescope<cr>", "TODO comments" },
-				["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-				["s"] = { "<cmd>Telescope smart_open<cr>", "Smart open" },
-				["t"] = { "<cmd>Telescope live_grep<cr>", "Text" },
-				["T"] = { "<cmd>Telescope live_grep_args<cr>", "Text with args" },
-				["Q"] = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-				["w"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
-			},
-			["m"] = { "Messages" },
-			["S"] = {
-				name = "Search & Replace",
-				["f"] = {
-					"<cmd>lua require('spectre').open_file_search()<CR>",
-					"Open file menu",
-				},
-				["m"] = { "<cmd>lua require('spectre').open()<CR>", "Open menu" },
-				["y"] = {
-					"<cmd>lua require('spectre').open_visual()<CR>",
-					"Replace yank",
-				},
-				["w"] = {
-					"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
-					"Replace word under cursor",
-				},
-			},
-			["r"] = {
-				name = "Refactoring",
-				["b"] = {
-					"<Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
-					"Extract block",
-				},
-				["f"] = {
-					"<Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
-					"Extract block to file",
-				},
-				["e"] = {
-					"<Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-					"Extract function",
-				},
-				["F"] = {
-					"<Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-					"Extract function to file",
-				},
-				["i"] = {
-					"<Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-					"Inline variable",
-				},
-				["I"] = {
-					"<Cmd>lua require('refactoring').refactor('Inline Function')<CR>",
-					"Inline function",
-				},
-				["l"] = {
-					"<cmd>lua require('refactoring').debug.printf({below = true})<CR>",
-					"Print debug log (below)",
-				},
-				["L"] = {
-					"<cmd>lua require('refactoring').debug.printf({below = false})<CR>",
-					"Print debug log (above)",
-				},
-				["p"] = {
-					"<cmd>lua require('refactoring').debug.print_var()<CR>",
-					"Print variable",
-				},
-				["c"] = {
-					"<cmd>lua require('refactoring').debug.cleanup({})<CR>",
-					"Cleanup debug log",
-				},
-				["r"] = {
-					"<cmd>lua require('refactoring').select_refactor()<CR>",
-					"Open selector",
-				},
-			},
-			["R"] = {
-				name = "Rest",
-				["r"] = { "<Plug>RestNvim", "Run request under the cursor" },
-				["p"] = {
-					"<Plug>RestNvimPreview",
-					"Preview request under the cursor",
-				},
-				["l"] = { "<Plug>RestNvimLast", "Run last request" },
-			},
-			["t"] = {
-				name = "Test",
-				["r"] = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', "Run file tests" },
-				["R"] = { '<cmd>lua require("neotest").run.run(vim.loop.cwd())<CR>', "Run all tests" },
-				["n"] = { '<cmd>lua require("neotest").run.run()<CR>', "Run nearest test" },
-				["d"] = { '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>', "Debug nearest test" },
-				["o"] = {
-					'<cmd>lua require("neotest").output.open({ enter = true, auto_close = true })<CR>',
-					"Show output",
-				},
-				["O"] = {
-					'<cmd>lua require("neotest").output_panel.toggle()<CR>',
-					"Toggle output",
-				},
-				["s"] = { '<cmd>lua require("neotest").run.stop()<CR>', "Stop test" },
-				["t"] = { '<cmd>lua require("neotest").summary.toggle()<CR>', "Toggle summary" },
-			},
-			["T"] = {
-				name = "Toggle",
-				["f"] = { "<cmd>FormatToggle<cr>", "Toggle autoformat" },
-				["g"] = { "<cmd>Copilot! toggle<cr>", "Toggle GitHub Copilot " },
-				["t"] = {
-					["h"] = {
-						function()
-							if vim.b.ts_highlight then
-								vim.treesitter.stop()
-							else
-								vim.treesitter.start()
-							end
-						end,
-						"Toggle highlight",
-					},
-					"Treesitter",
-				},
-				["H"] = { "<cmd>ColorizerToggle<cr>", "Toggle highlighted colors" },
-				["I"] = {
-					"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
-					"Toggle inlay hints",
-				},
-				["z"] = { "<cmd>ZenMode<cr>", "Toggle zenmode" },
-			},
-			["Q"] = { name = "Session" },
-			["x"] = {
-				name = "Misc",
-				["d"] = { "<cmd>%s/\\s\\+$//e<cr>", "Delete trailing spaces" },
-				["p"] = { "<cmd>PeekToggle<cr>", "Toggle preview" },
-				["s"] = { "<cmd>ISwap<cr>", "Swap parameters interactively" },
-				["u"] = { "<cmd>PP<cr>", "Upload file to dpaste" },
-			},
-			["z"] = {
-				name = "Obsidian",
-				["b"] = { "<cmd>ObsidianBacklinks<cr>", "List backlinks" },
-				["d"] = { "<cmd>ObsidianDailies -14 1<cr>", "List dailies" },
-				["i"] = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
-				["l"] = { "<cmd>ObsidianQuickSwitch<cr>", "List notes" },
-				["n"] = {
+
+				{ "<leader>m", group = "Messages" },
+				{ "<leader>Q", group = "Session" },
+
+				{ "<leader>zl", "<cmd>ObsidianQuickSwitch<cr>", desc = "List notes" },
+				{
+					"<leader>zn",
 					function()
 						local title = vim.fn.input("Title: ")
 						if title ~= "" then
 							vim.cmd("ObsidianNew " .. title)
 						end
 					end,
-					"Create new note (in current dir)",
+					desc = "Create new note (in current dir)",
 				},
-				["o"] = { "<cmd>ObsidianOpen<cr>", "Open obsidian" },
-				["s"] = { "<cmd>ObsidianSearch<cr>", "Search notes" },
-				["t"] = { "<cmd>ObsidianToday<cr>", "Create/open note for today" },
-				["T"] = { "<cmd>ObsidianTomorrow<cr>", "Create/open note for tomorrow" },
-				["y"] = { "<cmd>ObsidianYesterday<cr>", "Create/open note for yesterday" },
-				["w"] = { "<cmd>ObsidianWorkspace<cr>", "Select active workspace" },
+			},
+			{
+				mode = { "v" },
+				{
+					"<leader>gy",
+					'<cmd>lua require("gitlinker").get_buf_range_url( "v", { action_callback = "<cmd>lua require("gitlinker.actions").copy_to_clipboard })<cr>',
+					desc = "Copy link to clipboard",
+				},
+				{ "<leader>e", ":SnipRun<cr>", desc = "Execute (sniprun)" },
+				{
+					"<leader>Sw",
+					"<esc><cmd>lua require('spectre').open_visual()<cr>",
+					desc = "Visual selection",
+				},
+				{ "<leader>zl", "<cmd>ObsidianLink<CR>", desc = "Link a note" },
+				{
+					"<leader>zn",
+					function()
+						local title = vim.fn.input("Title: ")
+						if title ~= "" then
+							vim.cmd("ObsidianLinkNew " .. title)
+						end
+					end,
+					desc = "Create new linked note (in current dir)",
+				},
+			},
+			{
+				mode = { "n", "v" },
+
+				{ "<leader>a", group = "AI" },
+				{ "<leader>aa", "<cmd>ChatGPTActAs<cr>", desc = "ChatGPT - Act as" },
+				{
+					"<leader>ae",
+					"<cmd>ChatGPTEditWithInstruction<CR>",
+					desc = "ChatGPT - Edit with instruction",
+				},
+				{ "<leader>as", "<cmd>ChatGPT<CR>", desc = "ChatGPT - Session" },
+				{ "<leader>at", "<cmd>Telescope gpt<CR>", desc = "ChatGPT - Custom actions" },
+
+				{ "<leader>b", group = "Buffer" },
+				{ "<leader>c", group = "Copilot" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>l", group = "LSP" },
+
+				{ "<leader>s", group = "Search" },
+				{ "<leader>S", group = "Search & Replace" },
+				{ "<leader>z", group = "Obsidian" },
+
+				{ "<leader>q", "<cmd>q!<cr>", desc = "Quit" },
+				{ "<leader>w", "<cmd>w!<cr>", desc = "Write" },
+				{ "<leader>W", '<cmd>lua require("config.utils").sudo_write()', desc = "Write (sudo)" },
+
+				{ "[", group = "Backward/First" },
+				{ "]", group = "Forward/Last" },
+				{ "g", group = "Goto" },
+				{ "gs", group = "Surround" },
+				{ "z", group = "Fold" },
+
+				{ "<leader>d", group = "Debug" },
+				{ "<leader>db", name = "Breakpoints" },
+				{
+					"<leader>dbc",
+					'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>',
+					desc = "Breakpoint condition",
+				},
+				{
+					"<leader>dbm",
+					'<cmd>lua require("dap").set_breakpoint({ nil, nil, vim.fn.input("Log point message: ") })<cr>',
+					desc = "Log point message",
+				},
+				{ "<leader>dbt", '<cmd>lua require("dap").toggle_breakpoint()<cr>', desc = "Create" },
+				{ "<leader>dhh", '<cmd>lua require("dap.ui.variables").hover()<cr>', desc = "Hover" },
+				{ "<leader>dhv", '<cmd>lua require("dap.ui.variables").visual_hover()<cr>', desc = "Visual hover" },
+				{ "<leader>dro", '<cmd>lua require("dap").repl.toggle()<cr>', desc = "Toggle" },
+				{ "<leader>drl", '<cmd>lua require("dap").repl.run_last()<cr>', desc = "Run last" },
+				{ "<leader>dR", '<cmd>lua require("dap").run_to_cursor()<cr>', desc = "Run to cursor" },
+				{ "<leader>dsc", '<cmd>lua require("dap").continue()<cr>', desc = "Continue" },
+				{ "<leader>dsv", '<cmd>lua require("dap").step_over()<cr>', desc = "Step over" },
+				{ "<leader>dsi", '<cmd>lua require("dap").step_into()<cr>', desc = "Step into" },
+				{ "<leader>dso", '<cmd>lua require("dap").step_out()<cr>', desc = "Step out" },
+				{ "<leader>dt", '<cmd>lua require("dapui").toggle()<cr>', desc = "Toggle" },
+				{ "<leader>duh", '<cmd>lua require("dap.ui.widgets").hover()<cr>', desc = "Hover" },
+				{
+					"<leader>duf",
+					"local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<cr>",
+					desc = "Float",
+				},
+
+				{ "<leader>D", group = "Devdocs" },
+				{ "<leader>Do", "<cmd>DevdocsOpen<cr>", desc = "Open docs" },
+				{ "<leader>Dc", "<cmd>DevdocsOpenCurrent<cr>", desc = "Open docs for current filetype" },
+
+				{ "<leader>P", group = "Plugin manager" },
+				{ "<leader>Pm", "<cmd>Lazy<cr>", desc = "Lazy menu" },
+				{ "<leader>Pr", "<cmd>Lazy restore<cr>", desc = "Lazy restore" },
+				{ "<leader>Ps", "<cmd>Lazy sync<cr>", desc = "Lazy sync" },
+				{ "<leader>Pu", "<cmd>Lazy update<cr>", desc = "Lazy update" },
+
+				{ "<leader>gtb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+				{ "<leader>gtc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+				{ "<leader>gtf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout commit (for current file)" },
+				{ "<leader>gts", "<cmd>Telescope git_status<cr>", desc = "Status" },
+				{ "<leader>gtS", "<cmd>Telescope git_stash<cr>", desc = "Stash" },
+				{ "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open" },
+				{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Close" },
+				{ "<leader>gdh", "<cmd>DiffviewFileHistory<cr>", desc = "History" },
+				{ "<leader>gdH", "<cmd>DiffviewFileHistory %<cr>", desc = "History for current file only" },
+				{ "<leader>gdr", "<cmd>DiffviewRefresh<cr>", desc = "Refresh stats and entries" },
+				{ "<leader>gdf", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle files panel" },
+				{
+					"<leader>gy",
+					'<cmd>lua "<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = "<cmd>lua require"gitlinker.actions".copy_to_clipboard})<cr>',
+					desc = "Copy link to clipboard",
+				},
+				{
+					"<leader>gq",
+					"<cmd>Gitsigns setqflist<cr>",
+					desc = "Trouble list with hunks",
+				},
+
+				{
+					"<leader>la",
+					function()
+						vim.lsp.buf.code_action()
+					end,
+					desc = "Code action",
+				},
+				{
+					"<leader>lcr",
+					function()
+						vim.lsp.codelens.run()
+					end,
+					desc = "Run",
+				},
+				{
+					"<leader>lcd",
+					function()
+						vim.lsp.codelens.display()
+					end,
+					desc = "Display",
+				},
+				{
+					"<leader>lcu",
+					function()
+						vim.lsp.codelens.refresh()
+					end,
+					desc = "Update",
+				},
+				{
+					"<leader>ld",
+					"<cmd>Trouble diagnostics toggle<cr>",
+					desc = "Workspace diagnostics (Trouble)",
+				},
+				{
+					"<leader>lD",
+					"<cmd>Telescope diagnostics<cr>",
+					desc = "Workspace diagnostics (telescope)",
+				},
+				{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+				{
+					"<leader>lk",
+					function()
+						vim.lsp.buf.hover()
+					end,
+					desc = "Toggle hover doc",
+				},
+				{
+					"<leader>ll",
+					function()
+						vim.diagnostic.open_float()
+					end,
+					desc = "Show line diagnostics",
+				},
+				{
+					"<leader>lr",
+					function()
+						vim.lsp.buf.rename()
+					end,
+					desc = "Rename",
+				},
+				{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document symbols" },
+				{ "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace symbols" },
+				{
+					"<leader>lt",
+					"<cmd>Trouble symbols toggle focus=false<cr>",
+					desc = "Document symbols (Trouble)",
+				},
+
+				{ "<leader>o", group = "Overseer" },
+				{ "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "Run last task" },
+				{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "List tasks in project" },
+				{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle summary window" },
+
+				{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
+				{ "<leader>sb", "<cmd>Telescope vim_bookmarks all<cr>", desc = "Bookmarks" },
+				{ "<leader>sB", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+				{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+				{ "<leader>sC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme" },
+				{ "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Files" },
+				{ "<leader>sh", "<cmd>Telescope command_history<cr>", desc = "Command history" },
+				{ "<leader>sH", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+				{ "<leader>sj", "<cmd>Telescope jumplist<cr>", desc = "Jump list" },
+				{ "<leader>sl", "<cmd>Telescope loclist<cr>", desc = "Location list" },
+				{ "<leader>sL", "<cmd>Telescope treesitter<cr>", desc = "Treesitter" },
+				{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+				{ "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+				{ "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man pages" },
+				{ "<leader>so", "<cmd>Telescope oldfiles<cr>", desc = "Recently opened files" },
+				{ "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Recent search" },
+				{ "<leader>sR", "<cmd>Telescope registers<cr>", desc = "Registers" },
+				{ "<leader>sp", "<cmd>TodoTelescope<cr>", desc = "TODO comments" },
+				{ "<leader>sP", "<cmd>Telescope projects<cr>", desc = "Projects" },
+				{ "<leader>ss", "<cmd>Telescope smart_open<cr>", desc = "Smart open" },
+				{ "<leader>st", "<cmd>Telescope live_grep<cr>", desc = "Text" },
+				{ "<leader>sT", "<cmd>Telescope live_grep_args<cr>", desc = "Text with args" },
+				{ "<leader>sQ", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
+				{ "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Word under cursor" },
+
+				{
+					"<leader>Sf",
+					'<cmd>lua require("spectre").open_file_search()<cr>',
+					desc = "Open file menu",
+				},
+				{
+					"<leader>Sm",
+					'<cmd>lua require("spectre").open()<cr>',
+					desc = "Open menu",
+				},
+				{
+					"<leader>Sy",
+					'<cmd>lua require("spectre").open_visual()<cr>',
+					desc = "Replace yank",
+				},
+				{ "<leader>R", group = "Rest" },
+				{ "<leader>Rr", "<Plug>RestNvim", desc = "Run request under the cursor" },
+				{ "<leader>Rp", "<Plug>RestNvimPreview", desc = "Preview request under the cursor" },
+				{ "<leader>Rl", "<Plug>RestNvimLast", desc = "Run last request" },
+
+				{ "<leader>t", group = "Test" },
+				{
+					"<leader>tr",
+					'<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>',
+					desc = "Run file tests",
+				},
+				{ "<leader>tR", '<cmd>lua require("neotest").run.run(vim.loop.cwd())<cr>', desc = "Run all tests" },
+				{ "<leader>tn", '<cmd>lua require("neotest").run.run()<cr>', desc = "Run nearest test" },
+				{
+					"<leader>td",
+					'<cmd>lua require("neotest").run.run({ strategy = "dap" })<cr>',
+					desc = "Debug nearest test",
+				},
+				{
+					"<leader>to",
+					'<cmd>lua require("neotest").output.open({ enter = true, auto_close = true })<cr>',
+					desc = "Show output",
+				},
+				{ "<leader>tO", '<cmd>lua require("neotest").output_panel.toggle()<cr>', desc = "Toggle output" },
+				{ "<leader>ts", '<cmd>lua require("neotest").run.stop()<cr>', desc = "Stop test" },
+				{ "<leader>tt", '<cmd>lua require("neotest").summary.toggle()<cr>', desc = "Toggle summary" },
+
+				{ "<leader>x", group = "Misc" },
+				{
+					"<leader>xd",
+					"<cmd>%s/\\s\\+$//e<cr>",
+					desc = "Delete trailing spaces",
+				},
+				{ "<leader>xp", "<cmd>PeekToggle<cr>", desc = "Toggle preview" },
+				{
+					"<leader>xs",
+					"<cmd>ISwap<cr>",
+					desc = "Swap parameters interactively",
+				},
+				{
+					"<leader>xu",
+					"<cmd>PP<cr>",
+					desc = "Upload file to dpaste",
+				},
+
+				{ "<leader>zb", "<cmd>ObsidianBacklinks<cr>", desc = "List backlinks" },
+				{ "<leader>zd", "<cmd>ObsidianDailies -14 1<cr>", desc = "List dailies" },
+				{ "<leader>zi", "<cmd>ObsidianTemplate<cr>", desc = "Insert template" },
+				{ "<leader>zo", "<cmd>ObsidianOpen<cr>", desc = "Open obsidian" },
+				{ "<leader>zs", "<cmd>ObsidianSearch<cr>", desc = "Search notes" },
+				{ "<leader>zt", "<cmd>ObsidianToday<cr>", desc = "Create/open note for today" },
+				{ "<leader>zT", "<cmd>ObsidianTomorrow<cr>", desc = "Create/open note for tomorrow" },
+				{ "<leader>zy", "<cmd>ObsidianYesterday<cr>", desc = "Create/open note for yesterday" },
+				{ "<leader>zw", "<cmd>ObsidianWorkspace<cr>", desc = "Select active workspace" },
 			},
 		},
 	}
 	wk.setup(config.setup)
-	wk.register(config.mappings, {
-		mode = "n",
-		prefix = "<leader>",
-	})
-	wk.register(config.vmappings, {
-		mode = "v",
-		prefix = "<leader>",
-	})
+	wk.add(config.mappings)
 end
 
 return M

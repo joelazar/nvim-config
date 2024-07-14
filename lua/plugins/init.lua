@@ -154,16 +154,6 @@ return {
 		},
 	},
 
-	-- Refactoring library based off the Refactoring book by Martin Fowler
-	{
-		"ThePrimeagen/refactoring.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-		opts = {},
-	},
-
 	-- Hightlight active code
 	{ "folke/twilight.nvim", cmd = { "Twilight" } },
 

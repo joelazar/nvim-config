@@ -88,7 +88,7 @@ M.config = function()
 			use_languagetree = true,
 			additional_vim_regex_highlighting = { "markdown" },
 		},
-		indent = { enable = true },
+		indent = { enable = false },
 		matchup = { enable = true },
 		incremental_selection = {
 			enable = true,
