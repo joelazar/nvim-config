@@ -12,11 +12,15 @@ M.config = function()
 			delay = 200,
 			layout = { align = "center" }, -- align columns left, center or right
 			sort = { "order", "group", "alphanum", "mod", "lower", "icase" },
+			icons = {
+				rules = false,
+				group = "",
+			},
 		},
 		mappings = {
 			{
 				mode = { "n" },
-				{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+				{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command history" },
 
 				{
 					"<leader>bF",
@@ -56,17 +60,17 @@ M.config = function()
 				},
 				{ "<leader>T", group = "Toggle" },
 				{ "<leader>Tt", group = "Treesitter" },
-				{ "<leader>Tf", "<cmd>FormatToggle<cr>", desc = "Autoformat" },
-				{ "<leader>Tg", "<cmd>Copilot! toggle<cr>", desc = "GitHub Copilot" },
-				{ "<leader>TH", "<cmd>ColorizerToggle<cr>", desc = "Highlight colors" },
+				{ "<leader>Tf", "<cmd>FormatToggle<cr>", desc = "Toggle autoformat" },
+				{ "<leader>Tg", "<cmd>Copilot! toggle<cr>", desc = "Toggle copilot" },
+				{ "<leader>TH", "<cmd>ColorizerToggle<cr>", desc = "Toggle highlight colors" },
 				{
 					"<leader>TI",
 					function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 					end,
-					desc = "Inlay hints",
+					desc = "Toggle inlay hints",
 				},
-				{ "<leader>Tz", "<cmd>ZenMode<cr>", desc = "Zenmode" },
+				{ "<leader>Tz", "<cmd>ZenMode<cr>", desc = "Toggle zenmode" },
 				{
 					"<leader>Tth",
 					function()
@@ -164,16 +168,21 @@ M.config = function()
 					desc = "Log point message",
 				},
 				{ "<leader>dbt", '<cmd>lua require("dap").toggle_breakpoint()<cr>', desc = "Create" },
+
+				{ "<leader>dh", group = "Hover" },
 				{ "<leader>dhh", '<cmd>lua require("dap.ui.variables").hover()<cr>', desc = "Hover" },
 				{ "<leader>dhv", '<cmd>lua require("dap.ui.variables").visual_hover()<cr>', desc = "Visual hover" },
+				{ "<leader>dr", group = "Run" },
 				{ "<leader>dro", '<cmd>lua require("dap").repl.toggle()<cr>', desc = "Toggle" },
 				{ "<leader>drl", '<cmd>lua require("dap").repl.run_last()<cr>', desc = "Run last" },
 				{ "<leader>dR", '<cmd>lua require("dap").run_to_cursor()<cr>', desc = "Run to cursor" },
+				{ "<leader>ds", group = "Step" },
 				{ "<leader>dsc", '<cmd>lua require("dap").continue()<cr>', desc = "Continue" },
 				{ "<leader>dsv", '<cmd>lua require("dap").step_over()<cr>', desc = "Step over" },
 				{ "<leader>dsi", '<cmd>lua require("dap").step_into()<cr>', desc = "Step into" },
 				{ "<leader>dso", '<cmd>lua require("dap").step_out()<cr>', desc = "Step out" },
 				{ "<leader>dt", '<cmd>lua require("dapui").toggle()<cr>', desc = "Toggle" },
+				{ "<leader>du", group = "Widget" },
 				{ "<leader>duh", '<cmd>lua require("dap.ui.widgets").hover()<cr>', desc = "Hover" },
 				{
 					"<leader>duf",
@@ -191,6 +200,7 @@ M.config = function()
 				{ "<leader>Ps", "<cmd>Lazy sync<cr>", desc = "Lazy sync" },
 				{ "<leader>Pu", "<cmd>Lazy update<cr>", desc = "Lazy update" },
 
+				{ "<leader>gt", group = "Telescope" },
 				{ "<leader>gtb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
 				{ "<leader>gtc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
 				{ "<leader>gtf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout commit (for current file)" },
@@ -220,6 +230,7 @@ M.config = function()
 					end,
 					desc = "Code action",
 				},
+				{ "<leader>lc", group = "Codelens" },
 				{
 					"<leader>lcr",
 					function()

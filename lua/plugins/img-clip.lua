@@ -3,6 +3,6 @@ return {
 	opts = {},
 	cmd = "PasteImage",
 	keys = {
-		{ "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste clipboard image" },
+		{ "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image" },
 	},
 }
