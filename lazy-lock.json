@@ -61,7 +61,7 @@
   "mojo.vim": { "branch": "main", "commit": "5a721cc1ecfe665b69359d1b1345794df00e7380" },
   "neogen": { "branch": "main", "commit": "6de0add4805165317ab7d3d36b5cef48b1b865f3" },
   "neotest": { "branch": "master", "commit": "32ff2ac21135a372a42b38ae131e531e64833bd3" },
-  "neotest-golang": { "branch": "main", "commit": "c068d3713e6e68c888b85ba5135cfdc0c91c65f2" },
+  "neotest-golang": { "branch": "main", "commit": "b1bda051a92cb5f1345327dd17a5d0c563c72747" },
   "neotest-jest": { "branch": "main", "commit": "514fd4eae7da15fd409133086bb8e029b65ac43f" },
   "neotest-python": { "branch": "master", "commit": "2e83d2bc00acbcc1fd529dbf0a0e677cabfe6b50" },
   "nnn.nvim": { "branch": "master", "commit": "662034c73718885ee599ad9fb193ab1ede70fbcb" },
@@ -129,6 +129,6 @@
   "vim-matchup": { "branch": "master", "commit": "1535a769d5dca851fe7d41b0be95f7c7203a4bef" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
   "vim-wakatime": { "branch": "master", "commit": "3cb40867cb5a3120f9bef76eff88edc7f1dc1a23" },
-  "which-key.nvim": { "branch": "main", "commit": "4d5b8959fd2a4df065ff76ccb39019aaa70cb0dc" },
+  "which-key.nvim": { "branch": "main", "commit": "d077a3f36d4b4d29eccc7feb1ba8e78a421df920" },
   "zen-mode.nvim": { "branch": "main", "commit": "2694c5a2bc4dc26c7a9e74b9e2b812920c90a830" }
 }
