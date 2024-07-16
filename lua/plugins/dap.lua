@@ -19,6 +19,7 @@ local M = {
 		},
 		{ "theHamsta/nvim-dap-virtual-text", opts = true },
 		"mfussenegger/nvim-dap-python",
+		"leoluz/nvim-dap-go",
 		{ "LiadOz/nvim-dap-repl-highlights", opts = true },
 	},
 	-- stylua: ignore
@@ -33,7 +34,6 @@ local M = {
 M.config = function()
 	local dap = require("dap")
 	local dapui = require("dapui")
-	local dap_python = require("dap-python")
 
 	vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError", linehl = "", numhl = "" })
@@ -227,6 +227,7 @@ M.config = function()
 
 	local path = require("mason-registry").get_package("debugpy"):get_install_path()
 	require("dap-python").setup(path .. "/venv/bin/python")
+	require("dap-go").setup()
 
 	-- TODO: mojo debugging is not working yet
 	-- dap.adapters.lldb = {
