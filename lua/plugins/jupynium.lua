@@ -7,12 +7,7 @@ return {
 			callback = function(event)
 				local buf_id = event.buf
 				local wk = require("which-key")
-				wk.register({
-					["<leader>j"] = { name = "Jupynium" },
-				}, { mode = "n", buffer = buf_id })
-				wk.register({
-					["<leader>j"] = { name = "Jupynium" },
-				}, { mode = "v", buffer = buf_id })
+				wk.add({ mode = { "n", "v" }, buffer = buf_id, { "<leader>j", desc = "Jupynium" } })
 
 				vim.keymap.set(
 					{ "n", "x" },
