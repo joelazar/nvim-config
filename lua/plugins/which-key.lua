@@ -293,9 +293,6 @@ M.config = function()
 				},
 
 				{ "<leader>o", group = "Overseer" },
-				{ "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "Run last task" },
-				{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "List tasks in project" },
-				{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle summary window" },
 
 				{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
 				{ "<leader>sb", "<cmd>Telescope vim_bookmarks all<cr>", desc = "Bookmarks" },
