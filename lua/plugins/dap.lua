@@ -18,7 +18,28 @@ local M = {
 			opts = true,
 		},
 		{ "theHamsta/nvim-dap-virtual-text", opts = true },
-		"mfussenegger/nvim-dap-python",
+		{
+			"mfussenegger/nvim-dap-python",
+			keys = {
+				{
+					"<leader>dPt",
+					function()
+						require("dap-python").test_method()
+					end,
+					desc = "Debug Method",
+					ft = "python",
+				},
+				{
+					"<leader>dPc",
+					function()
+						require("dap-python").test_class()
+					end,
+					desc = "Debug Class",
+					ft = "python",
+				},
+			},
+			ft = "python",
+		},
 		"leoluz/nvim-dap-go",
 		{ "LiadOz/nvim-dap-repl-highlights", opts = true },
 	},
