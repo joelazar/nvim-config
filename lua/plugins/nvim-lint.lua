@@ -5,7 +5,7 @@ return {
 		events = { "BufWritePost", "BufReadPost", "InsertLeave" },
 		linters_by_ft = {
 			fish = { "fish" },
-			python = { "mypy" },
+			-- python = { "mypy" },
 			-- Use the "*" filetype to run linters on all filetypes.
 			-- ['*'] = { 'global linter' },
 			-- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
@@ -13,7 +13,7 @@ return {
 			-- ["*"] = { "typos" },
 		},
 		linters = {
-			mypy = { prepend_args = { "--ingore-missing-imports" } },
+			-- 	mypy = { prepend_args = { "--ingore-missing-imports" } },
 		},
 	},
 	config = function(_, opts)
