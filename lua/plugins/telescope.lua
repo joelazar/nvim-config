@@ -6,7 +6,6 @@ local M = {
 		"AckslD/nvim-neoclip.lua",
 		"tom-anders/telescope-vim-bookmarks.nvim",
 		"ahmedkhalf/project.nvim",
-		"ThePrimeagen/refactoring.nvim",
 		"folke/trouble.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
@@ -14,10 +13,7 @@ local M = {
 			branch = "0.2.x",
 			dependencies = { "kkharji/sqlite.lua" },
 		},
-		{
-			"HPRIOR/telescope-gpt",
-			dependencies = { "jackMort/ChatGPT.nvim" },
-		},
+		"HPRIOR/telescope-gpt",
 	},
 	cmd = { "Telescope" },
 	keys = {
@@ -239,7 +235,6 @@ M.config = function()
 	telescope.load_extension("macroscope")
 	telescope.load_extension("projects")
 	telescope.load_extension("smart_open")
-	telescope.load_extension("refactoring")
 end
 
 return M
