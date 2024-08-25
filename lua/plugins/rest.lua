@@ -8,9 +8,9 @@ return {
 	{
 		"rest-nvim/rest.nvim",
 		ft = "http",
-		dependencies = { "luarocks.nvim" },
+		dependencies = { "luarocks.nvim", "j-hui/fidget.nvim" },
 		config = function()
-			require("rest-nvim").setup({ env_file = ".envrc" })
+			require("rest_nvim").setup({ env_file = ".envrc" })
 		end,
 	},
 }
