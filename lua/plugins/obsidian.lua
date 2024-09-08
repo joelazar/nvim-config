@@ -30,11 +30,11 @@ return {
 			workspaces = {
 				{
 					name = "private",
-					path = "~/Documents/obsidian/private",
+					path = "~/Obsidian/private",
 				},
 				{
 					name = "home",
-					path = "~/Documents/obsidian/home",
+					path = "~/Obsidian/home",
 				},
 			},
 
