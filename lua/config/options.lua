@@ -8,3 +8,6 @@ vim.g.lazyvim_python_ruff = "ruff_lsp"
 
 -- Show absolute line number in front of each line
 vim.o.relativenumber = false
+
+-- Do not use system clipboard
+vim.o.clipboard = ""
