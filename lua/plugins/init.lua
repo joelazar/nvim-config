@@ -28,7 +28,7 @@ return {
     opts = {
       dashboard = {
         preset = {
-          header = [[Good morning Joe 🌤️!]],
+          header = [[Hey Joe 🌤️!]],
         },
       },
     },
@@ -157,5 +157,14 @@ return {
       })
       table.insert(opts.sources, { name = "look" })
     end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        golangci_lint_ls = {},
+      },
+    },
   },
 }
