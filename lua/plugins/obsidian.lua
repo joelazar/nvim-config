@@ -163,7 +163,7 @@ return {
 
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-        name = "telescope.nvim",
+        name = "fzf-lua",
         -- Optional, configure key mappings for the picker. These are the defaults.
         -- Not all pickers support all mappings.
         mappings = {

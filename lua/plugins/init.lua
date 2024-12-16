@@ -1,5 +1,4 @@
 return {
-
   {
     "folke/tokyonight.nvim",
     opts = { style = "night" },
@@ -28,8 +27,15 @@ return {
     opts = {
       dashboard = {
         preset = {
-          header = [[Hey Joe 🌤️!]],
+          header = [[Hey Joe 👋!]],
         },
+      },
+      indent = {
+        scope = { enabled = false },
+        animate = { enabled = false },
+      },
+      scroll = {
+        enabled = false,
       },
     },
   },
@@ -38,23 +44,13 @@ return {
     "johmsalas/text-case.nvim",
     config = function()
       require("textcase").setup({})
-      require("telescope").load_extension("textcase")
     end,
-    keys = { { "ga.", mode = { "n", "v" }, "<cmd>TextCaseOpenTelescope<CR>", desc = "Telescope text-case" } },
-    cmd = { "TextCaseOpenTelescope" },
   },
 
   {
     -- Measure the time spent on projects
     "wakatime/vim-wakatime",
     event = "VeryLazy",
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      scope = { enabled = false },
-    },
   },
 
   {
@@ -73,73 +69,6 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     enabled = false,
-  },
-
-  {
-    "debugloop/telescope-undo.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    setup = function()
-      require("telescope").load_extension("undo")
-    end,
-    keys = {
-      mode = { "n" },
-      { "<leader>su", "<cmd>Telescope undo<cr>", desc = "Undo history" },
-    },
-  },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "debugloop/telescope-undo.nvim",
-    },
-    keys = {
-      {
-        "<C-p>",
-        function()
-          require("telescope.builtin").find_files()
-        end,
-        desc = "Find files",
-        mode = "n",
-      },
-    },
-    opts = {
-      mappings = {
-        n = {
-          ["q"] = function(...)
-            return require("telescope.actions").close(...)
-          end,
-          ["<c-a>"] = function(...)
-            return require("telescope.actions").toggle_all(...)
-          end,
-          ["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
-          ["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
-          ["<PageDown>"] = require("telescope.actions").cycle_history_next,
-          ["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-        },
-        i = {
-          ["<c-a>"] = function(...)
-            return require("telescope.actions").toggle_all(...)
-          end,
-          ["<S-Up>"] = require("telescope.actions").preview_scrolling_up,
-          ["<S-Down>"] = require("telescope.actions").preview_scrolling_down,
-          ["<PageDown>"] = require("telescope.actions").cycle_history_next,
-          ["<PageUp>"] = require("telescope.actions").cycle_history_prev,
-        },
-      },
-      pickers = {
-        find_files = {
-          mappings = {
-            i = {
-              ["<esc>"] = function(...)
-                return require("telescope.actions").close(...)
-              end,
-            },
-          },
-        },
-      },
-    },
   },
 
   {
