@@ -72,23 +72,6 @@ return {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-calc",
-      "octaltree/cmp-look",
-    },
-    opts = function(_, opts)
-      table.insert(opts.sources, {
-        name = "look",
-        keyword_length = 3,
-        max_item_count = 10,
-        option = { convert_case = true, loud = true },
-      })
-      table.insert(opts.sources, { name = "look" })
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
