@@ -86,4 +86,18 @@ return {
       { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
     },
   },
+
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        ["<Tab>"] = {
+          LazyVim.cmp.map({ "snippet_forward" }),
+          "select_next",
+          "fallback",
+        },
+        ["<S-Tab>"] = { LazyVim.cmp.map({ "snippet_backward" }), "select_prev", "fallback" },
+      },
+    },
+  },
 }
