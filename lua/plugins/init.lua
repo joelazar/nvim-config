@@ -54,19 +54,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = {
-      preset = "helix",
-      spec = {
-        {
-          mode = { "n" },
-          { "<leader>W", '<cmd>lua require("config.utils").sudo_write()', desc = "Write (sudo)" },
-        },
-      },
-    },
-  },
-
-  {
     "MeanderingProgrammer/render-markdown.nvim",
     enabled = false,
   },
@@ -110,6 +97,23 @@ return {
       previewers = {
         builtin = {
           syntax_limit_b = 1024 * 100, -- 100KB
+        },
+      },
+    },
+  },
+
+  {
+    "folke/which-key.nvim",
+    opts = {
+      preset = "helix",
+      icons = {
+        mappings = false,
+        rules = false,
+      },
+      spec = {
+        {
+          mode = { "n" },
+          { "<leader>W", '<cmd>lua require("config.utils").sudo_write()', desc = "Write (sudo)" },
         },
       },
     },
