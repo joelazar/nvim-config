@@ -78,13 +78,12 @@ return {
     "saghen/blink.cmp",
     opts = {
       keymap = {
-        ["<Tab>"] = {
-          LazyVim.cmp.map({ "snippet_forward" }),
-          "select_next",
-          "fallback",
-        },
+        ["<Tab>"] = { LazyVim.cmp.map({ "snippet_forward" }), "select_next", "fallback" },
         ["<S-Tab>"] = { LazyVim.cmp.map({ "snippet_backward" }), "select_prev", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+        ["<Esc>"] = { "hide", "fallback" },
       },
+      completion = { list = { selection = "manual" } },
     },
   },
 
