@@ -125,4 +125,20 @@ return {
     end,
     cmd = { "Orphans" },
   },
+
+  {
+    "saghen/blink.cmp",
+    optional = true,
+    dependencies = { "hrsh7th/cmp-calc", "saghen/blink.compat" },
+    opts = {
+      sources = {
+        compat = { "calc" },
+        providers = {
+          calc = {
+            kind = "calc",
+          },
+        },
+      },
+    },
+  },
 }
