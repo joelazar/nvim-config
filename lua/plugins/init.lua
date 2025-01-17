@@ -76,6 +76,7 @@ return {
 
   {
     "saghen/blink.cmp",
+    dependencies = { "hrsh7th/cmp-calc", "saghen/blink.compat" },
     opts = {
       keymap = {
         ["<Tab>"] = { LazyVim.cmp.map({ "snippet_forward" }), "select_next", "fallback" },
@@ -83,7 +84,24 @@ return {
         ["<CR>"] = { "accept", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
       },
-      completion = { list = { selection = "manual" } },
+      completion = { list = { selection = { preselect = false, auto_insert = false } } },
+      sources = {
+        compat = { "calc", "avante_commands", "avante_mentions", "avante_files" },
+        providers = {
+          calc = {
+            kind = "calc",
+          },
+          avante_commands = {
+            kind = "avante_commands",
+          },
+          avante_mentions = {
+            kind = "avante_mentions",
+          },
+          avante_files = {
+            kind = "avante_files",
+          },
+        },
+      },
     },
   },
 
@@ -124,22 +142,6 @@ return {
       require("orphans").setup({})
     end,
     cmd = { "Orphans" },
-  },
-
-  {
-    "saghen/blink.cmp",
-    optional = true,
-    dependencies = { "hrsh7th/cmp-calc", "saghen/blink.compat" },
-    opts = {
-      sources = {
-        compat = { "calc" },
-        providers = {
-          calc = {
-            kind = "calc",
-          },
-        },
-      },
-    },
   },
 
   {
