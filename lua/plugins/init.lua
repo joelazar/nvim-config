@@ -38,6 +38,9 @@ return {
         enabled = false,
       },
     },
+    keys = {
+      { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+    },
   },
 
   {
@@ -64,13 +67,6 @@ return {
       servers = {
         golangci_lint_ls = {},
       },
-    },
-  },
-
-  {
-    "ibhagwan/fzf-lua",
-    keys = {
-      { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
     },
   },
 
@@ -105,19 +101,22 @@ return {
     },
   },
 
-  {
-    "ibhagwan/fzf-lua",
-    opts = {
-      oldfiles = {
-        include_current_session = true,
-      },
-      previewers = {
-        builtin = {
-          syntax_limit_b = 1024 * 100, -- 100KB
-        },
-      },
-    },
-  },
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   opts = {
+  --     oldfiles = {
+  --       include_current_session = true,
+  --     },
+  --     previewers = {
+  --       builtin = {
+  --         syntax_limit_b = 1024 * 100, -- 100KB
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+  --   },
+  -- },
 
   {
     "folke/which-key.nvim",
