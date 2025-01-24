@@ -88,35 +88,47 @@ return {
             kind = "calc",
           },
           avante_commands = {
-            kind = "avante_commands",
-          },
-          avante_mentions = {
-            kind = "avante_mentions",
+            name = "avante_commands",
+            module = "blink.compat.source",
+            score_offset = 90,
+            opts = {},
           },
           avante_files = {
-            kind = "avante_files",
+            name = "avante_files",
+            module = "blink.compat.source",
+            score_offset = 100,
+            opts = {},
+          },
+          avante_mentions = {
+            name = "avante_mentions",
+            module = "blink.compat.source",
+            score_offset = 1000,
+            opts = {},
           },
         },
       },
     },
   },
 
-  -- {
-  --   "ibhagwan/fzf-lua",
-  --   opts = {
-  --     oldfiles = {
-  --       include_current_session = true,
-  --     },
-  --     previewers = {
-  --       builtin = {
-  --         syntax_limit_b = 1024 * 100, -- 100KB
-  --       },
-  --     },
-  --   },
-  --   keys = {
-  --     { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-  --   },
-  -- },
+  {
+    "ibhagwan/fzf-lua",
+    opts = {
+      -- Include files from current session in oldfiles list
+      oldfiles = {
+        include_current_session = true,
+      },
+      previewers = {
+        builtin = {
+          -- Limit syntax highlighting to files under 100KB
+          syntax_limit_b = 1024 * 100,
+        },
+      },
+    },
+    keys = {
+      -- Ctrl-P to open file picker
+      { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+    },
+  },
 
   {
     "folke/which-key.nvim",
