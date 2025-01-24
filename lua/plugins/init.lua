@@ -18,7 +18,10 @@ return {
       { "<A-Right>", "<cmd>BufferLineCycleNext<cr>", mode = "n", desc = "Move to next buffer" },
       { "<A-,>", "<cmd>BufferLineMovePrev<cr>", mode = "n", desc = "Re-order to previous buffer" },
       { "<A-.>", "<cmd>BufferLineMoveNext<cr>", mode = "n", desc = "Re-order to next buffer" },
-      { "<A-p>", "<cmd>BufferLineTogglePin<cr>", mode = "n", desc = "Pin buffer" },
+      { "<A-p>", "<cmd>BufferLineTogglePin<cr>", mode = "n", desc = "Toggle Pin" },
+      { "<leader>bP", false },
+      { "<leader>bw", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
+      { "<leader>bW", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
     },
   },
 
@@ -79,6 +82,7 @@ return {
         ["<S-Tab>"] = { LazyVim.cmp.map({ "snippet_backward" }), "select_prev", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
+        ["<C-j>"] = { "select_and_accept" },
       },
       completion = { list = { selection = { preselect = false, auto_insert = false } } },
       sources = {

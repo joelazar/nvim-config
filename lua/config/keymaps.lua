@@ -63,3 +63,9 @@ local function smart_dd()
 end
 
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
+
+-- Configure toggle terminal for CMD+J
+map("n", "<D-j>", function()
+  Snacks.terminal(nil, { cwd = LazyVim.root() })
+end, { desc = "Terminal (Root Dir)" })
+map("t", "<D-j>", "<cmd>close<cr>", { desc = "Hide Terminal" })
