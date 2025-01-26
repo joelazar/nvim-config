@@ -2,22 +2,29 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-----------------------------------------------------------
+-- Key Mapping Configuration
+-----------------------------------------------------------
+
+-- Shorthand for mapping keys
 local map = vim.keymap.set
 
--- Close windows
+-- Window Management
+-- Q: Close current window (replaces default 'Q' which enters Ex mode)
 map("n", "Q", "<cmd>close<cr>", { silent = true })
 
--- Copy/paste with system clipboard
+-- System Clipboard Integration
+-- gy: Copy to system clipboard (normal and visual modes)
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
+-- gp: Paste from system clipboard (normal mode)
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
-
--- Paste in Visual with `P` to not copy selected text (`:h v_P`)
+-- gp: Paste in Visual mode without copying selected text (see :h v_P)
 map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
--- Move by visible lines. Notes:
--- - Don't map in Operator-pending mode because it severely changes behavior:
---   like `dj` on non-wrapped line will not delete it.
--- - Condition on `v:count == 0` to allow easier use of relative line numbers.
+-- Better Navigation for Wrapped Lines
+-- These mappings make j/k move by visible lines rather than file lines
+-- Only applies when not using a count (e.g. 5j still moves 5 actual lines)
+-- Not mapped in operator-pending mode to preserve behavior of operations like 'dj'
 map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
