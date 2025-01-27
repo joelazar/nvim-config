@@ -8,7 +8,7 @@ return {
       yaml = true,
       gitcommit = true,
       gitrebase = true,
-      conf = true,
+      conf = false,
       -- Disable for dot files
       ["."] = false,
       -- Custom handling for markdown files
