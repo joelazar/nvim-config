@@ -10,7 +10,7 @@ return {
   opts = {
     file_selector = {
       -- Use fzf for file selection interface
-      provider = "fzf",
+      provider = "snacks",
       provider_opts = {},
     },
   },
@@ -18,12 +18,11 @@ return {
   build = "make",
   -- Required dependencies for full functionality
   dependencies = {
-    "stevearc/dressing.nvim",    -- Enhanced UI components
-    "nvim-lua/plenary.nvim",     -- Lua utility functions
-    "MunifTanjim/nui.nvim",      -- UI component library
-    "ibhagwan/fzf-lua",          -- Fuzzy finder implementation
-    "echasnovski/mini.icons",    -- File icons support
-    "zbirenbaum/copilot.lua",    -- AI completion integration
+    "stevearc/dressing.nvim", -- Enhanced UI components
+    "nvim-lua/plenary.nvim", -- Lua utility functions
+    "MunifTanjim/nui.nvim", -- UI component library
+    "echasnovski/mini.icons", -- File icons support
+    "zbirenbaum/copilot.lua", -- AI completion integration
     {
       -- Image handling capabilities
       "HakonHarnes/img-clip.nvim",

@@ -110,26 +110,6 @@ return {
   },
 
   {
-    "ibhagwan/fzf-lua",
-    opts = {
-      -- Include files from current session in oldfiles list
-      oldfiles = {
-        include_current_session = true,
-      },
-      previewers = {
-        builtin = {
-          -- Limit syntax highlighting to files under 100KB
-          syntax_limit_b = 1024 * 100,
-        },
-      },
-    },
-    keys = {
-      -- Ctrl-P to open file picker
-      { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-    },
-  },
-
-  {
     "folke/which-key.nvim",
     opts = {
       preset = "helix",
