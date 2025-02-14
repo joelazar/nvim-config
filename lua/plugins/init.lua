@@ -139,4 +139,15 @@ return {
     optional = true,
     opts = { ensure_installed = { "sql", "gotmpl", "comment" } },
   },
+
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters = {
+        ["markdownlint-cli2"] = {
+          args = { "--config", os.getenv("HOME") .. "/.config/nvim/.markdownlint-cli2.yaml", "--" },
+        },
+      },
+    },
+  },
 }
