@@ -9,9 +9,14 @@ return {
   version = false,
   opts = {
     file_selector = {
-      -- Use fzf for file selection interface
       provider = "snacks",
       provider_opts = {},
+    },
+    claude = {
+      endpoint = "https://api.anthropic.com",
+      model = "claude-3-7-sonnet-latest",
+      temperature = 0,
+      max_tokens = 4096,
     },
   },
   -- Required build step
