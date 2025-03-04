@@ -1,5 +1,5 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -39,13 +39,10 @@ return {
       },
 
       completion = {
-        -- If using nvim-cmp, otherwise set to false
         nvim_cmp = false,
-        -- Trigger completion at 2 chars
-        min_chars = 2,
+        blink = true,
       },
 
-      -- Optional, key mappings.
       mappings = {
         -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
         ["gf"] = {
@@ -60,6 +57,13 @@ return {
             return require("obsidian").util.toggle_checkbox()
           end,
           opts = { buffer = true },
+        },
+        -- Smart action depending on context, either follow link or toggle checkbox.
+        ["<cr>"] = {
+          action = function()
+            return require("obsidian").util.smart_action()
+          end,
+          opts = { buffer = true, expr = true },
         },
       },
 
@@ -143,26 +147,32 @@ return {
       -- URL it will be ignored but you can customize this behavior here.
       follow_url_func = function(url)
         -- Open the URL in the default web browser.
-        vim.fn.jobstart({ "xdg-open", url }) -- linux
+        vim.fn.jobstart({ "open", url }) -- linux
       end,
 
       -- Optional, set to true if you use the Obsidian Advanced URI plugin.
       -- https://github.com/Vinzent03/obsidian-advanced-uri
-      use_advanced_uri = false,
+      use_advanced_uri = true,
 
       -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
       open_app_foreground = false,
 
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-        name = "fzf-lua",
+        name = "snacks.pick",
         -- Optional, configure key mappings for the picker. These are the defaults.
         -- Not all pickers support all mappings.
-        mappings = {
+        note_mappings = {
           -- Create a new note from your query.
           new = "<C-x>",
           -- Insert a link to the selected note.
           insert_link = "<C-l>",
+        },
+        tag_mappings = {
+          -- Add tag(s) to current note.
+          tag_note = "<C-x>",
+          -- Insert a tag at the current location.
+          insert_tag = "<C-l>",
         },
       },
 
