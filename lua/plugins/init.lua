@@ -70,7 +70,7 @@ return {
 
   {
     "saghen/blink.cmp",
-    dependencies = { "hrsh7th/cmp-calc", "saghen/blink.compat" },
+    dependencies = { "hrsh7th/cmp-calc", "saghen/blink.compat", "Kaiser-Yang/blink-cmp-avante" },
     opts = {
       keymap = {
         ["<Tab>"] = { LazyVim.cmp.map({ "snippet_forward" }), "select_next", "fallback" },
@@ -81,27 +81,15 @@ return {
       },
       completion = { list = { selection = { preselect = false, auto_insert = false } } },
       sources = {
-        compat = { "calc", "avante_commands", "avante_mentions", "avante_files" },
+        default = { "avante", "calc" },
+        compat = { "calc" },
         providers = {
           calc = {
             kind = "calc",
           },
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 90,
-            opts = {},
-          },
-          avante_files = {
-            name = "avante_files",
-            module = "blink.compat.source",
-            score_offset = 100,
-            opts = {},
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 1000,
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
             opts = {},
           },
         },
