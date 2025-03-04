@@ -1,8 +1,7 @@
--- GitHub Copilot configuration
--- AI-powered code completion
 return {
   "zbirenbaum/copilot.lua",
   opts = {
+    copilot_node_command = "/opt/homebrew/bin/node", -- so Copilot works in projects where node <18 is used
     filetypes = {
       -- Enable Copilot for specific filetypes
       yaml = true,
