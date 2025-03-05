@@ -1,5 +1,8 @@
 return {
   "zbirenbaum/copilot.lua",
+  keys = {
+    { "<leader>aT", "<cmd>Copilot! toggle<cr>", desc = "copilot: toggle" },
+  },
   opts = {
     copilot_node_command = "/opt/homebrew/bin/node", -- so Copilot works in projects where node <18 is used
     filetypes = {
@@ -13,7 +16,7 @@ return {
       -- Custom handling for markdown files
       markdown = function()
         -- Disable Copilot in Obsidian vault directories
-        if string.match(vim.fn.expand("%:p:h"), "obsidian") then
+        if string.match(vim.fn.expand("%:p:h"), "Obsidian") then
           return false
         end
         return true
