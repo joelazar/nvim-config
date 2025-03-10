@@ -8,6 +8,7 @@ return {
   -- Track main branch for latest features
   version = false,
   opts = {
+    hints = { enabled = false },
     file_selector = {
       provider = "snacks",
       provider_opts = {},
