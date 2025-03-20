@@ -193,4 +193,18 @@ return {
       table.insert(opts.sections.lualine_z, { wordcount, cond = is_textfile })
     end,
   },
+
+  {
+    "folke/snacks.nvim",
+    opts = {
+      picker = {
+        formatters = {
+          file = {
+            filename_first = true, -- display filename before the file path
+            truncate = 100, -- truncate the file path to (roughly) this length
+          },
+        },
+      },
+    },
+  },
 }
