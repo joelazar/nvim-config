@@ -45,9 +45,6 @@ map("x", "g/", "<esc>/\\%V", { silent = false, desc = "Search inside visual sele
 map("n", "<C-S>", "<Cmd>silent! update | redraw<CR>", { desc = "Save" })
 map({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = "Save and go to Normal mode" })
 
--- Have the same buffer on clipboard for multiple pastes
-map("v", "p", "pgvy", { silent = true })
-
 -- Better page up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
