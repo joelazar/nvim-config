@@ -19,6 +19,32 @@ return {
       temperature = 0,
       max_tokens = 4096,
     },
+    ollama = {
+      model = "qwq:32b",
+    },
+    gemini = {
+      model = "gemini-2.0-flash",
+    },
+
+    provider = "gemini-pro",
+    cursor_applying_provider = "groq",
+    -- NOTE: only needed for weaker models
+    -- behaviour = {
+    --   enable_cursor_planning_mode = true, -- enable cursor planning mode!
+    -- },
+    vendors = {
+      groq = {
+        __inherited_from = "openai",
+        api_key_name = "GROQ_API_KEY",
+        endpoint = "https://api.groq.com/openai/v1/",
+        model = "llama-3.3-70b-versatile",
+        max_completion_tokens = 32768,
+      },
+      ["gemini-pro"] = {
+        __inherited_from = "gemini",
+        model = "gemini-2.5-pro-exp-03-25",
+      },
+    },
   },
   -- Required build step
   build = "make",
