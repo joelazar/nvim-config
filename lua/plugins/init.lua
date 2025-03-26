@@ -14,11 +14,11 @@ return {
       },
     },
     keys = {
-      { "<A-Left>", "<cmd>BufferLineCyclePrev<cr>", mode = "n", desc = "Move to previous buffer" },
-      { "<A-Right>", "<cmd>BufferLineCycleNext<cr>", mode = "n", desc = "Move to next buffer" },
-      { "<A-,>", "<cmd>BufferLineMovePrev<cr>", mode = "n", desc = "Re-order to previous buffer" },
-      { "<A-.>", "<cmd>BufferLineMoveNext<cr>", mode = "n", desc = "Re-order to next buffer" },
-      { "<A-p>", "<cmd>BufferLineTogglePin<cr>", mode = "n", desc = "Toggle Pin" },
+      { "<A-Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Move to previous buffer" },
+      { "<A-Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Move to next buffer" },
+      { "<A-,>", "<cmd>BufferLineMovePrev<cr>", desc = "Re-order to previous buffer" },
+      { "<A-.>", "<cmd>BufferLineMoveNext<cr>", desc = "Re-order to next buffer" },
+      { "<A-p>", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle Pin" },
       { "<leader>bP", false },
       { "<leader>bw", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
       { "<leader>bW", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
@@ -215,6 +215,16 @@ return {
       require("project_nvim").setup({
         patterns = { "go.mod", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".obsidian" },
       })
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- disable mappings
+      keys[#keys + 1] = { "<a-p>", false }
+      keys[#keys + 1] = { "<a-n>", false }
     end,
   },
 }
