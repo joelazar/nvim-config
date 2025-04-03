@@ -26,7 +26,8 @@ return {
       model = "gemini-2.0-flash",
     },
 
-    provider = "gemini-pro",
+    provider = "claude",
+    -- provider = "gemini-pro",
     cursor_applying_provider = "groq",
     -- NOTE: only needed for weaker models
     -- behaviour = {

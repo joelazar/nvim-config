@@ -1,19 +1,3 @@
-local M = {}
-
----@param kind string
-function M.pick(kind)
-  return function()
-    local actions = require("CopilotChat.actions")
-    local items = actions[kind .. "_actions"]()
-    if not items then
-      LazyVim.warn("No " .. kind .. " found on the current line")
-      return
-    end
-    local ok = pcall(require, "fzf-lua")
-    require("CopilotChat.integrations." .. (ok and "fzflua" or "telescope")).pick(items)
-  end
-end
-
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
   keys = {
@@ -49,7 +33,24 @@ return {
       desc = "Quick Chat (CopilotChat)",
       mode = { "n", "v" },
     },
-    -- Show prompts actions with telescope
-    { "<leader>acp", M.pick("prompt"), desc = "Prompt Actions (CopilotChat)", mode = { "n", "v" } },
+    {
+      "<leader>acp",
+      function()
+        require("CopilotChat").select_prompt()
+      end,
+      desc = "Prompt Actions (CopilotChat)",
+      mode = { "n", "v" },
+    },
+  },
+  opts = {
+    model = "claude-3.7-sonnet",
+    show_help = false,
+    auto_insert_mode = false,
+    mappings = {
+      reset = {
+        normal = "<D-k>",
+        insert = "<D-k>",
+      },
+    },
   },
 }
