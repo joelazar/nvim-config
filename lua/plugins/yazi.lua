@@ -4,18 +4,13 @@ return {
   keys = {
     {
       "<leader>y",
-      "<cmd>Yazi<cr>",
-      desc = "Yazi - current dir",
+      "<cmd>Yazi toggle<cr>",
+      desc = "Yazi",
     },
     {
       "<leader>Y",
       "<cmd>Yazi cwd<cr>",
       desc = "Yazi - root dir",
-    },
-    {
-      "<c-y>",
-      "<cmd>Yazi toggle<cr>",
-      desc = "Yazi - resume session",
     },
   },
   opts = {
