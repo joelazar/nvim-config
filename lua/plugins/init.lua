@@ -21,7 +21,7 @@ return {
       { "<A-p>", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle Pin" },
       { "<leader>bP", false },
       { "<leader>bw", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
-      { "<leader>bW", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+      { "<leader>bW", "<Cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete Non-Pinned Buffers" },
     },
   },
 
@@ -131,7 +131,7 @@ return {
       spec = {
         {
           mode = { "n" },
-          { "<leader>W", '<cmd>lua require("config.utils").sudo_write()', desc = "Write (sudo)" },
+          { "<leader>W", '<cmd>lua require("config.utils").sudo_write()<cr>', desc = "Write (sudo)" },
         },
       },
     },
