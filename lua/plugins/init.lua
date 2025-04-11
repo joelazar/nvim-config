@@ -40,9 +40,24 @@ return {
       scroll = {
         enabled = false,
       },
+      picker = {
+        formatters = {
+          file = {
+            filename_first = true, -- display filename before the file path
+            truncate = 100, -- truncate the file path to (roughly) this length
+          },
+        },
+        hidden = true, -- show hidden files by default
+      },
     },
     keys = {
-      { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+      {
+        "<C-p>",
+        function()
+          Snacks.picker.files({ hidden = true })
+        end,
+        desc = "Find Files (Root Dir)",
+      },
     },
   },
 
@@ -195,20 +210,6 @@ return {
   },
 
   {
-    "folke/snacks.nvim",
-    opts = {
-      picker = {
-        formatters = {
-          file = {
-            filename_first = true, -- display filename before the file path
-            truncate = 100, -- truncate the file path to (roughly) this length
-          },
-        },
-      },
-    },
-  },
-
-  {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",
     config = function()
@@ -240,5 +241,49 @@ return {
         end
       end)
     end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    opts = { ensure_installed = { "sqlfluff" } },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        sql = { "sqlfluff" },
+        mysql = { "sqlfluff" },
+        plsql = { "sqlfluff" },
+      },
+      linters = {
+        sqlfluff = { prepend_args = { "--dialect", "postgres" } },
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        mojo = { "mojo" },
+        sql = { "sqlfluff" },
+        mysql = { "sqlfluff" },
+        plsql = { "sqlfluff" },
+      },
+      formatters = {
+        sqlfluff = {
+          require_cwd = false,
+          args = { "format", "--dialect=postgres", "-" },
+        },
+        mojo = {
+          inherit = false,
+          command = "mojo",
+          args = { "format", "--quiet", "$FILENAME" },
+          stdin = false,
+        },
+      },
+    },
   },
 }
