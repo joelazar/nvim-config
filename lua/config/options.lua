@@ -11,3 +11,6 @@ vim.o.relativenumber = false
 
 -- Do not use system clipboard
 vim.o.clipboard = ""
+
+-- Snacks animations
+vim.g.snacks_animate = false
