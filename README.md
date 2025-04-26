@@ -2,6 +2,14 @@
 
 My Neovim configuration based on [LazyVim](https://github.com/LazyVim/LazyVim) with additional plugins and customizations for enhanced productivity.
 
+![dashboard](https://github.com/user-attachments/assets/12d0997a-9869-4825-8b4c-7e399b1d4728)
+
+![which-key](https://github.com/user-attachments/assets/506ccb08-70c1-442e-bed5-a2bd7eeca19f)
+
+![ai](https://github.com/user-attachments/assets/b35889ee-685f-40d5-8fc7-edab76df48c5)
+
+![grep](https://github.com/user-attachments/assets/01e22664-290a-4f6b-a369-365244d15b3e)
+
 ## 📦 Install
 
 ```sh
