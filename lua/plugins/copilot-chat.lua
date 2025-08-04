@@ -43,7 +43,7 @@ return {
     },
   },
   opts = {
-    model = "claude-3.7-sonnet",
+    model = "gpt-4.1",
     show_help = false,
     auto_insert_mode = false,
     mappings = {
