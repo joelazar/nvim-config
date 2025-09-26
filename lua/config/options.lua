@@ -14,3 +14,9 @@ vim.o.clipboard = ""
 
 -- Snacks animations
 vim.g.snacks_animate = false
+
+-- Native inline completions don't support being shown as regular completions
+vim.g.ai_cmp = true
+
+-- Set to `true` in your `options.lua` to enable experimental support for Next Edit Suggestions
+vim.g.copilot_nes = true
