@@ -5,7 +5,6 @@ return {
   dependencies = {
     "hrsh7th/cmp-calc",
     "saghen/blink.compat",
-    "Kaiser-Yang/blink-cmp-avante",
     {
       "Kaiser-Yang/blink-cmp-git",
       dependencies = { "nvim-lua/plenary.nvim" },
@@ -25,7 +24,7 @@ return {
     },
     completion = { list = { selection = { preselect = false, auto_insert = false } } },
     sources = {
-      default = { "avante", "git", "dictionary", "calc" },
+      default = { "git", "dictionary", "calc" },
       compat = { "calc" },
       providers = {
         calc = {
@@ -34,11 +33,6 @@ return {
         git = {
           module = "blink-cmp-git",
           name = "Git",
-          opts = {},
-        },
-        avante = {
-          module = "blink-cmp-avante",
-          name = "Avante",
           opts = {},
         },
         dictionary = {
