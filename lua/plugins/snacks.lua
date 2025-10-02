@@ -8,6 +8,7 @@ return {
         header = [[Hey Joe 👋!]],
       },
     },
+    image = {},
     indent = {
       scope = { enabled = false },
       animate = { enabled = false },
@@ -24,6 +25,7 @@ return {
       },
       hidden = true, -- show hidden files by default
     },
+    statuscolumn = {},
   },
   keys = {
     {
@@ -35,3 +37,4 @@ return {
     },
   },
 }
+
