@@ -12,6 +12,9 @@ vim.o.relativenumber = false
 -- Do not use system clipboard
 vim.o.clipboard = ""
 
+-- Disable horizontal scrolling
+vim.o.mousescroll = "ver:1,hor:0"
+
 -- Snacks animations
 vim.g.snacks_animate = false
 

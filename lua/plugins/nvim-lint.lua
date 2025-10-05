@@ -1,8 +1,5 @@
--- SQL linting configuration
--- Configures sqlfluff linter for SQL dialects
 return {
   "mfussenegger/nvim-lint",
-  optional = true,
   opts = {
     linters_by_ft = {
       sql = { "sqlfluff" },
@@ -10,6 +7,9 @@ return {
       plsql = { "sqlfluff" },
     },
     linters = {
+      ["markdownlint-cli2"] = {
+        args = { "--config", os.getenv("HOME") .. "/.config/nvim/.markdownlint-cli2.yaml", "--" },
+      },
       sqlfluff = { prepend_args = { "--dialect", "postgres" } },
     },
   },
