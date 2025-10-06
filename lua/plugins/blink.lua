@@ -3,8 +3,6 @@
 return {
   "saghen/blink.cmp",
   dependencies = {
-    "hrsh7th/cmp-calc",
-    "saghen/blink.compat",
     {
       "Kaiser-Yang/blink-cmp-git",
       dependencies = { "nvim-lua/plenary.nvim" },
@@ -12,6 +10,10 @@ return {
     {
       "Kaiser-Yang/blink-cmp-dictionary",
       dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {
+      "blink-calc",
+      dir = "/Users/joelazar/Code/joelazar/blink-calc",
     },
   },
   opts = {
@@ -22,13 +24,15 @@ return {
       ["<Esc>"] = { "hide", "fallback" },
       ["<C-j>"] = { "select_and_accept" },
     },
-    completion = { list = { selection = { preselect = false, auto_insert = false } } },
+    completion = {
+      list = { selection = { preselect = false, auto_insert = false } },
+    },
     sources = {
       default = { "git", "dictionary", "calc" },
-      compat = { "calc" },
       providers = {
         calc = {
-          kind = "calc",
+          name = "Calc",
+          module = "blink-calc",
         },
         git = {
           module = "blink-cmp-git",
