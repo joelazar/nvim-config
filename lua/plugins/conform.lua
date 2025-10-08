@@ -20,6 +20,9 @@ return {
         args = { "format", "--quiet", "$FILENAME" },
         stdin = false,
       },
+      shfmt = {
+        args = { "-i", "4" },
+      },
     },
   },
 }
