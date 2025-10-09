@@ -23,6 +23,12 @@ return {
           truncate = 100, -- truncate the file path to (roughly) this length
         },
       },
+      sources = {
+        projects = {
+          dev = { "~/Code" },
+          max_depth = 4,
+        },
+      },
       hidden = true, -- show hidden files by default
     },
     statuscolumn = {},
@@ -37,4 +43,3 @@ return {
     },
   },
 }
-

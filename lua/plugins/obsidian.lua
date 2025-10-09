@@ -142,20 +142,6 @@ return {
         customizations = {},
       },
 
-      -- Sets how you follow URLs
-      ---@param url string
-      follow_url_func = function(url)
-        vim.ui.open(url)
-        -- vim.ui.open(url, { cmd = { "firefox" } })
-      end,
-
-      -- Sets how you follow images
-      ---@param img string
-      follow_img_func = function(img)
-        vim.ui.open(img)
-        -- vim.ui.open(img, { cmd = { "loupe" } })
-      end,
-
       ---@class obsidian.config.OpenOpts
       ---
       ---Opens the file with current line number
@@ -164,27 +150,13 @@ return {
       ---Function to do the opening, default to vim.ui.open
       ---@field func? fun(uri: string)
       open = {
-        use_advanced_uri = false,
+        use_advanced_uri = true,
         func = vim.ui.open,
       },
 
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
         name = "snacks.pick",
-        -- Optional, configure key mappings for the picker. These are the defaults.
-        -- Not all pickers support all mappings.
-        note_mappings = {
-          -- Create a new note from your query.
-          new = "<C-x>",
-          -- Insert a link to the selected note.
-          insert_link = "<C-l>",
-        },
-        tag_mappings = {
-          -- Add tag(s) to current note.
-          tag_note = "<C-x>",
-          -- Insert a tag at the current location.
-          insert_tag = "<C-l>",
-        },
       },
 
       -- Optional, by default, `:ObsidianBacklinks` parses the header under
@@ -210,33 +182,6 @@ return {
       -- 4. "vsplit_force" - always open a new vertical split if the file is not in the adjacent vsplit.
       -- 5. "hsplit_force" - always open a new horizontal split if the file is not in the adjacent hsplit.
       open_notes_in = "current",
-
-      -- Optional, define your own callbacks to further customize behavior.
-      callbacks = {
-        -- Runs at the end of `require("obsidian").setup()`.
-        ---@param client obsidian.Client
-        post_setup = function(client) end,
-
-        -- Runs anytime you enter the buffer for a note.
-        ---@param client obsidian.Client
-        ---@param note obsidian.Note
-        enter_note = function(client, note) end,
-
-        -- Runs anytime you leave the buffer for a note.
-        ---@param client obsidian.Client
-        ---@param note obsidian.Note
-        leave_note = function(client, note) end,
-
-        -- Runs right before writing the buffer for a note.
-        ---@param client obsidian.Client
-        ---@param note obsidian.Note
-        pre_write_note = function(client, note) end,
-
-        -- Runs anytime the workspace is set/changed.
-        ---@param client obsidian.Client
-        ---@param workspace obsidian.Workspace
-        post_set_workspace = function(client, workspace) end,
-      },
 
       -- Optional, configure additional syntax highlighting / extmarks.
       -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
@@ -290,25 +235,6 @@ return {
         end,
         confirm_img_paste = true,
       },
-
-      ---@deprecated in favor of the footer option below
-      statusline = {
-        enabled = true,
-        format = "{{properties}} properties {{backlinks}} backlinks {{words}} words {{chars}} chars",
-      },
-
-      ---@class obsidian.config.FooterOpts
-      ---
-      ---@field enabled? boolean
-      ---@field format? string
-      ---@field hl_group? string
-      ---@field separator? string|false Set false to disable separator; set an empty string to insert a blank line separator.
-      footer = {
-        enabled = true,
-        format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
-        hl_group = "Comment",
-        separator = string.rep("-", 80),
-      },
       ---@class obsidian.config.CheckboxOpts
       ---
       ---Order of checkbox state chars, e.g. { " ", "x" }
@@ -317,13 +243,6 @@ return {
         order = { " ", "~", "!", ">", "x" },
       },
     })
-    vim.keymap.set("n", "gf", function()
-      if require("obsidian").util.cursor_on_markdown_link() then
-        return "<cmd>ObsidianFollowLink<CR>"
-      else
-        return "gf"
-      end
-    end, { noremap = false, expr = true })
   end,
   keys = {
     { "<leader>z", "", desc = "+obsidian", mode = { "n", "v" } },
@@ -357,5 +276,6 @@ return {
     { "<leader>zs", "<cmd>ObsidianSearch<cr>", desc = "Search notes" },
     { "<leader>zw", "<cmd>ObsidianWorkspace<cr>", desc = "Select active workspace" },
     { "<C-c>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox states" },
+    { "gf", "<cmd>ObsidianFollowLink<CR>", desc = "Follow Obsidian link" },
   },
 }
