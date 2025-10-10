@@ -26,7 +26,7 @@ return {
       sources = {
         projects = {
           dev = { "~/Code" },
-          max_depth = 4,
+          max_depth = 3,
         },
       },
       hidden = true, -- show hidden files by default

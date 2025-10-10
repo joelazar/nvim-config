@@ -240,7 +240,7 @@ return {
       ---Order of checkbox state chars, e.g. { " ", "x" }
       ---@field order? string[]
       checkbox = {
-        order = { " ", "~", "!", ">", "x" },
+        order = { " ", "x", "/", "~", "!", ">" },
       },
     })
   end,
