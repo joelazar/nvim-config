@@ -7,6 +7,17 @@ return {
     -- disable keymaps
     keys[#keys + 1] = { "<a-p>", false }
     keys[#keys + 1] = { "<a-n>", false }
+    -- map cd to LSP rename using inc-rename
+    keys[#keys + 1] = {
+      "cd",
+      function()
+        local inc_rename = require("inc_rename")
+        return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+      end,
+      expr = true,
+      desc = "Rename (inc-rename.nvim)",
+      has = "rename",
+    }
 
     -- configure Go LSP servers
     opts.servers = opts.servers or {}
