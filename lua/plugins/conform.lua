@@ -12,7 +12,7 @@ return {
     formatters = {
       sqlfluff = {
         require_cwd = false,
-        args = { "format", "--dialect=postgres", "-" },
+        args = { "format", "--config", os.getenv("HOME") .. "/.config/nvim/.sqlfluff", "-" },
       },
       mojo = {
         inherit = false,
