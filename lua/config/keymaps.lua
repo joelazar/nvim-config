@@ -78,7 +78,7 @@ map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing space
 
 -- Toggle harper_ls (spelling checker)
 local harper_ls_active = false
-map("n", "<leader>cs", function()
+map("n", "<leader>us", function()
   local clients = vim.lsp.get_clients({ name = "harper_ls" })
   if #clients > 0 then
     -- Stop harper_ls
