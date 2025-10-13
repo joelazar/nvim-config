@@ -19,5 +19,13 @@ return {
       },
     })
     opts.servers.golangci_lint_ls = {}
+    opts.servers.harper_ls = {}
+
+    -- Setup function to prevent harper_ls from autostarting
+    opts.setup = opts.setup or {}
+    opts.setup.harper_ls = function(_, server_opts)
+      -- Don't setup harper_ls automatically
+      return true
+    end
   end,
 }

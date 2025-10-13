@@ -4,8 +4,9 @@ return {
   "mason-org/mason.nvim",
   opts = {
     ensure_installed = {
-      "ruff",    -- Python linting and formatting
+      "ruff", -- Python linting and formatting
       "sqlfluff", -- SQL linting and formatting
+      "harper-ls", -- Spelling and grammar checking
     },
   },
 }

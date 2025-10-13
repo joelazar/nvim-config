@@ -45,9 +45,9 @@ M.sudo_write = function(tmpfile, filepath)
   -- Use dd command to copy with elevated privileges
   local cmd = string.format("dd if=%s of=%s bs=1048576", vim.fn.shellescape(tmpfile), vim.fn.shellescape(filepath))
   -- Write current buffer to temporary file
-  vim.api.nvim_exec(string.format("write! %s", tmpfile), true)
+  vim.api.nvim_exec2(string.format("write! %s", tmpfile), { output = true })
   -- Execute dd command with sudo and handle result
-  if M.sudo_exec(cmd) then
+  if M.sudo_exec(cmd, false) then
     print(string.format('\r\n"%s" written', filepath))
     vim.cmd("e!") -- Reload the buffer to reflect changes
   end

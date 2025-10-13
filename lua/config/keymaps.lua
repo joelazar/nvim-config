@@ -75,3 +75,35 @@ end, { desc = "Terminal (Root Dir)" })
 map("t", "<D-j>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing spaces" })
+
+-- Toggle harper_ls (spelling checker)
+local harper_ls_active = false
+map("n", "<leader>cs", function()
+  local clients = vim.lsp.get_clients({ name = "harper_ls" })
+  if #clients > 0 then
+    -- Stop harper_ls
+    for _, client in ipairs(clients) do
+      client.stop()
+    end
+    harper_ls_active = false
+    vim.notify("Harper LSP stopped", vim.log.levels.INFO)
+  else
+    -- Start harper_ls
+    vim.cmd("LspStart harper_ls")
+    harper_ls_active = true
+    vim.notify("Harper LSP started", vim.log.levels.INFO)
+  end
+end, { desc = "Toggle spelling" })
+
+local function undotree()
+  vim.cmd(":packadd nvim.undotree")
+  local close = require("undotree").open({
+    title = "undotree",
+    command = "topright 30vnew",
+  })
+  if not close then
+    vim.bo.filetype = "undotree"
+  end
+end
+
+vim.api.nvim_create_user_command("Undotree", undotree, {})
