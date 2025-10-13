@@ -25,7 +25,18 @@ return {
       },
       sources = {
         projects = {
-          dev = { "~/Code" },
+          patterns = {
+            ".obsidian",
+            "go.mod",
+            ".git",
+            "Makefile",
+            "package.json",
+            ".bzr",
+            ".hg",
+            ".svn",
+            "_darcs",
+          },
+          dev = { "~/Code", "~/Obsidian" },
           max_depth = 3,
         },
       },
