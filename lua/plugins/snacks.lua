@@ -41,6 +41,7 @@ return {
         },
       },
       hidden = true, -- show hidden files by default
+      ignored = true, -- show ignored files by default
     },
     statuscolumn = {},
   },
