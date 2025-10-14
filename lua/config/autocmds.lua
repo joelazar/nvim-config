@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("spell-markdown"),
+  pattern = { "markdown" },
+  callback = function()
+    vim.cmd("LspStop copilot")
+  end,
+})
