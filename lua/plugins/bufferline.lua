@@ -16,7 +16,8 @@ return {
     { "<A-.>", "<cmd>BufferLineMoveNext<cr>", desc = "Re-order to next buffer" },
     { "<A-p>", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle Pin" },
     { "<leader>bP", false },
-    { "<leader>bw", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
-    { "<leader>bW", "<Cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete Non-Pinned Buffers" },
+    { "<leader>bw", "<Cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete Non-Pinned Buffers" },
+    { "<leader>bW", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
   },
 }
+
