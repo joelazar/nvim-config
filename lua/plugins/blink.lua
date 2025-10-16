@@ -11,10 +11,7 @@ return {
       "Kaiser-Yang/blink-cmp-dictionary",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
-    {
-      "blink-calc",
-      dir = "/Users/joelazar/Code/joelazar/blink-calc",
-    },
+    "joelazar/blink-calc",
   },
   opts = {
     keymap = {
