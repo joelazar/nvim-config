@@ -19,11 +19,14 @@ return {
     picker = {
       formatters = {
         file = {
-          filename_first = true, -- display filename before the file path
-          truncate = 100, -- truncate the file path to (roughly) this length
+          filename_first = true,
+          truncate = 100,
         },
       },
       sources = {
+        explorer = {
+          ignored = true,
+        },
         projects = {
           patterns = {
             ".obsidian",
@@ -40,8 +43,8 @@ return {
           max_depth = 3,
         },
       },
-      hidden = true, -- show hidden files by default
-      ignored = true, -- show ignored files by default
+      ignored = false,
+      hidden = true,
     },
     statuscolumn = {},
   },
