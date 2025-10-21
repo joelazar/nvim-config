@@ -40,7 +40,10 @@ return {
           module = "blink-cmp-dictionary",
           name = "Dict",
           min_keyword_length = 3,
-          opts = {},
+          max_items = 10,
+          opts = {
+            dictionary_files = { vim.fn.expand("~/.config/dict/words.txt") },
+          },
         },
       },
     },
