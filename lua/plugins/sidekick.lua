@@ -14,4 +14,14 @@ return {
       },
     },
   },
+  keys = {
+    {
+      "<D-r>",
+      function()
+        require("sidekick.cli").toggle()
+      end,
+      desc = "Toggle AI window",
+      mode = { "n", "t", "i", "x" },
+    },
+  },
 }
