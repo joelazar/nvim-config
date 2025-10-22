@@ -2,10 +2,10 @@ return {
   "folke/sidekick.nvim",
   opts = {
     cli = {
-      mux = {
-        backend = "tmux",
-        enabled = true,
-      },
+      -- mux = {
+      --   backend = "tmux",
+      --   enabled = true,
+      -- },
       tools = {
         claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
         copilot = { cmd = { "copilot", "--allow-all-tools" } },
