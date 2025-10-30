@@ -21,5 +21,9 @@ return {
     end
 
     table.insert(opts.sections.lualine_z, { wordcount, cond = is_textfile })
+
+    -- Update the pretty_path component to not truncate filenames
+    -- Replace the existing pretty_path component in lualine_c
+    opts.sections.lualine_c[4] = { LazyVim.lualine.pretty_path({ length = 0 }) }
   end,
 }
