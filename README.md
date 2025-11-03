@@ -106,7 +106,7 @@ This configuration includes numerous LazyVim extras (see [`lazyvim.json`](./lazy
 - **Linting**: eslint
 - **Testing**: core
 - **UI**: edgy
-- **Utilities**: chezmoi, dot, mini-hipatterns, octo
+- **Utilities**: chezmoi, dot, mini-hipatterns
 - **Interoperability**: vscode
 
 ## 🔧 File Structure
