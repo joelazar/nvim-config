@@ -42,6 +42,30 @@ return {
           dev = { "~/Code", "~/Obsidian" },
           max_depth = 3,
         },
+        git_diff = {
+          layout = {
+            layout = {
+              width = 0.95,
+              height = 0.95,
+            },
+          },
+        },
+        gh_issue = {
+          layout = {
+            layout = {
+              width = 0.95,
+              height = 0.95,
+            },
+          },
+        },
+        gh_pr = {
+          layout = {
+            layout = {
+              width = 0.95,
+              height = 0.95,
+            },
+          },
+        },
       },
       ignored = false,
       hidden = true,
