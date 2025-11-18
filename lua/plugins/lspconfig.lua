@@ -20,6 +20,13 @@ return {
           desc = "Rename (inc-rename.nvim)",
           has = "rename",
         },
+        -- map <leader>ca to code actions
+        {
+          "<leader>ca",
+          vim.lsp.buf.code_action,
+          desc = "Code Action",
+          has = "codeAction",
+        },
       },
     }
 
