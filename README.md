@@ -47,7 +47,7 @@ And you are done! 🎉
 - **Go.nvim** [`lua/plugins/go.lua`](./lua/plugins/go.lua) - Extra Go tooling, syntax, and LSP helpers.
 - **Mason.nvim** [`lua/plugins/mason.lua`](./lua/plugins/mason.lua) - Ensures `ruff`, `sqlfluff`, and `harper-ls` are ready to go.
 - **Conform.nvim & nvim-lint** [`lua/plugins/conform.lua`](./lua/plugins/conform.lua), [`lua/plugins/nvim-lint.lua`](./lua/plugins/nvim-lint.lua) - Formatter and linter setup for SQL, Mojo, Markdown, and more.
-- **LSP tuning** [`lua/plugins/lspconfig.lua`](./lua/plugins/lspconfig.lua) - Refined keymaps, enriched `gopls` defaults, optional `harper_ls`, and inc-rename integration.
+- **LSP tuning** [`lua/plugins/lspconfig.lua`](./lua/plugins/lspconfig.lua) - Refined keymaps, enriched `gopls` defaults, optional `harper_ls`, inc-rename integration, and `<leader>ca` code actions mapping.
 - **Treesitter** [`lua/plugins/treesitter.lua`](./lua/plugins/treesitter.lua) - Extra parsers for SQL, Go templates, LaTeX, CSS, and comment blocks.
 - **Diffview** [`lua/plugins/diffview.lua`](./lua/plugins/diffview.lua) - Merge-ready diff layouts and history views on demand.
 - **Blame.nvim** [`lua/plugins/blame.lua`](./lua/plugins/blame.lua) - Toggle inline Git blame annotations with `:BlameToggle`.
@@ -82,6 +82,7 @@ This config modifies several LazyVim defaults (see [`lua/config/keymaps.lua`](./
 - Smart `dd` that preserves your last yank when deleting empty lines
 - `<CMD>+j` - Toggle terminal in current directory
 - `<leader>us` - Toggle the `harper_ls` grammar assistant
+- `<leader>ca` - Code actions menu (via LSP)
 
 ### Additional Features
 
