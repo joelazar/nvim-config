@@ -1,5 +1,6 @@
 return {
   "obsidian-nvim/obsidian.nvim",
+  version = "*",
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
   dependencies = {
     "nvim-lua/plenary.nvim",
