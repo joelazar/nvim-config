@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client.name == "copilot" then
       local bufname = vim.api.nvim_buf_get_name(args.buf)
       if bufname:match(vim.fn.expand("~") .. "/Obsidian/.*%.md$") then
-        vim.lsp.stop_client(client.id)
+        client:stop()
       end
     end
   end,

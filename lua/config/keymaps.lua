@@ -94,15 +94,7 @@ map("n", "<leader>us", function()
   end
 end, { desc = "Toggle spelling" })
 
-local function undotree()
-  vim.cmd(":packadd nvim.undotree")
-  local close = require("undotree").open({
-    title = "undotree",
-    command = "topright 30vnew",
-  })
-  if not close then
-    vim.bo.filetype = "undotree"
-  end
-end
+vim.cmd(":packadd nvim.undotree")
+map("n", "<leader>bu", "<cmd>Undotree<cr>", { desc = "Undotree" })
 
-vim.api.nvim_create_user_command("Undotree", undotree, {})
+

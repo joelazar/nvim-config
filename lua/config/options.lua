@@ -22,3 +22,9 @@ vim.g.ai_cmp = true
 
 -- Set to `true` in your `options.lua` to enable experimental support for Next Edit Suggestions
 vim.g.copilot_nes = true
+
+-- Global border for all floating windows
+vim.o.winborder = "rounded"
+
+-- Enable experimental ui2 (better cmdline, no "Press ENTER" interruptions)
+require('vim._core.ui2').enable({})
