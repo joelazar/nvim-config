@@ -28,3 +28,6 @@ vim.o.winborder = "rounded"
 
 -- Enable experimental ui2 (better cmdline, no "Press ENTER" interruptions)
 require('vim._core.ui2').enable({})
+
+-- Hide the bottom cmdline since ui2 handles it in a floating window
+vim.o.cmdheight = 0
