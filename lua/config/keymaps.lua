@@ -68,6 +68,11 @@ end
 
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 
+-- Toggle file explorer with CMD+B
+map("n", "<D-b>", function()
+  Snacks.explorer()
+end, { desc = "Toggle Explorer" })
+
 -- Configure toggle terminal for CMD+J
 map({ "n", "t" }, "<D-j>", function()
   Snacks.terminal(nil, { cwd = LazyVim.root() })

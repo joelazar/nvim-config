@@ -2,14 +2,15 @@ return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+
   cmd = {
     "Obsidian",
   },
   config = function()
     require("obsidian").setup({
+      sync = {
+        enabled = true,
+      },
       workspaces = {
         {
           name = "private",
@@ -72,6 +73,7 @@ return {
       -- Link style configuration. Either 'wiki' or 'markdown'.
       link = {
         style = "wiki",
+        auto_update = true,
       },
 
       -- Optional, boolean or a function that takes a filename and returns a boolean.
@@ -130,6 +132,10 @@ return {
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
         name = "snacks.pick",
+      },
+
+      footer = {
+        enabled = true,
       },
 
       -- Optional, by default, `:Obsidian backlinks` parses the header under

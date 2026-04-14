@@ -22,6 +22,13 @@ return {
 
     table.insert(opts.sections.lualine_z, { wordcount, cond = is_textfile })
 
+    -- Obsidian sync status
+    table.insert(opts.sections.lualine_x, 1, {
+      require("obsidian.sync.status").icon,
+      color = require("obsidian.sync.status").color,
+      cond = require("obsidian.sync.status").cond,
+    })
+
     -- Native diagnostic status
     table.insert(opts.sections.lualine_x, 1, {
       function()
