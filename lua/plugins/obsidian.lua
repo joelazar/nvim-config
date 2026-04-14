@@ -20,6 +20,18 @@ return {
           name = "home",
           path = "~/Obsidian/home",
         },
+        {
+          name = "work",
+          path = "~/Obsidian/work",
+        },
+        {
+          name = "journal",
+          path = "~/Obsidian/journal",
+        },
+        {
+          name = "archive",
+          path = "~/Obsidian/archive",
+        },
       },
       -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
       completion = {
