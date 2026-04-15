@@ -17,6 +17,12 @@ return {
       enabled = false,
     },
     picker = {
+      layout = {
+        layout = {
+          width = 0.9,
+          height = 0.9,
+        },
+      },
       formatters = {
         file = {
           filename_first = true,
@@ -26,6 +32,11 @@ return {
       sources = {
         explorer = {
           ignored = true,
+          layout = {
+            layout = {
+              width = 40,
+            },
+          },
         },
         projects = {
           patterns = {
