@@ -4,9 +4,51 @@ return {
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
 
   config = function()
+    local global_ob = vim.fn.exepath("ob")
+    local active_sync_roots = {}
+
     require("obsidian").setup({
       sync = {
-        enabled = true,
+        enabled = false,
+      },
+      callbacks = {
+        enter_note = function(note)
+          local api = require("obsidian.api")
+          local sync = require("obsidian.sync")
+          local workspace_api = require("obsidian.workspace")
+
+          if global_ob ~= "" then
+            local sync_client = require("obsidian.sync.client")
+            sync_client.cmd = global_ob
+            sync_client.cli = require("obsidian.cli").new(global_ob)
+          end
+
+          local path = note.path and tostring(note.path) or vim.api.nvim_buf_get_name(note.bufnr or 0)
+          if path == "" then
+            return
+          end
+
+          local ws = api.find_workspace(path)
+          if not ws then
+            return
+          end
+
+          local current = rawget(_G, "Obsidian") and Obsidian.workspace or nil
+          local target_root = tostring(ws.root)
+
+          if active_sync_roots[target_root] then
+            return
+          end
+
+          if not current or tostring(current.root) ~= target_root then
+            workspace_api.set(ws)
+          end
+
+          if sync.is_configured(ws) then
+            sync.start(ws)
+            active_sync_roots[target_root] = true
+          end
+        end,
       },
       workspaces = {
         {
