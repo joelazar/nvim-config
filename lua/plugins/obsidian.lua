@@ -280,6 +280,32 @@ return {
     { "<leader>z", "", desc = "+obsidian", mode = { "n", "v" } },
     { "<leader>zl", "<cmd>Obsidian quick_switch<cr>", desc = "List notes", mode = { "n" } },
     {
+      "<leader>zL",
+      function()
+        local workspaces = vim.tbl_filter(function(ws)
+          return ws.name ~= ".obsidian.wiki"
+        end, Obsidian.workspaces or {})
+
+        vim.ui.select(workspaces, {
+          prompt = "Select vault",
+          format_item = function(ws)
+            return string.format("%s (%s)", ws.name, tostring(ws.root))
+          end,
+        }, function(ws)
+          if not ws then
+            return
+          end
+          require("obsidian.workspace").set(ws)
+          Obsidian.picker.find_notes({
+            prompt_title = "Quick Switch · " .. ws.name,
+            dir = ws.root,
+          })
+        end)
+      end,
+      desc = "List notes from vault",
+      mode = { "n" },
+    },
+    {
       "<leader>zn",
       function()
         local title = vim.fn.input("Title: ")
@@ -306,6 +332,31 @@ return {
     { "<leader>zi", "<cmd>Obsidian template<cr>", desc = "Insert template" },
     { "<leader>zo", "<cmd>Obsidian open<cr>", desc = "Open obsidian" },
     { "<leader>zs", "<cmd>Obsidian search<cr>", desc = "Search notes" },
+    {
+      "<leader>zS",
+      function()
+        local workspaces = vim.tbl_filter(function(ws)
+          return ws.name ~= ".obsidian.wiki"
+        end, Obsidian.workspaces or {})
+
+        vim.ui.select(workspaces, {
+          prompt = "Select vault",
+          format_item = function(ws)
+            return string.format("%s (%s)", ws.name, tostring(ws.root))
+          end,
+        }, function(ws)
+          if not ws then
+            return
+          end
+          require("obsidian.workspace").set(ws)
+          Obsidian.picker.grep_notes({
+            prompt_title = "Search notes · " .. ws.name,
+            dir = ws.root,
+          })
+        end)
+      end,
+      desc = "Search notes from vault",
+    },
     { "<leader>zw", "<cmd>Obsidian workspace<cr>", desc = "Select active workspace" },
     { "<C-c>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox states" },
     { "gf", "<cmd>Obsidian follow_link<CR>", desc = "Follow Obsidian link" },
