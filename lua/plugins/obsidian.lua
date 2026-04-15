@@ -3,9 +3,6 @@ return {
   version = "*",
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
 
-  cmd = {
-    "Obsidian",
-  },
   config = function()
     require("obsidian").setup({
       sync = {
