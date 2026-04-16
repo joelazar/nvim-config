@@ -13,6 +13,10 @@ return {
         mode = { "n" },
         { "<leader>W", '<cmd>lua require("config.utils").sudo_write()<cr>', desc = "Write (sudo)" },
       },
+      {
+        mode = { "n", "x" },
+        { "<leader>r", group = "review" },
+      },
     },
   },
 }
