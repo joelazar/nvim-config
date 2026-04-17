@@ -22,6 +22,12 @@ return {
 
     table.insert(opts.sections.lualine_z, { wordcount, cond = is_textfile })
 
+    -- Agent review comment count
+    local ok_ar, agent_review = pcall(require, "agent-review")
+    if ok_ar then
+      table.insert(opts.sections.lualine_x, 1, agent_review.lualine())
+    end
+
     -- Obsidian sync status
     table.insert(opts.sections.lualine_x, 1, {
       require("obsidian.sync.status").icon,

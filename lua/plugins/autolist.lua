@@ -40,19 +40,6 @@ return {
       ft = "markdown",
       mode = "i",
     },
-    {
-      "o",
-      function()
-        local skip = should_skip_bullet()
-        -- Open new line below
-        vim.api.nvim_feedkeys("o", "n", false)
-        if not skip then
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Cmd>AutolistNewBullet<CR>", true, false, true), "n", false)
-        end
-      end,
-      ft = "markdown",
-    },
-    { "O", "O<cmd>AutolistNewBulletBefore<cr>", ft = "markdown" },
     { "<TAB>", "<cmd>AutolistTab<cr>", ft = "markdown", mode = "i" },
     { "<S-TAB>", "<cmd>AutolistShiftTab<cr>", ft = "markdown", mode = "i" },
   },
