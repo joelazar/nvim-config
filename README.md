@@ -59,7 +59,6 @@ And you are done! 🎉
 - **Bufferline** [`lua/plugins/bufferline.lua`](./lua/plugins/bufferline.lua) - Minimal tabline with sensible Alt-based navigation and pinning.
 - **Snacks UI polish** [`lua/plugins/snacks.lua`](./lua/plugins/snacks.lua) - Custom header, trimmed indent guides, and quiet scrolling defaults.
 - **Which-key.nvim** [`lua/plugins/which-key.lua`](./lua/plugins/which-key.lua) - Helix-style key-hints with shortcuts for elevated writes.
-- **WakaTime** [`lua/plugins/wakatime.lua`](./lua/plugins/wakatime.lua) - Automatic coding activity tracking.
 
 ## ⚙️ Custom Configuration
 

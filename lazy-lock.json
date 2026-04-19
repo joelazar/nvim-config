@@ -70,7 +70,6 @@
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "ts-comments.nvim": { "branch": "main", "commit": "123a9fb12e7229342f807ec9e6de478b1102b041" },
   "venv-selector.nvim": { "branch": "main", "commit": "bcb2f58533c59b01565285eba49693f00bc460f5" },
-  "vim-wakatime": { "branch": "master", "commit": "cb7ba055330245b3a9d29f8bb4b82aeb2d52e580" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "784188e0a7363e762e53140f39124d786aec0832" },
   "yazi.nvim": { "branch": "main", "commit": "e7094dcfd897600e02a23e8334cdfeb9ee07dc17" }
