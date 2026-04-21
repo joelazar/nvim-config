@@ -130,7 +130,7 @@ return {
       -- Optional, boolean or a function that takes a filename and returns a boolean.
       -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
       frontmatter = {
-        enabled = false,
+        enabled = true,
         -- Optional, alternatively you can customize the frontmatter data.
         ---@return table
         func = function(note)
@@ -161,11 +161,36 @@ return {
         -- A map for custom variables, the key should be the variable and the value a function.
         -- Functions are called with obsidian.TemplateContext objects as their sole parameter.
         -- See: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#substitutions
-        substitutions = {},
+        substitutions = (function()
+          local day = 86400
+          local fmt_week = function(t) return os.date("%G-W%V", t) end
+          local fmt_day = function(t) return os.date("%Y.%m.%d - %A", t) end
+          -- Monday 00:00 of current ISO week.
+          local monday = function()
+            local t = os.time()
+            local wday = tonumber(os.date("%w", t)) -- 0=Sun..6=Sat
+            local offset = (wday == 0) and 6 or (wday - 1)
+            local d = os.date("*t", t - offset * day)
+            d.hour, d.min, d.sec = 0, 0, 0
+            return os.time(d)
+          end
+          return {
+            week = function() return fmt_week(monday()) end,
+            last_week = function() return fmt_week(monday() - 7 * day) end,
+            next_week = function() return fmt_week(monday() + 7 * day) end,
+            day1 = function() return fmt_day(monday() + 0 * day) end,
+            day2 = function() return fmt_day(monday() + 1 * day) end,
+            day3 = function() return fmt_day(monday() + 2 * day) end,
+            day4 = function() return fmt_day(monday() + 3 * day) end,
+            day5 = function() return fmt_day(monday() + 4 * day) end,
+          }
+        end)(),
 
         -- A map for configuring unique directories and paths for specific templates
         --- See: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#customizations
-        customizations = {},
+        customizations = {
+          ["LP"] = { notes_subdir = "LP/collection" },
+        },
       },
 
       ---@class obsidian.config.OpenOpts
@@ -330,6 +355,64 @@ return {
     },
     { "<leader>zb", "<cmd>Obsidian backlinks<cr>", desc = "List backlinks" },
     { "<leader>zi", "<cmd>Obsidian template<cr>", desc = "Insert template" },
+    {
+      "<leader>zt",
+      function()
+        local title = vim.fn.input("Title: ")
+        if title == "" then
+          return
+        end
+        local templates_dir = require("obsidian.api").templates_dir()
+        if not templates_dir then
+          vim.notify("Templates folder not defined", vim.log.levels.ERROR)
+          return
+        end
+        Obsidian.picker.find_files({
+          prompt_title = "Templates",
+          dir = tostring(templates_dir),
+          no_default_mappings = true,
+          callback = function(path)
+            local tmpl = vim.fn.fnamemodify(path, ":t:r")
+            vim.cmd(string.format("Obsidian new_from_template %s %s", title, tmpl))
+          end,
+        })
+      end,
+      desc = "New note from template",
+    },
+    {
+      "<leader>zw",
+      function()
+        -- Switch to work workspace so templates resolve correctly.
+        local ws = vim.tbl_filter(function(w)
+          return w.name == "work"
+        end, Obsidian.workspaces or {})[1]
+        if ws then
+          require("obsidian.workspace").set(ws)
+        end
+
+        local name = os.date("%G-W%V")
+        local dir = vim.fn.expand("~/Obsidian/work/Weekly")
+        vim.fn.mkdir(dir, "p")
+        local path = dir .. "/" .. name .. ".md"
+        local is_new = vim.fn.filereadable(path) == 0
+
+        vim.cmd("edit " .. vim.fn.fnameescape(path))
+
+        if is_new then
+          local api = require("obsidian.api")
+          local templates_dir = api.templates_dir()
+          if templates_dir then
+            require("obsidian.templates").insert_template({
+              type = "insert_template",
+              template_name = "weekly",
+              templates_dir = templates_dir,
+              location = api.get_active_window_cursor_location(),
+            })
+          end
+        end
+      end,
+      desc = "Open/create weekly note",
+    },
     { "<leader>zo", "<cmd>Obsidian open<cr>", desc = "Open obsidian" },
     { "<leader>zs", "<cmd>Obsidian search<cr>", desc = "Search notes" },
     {
@@ -357,7 +440,7 @@ return {
       end,
       desc = "Search notes from vault",
     },
-    { "<leader>zw", "<cmd>Obsidian workspace<cr>", desc = "Select active workspace" },
+    { "<leader>zW", "<cmd>Obsidian workspace<cr>", desc = "Select active workspace" },
     { "<C-c>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox states" },
     { "gf", "<cmd>Obsidian follow_link<CR>", desc = "Follow Obsidian link" },
   },
