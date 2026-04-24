@@ -5,6 +5,9 @@
 -- LSP Server to use for Python.
 vim.g.lazyvim_python_lsp = "basedpyright"
 
+-- Only run Prettier when a prettier config file is present (avoid conflicts with Biome)
+vim.g.lazyvim_prettier_needs_config = true
+
 -- Show absolute line number in front of each line
 vim.o.relativenumber = false
 
