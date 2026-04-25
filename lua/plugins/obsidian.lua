@@ -163,8 +163,12 @@ return {
         -- See: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#substitutions
         substitutions = (function()
           local day = 86400
-          local fmt_week = function(t) return os.date("%G-W%V", t) end
-          local fmt_day = function(t) return os.date("%Y.%m.%d - %A", t) end
+          local fmt_week = function(t)
+            return os.date("%G-W%V", t)
+          end
+          local fmt_day = function(t)
+            return os.date("%Y.%m.%d - %A", t)
+          end
           -- Monday 00:00 of current ISO week.
           local monday = function()
             local t = os.time()
@@ -175,14 +179,30 @@ return {
             return os.time(d)
           end
           return {
-            week = function() return fmt_week(monday()) end,
-            last_week = function() return fmt_week(monday() - 7 * day) end,
-            next_week = function() return fmt_week(monday() + 7 * day) end,
-            day1 = function() return fmt_day(monday() + 0 * day) end,
-            day2 = function() return fmt_day(monday() + 1 * day) end,
-            day3 = function() return fmt_day(monday() + 2 * day) end,
-            day4 = function() return fmt_day(monday() + 3 * day) end,
-            day5 = function() return fmt_day(monday() + 4 * day) end,
+            week = function()
+              return fmt_week(monday())
+            end,
+            last_week = function()
+              return fmt_week(monday() - 7 * day)
+            end,
+            next_week = function()
+              return fmt_week(monday() + 7 * day)
+            end,
+            day1 = function()
+              return fmt_day(monday() + 0 * day)
+            end,
+            day2 = function()
+              return fmt_day(monday() + 1 * day)
+            end,
+            day3 = function()
+              return fmt_day(monday() + 2 * day)
+            end,
+            day4 = function()
+              return fmt_day(monday() + 3 * day)
+            end,
+            day5 = function()
+              return fmt_day(monday() + 4 * day)
+            end,
           }
         end)(),
 
@@ -297,7 +317,7 @@ return {
       ---Order of checkbox state chars, e.g. { " ", "x" }
       ---@field order? string[]
       checkbox = {
-        order = { " ", "x", "/", "~", "!", ">" },
+        order = { " ", "/", "x", "~", "!" },
       },
     })
   end,
