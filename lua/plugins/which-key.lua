@@ -11,7 +11,7 @@ return {
     spec = {
       {
         mode = { "n" },
-        { "<leader>W", '<cmd>lua require("config.utils").sudo_write()<cr>', desc = "Write (sudo)" },
+        { "<leader>fW", '<cmd>lua require("config.utils").sudo_write()<cr>', desc = "Write (sudo)" },
       },
       {
         mode = { "n", "x" },
