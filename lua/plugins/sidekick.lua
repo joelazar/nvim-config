@@ -13,9 +13,7 @@ return {
       -- },
       tools = {
         claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
-        copilot = { cmd = { "copilot", "--allow-all-tools" } },
         gemini = { cmd = { "gemini", "--yolo" } },
-        crush = { cmd = { "crush", "--yolo" } },
       },
     },
   },
