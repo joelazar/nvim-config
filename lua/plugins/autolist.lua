@@ -40,7 +40,5 @@ return {
       ft = "markdown",
       mode = "i",
     },
-    { "<TAB>", "<cmd>AutolistTab<cr>", ft = "markdown", mode = "i" },
-    { "<S-TAB>", "<cmd>AutolistShiftTab<cr>", ft = "markdown", mode = "i" },
   },
 }
