@@ -55,7 +55,7 @@ And you are done! 🎉
 
 ### 🎨 UI & Insights
 
-- **Tokyo Night** [`lua/plugins/tokyonight.lua`](./lua/plugins/tokyonight.lua) - Sleek "night" palette tuned for long sessions.
+- **Catppuccin** [`lua/plugins/catppuccin.lua`](./lua/plugins/catppuccin.lua) - Mocha flavour, soothing pastel palette.
 - **Bufferline** [`lua/plugins/bufferline.lua`](./lua/plugins/bufferline.lua) - Minimal tabline with sensible Alt-based navigation and pinning.
 - **Snacks UI polish** [`lua/plugins/snacks.lua`](./lua/plugins/snacks.lua) - Custom header, trimmed indent guides, and quiet scrolling defaults.
 - **Which-key.nvim** [`lua/plugins/which-key.lua`](./lua/plugins/which-key.lua) - Helix-style key-hints with shortcuts for elevated writes.
@@ -118,4 +118,4 @@ This configuration includes numerous LazyVim extras (see [`lazyvim.json`](./lazy
 
 ## 🎨 Theme
 
-Using [Tokyo Night](https://github.com/folke/tokyonight.nvim) with the "night" style for a clean, modern look. See [`lua/plugins/tokyonight.lua`](./lua/plugins/tokyonight.lua) for configuration.
+Using [Catppuccin](https://github.com/catppuccin/nvim) with the "mocha" flavour for a warm, modern look. See [`lua/plugins/catppuccin.lua`](./lua/plugins/catppuccin.lua) for configuration.

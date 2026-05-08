@@ -25,7 +25,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { "catppuccin-mocha" } },
   checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
