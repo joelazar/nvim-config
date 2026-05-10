@@ -102,4 +102,7 @@ end, { desc = "Toggle spelling" })
 vim.cmd(":packadd nvim.undotree")
 map("n", "<leader>bu", "<cmd>Undotree<cr>", { desc = "Undotree" })
 
+-- Cmd+S to save (works in Neovide and terminals that forward Cmd, e.g. Kitty/WezTerm/Ghostty)
+map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
 
