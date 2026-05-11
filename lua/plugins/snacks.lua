@@ -37,6 +37,70 @@ return {
               width = 40,
             },
           },
+          win = {
+            list = {
+              keys = {
+                ["x"] = "explorer_cut",
+              },
+            },
+          },
+          actions = {
+            explorer_cut = function(picker)
+              local sel = picker:selected({ fallback = true })
+              local files = {}
+              for _, item in ipairs(sel) do
+                if item.file then
+                  table.insert(files, item.file)
+                end
+              end
+              if #files == 0 then
+                return
+              end
+              vim.fn.setreg("+", table.concat(files, "\n"))
+              vim.g.snacks_explorer_cut = files
+              Snacks.notify(("Cut %d item(s)"):format(#files))
+              picker.list:set_selected()
+            end,
+            explorer_paste = function(picker)
+              local reg = vim.v.register ~= "" and vim.v.register or "+"
+              local files = vim.split(vim.fn.getreg(reg) or "", "\n", { plain = true })
+              files = vim.tbl_filter(function(f)
+                return f ~= "" and (vim.fn.filereadable(f) == 1 or vim.fn.isdirectory(f) == 1)
+              end, files)
+              if #files == 0 then
+                return Snacks.notify.warn(("The `%s` register has no files"):format(reg))
+              end
+              local dir = picker:dir()
+              local cut = vim.g.snacks_explorer_cut or {}
+              local cut_set = {}
+              for _, f in ipairs(cut) do
+                cut_set[f] = true
+              end
+              local is_cut = #cut > 0
+              for _, f in ipairs(files) do
+                if not cut_set[f] then
+                  is_cut = false
+                  break
+                end
+              end
+              if is_cut then
+                for _, src in ipairs(files) do
+                  local dest = dir .. "/" .. vim.fs.basename(src)
+                  local ok, err = vim.uv.fs_rename(src, dest)
+                  if not ok then
+                    Snacks.notify.error(("Move failed: %s -> %s\n%s"):format(src, dest, err))
+                  end
+                end
+                vim.g.snacks_explorer_cut = nil
+                Snacks.notify(("Moved %d item(s)"):format(#files))
+              else
+                Snacks.picker.util.copy(files, dir)
+              end
+              require("snacks.explorer.tree"):refresh(dir)
+              require("snacks.explorer.tree"):open(dir)
+              require("snacks.explorer.actions").update(picker, { target = dir })
+            end,
+          },
         },
         projects = {
           patterns = {
