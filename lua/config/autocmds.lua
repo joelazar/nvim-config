@@ -18,6 +18,15 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("sidekick_edgy_disable"),
+  pattern = "sidekick_terminal",
+  callback = function(ev)
+    vim.b[ev.buf].edgy_disable = true
+    vim.w[vim.api.nvim_get_current_win()].edgy_disable = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
   group = augroup("spell"),
   pattern = { "text", "plaintex", "typst", "gitcommit" },
   callback = function()
