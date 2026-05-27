@@ -60,14 +60,18 @@ return {
         local win = vim.api.nvim_get_current_win()
         local width = vim.api.nvim_win_get_width(win)
         local total = vim.o.columns
-        local new_width
-        if width > total * 0.8 then
-          new_width = math.floor(total * 0.4)
+        if width >= total - 2 then
+          vim.o.winminwidth = vim.g.sidekick_saved_winminwidth or 1
+          vim.g.sidekick_saved_winminwidth = nil
+          vim.api.nvim_win_set_width(win, math.floor(total * 0.4))
+          vim.cmd("wincmd =")
         else
-          new_width = math.floor(total * 0.95)
+          if vim.g.sidekick_saved_winminwidth == nil then
+            vim.g.sidekick_saved_winminwidth = vim.o.winminwidth
+          end
+          vim.o.winminwidth = 0
+          vim.cmd("wincmd |")
         end
-        vim.api.nvim_win_set_width(win, new_width)
-        vim.g.sidekick_last_width = new_width
       end,
       desc = "Toggle maximize window",
       mode = { "n", "t", "i", "x" },
