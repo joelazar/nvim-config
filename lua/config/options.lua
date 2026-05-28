@@ -17,6 +17,8 @@ vim.o.clipboard = ""
 -- Disable horizontal scrolling
 vim.o.mousescroll = "ver:1,hor:0"
 
+vim.o.guicursor = "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-blinkon0,t:block-blinkon0-TermCursor"
+
 -- Snacks animations
 vim.g.snacks_animate = false
 

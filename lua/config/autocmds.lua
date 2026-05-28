@@ -34,6 +34,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter", "BufEnter" }, {
+  group = augroup("lazygit_cursor"),
+  pattern = "term://*lazygit*",
+  callback = function()
+    vim.opt.guicursor = "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-blinkon0,t:block-blinkon0-TermCursor"
+    vim.defer_fn(function()
+      io.write("\27[2 q")
+      io.flush()
+    end, 50)
+  end,
+})
+
 -- vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 --   group = augroup("disable-copilot-obsidian"),
 --   pattern = { vim.fn.expand("~") .. "/Obsidian/**.md" },
