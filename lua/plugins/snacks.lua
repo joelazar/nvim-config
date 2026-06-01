@@ -62,27 +62,21 @@ return {
               picker.list:set_selected()
             end,
             explorer_paste = function(picker)
-              local reg = vim.v.register ~= "" and vim.v.register or "+"
-              local files = vim.split(vim.fn.getreg(reg) or "", "\n", { plain = true })
+              local cut = vim.g.snacks_explorer_cut or {}
+              local files
+              local is_cut = #cut > 0
+              if is_cut then
+                files = vim.deepcopy(cut)
+              else
+                files = vim.split(vim.fn.getreg("+") or "", "\n", { plain = true })
+              end
               files = vim.tbl_filter(function(f)
                 return f ~= "" and (vim.fn.filereadable(f) == 1 or vim.fn.isdirectory(f) == 1)
               end, files)
               if #files == 0 then
-                return Snacks.notify.warn(("The `%s` register has no files"):format(reg))
+                return Snacks.notify.warn("Nothing to paste")
               end
               local dir = picker:dir()
-              local cut = vim.g.snacks_explorer_cut or {}
-              local cut_set = {}
-              for _, f in ipairs(cut) do
-                cut_set[f] = true
-              end
-              local is_cut = #cut > 0
-              for _, f in ipairs(files) do
-                if not cut_set[f] then
-                  is_cut = false
-                  break
-                end
-              end
               if is_cut then
                 for _, src in ipairs(files) do
                   local dest = dir .. "/" .. vim.fs.basename(src)
