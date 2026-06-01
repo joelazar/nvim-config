@@ -322,7 +322,6 @@ return {
     })
   end,
   keys = {
-    { "<leader>z", "", desc = "+obsidian", mode = { "n", "v" } },
     { "<leader>zl", "<cmd>Obsidian quick_switch<cr>", desc = "List notes", mode = { "n" } },
     {
       "<leader>zL",

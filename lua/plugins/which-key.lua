@@ -17,6 +17,10 @@ return {
         mode = { "n", "x" },
         { "<leader>r", group = "review" },
       },
+      {
+        mode = { "n", "v" },
+        { "<leader>z", group = "obsidian" },
+      },
     },
   },
 }
