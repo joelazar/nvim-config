@@ -392,7 +392,7 @@ return {
           no_default_mappings = true,
           callback = function(path)
             local tmpl = vim.fn.fnamemodify(path, ":t:r")
-            vim.cmd(string.format("Obsidian new_from_template %s %s", title, tmpl))
+            require("obsidian.actions").new_from_template(title, tmpl)
           end,
         })
       end,
