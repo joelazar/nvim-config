@@ -11,7 +11,10 @@ return {
       "Kaiser-Yang/blink-cmp-dictionary",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
-    "joelazar/blink-calc",
+    {
+      dir = "~/Code/joelazar/blink-calc/",
+    },
+    -- "joelazar/blink-calc",
   },
   opts = {
     keymap = {
@@ -30,6 +33,9 @@ return {
         calc = {
           name = "Calc",
           module = "blink-calc",
+          opts = {
+            currency_rates = "er-api",
+          },
         },
         git = {
           module = "blink-cmp-git",
