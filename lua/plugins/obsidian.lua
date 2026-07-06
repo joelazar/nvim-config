@@ -56,8 +56,8 @@ return {
           path = "~/Obsidian/private",
         },
         {
-          name = "home",
-          path = "~/Obsidian/home",
+          name = "shared",
+          path = "~/Obsidian/shared",
         },
         {
           name = "work",
