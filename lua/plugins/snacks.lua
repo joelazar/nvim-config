@@ -58,7 +58,6 @@ return {
               end
               vim.fn.setreg("+", table.concat(files, "\n"))
               vim.g.snacks_explorer_cut = files
-              Snacks.notify(("Cut %d item(s)"):format(#files))
               picker.list:set_selected()
             end,
             explorer_paste = function(picker)
@@ -86,7 +85,6 @@ return {
                   end
                 end
                 vim.g.snacks_explorer_cut = nil
-                Snacks.notify(("Moved %d item(s)"):format(#files))
               else
                 Snacks.picker.util.copy(files, dir)
               end
