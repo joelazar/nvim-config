@@ -7,10 +7,10 @@ return {
           width = 0.4,
         },
       },
-      -- mux = {
-      --   backend = "tmux",
-      --   enabled = true,
-      -- },
+      mux = {
+        backend = "tmux",
+        enabled = true,
+      },
       tools = {
         claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
         gemini = { cmd = { "gemini", "--yolo" } },
