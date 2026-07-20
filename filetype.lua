@@ -1,7 +1,7 @@
 vim.filetype.add({
   pattern = {
     ["%.env%.[%w_.-]+"] = "dotenv",
-    ["[Bb]rewfile%.[%w_.-]+"] = "brewfile",
+    ["[Bb]rewfile%.[%w_.-]+"] = "ruby",
   },
 })
 
