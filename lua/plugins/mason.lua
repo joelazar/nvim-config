@@ -4,12 +4,13 @@ return {
   "mason-org/mason.nvim",
   opts = {
     ensure_installed = {
-      "ruff", -- Python linting and formatting
-      "sqlfluff", -- SQL linting and formatting
-      "harper-ls", -- Spelling and grammar checking
       "debugpy", -- Python debug adapter
+      "harper-ls", -- Spelling and grammar checking
       "nginx-language-server", -- Nginx LSP
       "oxlint", -- JavaScript/TypeScript linter
+      "ruff", -- Python linting and formatting
+      "rust-analyzer", -- Rust LSP
+      "sqlfluff", -- SQL linting and formatting
       "vtsls", -- TypeScript LSP (not active via LazyVim when tsgo is enabled)
     },
   },
