@@ -75,8 +75,10 @@ end, { desc = "Toggle Explorer" })
 
 -- Configure toggle terminal for CMD+J
 map({ "n", "t" }, "<D-j>", function()
-  Snacks.terminal(nil, { cwd = LazyVim.root() })
-end, { desc = "Terminal (Root Dir)" })
+  -- Use git root (stable) instead of LazyVim.root(), which changes once an LSP
+  -- attaches and would open a second terminal instance instead of toggling.
+  Snacks.terminal(nil, { cwd = LazyVim.root.git() })
+end, { desc = "Terminal (Git Root)" })
 
 map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing spaces" })
 
