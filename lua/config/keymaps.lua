@@ -108,6 +108,38 @@ map("n", "<leader>bu", "<cmd>Undotree<cr>", { desc = "Undotree" })
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map({ "i", "x", "n", "s" }, "<D-S>", "<cmd>noautocmd w<cr><esc>", { desc = "Save File (no format)" })
 
+-- Code review with tuicr (replaces agent-review.nvim)
+local function tuicr(args)
+  local root = LazyVim.root.git()
+  Snacks.terminal("tuicr " .. args, { cwd = root, interactive = true })
+end
+
+map("n", "<leader>rr", function()
+  tuicr("-w")
+end, { desc = "Review working tree" })
+
+map("n", "<leader>rb", function()
+  local base = vim.fn.systemlist("git symbolic-ref --short refs/remotes/origin/HEAD")[1] or ""
+  base = base:gsub("^origin/", "")
+  if base == "" then
+    base = "main"
+  end
+  tuicr("-r " .. base .. "..HEAD")
+end, { desc = "Review branch vs base" })
+
+map("n", "<leader>rf", function()
+  tuicr("--file " .. vim.fn.expand("%:p"))
+end, { desc = "Review current file" })
+
+map("n", "<leader>rp", function()
+  local pr = vim.fn.systemlist("gh pr view --json number --jq .number")[1]
+  if vim.v.shell_error ~= 0 or not pr or pr == "" then
+    vim.notify("No PR for the current branch", vim.log.levels.WARN)
+    return
+  end
+  tuicr("pr " .. pr)
+end, { desc = "Review PR for current branch" })
+
 -- Neovide: macOS Cmd keys
 if vim.g.neovide then
   local all = { "n", "v", "i", "c", "s", "t" }
