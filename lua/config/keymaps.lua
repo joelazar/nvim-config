@@ -106,4 +106,49 @@ map("n", "<leader>bu", "<cmd>Undotree<cr>", { desc = "Undotree" })
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map({ "i", "x", "n", "s" }, "<D-S>", "<cmd>noautocmd w<cr><esc>", { desc = "Save File (no format)" })
 
+-- Neovide: macOS Cmd keys
+if vim.g.neovide then
+  local all = { "n", "v", "i", "c", "s", "t" }
 
+  -- Clipboard (explicit "+" register, since vim.o.clipboard is empty on purpose)
+  map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy to clipboard" })
+  map({ "n", "v" }, "<D-x>", '"+d', { desc = "Cut to clipboard" })
+  map({ "n", "v" }, "<D-v>", '"+p', { desc = "Paste from clipboard" })
+  map({ "i", "c" }, "<D-v>", "<C-r>+", { desc = "Paste from clipboard" })
+  map("t", "<D-v>", '<C-\\><C-n>"+pi', { desc = "Paste from clipboard" })
+  map("n", "<D-a>", "ggVG", { desc = "Select all" })
+
+  -- Font size (Neovide scales guifont via neovide_scale_factor)
+  local function scale(delta)
+    return function()
+      local factor = vim.g.neovide_scale_factor or 1
+      vim.g.neovide_scale_factor = math.min(math.max(factor + delta, 0.5), 4)
+    end
+  end
+  map(all, "<D-=>", scale(0.1), { desc = "Increase font size" })
+  map(all, "<D-+>", scale(0.1), { desc = "Increase font size" })
+  map(all, "<D-->", scale(-0.1), { desc = "Decrease font size" })
+  map(all, "<D-0>", function()
+    vim.g.neovide_scale_factor = 1
+  end, { desc = "Reset font size" })
+
+  -- Window
+  map(all, "<D-CR>", function()
+    vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+  end, { desc = "Toggle fullscreen" })
+  map({ "n", "v", "i" }, "<D-w>", "<cmd>confirm close<cr>", { desc = "Close window" })
+  map({ "n", "v", "i" }, "<D-q>", "<cmd>confirm qa<cr>", { desc = "Quit Neovide" })
+  map({ "n", "v", "i" }, "<D-n>", "<cmd>enew<cr>", { desc = "New buffer" })
+
+  -- Ghostty remaps: Cmd+<key> behaves like the terminal equivalent
+  map({ "n", "v", "i" }, "<D-p>", "<C-p>", { remap = true, desc = "Cmd+P -> Ctrl+P" })
+  map({ "n", "v", "i" }, "<D-S-g>", "<C-S-g>", { remap = true })
+  map({ "n", "v", "i" }, "<D-S-e>", "<C-S-e>", { remap = true })
+  map({ "n", "v", "i" }, "<D-S-m>", "<C-S-m>", { remap = true })
+
+  -- Cmd+Left/Right -> start/end of line (like \x01 / \x05 in the shell)
+  map({ "n", "v" }, "<D-Left>", "^", { desc = "Start of line" })
+  map({ "n", "v" }, "<D-Right>", "$", { desc = "End of line" })
+  map("i", "<D-Left>", "<C-o>^", { desc = "Start of line" })
+  map("i", "<D-Right>", "<End>", { desc = "End of line" })
+end

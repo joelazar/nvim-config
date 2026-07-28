@@ -28,6 +28,30 @@ vim.g.copilot_nes = true
 -- Global border for all floating windows
 vim.o.winborder = "rounded"
 
+-- Neovide GUI (startup-only settings live in ~/.config/neovide/config.toml)
+if vim.g.neovide then
+  vim.o.guifont = "Maple Mono NF:h13"
+
+  -- No animations anywhere
+  vim.g.neovide_position_animation_length = 0
+  vim.g.neovide_scroll_animation_length = 0
+  vim.g.neovide_scroll_animation_far_lines = 0
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_short_animation_length = 0
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_cursor_smooth_blink = false
+  vim.g.neovide_cursor_vfx_mode = ""
+
+  -- Window / input behaviour
+  vim.g.neovide_remember_window_size = false
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_confirm_quit = true
+  vim.g.neovide_input_macos_option_key_is_meta = "only_left" -- matches macos-option-as-alt = left
+  vim.g.neovide_theme = "dark"
+end
+
 -- Disable unused language providers (no remote/rplugin dependencies)
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
