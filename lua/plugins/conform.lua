@@ -28,6 +28,12 @@ return {
       if has_biome_config(ctx) then
         return false
       end
+      -- Markdown has no other unconditional formatter in LazyVim's chain
+      -- (markdownlint-cli2 needs diagnostics, markdown-toc needs a toc marker),
+      -- so always let prettier run, even without a prettier config.
+      if vim.bo[ctx.buf].filetype:match("^markdown") then
+        return true
+      end
       if prev_cond then
         return prev_cond(self, ctx)
       end
