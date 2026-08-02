@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- LSP Server to use for Python.
-vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "ty"
 
 -- Only run Prettier when a prettier config file is present (avoid conflicts with Biome)
 vim.g.lazyvim_prettier_needs_config = true
