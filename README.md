@@ -90,7 +90,7 @@ This config modifies several LazyVim defaults (see [`lua/config/keymaps.lua`](./
 - **Custom Spell Checking** [`lua/config/autocmds.lua`](./lua/config/autocmds.lua) - Targeted spell checking for specific file types (and auto-pauses Copilot in Markdown)
 - **Absolute Line Numbers** [`lua/config/options.lua`](./lua/config/options.lua) - Uses absolute instead of relative line numbers
 - **Clipboard Handling** [`lua/config/options.lua`](./lua/config/options.lua) - Doesn't use system clipboard by default for better control
-- **URL to Markdown command** [`lua/utils/url-to-markdown.lua`](./lua/utils/url-to-markdown.lua) - `:UrlToMarkdown` and `<D-S-a>` turn raw links into titled Markdown references
+- **URL to Markdown command** [`lua/utils/url-to-markdown.lua`](./lua/utils/url-to-markdown.lua) - `:UrlToMarkdown` and `<C-S-a>` turn raw links into titled Markdown references
 - **Snacks picker shortcut** [`lua/plugins/snacks.lua`](./lua/plugins/snacks.lua) - `<C-p>` launches a hidden-friendly file picker
 
 ## 📋 [LazyVim Extras](https://www.lazyvim.org/extras)

@@ -5,7 +5,7 @@ return {
   config = function()
     local url_to_markdown = require("utils.url-to-markdown")
     url_to_markdown.setup({
-      keybind = "<D-S-a>", -- Cmd+Shift+A
+      keybind = "<C-S-a>", -- Cmd+Shift+A, forwarded by Ghostty
     })
   end,
   filetype = { "markdown", "mdx" },
