@@ -12,7 +12,6 @@ return {
       "rust-analyzer", -- Rust LSP
       "sqlfluff", -- SQL linting and formatting
       "ty", -- Python LSP
-      "vtsls", -- TypeScript LSP (not active via LazyVim when tsgo is enabled)
     },
   },
 }
