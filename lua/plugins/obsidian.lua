@@ -68,6 +68,10 @@ return {
           path = "~/Obsidian/journal",
         },
         {
+          name = "hermes",
+          path = "~/Obsidian/hermes",
+        },
+        {
           name = "archive",
           path = "~/Obsidian/archive",
         },
