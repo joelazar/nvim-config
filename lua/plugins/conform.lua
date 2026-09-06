@@ -1,5 +1,5 @@
 -- Code formatting configuration
--- Sets up formatters for SQL and Mojo languages
+-- Sets up formatters for SQL
 -- Biome/Prettier for JS/TS handled by LazyVim extras:
 --   lazyvim.plugins.extras.lang.typescript.biome
 --   lazyvim.plugins.extras.formatting.prettier
@@ -13,7 +13,6 @@ return {
   "stevearc/conform.nvim",
   opts = function(_, opts)
     opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft or {}, {
-      mojo = { "mojo" },
       sql = { "sqlfluff" },
       mysql = { "sqlfluff" },
       plsql = { "sqlfluff" },
@@ -44,12 +43,6 @@ return {
     opts.formatters.sqlfluff = {
       require_cwd = false,
       args = { "format", "--config", os.getenv("HOME") .. "/.config/nvim/.sqlfluff", "-" },
-    }
-    opts.formatters.mojo = {
-      inherit = false,
-      command = "mojo",
-      args = { "format", "--quiet", "$FILENAME" },
-      stdin = false,
     }
     opts.formatters.shfmt = {
       args = { "-i", "4" },
