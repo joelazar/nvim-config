@@ -1,6 +1,11 @@
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
+  -- Skipped entirely when the local marker file ~/.config/nvim/.disable-obsidian
+  -- exists (e.g. devboxes). With enabled=false lazy.nvim does not install or
+  -- load the plugin: no commands, no keymaps, no events. The marker is listed
+  -- in .git/info/exclude so it stays machine-local and out of the repo.
+  enabled = vim.fn.filereadable(vim.fn.stdpath("config") .. "/.disable-obsidian") == 0,
   event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
 
   config = function()
