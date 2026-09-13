@@ -38,32 +38,11 @@ vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter", "BufEnter" }, {
   group = augroup("lazygit_cursor"),
   pattern = "term://*lazygit*",
   callback = function()
-    vim.opt.guicursor = "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-blinkon0,t:block-blinkon0-TermCursor"
+    vim.opt.guicursor =
+      "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-blinkon0,t:block-blinkon0-TermCursor"
     vim.defer_fn(function()
       io.write("\27[2 q")
       io.flush()
     end, 50)
   end,
 })
-
--- vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
---   group = augroup("disable-copilot-obsidian"),
---   pattern = { vim.fn.expand("~") .. "/Obsidian/**.md" },
---   callback = function(ev)
---     vim.b.copilot_enabled = false
---     vim.b.copilot_suggestion_auto_trigger = false
---   end,
--- })
---
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = augroup("stop-copilot-obsidian"),
---   callback = function(args)
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     if client and client.name == "copilot" then
---       local bufname = vim.api.nvim_buf_get_name(args.buf)
---       if bufname:match(vim.fn.expand("~") .. "/Obsidian/.*%.md$") then
---         client:stop()
---       end
---     end
---   end,
--- })

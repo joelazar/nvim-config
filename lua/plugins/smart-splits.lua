@@ -20,6 +20,7 @@ return {
     disable_multiplexer_nav_when_zoomed = true,
     multiplexer_integration = vim.env.HERDR_ENV and "herdr" or nil,
   },
+  -- stylua: ignore
   keys = {
     -- move between splits (and herdr panes)
     { "<C-h>", function() require("smart-splits").move_cursor_left() end, desc = "Go to left window/pane" },

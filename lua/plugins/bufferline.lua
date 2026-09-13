@@ -20,4 +20,3 @@ return {
     { "<leader>bW", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
   },
 }
-

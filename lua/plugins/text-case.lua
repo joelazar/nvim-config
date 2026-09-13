@@ -6,4 +6,3 @@ return {
     require("textcase").setup({})
   end,
 }
-

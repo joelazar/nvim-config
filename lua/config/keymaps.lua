@@ -83,7 +83,6 @@ end, { desc = "Terminal (Git Root)" })
 map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing spaces" })
 
 -- Toggle harper_ls (spelling checker)
-local harper_ls_active = false
 map("n", "<leader>us", function()
   local clients = vim.lsp.get_clients({ name = "harper_ls" })
   if #clients > 0 then
@@ -91,12 +90,10 @@ map("n", "<leader>us", function()
     for _, client in ipairs(clients) do
       client:stop()
     end
-    harper_ls_active = false
     vim.notify("Harper LSP stopped", vim.log.levels.INFO)
   else
     -- Start harper_ls
     vim.cmd("LspStart harper_ls")
-    harper_ls_active = true
     vim.notify("Harper LSP started", vim.log.levels.INFO)
   end
 end, { desc = "Toggle spelling" })

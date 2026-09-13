@@ -22,9 +22,6 @@ vim.o.guicursor = "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-b
 -- Snacks animations
 vim.g.snacks_animate = false
 
--- Set to `true` in your `options.lua` to enable experimental support for Next Edit Suggestions
-vim.g.copilot_nes = true
-
 -- Global border for all floating windows
 vim.o.winborder = "rounded"
 
