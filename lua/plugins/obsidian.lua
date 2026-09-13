@@ -175,7 +175,7 @@ return {
             local t = os.time()
             local wday = tonumber(os.date("%w", t)) -- 0=Sun..6=Sat
             local offset = (wday == 0) and 6 or (wday - 1)
-            local d = os.date("*t", t - offset * day)
+            local d = os.date("*t", t - offset * day) --[[@as osdate]]
             d.hour, d.min, d.sec = 0, 0, 0
             return os.time(d)
           end
@@ -214,13 +214,6 @@ return {
         },
       },
 
-      ---@class obsidian.config.OpenOpts
-      ---
-      ---Opens the file with current line number
-      ---@field use_advanced_uri? boolean
-      ---
-      ---Function to do the opening, default to vim.ui.open
-      ---@field func? fun(uri: string)
       open = {
         use_advanced_uri = true,
         func = vim.ui.open,
@@ -293,19 +286,6 @@ return {
         },
       },
 
-      ---@class obsidian.config.AttachmentsOpts
-      ---
-      ---Default folder to save images to, relative to the vault root.
-      ---@field folder? string
-      ---
-      ---Default name for pasted images
-      ---@field img_name_func? fun(): string
-      ---
-      ---Default text to insert for pasted images, for customizing, see: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Images
-      ---@field img_text_func? fun(path: obsidian.Path): string
-      ---
-      ---Whether to confirm the paste or not. Defaults to true.
-      ---@field confirm_img_paste? boolean
       attachments = {
         folder = "_assets",
         img_name_func = function()
@@ -313,10 +293,6 @@ return {
         end,
         confirm_img_paste = true,
       },
-      ---@class obsidian.config.CheckboxOpts
-      ---
-      ---Order of checkbox state chars, e.g. { " ", "x" }
-      ---@field order? string[]
       checkbox = {
         order = { " ", "/", "x", "~", "!" },
       },
@@ -392,7 +368,7 @@ return {
           dir = tostring(templates_dir),
           no_default_mappings = true,
           callback = function(path)
-            local tmpl = vim.fn.fnamemodify(path, ":t:r")
+            local tmpl = vim.fn.fnamemodify(tostring(path), ":t:r")
             require("obsidian.actions").new_from_template(title, tmpl)
           end,
         })

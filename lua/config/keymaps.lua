@@ -89,7 +89,7 @@ map("n", "<leader>us", function()
   if #clients > 0 then
     -- Stop harper_ls
     for _, client in ipairs(clients) do
-      client.stop()
+      client:stop()
     end
     harper_ls_active = false
     vim.notify("Harper LSP stopped", vim.log.levels.INFO)
