@@ -7,7 +7,6 @@ return {
       "debugpy", -- Python debug adapter
       "harper-ls", -- Spelling and grammar checking
       "nginx-language-server", -- Nginx LSP
-      "oxlint", -- JavaScript/TypeScript linter
       "ruff", -- Python linting and formatting
       "rust-analyzer", -- Rust LSP
       "sqlfluff", -- SQL linting and formatting
