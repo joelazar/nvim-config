@@ -8,5 +8,5 @@ return {
       keybind = "<C-S-a>", -- Cmd+Shift+A, forwarded by Ghostty
     })
   end,
-  filetype = { "markdown", "mdx" },
+  ft = { "markdown", "markdown.mdx" },
 }
