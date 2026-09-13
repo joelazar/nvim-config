@@ -1,9 +1,6 @@
 -- Treesitter configuration
--- Additional language parsers configuration
+-- Additional language parsers on top of LazyVim's defaults
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "main",
-  optional = true,
   opts = { ensure_installed = { "sql", "gotmpl", "comment", "css", "latex" } },
 }
-
