@@ -16,7 +16,21 @@ return {
     { "<A-.>", "<cmd>BufferLineMoveNext<cr>", desc = "Re-order to next buffer" },
     { "<A-p>", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle Pin" },
     { "<leader>bP", false },
-    { "<leader>bw", "<Cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete Non-Pinned Buffers" },
+    {
+      "<leader>bw",
+      function()
+        -- BufferLineGroupClose bypasses close_command and uses a raw bdelete!,
+        -- which closes the window showing the buffer (e.g. when focused on the
+        -- explorer sidebar). Use Snacks.bufdelete so windows keep a buffer.
+        local groups = require("bufferline.groups")
+        Snacks.bufdelete({
+          filter = function(buf)
+            return not groups._is_pinned({ id = buf })
+          end,
+        })
+      end,
+      desc = "Delete Non-Pinned Buffers",
+    },
     { "<leader>bW", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete All Buffers" },
   },
 }
