@@ -1,6 +1,10 @@
 [sqlfluff]
 dialect = postgres
+templater = placeholder
 
 [sqlfluff:indentation]
 indent_unit = space
 tab_space_size = 2
+
+[sqlfluff:templater:placeholder]
+param_regex = \$[{(](?P<param_name>\w+)(\.\w+)*(:\w+)?[})]
