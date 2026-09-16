@@ -9,6 +9,19 @@ return {
       show_close_icon = false,
     },
   },
+  config = function(_, opts)
+    require("bufferline").setup(opts)
+    -- Workaround: bufferline keeps pinned buffer ids in its manual_groupings
+    -- table even after the buffer is wiped out (e.g. via Snacks.bufdelete).
+    -- persist_pinned_buffers then calls nvim_buf_get_name on the dead id and
+    -- errors with "Invalid buffer id" on the next BufferLineTogglePin.
+    vim.api.nvim_create_autocmd("BufWipeout", {
+      group = vim.api.nvim_create_augroup("bufferline_pin_cleanup", { clear = true }),
+      callback = function(ev)
+        require("bufferline.groups").remove_id_from_manual_groupings(ev.buf)
+      end,
+    })
+  end,
   keys = {
     { "<A-Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Move to previous buffer" },
     { "<A-Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Move to next buffer" },
