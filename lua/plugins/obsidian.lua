@@ -12,6 +12,130 @@ return {
     local global_ob = vim.fn.exepath("ob")
     local active_sync_roots = {}
 
+    -- Templates are written in Templater syntax so the Obsidian app renders
+    -- them too. obsidian.nvim has no Templater, so evaluate the subset the
+    -- templates use: `moment()` chains and `tp.date.now` / `tp.file.title`.
+    local templater = (function()
+      local M = {}
+
+      local units = {
+        d = "day",
+        day = "day",
+        days = "day",
+        w = "week",
+        week = "week",
+        weeks = "week",
+        M = "month",
+        month = "month",
+        months = "month",
+        y = "year",
+        year = "year",
+        years = "year",
+      }
+
+      ---@param time integer
+      ---@param n integer number of `unit`s to add (negative to subtract)
+      local function add(time, n, unit)
+        local d = os.date("*t", time) --[[@as osdate]]
+        unit = units[unit or "day"] or "day"
+        if unit == "day" then
+          d.day = d.day + n
+        elseif unit == "week" then
+          d.day = d.day + 7 * n
+        elseif unit == "month" then
+          d.month = d.month + n
+        else
+          d.year = d.year + n
+        end
+        return os.time(d)
+      end
+
+      ---`moment().startOf(unit)`: isoWeek, week, day, month or year.
+      local function start_of(time, unit)
+        local d = os.date("*t", time) --[[@as osdate]]
+        d.hour, d.min, d.sec = 0, 0, 0
+        if unit == "isoWeek" or unit == "week" then
+          local wday = d.wday - 1 -- 0=Sun..6=Sat
+          local back = unit == "isoWeek" and ((wday == 0) and 6 or (wday - 1)) or wday
+          return os.time(d) - back * 86400
+        elseif unit == "month" then
+          d.day = 1
+        elseif unit == "year" then
+          d.month, d.day = 1, 1
+        end
+        return os.time(d)
+      end
+
+      ---Split a call's argument list into its string and number literals.
+      local function parse_args(args)
+        local out = {}
+        for arg in vim.gsplit(args or "", ",") do
+          arg = vim.trim(arg)
+          local str = arg:match [[^"(.*)"$]] or arg:match "^'(.*)'$"
+          out[#out + 1] = str or tonumber(arg)
+        end
+        return out
+      end
+
+      ---Evaluate one `<% ... %>` expression, or return nil if unsupported.
+      ---@param expr string
+      ---@param ctx obsidian.TemplateContext
+      ---@return string|?
+      function M.eval(expr, ctx)
+        local format_date = require("obsidian.util").format_date
+
+        if expr:match "^tp%.file%.title" then
+          return ctx.partial_note and ctx.partial_note:display_name()
+        end
+
+        -- tp.date.now(format, offset_in_days)
+        local date_args = expr:match "^tp%.date%.now%s*%((.*)%)%s*$"
+        if date_args then
+          local args = parse_args(date_args)
+          local fmt = args[1] or Obsidian.opts.templates.date_format
+          return format_date(add(os.time(), args[2] or 0, "day"), fmt)
+        end
+
+        -- moment().startOf(unit).add(n, unit).subtract(n, unit).format(fmt)
+        local chain = expr:match "^moment%s*%(%s*%)(.*)$"
+        if not chain then
+          return nil
+        end
+        local time, out = os.time(), nil
+        for method, args in chain:gmatch "%.%s*([%w_]+)%s*%(([^)]*)%)" do
+          local a = parse_args(args)
+          if method == "startOf" then
+            time = start_of(time, a[1])
+          elseif method == "add" then
+            time = add(time, a[1] or 0, a[2])
+          elseif method == "subtract" then
+            time = add(time, -(a[1] or 0), a[2])
+          elseif method == "format" then
+            out = format_date(time, a[1] or Obsidian.opts.templates.date_format)
+          else
+            return nil -- unsupported, leave the tag untouched
+          end
+        end
+        return out
+      end
+
+      ---Replace every supported `<% ... %>` tag in `text`.
+      ---@param text string
+      ---@param ctx obsidian.TemplateContext
+      function M.render(text, ctx)
+        return (text:gsub("<%%%-?(.-)%-?%%>", function(expr)
+          local ok, value = pcall(M.eval, vim.trim(expr), ctx)
+          if not ok then
+            vim.notify("Templater tag failed: <%" .. expr .. "%> " .. tostring(value), vim.log.levels.WARN)
+            return nil
+          end
+          return value
+        end))
+      end
+
+      return M
+    end)()
+
     require("obsidian").setup({
       sync = {
         enabled = false,
@@ -157,55 +281,9 @@ return {
       -- Optional, for templates (see https://github.com/obsidian-nvim/obsidian.nvim/wiki/Using-templates)
       templates = {
         folder = "_templates",
-        date_format = "%Y-%m-%d",
-        time_format = "%H:%M",
-        -- A map for custom variables, the key should be the variable and the value a function.
-        -- Functions are called with obsidian.TemplateContext objects as their sole parameter.
-        -- See: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#substitutions
-        substitutions = (function()
-          local day = 86400
-          local fmt_week = function(t)
-            return os.date("%G-W%V", t)
-          end
-          local fmt_day = function(t)
-            return os.date("%Y.%m.%d - %A", t)
-          end
-          -- Monday 00:00 of current ISO week.
-          local monday = function()
-            local t = os.time()
-            local wday = tonumber(os.date("%w", t)) -- 0=Sun..6=Sat
-            local offset = (wday == 0) and 6 or (wday - 1)
-            local d = os.date("*t", t - offset * day) --[[@as osdate]]
-            d.hour, d.min, d.sec = 0, 0, 0
-            return os.time(d)
-          end
-          return {
-            week = function()
-              return fmt_week(monday())
-            end,
-            last_week = function()
-              return fmt_week(monday() - 7 * day)
-            end,
-            next_week = function()
-              return fmt_week(monday() + 7 * day)
-            end,
-            day1 = function()
-              return fmt_day(monday() + 0 * day)
-            end,
-            day2 = function()
-              return fmt_day(monday() + 1 * day)
-            end,
-            day3 = function()
-              return fmt_day(monday() + 2 * day)
-            end,
-            day4 = function()
-              return fmt_day(monday() + 3 * day)
-            end,
-            day5 = function()
-              return fmt_day(monday() + 4 * day)
-            end,
-          }
-        end)(),
+        -- moment.js formats, same as the Obsidian app.
+        date_format = "YYYY-MM-DD",
+        time_format = "HH:mm",
 
         -- A map for configuring unique directories and paths for specific templates
         --- See: https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template#customizations
@@ -268,6 +346,14 @@ return {
         order = { " ", "/", "x", "~", "!" },
       },
     })
+
+    -- obsidian.nvim only knows `{{var}}` substitutions, so evaluate the
+    -- Templater tags first and let it handle the rest of the line.
+    local templates = require("obsidian.templates")
+    local substitute = templates.substitute_template_variables
+    templates.substitute_template_variables = function(text, ctx)
+      return substitute(templater.render(text, ctx), ctx)
+    end
   end,
   keys = {
     { "<leader>zl", "<cmd>Obsidian quick_switch<cr>", desc = "List notes", mode = { "n" } },
