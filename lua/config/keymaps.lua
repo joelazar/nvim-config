@@ -82,6 +82,64 @@ end, { desc = "Terminal (Git Root)" })
 
 map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing spaces" })
 
+-- AI completions: Copilot inline (native LSP) and Sidekick next-edit suggestions
+local function inline_enabled()
+  return vim.lsp.inline_completion.is_enabled()
+end
+
+local function nes_enabled()
+  local ok, nes = pcall(require, "sidekick.nes")
+  return ok and nes.enabled ~= false
+end
+
+local function set_inline(on)
+  vim.lsp.inline_completion.enable(on)
+end
+
+local function set_nes(on)
+  vim.g.sidekick_nes = on
+  pcall(function()
+    require("sidekick.nes").enable(on)
+  end)
+end
+
+-- Stops/starts the copilot LSP client itself (what the lualine icon reflects)
+local function set_copilot_lsp(on)
+  vim.lsp.enable("copilot", on)
+  if on then
+    return
+  end
+  for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
+    client:stop()
+  end
+end
+
+local function copilot_lsp_enabled()
+  return #vim.lsp.get_clients({ name = "copilot" }) > 0
+end
+
+-- Scheduled so LazyVim's own <leader>u toggles are already registered.
+-- Sidekick NES alone already has <leader>uN from the sidekick extra.
+vim.schedule(function()
+  Snacks.toggle({
+    name = "Copilot Inline",
+    get = inline_enabled,
+    set = set_inline,
+  }):map("<leader>uk")
+
+  Snacks.toggle({
+    name = "AI Completions (Inline + NES)",
+    get = function()
+      return copilot_lsp_enabled() and inline_enabled() and nes_enabled()
+    end,
+    set = function(on)
+      set_inline(on)
+      set_nes(on)
+      set_copilot_lsp(on)
+    end,
+  }):map("<leader>uK")
+end)
+
 -- Toggle harper_ls (spelling checker)
 map("n", "<leader>us", function()
   local clients = vim.lsp.get_clients({ name = "harper_ls" })
