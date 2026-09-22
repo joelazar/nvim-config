@@ -46,3 +46,15 @@ vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter", "BufEnter" }, {
     end, 50)
   end,
 })
+
+-- Herdr scrollback dumps (prefix+e): start at the bottom, read-only-ish scratch
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup("herdr_scrollback"),
+  pattern = "*herdr-scrollback-*",
+  callback = function(ev)
+    vim.bo[ev.buf].filetype = "log"
+    vim.schedule(function()
+      pcall(vim.cmd, "normal! G")
+    end)
+  end,
+})
