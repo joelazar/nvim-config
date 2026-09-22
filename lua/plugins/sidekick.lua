@@ -1,58 +1,55 @@
 return {
-  "folke/sidekick.nvim",
+  "joelazar/sidekick.nvim",
   opts = {
     cli = {
       win = {
+        csiu = true,
         split = {
           width = 0.4,
         },
       },
       mux = {
-        backend = "tmux",
         enabled = true,
+        create = "split",
+        split = {
+          vertical = true,
+          size = 0.4,
+        },
       },
       tools = {
         claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
-        gemini = { cmd = { "gemini", "--yolo" } },
+        antigravity = {},
       },
     },
   },
+  config = function(_, opts)
+    require("sidekick").setup(opts)
+    require("sidekick.config").cli.tools.gemini = nil
+  end,
   keys = {
     {
       "<D-r>",
       function()
-        local cli = require("sidekick.cli")
-        local saved_width
-        for _, win in ipairs(vim.api.nvim_list_wins()) do
-          local buf = vim.api.nvim_win_get_buf(win)
-          if vim.bo[buf].filetype == "sidekick_terminal" then
-            saved_width = vim.api.nvim_win_get_width(win)
-            break
-          end
-        end
-        if saved_width then
-          vim.g.sidekick_last_width = saved_width
-        end
-        cli.toggle("pi")
-        if saved_width then
-          return
-        end
-        vim.defer_fn(function()
-          local last = vim.g.sidekick_last_width
-          if not last then
-            return
-          end
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            if vim.bo[buf].filetype == "sidekick_terminal" then
-              vim.api.nvim_win_set_width(win, last)
-              break
-            end
-          end
-        end, 50)
+        require("sidekick.cli").show("pi")
       end,
-      desc = "Toggle AI window",
+      desc = "Start/attach AI pane",
       mode = { "n", "t", "i", "x" },
+    },
+    {
+      "<leader>ac",
+      function()
+        require("sidekick.cli").show("claude")
+      end,
+      desc = "Sidekick Claude Code",
+      mode = { "n", "v" },
+    },
+    {
+      "<leader>ag",
+      function()
+        require("sidekick.cli").show("antigravity")
+      end,
+      desc = "Sidekick Antigravity (agy)",
+      mode = { "n", "v" },
     },
     {
       "<D-e>",
