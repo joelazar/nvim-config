@@ -2,6 +2,8 @@
 -- Provides case conversion utilities
 return {
   "johmsalas/text-case.nvim",
+  keys = { { "ga", mode = { "n", "x" } } },
+  cmd = { "Subs", "TextCaseOpenTelescope", "TextCaseStartReplacingCommand" },
   config = function()
     require("textcase").setup({})
   end,

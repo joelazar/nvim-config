@@ -5,7 +5,17 @@ return {
     name = "catppuccin",
     lazy = false,
     priority = 1000,
-    opts = { flavour = "mocha" },
+    opts = {
+      flavour = "mocha",
+      auto_integrations = false,
+      integrations = {
+        blink_cmp = true,
+        dadbod_ui = true,
+        dap = true,
+        dap_ui = true,
+        render_markdown = true,
+      },
+    },
   },
   -- let LazyVim apply the colorscheme (and re-apply it after lazy loads)
   {

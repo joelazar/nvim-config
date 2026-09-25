@@ -22,17 +22,22 @@ return {
 
     table.insert(opts.sections.lualine_z, { wordcount, cond = is_textfile })
 
-    -- Obsidian sync status (only when the obsidian plugin is loaded; the
-    -- pcall guard keeps the statusline working on machines where the plugin
-    -- is disabled via the .disable-obsidian marker)
-    local ok_obsidian, obsidian_status = pcall(require, "obsidian.sync.status")
-    if ok_obsidian then
-      table.insert(opts.sections.lualine_x, 1, {
-        obsidian_status.icon,
-        color = obsidian_status.color,
-        cond = obsidian_status.cond,
-      })
+    local function obsidian_status()
+      return package.loaded["obsidian.sync.status"]
     end
+    table.insert(opts.sections.lualine_x, 1, {
+      function()
+        return obsidian_status().icon()
+      end,
+      color = function()
+        local status = obsidian_status()
+        return status and status.color()
+      end,
+      cond = function()
+        local status = obsidian_status()
+        return status ~= nil and status.cond()
+      end,
+    })
 
     -- Native diagnostic status
     table.insert(opts.sections.lualine_x, 1, {
