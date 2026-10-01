@@ -47,6 +47,19 @@ if vim.g.neovide then
   vim.g.neovide_confirm_quit = true
   vim.g.neovide_input_macos_option_key_is_meta = "only_left" -- matches macos-option-as-alt = left
   vim.g.neovide_theme = "dark"
+
+  -- Rendering
+  vim.g.neovide_refresh_rate = 120
+  vim.g.neovide_padding_top = 4
+  vim.g.neovide_padding_bottom = 4
+  vim.g.neovide_padding_left = 4
+  vim.g.neovide_padding_right = 4
+  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_floating_blur_amount_x = 0
+  vim.g.neovide_floating_blur_amount_y = 0
+  vim.g.neovide_underline_stroke_scale = 1.5
+  vim.g.neovide_opacity = 0.95
+  vim.g.neovide_window_blurred = true
 end
 
 -- Disable unused language providers (no remote/rplugin dependencies)
