@@ -69,15 +69,23 @@ end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 
 -- Toggle file explorer with CMD+B
-map("n", "<D-b>", function()
+map({ "n", "t", "i" }, "<D-b>", function()
   Snacks.explorer()
 end, { desc = "Toggle Explorer" })
 
 -- Configure toggle terminal for CMD+J
 map({ "n", "t" }, "<D-j>", function()
-  -- Use git root (stable) instead of LazyVim.root(), which changes once an LSP
-  -- attaches and would open a second terminal instance instead of toggling.
-  Snacks.terminal(nil, { cwd = LazyVim.root.git() })
+  local cwd
+  if vim.bo.buftype ~= "" then
+    for _, t in ipairs(Snacks.terminal.list()) do
+      local info = vim.b[t.buf].snacks_terminal
+      if info and info.cmd == nil then
+        cwd = info.cwd
+        break
+      end
+    end
+  end
+  Snacks.terminal(nil, { cwd = cwd or LazyVim.root.git() })
 end, { desc = "Terminal (Git Root)" })
 
 map("n", "<leader>cD", "<cmd>%s/\\s\\+$//e<cr>", { desc = "Delete trailing spaces" })

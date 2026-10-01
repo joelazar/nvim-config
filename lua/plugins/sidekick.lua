@@ -30,7 +30,7 @@ return {
     {
       "<D-r>",
       function()
-        require("sidekick.cli").show("pi")
+        require("sidekick.cli").toggle("pi")
       end,
       desc = "Start/attach AI pane",
       mode = { "n", "t", "i", "x" },
