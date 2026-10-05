@@ -1,17 +1,22 @@
--- Codediff configuration
--- VSCode-style diff rendering with two-tier highlighting
 return {
   "esmuellert/codediff.nvim",
   cmd = "CodeDiff",
   opts = {
     diff = {
-      layout = "side-by-side",
-      disable_inlay_hints = true,
-      ignore_trim_whitespace = false,
-      hide_merge_artifacts = false,
-      cycle_next_hunk = true,
-      cycle_next_file = true,
-      jump_to_first_change = true,
+      compute_moves = true,
+      cycle_hunks_across_files = true,
+      gutter_signs = true,
+      highlight_added_deleted_files = true,
+    },
+    explorer = {
+      view_mode = "tree",
+      auto_open_on_cursor = true,
+      line_stats = { enabled = true },
+    },
+    keymaps = {
+      view = {
+        toggle_explorer = "<leader>E",
+      },
     },
   },
 }
