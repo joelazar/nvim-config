@@ -13,9 +13,9 @@ return {
     },
     linters = {
       ["markdownlint-cli2"] = {
-        args = { "--config", os.getenv("HOME") .. "/.config/nvim/.markdownlint-cli2.yaml", "--" },
+        args = { "--config", vim.fn.stdpath("config") .. "/.markdownlint-cli2.yaml", "--" },
       },
-      sqlfluff = { args = { "lint", "--format=json", "--config", os.getenv("HOME") .. "/.config/nvim/.sqlfluff", "-" } },
+      sqlfluff = { args = { "lint", "--format=json", "--config", vim.fn.stdpath("config") .. "/.sqlfluff", "-" } },
     },
   },
 }

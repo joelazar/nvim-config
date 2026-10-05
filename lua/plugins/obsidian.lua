@@ -6,7 +6,10 @@ return {
   -- load the plugin: no commands, no keymaps, no events. The marker is listed
   -- in .git/info/exclude so it stays machine-local and out of the repo.
   enabled = vim.fn.filereadable(vim.fn.stdpath("config") .. "/.disable-obsidian") == 0,
-  event = { "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md" },
+  event = {
+    "BufReadPre " .. vim.fn.expand("~") .. "/Obsidian/**.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/Obsidian/**.md",
+  },
 
   config = function()
     local global_ob = vim.fn.exepath("ob")
@@ -71,7 +74,7 @@ return {
         local out = {}
         for arg in vim.gsplit(args or "", ",") do
           arg = vim.trim(arg)
-          local str = arg:match [[^"(.*)"$]] or arg:match "^'(.*)'$"
+          local str = arg:match([[^"(.*)"$]]) or arg:match("^'(.*)'$")
           out[#out + 1] = str or tonumber(arg)
         end
         return out
@@ -84,12 +87,12 @@ return {
       function M.eval(expr, ctx)
         local format_date = require("obsidian.util").format_date
 
-        if expr:match "^tp%.file%.title" then
+        if expr:match("^tp%.file%.title") then
           return ctx.partial_note and ctx.partial_note:display_name()
         end
 
         -- tp.date.now(format, offset_in_days)
-        local date_args = expr:match "^tp%.date%.now%s*%((.*)%)%s*$"
+        local date_args = expr:match("^tp%.date%.now%s*%((.*)%)%s*$")
         if date_args then
           local args = parse_args(date_args)
           local fmt = args[1] or Obsidian.opts.templates.date_format
@@ -97,12 +100,12 @@ return {
         end
 
         -- moment().startOf(unit).add(n, unit).subtract(n, unit).format(fmt)
-        local chain = expr:match "^moment%s*%(%s*%)(.*)$"
+        local chain = expr:match("^moment%s*%(%s*%)(.*)$")
         if not chain then
           return nil
         end
         local time, out = os.time(), nil
-        for method, args in chain:gmatch "%.%s*([%w_]+)%s*%(([^)]*)%)" do
+        for method, args in chain:gmatch("%.%s*([%w_]+)%s*%(([^)]*)%)") do
           local a = parse_args(args)
           if method == "startOf" then
             time = start_of(time, a[1])
@@ -123,14 +126,16 @@ return {
       ---@param text string
       ---@param ctx obsidian.TemplateContext
       function M.render(text, ctx)
-        return (text:gsub("<%%%-?(.-)%-?%%>", function(expr)
-          local ok, value = pcall(M.eval, vim.trim(expr), ctx)
-          if not ok then
-            vim.notify("Templater tag failed: <%" .. expr .. "%> " .. tostring(value), vim.log.levels.WARN)
-            return nil
-          end
-          return value
-        end))
+        return (
+          text:gsub("<%%%-?(.-)%-?%%>", function(expr)
+            local ok, value = pcall(M.eval, vim.trim(expr), ctx)
+            if not ok then
+              vim.notify("Templater tag failed: <%" .. expr .. "%> " .. tostring(value), vim.log.levels.WARN)
+              return nil
+            end
+            return value
+          end)
+        )
       end
 
       return M

@@ -17,6 +17,7 @@ return {
       enabled = false,
     },
     picker = {
+      matcher = { frecency = true },
       layout = {
         layout = {
           width = 0.9,

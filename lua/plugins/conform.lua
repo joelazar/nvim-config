@@ -87,10 +87,10 @@ return {
 
     opts.formatters.sqlfluff = {
       require_cwd = false,
-      args = { "format", "--config", os.getenv("HOME") .. "/.config/nvim/.sqlfluff", "-" },
+      args = { "format", "--config", vim.fn.stdpath("config") .. "/.sqlfluff", "-" },
     }
     opts.formatters.shfmt = {
-      args = { "-i", "4" },
+      args = { "-filename", "$FILENAME", "-i", "4" },
     }
   end,
 }

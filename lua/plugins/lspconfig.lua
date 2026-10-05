@@ -41,12 +41,13 @@ return {
         },
       },
     })
-    opts.servers.harper_ls = {}
+    opts.servers.harper_ls = { filetypes = { "markdown", "gitcommit", "text" } }
     opts.servers.nginx_language_server = {}
 
     opts.setup = opts.setup or {}
 
-    opts.setup.harper_ls = function()
+    opts.setup.harper_ls = function(server, sopts)
+      vim.lsp.config(server, sopts)
       Snacks.toggle({
         name = "Harper",
         get = function()
