@@ -17,7 +17,12 @@ return {
       list = { selection = { preselect = false, auto_insert = false } },
     },
     sources = {
-      default = { "git", "dictionary", "calc" },
+      default = { "git", "calc" },
+      per_filetype = {
+        markdown = { inherit_defaults = true, "dictionary" },
+        gitcommit = { inherit_defaults = true, "dictionary" },
+        text = { inherit_defaults = true, "dictionary" },
+      },
       providers = {
         calc = {
           name = "Calc",

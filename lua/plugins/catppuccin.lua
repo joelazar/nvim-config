@@ -8,14 +8,7 @@ return {
     opts = {
       flavour = "mocha",
       term_colors = true,
-      auto_integrations = false,
-      integrations = {
-        blink_cmp = true,
-        dadbod_ui = true,
-        dap = true,
-        dap_ui = true,
-        render_markdown = true,
-      },
+      auto_integrations = true,
     },
   },
   -- let LazyVim apply the colorscheme (and re-apply it after lazy loads)

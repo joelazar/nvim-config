@@ -46,9 +46,16 @@ return {
 
     opts.setup = opts.setup or {}
 
-    -- Setup function to prevent harper_ls from autostarting
-    opts.setup.harper_ls = function(_, server_opts)
-      -- Don't setup harper_ls automatically
+    opts.setup.harper_ls = function()
+      Snacks.toggle({
+        name = "Harper",
+        get = function()
+          return vim.lsp.is_enabled("harper_ls")
+        end,
+        set = function(state)
+          vim.lsp.enable("harper_ls", state)
+        end,
+      }):map("<leader>uH")
       return true
     end
   end,

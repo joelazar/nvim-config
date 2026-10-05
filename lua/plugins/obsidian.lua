@@ -494,7 +494,7 @@ return {
       desc = "Search notes from vault",
     },
     { "<leader>zW", "<cmd>Obsidian workspace<cr>", desc = "Select active workspace" },
-    { "<C-c>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox states" },
-    { "gf", "<cmd>Obsidian follow_link<CR>", desc = "Follow Obsidian link" },
+    { "<C-c>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox states", ft = "markdown" },
+    { "gf", "<cmd>Obsidian follow_link<CR>", desc = "Follow Obsidian link", ft = "markdown" },
   },
 }

@@ -143,7 +143,7 @@ return {
     {
       "<C-p>",
       function()
-        Snacks.picker.files({ hidden = true })
+        Snacks.picker.files()
       end,
       desc = "Find Files (Root Dir)",
     },
