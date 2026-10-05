@@ -249,3 +249,14 @@ if vim.g.neovide then
   map("i", "<D-Left>", "<C-o>^", { desc = "Start of line" })
   map("i", "<D-Right>", "<End>", { desc = "End of line" })
 end
+
+vim.keymap.set("n", "<leader>gO", function()
+  local file = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  local out = vim.fn.systemlist({ "git", "-C", vim.fn.expand("%:p:h"), "blame", "-L", line .. "," .. line, "--porcelain", file })
+  local sha = out[1] and out[1]:match("^(%x+)")
+  if not sha or sha:match("^0+$") then
+    return Snacks.notify.warn("Line not committed yet")
+  end
+  Snacks.gitbrowse({ what = "commit", commit = sha })
+end, { desc = "Open blamed commit in browser" })
