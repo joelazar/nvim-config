@@ -3,7 +3,7 @@
 return {
   "johmsalas/text-case.nvim",
   keys = { { "ga", mode = { "n", "x" } } },
-  cmd = { "Subs", "TextCaseOpenTelescope", "TextCaseStartReplacingCommand" },
+  cmd = { "Subs", "TextCaseStartReplacingCommand" },
   config = function()
     require("textcase").setup({})
   end,

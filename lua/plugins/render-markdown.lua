@@ -1,6 +1,7 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
+    completions = { lsp = { enabled = true } },
     checkbox = {
       custom = {
         progress = { raw = "[/]", rendered = "󰦕 ", highlight = "RenderMarkdownWarn" },
