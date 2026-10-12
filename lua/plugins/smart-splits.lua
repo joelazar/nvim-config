@@ -7,8 +7,8 @@
 return {
   "mrjones2014/smart-splits.nvim",
   lazy = false,
-  -- herdr integration is only on master so far (not in a tagged release)
-  version = false,
+  -- v3 dropped the herdr backend (needs a maintainer: smart-splits.nvim#488)
+  tag = "v2.1.1-final",
   opts = {
     ignored_filetypes = { "NvimTree", "neo-tree", "snacks_picker_list", "edgy" },
     ignored_buftypes = { "nofile", "quickfix", "prompt" },
