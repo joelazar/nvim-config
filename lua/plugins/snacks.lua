@@ -8,7 +8,9 @@ return {
         header = [[Hey Joe 👋!]],
       },
     },
-    image = {},
+    image = {
+      math = { enabled = false },
+    },
     indent = {
       scope = { enabled = false },
       animate = { enabled = false },
