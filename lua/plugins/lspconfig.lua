@@ -43,6 +43,14 @@ return {
     })
     opts.servers.harper_ls = { filetypes = { "markdown", "gitcommit", "text" } }
     opts.servers.nginx_language_server = {}
+    -- Mason builds ansible-lint on the stock python3 (3.15), which ansible-core does not support yet
+    opts.servers.ansiblels = vim.tbl_deep_extend("force", opts.servers.ansiblels or {}, {
+      settings = {
+        ansible = {
+          validation = { lint = { path = vim.fn.expand("~/.local/bin/ansible-lint") } },
+        },
+      },
+    })
 
     opts.setup = opts.setup or {}
 
