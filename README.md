@@ -39,7 +39,7 @@ And you are done! 🎉
 
 - **Yazi.nvim** [`lua/plugins/yazi.lua`](./lua/plugins/yazi.lua) - Toggle the Yazi terminal file manager (`<leader>y` / `<leader>Y`) without leaving Neovim.
 - **Snacks.nvim** [`lua/plugins/snacks.lua`](./lua/plugins/snacks.lua) - Dashboard, file picker with filename-first formatting, project-aware sources, explorer cut/paste, and a `<C-p>` shortcut.
-- **Smart-splits.nvim** [`lua/plugins/smart-splits.lua`](./lua/plugins/smart-splits.lua) - `<C-h/j/k/l>` navigation that crosses over into herdr panes.
+- **Smart-splits.nvim** [`lua/plugins/smart-splits.lua`](./lua/plugins/smart-splits.lua) - `<C-h/j/k/l>` navigation that crosses over into Rex panes.
 - **Grug-far.nvim** [`lua/plugins/grug.lua`](./lua/plugins/grug.lua) - `<leader>sr` search and replace, pre-filtered to the current file extension.
 
 ### 🧰 Development Tools

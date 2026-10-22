@@ -1,28 +1,28 @@
--- Seamless split navigation between Neovim windows and herdr panes.
--- Not lazy-loaded on purpose: the herdr integration needs the plugin present
--- so `<C-h/j/k/l>` forwarded by herdr land in the plugin, not in default vim keys.
+-- Seamless split navigation between Neovim windows and Rex panes.
+-- Not lazy-loaded on purpose: Rex passes `<C-h/j/k/l>` through to Neovim,
+-- so the plugin must be present to catch them instead of default vim keys.
 --
--- herdr side: `herdr plugin link ~/.local/share/nvim/lazy/smart-splits.nvim`
--- plus the `[[keys.command]]` plugin_action bindings in ~/.config/herdr/config.toml.
+-- Rex side: `ctrl+h/j/k/l` bindings in Rex `init.lua` that fall through when
+-- Neovim is the foreground process (see smart-splits-backend-rex README).
 return {
-  "mrjones2014/smart-splits.nvim",
+  "smart-splits-nvim/smart-splits.nvim",
+  version = "^3.0.0",
   lazy = false,
-  -- v3 dropped the herdr backend (needs a maintainer: smart-splits.nvim#488)
-  tag = "v2.1.1-final",
+  dependencies = {
+    { "rawnly/smart-splits-backend-rex", opts = {} },
+  },
   opts = {
     ignored_filetypes = { "NvimTree", "neo-tree", "snacks_picker_list", "edgy" },
     ignored_buftypes = { "nofile", "quickfix", "prompt" },
-    default_amount = 3,
+    resize = { amount = 3 },
     -- at the edge of the last Neovim split, cross over into the neighbouring
-    -- herdr pane (handled by the mux backend); if there is none, stop.
-    at_edge = "stop",
-    float_win_behavior = "previous",
-    disable_multiplexer_nav_when_zoomed = true,
-    multiplexer_integration = vim.env.HERDR_ENV and "herdr" or nil,
+    -- Rex pane (handled by the mux backend); if there is none, stop.
+    move = { at_edge = "stop" },
+    mux = { backend = "smart-splits-backend-rex" },
   },
   -- stylua: ignore
   keys = {
-    -- move between splits (and herdr panes)
+    -- move between splits (and Rex panes)
     { "<C-h>", function() require("smart-splits").move_cursor_left() end, desc = "Go to left window/pane" },
     { "<C-j>", function() require("smart-splits").move_cursor_down() end, desc = "Go to lower window/pane" },
     { "<C-k>", function() require("smart-splits").move_cursor_up() end, desc = "Go to upper window/pane" },
