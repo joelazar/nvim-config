@@ -28,6 +28,7 @@ o.scrollback = 100000
 o.guicursor = "n-v-c-sm:block-blinkon0,i-ci-ve:ver25-blinkon0,r-cr-o:hor20-blinkon0,t:block-blinkon0-TermCursor"
 o.cursorline = true
 
+vim.g.mapleader = " "
 local map = vim.keymap.set
 map({ "n", "x" }, "y", '"+y', { desc = "Copy to system clipboard" })
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
@@ -49,6 +50,35 @@ end, { desc = "Open in full nvim" })
 map({ "n", "x" }, "[[", "<cmd>silent! ?^\\s*❯<cr><cmd>nohlsearch<cr>", { desc = "Previous prompt" })
 map({ "n", "x" }, "]]", "<cmd>silent! /^\\s*❯<cr><cmd>nohlsearch<cr>", { desc = "Next prompt" })
 
+-- URLs: ]u / [u jump, <leader>u picks one from the whole capture
+local url_pat = [[\v<https?://[^ \t<>"'`()\[\]{}]+]]
+map("n", "]u", function()
+  vim.fn.search(url_pat, "W")
+end, { desc = "Next URL" })
+map("n", "[u", function()
+  vim.fn.search(url_pat, "bW")
+end, { desc = "Previous URL" })
+
+local plain = "" -- capture without escapes, set on VimEnter
+map("n", "<leader>u", function()
+  local urls, seen = {}, {}
+  for url in plain:gmatch("https?://[^%s<>\"'`()%[%]{}]+") do
+    url = url:gsub("[.,;:!?]+$", "")
+    if not seen[url] then
+      seen[url] = true
+      table.insert(urls, 1, url) -- newest first
+    end
+  end
+  if #urls == 0 then
+    return vim.notify("No URLs in scrollback")
+  end
+  vim.ui.select(urls, { prompt = "Open URL" }, function(url)
+    if url then
+      vim.ui.open(url)
+    end
+  end)
+end, { desc = "Pick URL to open" })
+
 vim.api.nvim_create_autocmd("VimEnter", {
   once = true,
   callback = function()
@@ -59,6 +89,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
     local data = f:read("*a")
     f:close()
+    -- strip CSI and OSC sequences, but keep OSC 8 hyperlink targets (clickable text whose URL isn't shown)
+    local targets = {}
+    for url in data:gmatch("\27%]8;[^;]*;([^\27\7]+)") do
+      table.insert(targets, url)
+    end
+    plain = table.concat(targets, "\n")
+      .. "\n"
+      .. data:gsub("\27%[[%d;:?<=>]*[ -/]*[@-~]", ""):gsub("\27%].-\7", ""):gsub("\27%].-\27\\", "")
 
     local file_buf = vim.api.nvim_get_current_buf()
     local buf = vim.api.nvim_create_buf(false, true)
