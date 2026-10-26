@@ -54,6 +54,21 @@ return {
 
     opts.setup = opts.setup or {}
 
+    local copilot_setup = opts.setup.copilot
+    opts.setup.copilot = function(server, sopts)
+      if copilot_setup then
+        copilot_setup(server, sopts)
+      end
+      vim.lsp.config(server, sopts)
+      vim.api.nvim_create_autocmd("InsertEnter", {
+        once = true,
+        callback = function()
+          vim.lsp.enable(server)
+        end,
+      })
+      return true
+    end
+
     opts.setup.harper_ls = function(server, sopts)
       vim.lsp.config(server, sopts)
       Snacks.toggle({
