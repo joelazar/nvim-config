@@ -46,6 +46,12 @@ map("n", "e", function()
   vim.fn.writefile(vim.api.nvim_buf_get_lines(0, 0, -1, false), vim.fn.argv(0))
   vim.cmd("cquit 3")
 end, { desc = "Open in full nvim" })
+-- ctrl+h/j/k/l: move to the neighbouring Rex pane (Rex passes these keys to nvim)
+for key, dir in pairs({ h = "left", j = "down", k = "up", l = "right" }) do
+  map("n", "<C-" .. key .. ">", function()
+    vim.system({ vim.env.REX or "rex", "focus", dir })
+  end, { desc = "Focus pane " .. dir })
+end
 -- jump between shell prompts (starship's ❯)
 map({ "n", "x" }, "[[", "<cmd>silent! ?^\\s*❯<cr><cmd>nohlsearch<cr>", { desc = "Previous prompt" })
 map({ "n", "x" }, "]]", "<cmd>silent! /^\\s*❯<cr><cmd>nohlsearch<cr>", { desc = "Next prompt" })
