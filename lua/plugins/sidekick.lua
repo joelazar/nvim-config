@@ -2,24 +2,14 @@ return {
   "joelazar/sidekick.nvim",
   opts = {
     cli = {
+      resume = "new",
       win = {
         csiu = true,
         split = {
           width = 0.4,
         },
       },
-      mux = {
-        enabled = true,
-        create = "split",
-        split = {
-          vertical = true,
-          size = 0.4,
-        },
-      },
-      tools = {
-        claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
-        antigravity = {},
-      },
+      tools = {},
     },
   },
   config = function(_, opts)
