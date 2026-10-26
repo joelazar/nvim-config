@@ -21,13 +21,6 @@ map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 -- gp: Paste in Visual mode without copying selected text (see :h v_P)
 map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
--- Better Navigation for Wrapped Lines
--- These mappings make j/k move by visible lines rather than file lines
--- Only applies when not using a count (e.g. 5j still moves 5 actual lines)
--- Not mapped in operator-pending mode to preserve behavior of operations like 'dj'
-map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
-map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
-
 -- Reselect latest changed, put, or yanked text
 map(
   "n",
@@ -48,11 +41,6 @@ map({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = "Sa
 -- Better page up/down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-
--- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
 
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
