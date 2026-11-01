@@ -18,7 +18,8 @@ return {
     -- at the edge of the last Neovim split, cross over into the neighbouring
     -- Rex pane (handled by the mux backend); if there is none, stop.
     move = { at_edge = "stop" },
-    mux = { backend = "smart-splits-backend-rex" },
+    -- outside Rex (Neovide, other terminals) fall back to plain window moves silently
+    mux = { backend = "smart-splits-backend-rex", warn_if_unusable = false },
   },
   -- stylua: ignore
   keys = {
