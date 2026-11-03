@@ -2,6 +2,7 @@
 -- Tweaks LSP keymaps, gopls settings, and adds harper_ls / nginx servers
 return {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile", "BufWritePre" },
   opts = function(_, opts)
     opts.servers = opts.servers or {}
     opts.servers["*"] = opts.servers["*"] or {}
