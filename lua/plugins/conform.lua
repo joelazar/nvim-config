@@ -85,6 +85,19 @@ return {
       end
     end
 
+    -- Obsidian vaults: rumdl keeps Obsidian's 2-space nesting under ordered lists, prettier/markdownlint split them.
+    local obsidian_root = vim.fn.expand("~/Obsidian") .. "/"
+    local markdown_default = opts.formatters_by_ft.markdown
+    opts.formatters_by_ft.markdown = function(bufnr)
+      if vim.startswith(vim.api.nvim_buf_get_name(bufnr), obsidian_root) then
+        return { "rumdl" }
+      end
+      return markdown_default
+    end
+    opts.formatters.rumdl = {
+      args = { "fmt", "--flavor", "obsidian", "--quiet", "--extend-disable", "MD076", "--stdin-filename", "$FILENAME", "-" },
+    }
+
     opts.formatters.sqlfluff = {
       require_cwd = false,
       args = { "format", "--config", vim.fn.stdpath("config") .. "/.sqlfluff", "-" },

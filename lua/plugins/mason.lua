@@ -38,6 +38,7 @@ return {
       "harper-ls", -- Spelling and grammar checking
       "nginx-language-server", -- Nginx LSP
       "ruff", -- Python linting and formatting
+      "rumdl", -- Markdown formatting in Obsidian vaults
       "rust-analyzer", -- Rust LSP
       "sqlfluff", -- SQL linting and formatting
       "ty", -- Python LSP

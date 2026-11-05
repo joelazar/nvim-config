@@ -44,6 +44,8 @@ return {
     })
     opts.servers.harper_ls = { filetypes = { "markdown", "gitcommit", "text" } }
     opts.servers.nginx_language_server = {}
+    -- rumdl is installed only as the Obsidian formatter; markdownlint-cli2 stays the linter
+    opts.servers.rumdl = { enabled = false }
     -- Mason builds ansible-lint on the stock python3 (3.15), which ansible-core does not support yet
     opts.servers.ansiblels = vim.tbl_deep_extend("force", opts.servers.ansiblels or {}, {
       settings = {
