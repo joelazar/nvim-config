@@ -258,21 +258,8 @@ return {
         auto_update = true,
       },
 
-      -- Optional, boolean or a function that takes a filename and returns a boolean.
-      -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-      frontmatter = {
-        enabled = true,
-        -- Optional, alternatively you can customize the frontmatter data.
-        ---@return table
-        func = function(note)
-          local out = vim.tbl_extend("force", {}, note.metadata)
-          out.id = nil
-          if vim.tbl_isempty(out.aliases) then
-            out.aliases = nil
-          end
-          return out
-        end,
-      },
+      -- Frontmatter is owned by the Obsidian app and templates; obsidian.nvim rewrote it on save.
+      frontmatter = { enabled = false },
 
       -- Optional, for templates (see https://github.com/obsidian-nvim/obsidian.nvim/wiki/Using-templates)
       templates = {
