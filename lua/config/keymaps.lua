@@ -9,10 +9,6 @@
 -- Shorthand for mapping keys
 local map = vim.keymap.set
 
--- Window Management
--- Q: Close current window (replaces default 'Q' which enters Ex mode)
-map("n", "Q", "<cmd>close<cr>", { silent = true })
-
 -- System Clipboard Integration
 -- gy: Copy to system clipboard (normal and visual modes)
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
