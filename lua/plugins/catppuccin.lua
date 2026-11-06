@@ -13,7 +13,6 @@ return {
         blink_cmp = { enabled = true, style = "bordered" },
         dadbod_ui = true,
         dap = true,
-        dap_ui = true,
         flash = true,
         gitsigns = true,
         grug_far = true,
