@@ -45,14 +45,23 @@ function M.url_to_markdown()
   local buf = vim.api.nvim_get_current_buf()
 
   -- Find URL pattern
-  local url_pattern = "https?://[%w-._~:/?#%[%]@!$&'()*+,;=%%]+"
-  local url_start, url_end = nil, nil
+  local url_pattern = "https?://[%w-._~:/?#@!$&'*+,;=%%]+"
+  local url_start, url_end, url = nil, nil, nil
 
-  for start, finish in line:gmatch("()" .. url_pattern .. "()") do
+  for start, link_url, finish in line:gmatch("()%[[^%]]*%]%((" .. url_pattern .. ")%)()") do
     if start - 1 <= col and col < finish - 1 then
-      url_start = start
-      url_end = finish - 1
+      url_start, url_end, url = start, finish - 1, link_url
       break
+    end
+  end
+
+  if not url_start then
+    for start, finish in line:gmatch("()" .. url_pattern .. "()") do
+      if start - 1 <= col and col < finish - 1 then
+        url_start, url_end = start, finish - 1
+        url = line:sub(url_start, url_end)
+        break
+      end
     end
   end
 
@@ -61,7 +70,7 @@ function M.url_to_markdown()
     return
   end
 
-  local url = line:sub(url_start, url_end)
+  local original = line:sub(url_start, url_end)
 
   -- Create unique key for this conversion
   local conversion_key = string.format("%d:%d:%d:%s", buf, line_num, url_start, url)
@@ -96,8 +105,7 @@ function M.url_to_markdown()
     end
 
     -- Check if the URL is still at the expected position
-    local current_url = current_line:sub(url_start, url_end)
-    if current_url ~= url then
+    if current_line:sub(url_start, url_end) ~= original then
       vim.notify("URL has changed, skipping conversion", vim.log.levels.WARN)
       return
     end
