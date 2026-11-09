@@ -11,6 +11,17 @@ return {
   },
   config = function(_, opts)
     require("bufferline").setup(opts)
+    -- bufferline restores pins on SessionLoadPost, which fires before VeryLazy on :restart
+    if vim.v.this_session ~= "" and (vim.g.BufferlinePinnedBuffers or "") ~= "" then
+      local groups = require("bufferline.groups")
+      for _, path in ipairs(vim.split(vim.g.BufferlinePinnedBuffers, ",")) do
+        local buf = vim.fn.bufnr(path)
+        if buf ~= -1 then
+          groups.add_element("pinned", { id = buf })
+        end
+      end
+      require("bufferline.ui").refresh()
+    end
     -- Workaround: bufferline keeps pinned buffer ids in its manual_groupings
     -- table even after the buffer is wiped out (e.g. via Snacks.bufdelete).
     -- persist_pinned_buffers then calls nvim_buf_get_name on the dead id and
