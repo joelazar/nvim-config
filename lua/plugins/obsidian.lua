@@ -12,6 +12,7 @@ return {
   },
 
   config = function()
+    math.randomseed(vim.uv.hrtime())
     local global_ob = vim.fn.exepath("ob")
     local active_sync_roots = {}
 
@@ -40,6 +41,7 @@ return {
       ---@param n integer number of `unit`s to add (negative to subtract)
       local function add(time, n, unit)
         local d = os.date("*t", time) --[[@as osdate]]
+        d.isdst = nil
         unit = units[unit or "day"] or "day"
         if unit == "day" then
           d.day = d.day + n
@@ -56,11 +58,11 @@ return {
       ---`moment().startOf(unit)`: isoWeek, week, day, month or year.
       local function start_of(time, unit)
         local d = os.date("*t", time) --[[@as osdate]]
-        d.hour, d.min, d.sec = 0, 0, 0
+        d.hour, d.min, d.sec, d.isdst = 0, 0, 0, nil
         if unit == "isoWeek" or unit == "week" then
           local wday = d.wday - 1 -- 0=Sun..6=Sat
           local back = unit == "isoWeek" and ((wday == 0) and 6 or (wday - 1)) or wday
-          return os.time(d) - back * 86400
+          d.day = d.day - back
         elseif unit == "month" then
           d.day = 1
         elseif unit == "year" then
