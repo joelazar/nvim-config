@@ -1,7 +1,10 @@
 vim.filetype.add({
   pattern = {
-    ["%.env%.[%w_.-]+"] = "dotenv",
-    ["[Bb]rewfile%.[%w_.-]+"] = "ruby",
+    ["[Bb]rewfile%.[%w_.-]+"] = function(path)
+      if not path:match("%.lock%.json$") then
+        return "ruby"
+      end
+    end,
   },
 })
 
@@ -17,5 +20,4 @@ vim.filetype.add({
   },
 })
 
--- Use bash treesitter parser for dotenv files (syntax highlighting)
-vim.treesitter.language.register("bash", "dotenv")
+vim.treesitter.language.register("bash", "env")
