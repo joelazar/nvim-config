@@ -70,7 +70,7 @@ return {
               if is_cut then
                 files = vim.deepcopy(cut)
               else
-                files = vim.split(vim.fn.getreg("+") or "", "\n", { plain = true })
+                files = vim.split(vim.fn.getreg(vim.v.register) or "", "\n", { plain = true })
               end
               files = vim.tbl_filter(function(f)
                 return f ~= "" and (vim.fn.filereadable(f) == 1 or vim.fn.isdirectory(f) == 1)
