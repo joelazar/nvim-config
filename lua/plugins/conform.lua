@@ -89,7 +89,17 @@ return {
       return markdown_default
     end
     opts.formatters.rumdl = {
-      args = { "fmt", "--flavor", "obsidian", "--quiet", "--extend-disable", "MD076", "--stdin-filename", "$FILENAME", "-" },
+      args = {
+        "fmt",
+        "--flavor",
+        "obsidian",
+        "--quiet",
+        "--extend-disable",
+        "MD076",
+        "--stdin-filename",
+        "$FILENAME",
+        "-",
+      },
     }
 
     opts.formatters.sqlfluff = {
