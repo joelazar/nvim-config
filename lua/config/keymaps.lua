@@ -166,16 +166,14 @@ map("n", "<leader>rr", function()
 end, { desc = "Review working tree" })
 
 map("n", "<leader>rb", function()
-  local base = vim.fn.systemlist("git symbolic-ref --short refs/remotes/origin/HEAD")[1] or ""
-  base = base:gsub("^origin/", "")
-  if base == "" then
-    base = "main"
-  end
+  local out =
+    vim.fn.systemlist({ "git", "-C", LazyVim.root.git(), "symbolic-ref", "--short", "refs/remotes/origin/HEAD" })
+  local base = vim.v.shell_error == 0 and out[1] and out[1]:gsub("^origin/", "") or "main"
   tuicr("-r " .. base .. "..HEAD")
 end, { desc = "Review branch vs base" })
 
 map("n", "<leader>rf", function()
-  tuicr("--file " .. vim.fn.expand("%:p"))
+  tuicr("--file " .. vim.fn.shellescape(vim.fn.expand("%:p")))
 end, { desc = "Review current file" })
 
 map("n", "<leader>rp", function()
@@ -237,8 +235,9 @@ end
 vim.keymap.set("n", "<leader>gO", function()
   local file = vim.fn.expand("%:p")
   local line = vim.fn.line(".")
-  local out = vim.fn.systemlist({ "git", "-C", vim.fn.expand("%:p:h"), "blame", "-L", line .. "," .. line, "--porcelain", file })
-  local sha = out[1] and out[1]:match("^(%x+)")
+  local out =
+    vim.fn.systemlist({ "git", "-C", vim.fn.expand("%:p:h"), "blame", "-L", line .. "," .. line, "--porcelain", file })
+  local sha = vim.v.shell_error == 0 and out[1] and out[1]:match("^(%x+)")
   if not sha or sha:match("^0+$") then
     return Snacks.notify.warn("Line not committed yet")
   end
