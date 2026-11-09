@@ -132,22 +132,6 @@ vim.schedule(function()
   }):map("<leader>uK")
 end)
 
--- Toggle harper_ls (spelling checker)
-map("n", "<leader>us", function()
-  local clients = vim.lsp.get_clients({ name = "harper_ls" })
-  if #clients > 0 then
-    -- Stop harper_ls
-    for _, client in ipairs(clients) do
-      client:stop()
-    end
-    vim.notify("Harper LSP stopped", vim.log.levels.INFO)
-  else
-    -- Start harper_ls
-    vim.cmd("LspStart harper_ls")
-    vim.notify("Harper LSP started", vim.log.levels.INFO)
-  end
-end, { desc = "Toggle spelling" })
-
 vim.cmd(":packadd nvim.undotree")
 map("n", "<leader>bu", "<cmd>Undotree<cr>", { desc = "Undotree" })
 
