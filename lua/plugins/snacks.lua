@@ -49,9 +49,8 @@ return {
           },
           actions = {
             explorer_cut = function(picker)
-              local sel = picker:selected({ fallback = true })
               local files = {}
-              for _, item in ipairs(sel) do
+              for _, item in ipairs(picker:selected({ fallback = true })) do
                 if item.file then
                   table.insert(files, item.file)
                 end
@@ -59,41 +58,44 @@ return {
               if #files == 0 then
                 return
               end
-              vim.fn.setreg("+", table.concat(files, "\n"))
+              local value = table.concat(files, "\n")
+              vim.fn.setreg("+", value, "l")
+              vim.fn.setreg(vim.v.register, value, "l")
               vim.g.snacks_explorer_cut = files
               picker.list:set_selected()
             end,
             explorer_paste = function(picker)
-              local cut = vim.g.snacks_explorer_cut or {}
-              local files
-              local is_cut = #cut > 0
-              if is_cut then
-                files = vim.deepcopy(cut)
-              else
-                files = vim.split(vim.fn.getreg(vim.v.register) or "", "\n", { plain = true })
-              end
+              local files = vim.tbl_filter(function(f)
+                return f ~= ""
+              end, vim.split(vim.fn.getreg(vim.v.register) or "", "\n", { plain = true }))
+              local is_cut = vim.deep_equal(files, vim.g.snacks_explorer_cut)
               files = vim.tbl_filter(function(f)
-                return f ~= "" and (vim.fn.filereadable(f) == 1 or vim.fn.isdirectory(f) == 1)
+                return vim.fn.filereadable(f) == 1 or vim.fn.isdirectory(f) == 1
               end, files)
               if #files == 0 then
                 return Snacks.notify.warn("Nothing to paste")
               end
               local dir = picker:dir()
-              if is_cut then
-                for _, src in ipairs(files) do
-                  local dest = dir .. "/" .. vim.fs.basename(src)
-                  local ok, err = vim.uv.fs_rename(src, dest)
-                  if not ok then
-                    Snacks.notify.error(("Move failed: %s -> %s\n%s"):format(src, dest, err))
-                  end
-                end
-                vim.g.snacks_explorer_cut = nil
-              else
-                Snacks.picker.util.copy(files, dir)
+              local function done()
+                require("snacks.explorer.tree"):refresh(dir)
+                require("snacks.explorer.tree"):open(dir)
+                require("snacks.explorer.actions").update(picker, { target = dir })
               end
-              require("snacks.explorer.tree"):refresh(dir)
-              require("snacks.explorer.tree"):open(dir)
-              require("snacks.explorer.actions").update(picker, { target = dir })
+              if not is_cut then
+                Snacks.picker.util.copy(files, dir)
+                return done()
+              end
+              vim.g.snacks_explorer_cut = nil
+              for _, src in ipairs(files) do
+                local dest = dir .. "/" .. vim.fs.basename(src)
+                if vim.uv.fs_stat(dest) then
+                  Snacks.notify.error(("Move skipped, `%s` already exists"):format(dest))
+                else
+                  Snacks.rename.rename_file({ from = src, to = dest })
+                  require("snacks.explorer.tree"):refresh(vim.fs.dirname(src))
+                end
+              end
+              done()
             end,
           },
         },
