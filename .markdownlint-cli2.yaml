@@ -11,3 +11,5 @@ config:
   MD041: false
   # MD034: Bare URL used
   MD034: false
+  # MD060: Table column style
+  MD060: false
