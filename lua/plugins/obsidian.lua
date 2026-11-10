@@ -1,6 +1,6 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  version = "*",
+  dir = "~/Code/joelazar/obsidian.nvim",
   -- Skipped entirely when the local marker file ~/.config/nvim/.disable-obsidian
   -- exists (e.g. devboxes). With enabled=false lazy.nvim does not install or
   -- load the plugin: no commands, no keymaps, no events. The marker is listed
