@@ -33,6 +33,32 @@ local map = vim.keymap.set
 map({ "n", "x" }, "y", '"+y', { desc = "Copy to system clipboard" })
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "Y", '"+y$')
+-- strip trailing padding (background colors, right prompts) from yanked lines
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    local e = vim.v.event
+    if e.operator ~= "y" then
+      return
+    end
+    local lines = vim.tbl_map(function(l)
+      return (l:gsub("%s+$", ""))
+    end, e.regcontents)
+    -- dedent by the common indent, so nested lines keep their relative indent
+    local indent = math.huge
+    for _, l in ipairs(lines) do
+      if l ~= "" then
+        indent = math.min(indent, #l:match("^%s*"))
+      end
+    end
+    if indent ~= math.huge and indent > 0 then
+      lines = vim.tbl_map(function(l)
+        return l:sub(indent + 1)
+      end, lines)
+    end
+    -- regtype without the blockwise width, so setreg recomputes it
+    vim.fn.setreg(e.regname == "" and '"' or e.regname, lines, e.regtype:sub(1, 1))
+  end,
+})
 map("n", "q", "<cmd>qa!<cr>")
 map("n", "<Esc>", function()
   if vim.v.hlsearch == 1 then
@@ -116,6 +142,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
       vim.cmd("normal! G")
       -- drop trailing empty lines so G lands on real output
       vim.fn.search("\\S", "bW")
+      vim.cmd("normal! 0")
     end, 50)
   end,
 })
