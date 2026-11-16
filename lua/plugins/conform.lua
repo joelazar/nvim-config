@@ -95,7 +95,7 @@ return {
         "obsidian",
         "--quiet",
         "--extend-disable",
-        "MD076",
+        "MD034,MD076",
         "--stdin-filename",
         "$FILENAME",
         "-",
