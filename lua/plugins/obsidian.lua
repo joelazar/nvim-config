@@ -148,6 +148,11 @@ return {
         enabled = false,
       },
       cache = { enabled = true },
+      resolvers = {
+        hints = function(_, done)
+          done({})
+        end,
+      },
       callbacks = {
         enter_note = function(note)
           local api = require("obsidian.api")
