@@ -1,6 +1,5 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  dir = "~/Code/joelazar/render-markdown.nvim",
   opts = {
     completions = { lsp = { enabled = true } },
     checkbox = {
