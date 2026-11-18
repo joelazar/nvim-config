@@ -130,19 +130,40 @@ vim.api.nvim_create_autocmd("VimEnter", {
       .. "\n"
       .. data:gsub("\27%[[%d;:?<=>]*[ -/]*[@-~]", ""):gsub("\27%].-\7", ""):gsub("\27%].-\27\\", "")
 
-    local file_buf = vim.api.nvim_get_current_buf()
-    local buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_win_set_buf(0, buf)
-    vim.api.nvim_buf_delete(file_buf, { force = true })
-    local chan = vim.api.nvim_open_term(buf, {})
-    vim.api.nvim_chan_send(chan, (data:gsub("\r?\n", "\r\n")))
-    -- terminal output is processed async; jump to the end once it lands
-    vim.defer_fn(function()
-      vim.bo[buf].modifiable = false
-      vim.cmd("normal! G")
-      -- drop trailing empty lines so G lands on real output
-      vim.fn.search("\\S", "bW")
-      vim.cmd("normal! 0")
-    end, 50)
+    data = data:gsub("\r?\n", "\r\n")
+    local function render()
+      local old = vim.api.nvim_get_current_buf()
+      local buf = vim.api.nvim_create_buf(false, true)
+      vim.api.nvim_win_set_buf(0, buf)
+      vim.api.nvim_buf_delete(old, { force = true })
+      local chan = vim.api.nvim_open_term(buf, {})
+      vim.api.nvim_chan_send(chan, data)
+      -- terminal output is processed async; jump to the end once it lands
+      vim.defer_fn(function()
+        -- a resize may have replaced this buffer already
+        if vim.api.nvim_get_current_buf() ~= buf then
+          return
+        end
+        vim.bo[buf].modifiable = false
+        vim.cmd("normal! G")
+        -- drop trailing empty lines so G lands on real output
+        vim.fn.search("\\S", "bW")
+        vim.cmd("normal! 0zb")
+      end, 50)
+    end
+    render()
+    -- Rex starts the pane at 80x24 and sends the real size later; the terminal buffer is
+    -- wrapped at its creation width, so rebuild it at the new size
+    local cols = vim.o.columns
+    vim.api.nvim_create_autocmd("VimResized", {
+      callback = function()
+        if vim.o.columns ~= cols then
+          cols = vim.o.columns
+          render()
+        else
+          vim.cmd("normal! zb")
+        end
+      end,
+    })
   end,
 })
