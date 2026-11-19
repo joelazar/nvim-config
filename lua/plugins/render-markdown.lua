@@ -1,6 +1,8 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  ft = { "octo" },
   opts = {
+    file_types = { "markdown", "octo" },
     completions = { lsp = { enabled = true } },
     checkbox = {
       custom = {
