@@ -11,6 +11,9 @@ local function fetch_title_async(url, callback)
   local curl_cmd = {
     "curl",
     "-sL",
+    "--fail",
+    "-A",
+    "facebookexternalhit/1.1",
     "--max-time",
     "10", -- 10 second timeout
     url,
