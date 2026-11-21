@@ -9,6 +9,8 @@ return {
       },
     },
     image = {
+      -- snacks only detects kitty/ghostty/wezterm; Rex speaks the kitty graphics protocol too
+      force = true,
       math = { enabled = false },
     },
     indent = {
